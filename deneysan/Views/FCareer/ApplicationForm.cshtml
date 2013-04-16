@@ -2,12 +2,14 @@
 @{
     Layout = "~/Views/Shared/frontlayout.cshtml";
 }
-<div class="main_content mainpage pageheight" style="">
+<div class="main_content mainpage pageheight" style="min-height:500px">
     <div class="wrapper mainpage grid_12">
 
-        <div class="form_block page">
-            <h2>@CareerRess.CareerStrings.applicationform</h2>
-            <hr>
+        <div class="form_block page">       
+            <h2 style="width: 800px; float: left;">@CareerRess.CareerStrings.applicationform
+            </h2>
+            <input onclick="history.back();" type="button" value="&lt;&lt;geri dön">
+            <hr class="wide">
             <p>@Html.ValidationMessage("_FORM")</p>
             @if (TempData["sent"] != null)
                 {

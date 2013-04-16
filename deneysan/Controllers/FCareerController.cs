@@ -30,13 +30,13 @@ namespace deneysan.Controllers
         {
             try
             {
-                using (var client = new SmtpClient("smtp.gmail.com", 587))
+                using (var client = new SmtpClient("mail.deneysan.com.tr", 587))
                 {
-                    client.EnableSsl = true;
-                    client.Credentials = new NetworkCredential("cetintozkoparan@gmail.com", "c1e2t3i4n5");
+                    client.EnableSsl = false;
+                    client.Credentials = new NetworkCredential("info@deneysan.com.tr", "Deneysan2013");
                     var mail = new MailMessage();
-                    mail.From = new MailAddress("cetintozkoparan@yahoo.com");
-                    mail.To.Add("cetintozkoparan@hotmail.com");
+                    mail.From = new MailAddress("info@deneysan.com.tr");
+                    mail.To.Add("info@deneysan.com.tr");
                     mail.Subject = "İş Başvurusu";
                     mail.Body = namesurname;
                     if (attachedfile != null && attachedfile.ContentLength > 0)

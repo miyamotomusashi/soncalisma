@@ -127,16 +127,22 @@
     <value>Your application has been sent.</value>
   </data>
   <data name="birthcity" xml:space="preserve">
-    <value>Doğum Yeri</value>
+    <value>Birth City</value>
   </data>
   <data name="birthday" xml:space="preserve">
-    <value>Doğum Tarihi</value>
+    <value>Birthday</value>
+  </data>
+  <data name="career" xml:space="preserve">
+    <value>CAREER</value>
+  </data>
+  <data name="joinus" xml:space="preserve">
+    <value>Join Us</value>
   </data>
   <data name="livingcity" xml:space="preserve">
-    <value>Yaşadığı Şehir</value>
+    <value>Living City</value>
   </data>
   <data name="namesurname" xml:space="preserve">
-    <value>Ad Soyad</value>
+    <value>Name Surname</value>
   </data>
   <data name="tcno" xml:space="preserve">
     <value>TC No</value>

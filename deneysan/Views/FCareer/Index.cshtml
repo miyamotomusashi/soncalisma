@@ -2,21 +2,20 @@
     Layout = "~/Views/Shared/frontlayout.cshtml";
 }
 
-
 <div class="main_content mainpage pageheight" style="">
     <div class="wrapper mainpage grid_12">
         <div id="sub-sidebar" style="float:left; min-height:500px">
             <h1>
-                KARİYER
+                @CareerRess.CareerStrings.career
             </h1>
             <ul style="margin-top: -9px" id="ul1">
-                <li><a href='/kariyer'>BİZE KATILIN</a></li>
-                <li><a href='/kariyer/basvuru'>BAŞVURU FORMU</a></li>
+                <li><a href='/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_career'>@CareerRess.CareerStrings.joinus</a></li>
+                <li><a href='/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_career/@SharedRess.SharedStrings.menu_application'>@CareerRess.CareerStrings.applicationform</a></li>
             </ul>
         </div>
 
         <div id="sub-content" class="fl">
-            <h1>BİZE KATILIN</h1>
+            <h1>@CareerRess.CareerStrings.joinus</h1>
             <p>Her geçen gün, çalışanlarımız sayesinde müşterilerimizin katma değer yaratarak güvenle büyümelerinde önemli bir rol üstleniyoruz.</p>
             <p>Müşterilerimizden yatırımcılarımıza, kamu kurum ve kuruluşlarına kadar birlikte çalıştığımız bütün paydaşlarımızın bizden çok büyük 
                 beklentileri olduğunu biliyoruz. Bu beklentiye karşılık olarak, gerçekten olağanüstü nitelikli kişileri işe alıyoruz.</p>

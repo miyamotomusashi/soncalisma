@@ -106,6 +106,24 @@ namespace CareerRess {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to KARİYER.
+        /// </summary>
+        public static string career {
+            get {
+                return ResourceManager.GetString("career", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bize Katılın.
+        /// </summary>
+        public static string joinus {
+            get {
+                return ResourceManager.GetString("joinus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Yaşadığı Şehir.
         /// </summary>
         public static string livingcity {

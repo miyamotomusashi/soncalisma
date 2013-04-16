@@ -6,6 +6,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
+using System.Net.Mail;
+using System.Net;
 
 namespace deneysan.Controllers
 {
@@ -39,19 +41,19 @@ namespace deneysan.Controllers
         {
             try
             {
-                WebMail.SmtpServer = "smtp.gmail.com";
-                WebMail.SmtpPort = 587;
-                WebMail.Password = "c1e2t3i4n5";
-                WebMail.UserName = "cetintozkoparan@gmail.com";
-                WebMail.SmtpUseDefaultCredentials = false;
-                WebMail.EnableSsl = true;
-                WebMail.From = email;
-                body = "<h5><b>" + namesurname + " - " + email + "</b></h5>" + "<p>" + body + "</p>";
-                WebMail.Send(
-                        "cetintozkoparan@hotmail.com",
-                        subject,
-                        body
-                    );
+                using (var client = new SmtpClient("mail.deneysan.com.tr", 587))
+                {
+                    client.EnableSsl = false;
+                    client.Credentials = new NetworkCredential("info@deneysan.com.tr", "Deneysan2013");
+                    var mail = new MailMessage();
+                    mail.From = new MailAddress("info@deneysan.com.tr");
+                    mail.To.Add("info@deneysan.com.tr");
+                    mail.Subject = subject;
+                    mail.IsBodyHtml = true;
+                    mail.Body = "<h5><b>" + namesurname + " - " + email + "</b></h5>" + "<p>" + body + "</p>";
+                   
+                    client.Send(mail);
+                }
                 TempData["sent"] = "true";
                 return RedirectToAction("Form");
             }
