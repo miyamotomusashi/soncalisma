@@ -1,0 +1,24 @@
+﻿@model IEnumerable<deneysan_DAL.Entities.Document>
+@{
+    Layout = "~/Views/Shared/frontlayout.cshtml";
+}
+<div class="main_content mainpage pageheight" style="">
+    <div class="wrapper mainpage grid_12">
+        <div class="content_page page">
+            <h2 style="width: 800px; float: left;">@ViewBag.title
+            </h2>
+            <input onclick="history.back();" type="button" value="&lt;&lt;geri dön">
+            <hr class="wide">
+
+            <ul class="fileList">
+                @foreach (var doc in Model)
+                {
+                    <li style="height: 107px;"><a href="@doc.DocumentFile" title="@doc.Name">
+                        <img src="/Content/Images/Front/@(doc.DocumentFile.Split('.')[1].ToString()).png" title="@(doc.DocumentFile.Split('.')[1].ToString())" width="32" height="32">@doc.Name</a>
+                    </li>
+                }
+            </ul>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,69 @@
+﻿@model dynamic
+@{
+    Layout = "~/Views/Shared/frontlayout.cshtml";
+}
+<div class="main_content mainpage pageheight" style="">
+    <div class="wrapper mainpage grid_12">
+
+        <div class="form_block page">
+            <h2>@ContactRess.ContactStrings.contactform</h2>
+            <hr>
+            <p>@Html.ValidationMessage("_FORM")</p>
+            @if (TempData["sent"] != null)
+                {
+                    if (TempData["sent"].ToString().Equals("true"))
+                    {
+                        <div class="notification success">@ContactRess.ContactStrings.messagesent</div>
+                    }
+                    else if (TempData["sent"].ToString().Equals("false"))
+                    {
+                        <div class="notification error">@ContactRess.ContactStrings.messagenotsent</div>
+                    }
+                }
+            @using (Html.BeginForm())
+            {
+                <div class="contact-form">
+                    <fieldset>
+                        <legend>@ContactRess.ContactStrings.requiredfiled</legend>
+                        <dl>
+                            <div class="field_one">
+                                <dt>
+                                    <label class="hasTip required">@ContactRess.ContactStrings.namesurname<span class="star">&nbsp;*</span></label></dt>
+                                <dd>
+                                    @Html.TextBox("namesurname", null, new { @class = "required", @size = "30", @required = "required" })
+                                </dd>
+                            </div>
+                            <div class="field_one">
+                                <dt>
+                                    <label class="hasTip required" title="">@ContactRess.ContactStrings.email<span class="star">&nbsp;*</span></label></dt>
+                                <dd>
+                                    @Html.TextBox("email", null, new { @class = "validate-email required", @size = "30", @required = "required", @type = "email" })
+                                </dd>
+                            </div>
+                            <div class="field_one">
+                                <dt>
+                                    <label class="hasTip required" title="">@ContactRess.ContactStrings.subject<span class="star">&nbsp;*</span></label></dt>
+                                <dd>
+                                    @Html.TextBox("subject", null, new { @class = "validate-email required", @size = "30", @required = "required" })
+                                </dd>
+                            </div>
+                            <div class="field_second">
+                                <dt>
+                                    <label class="hasTip required" title="">@ContactRess.ContactStrings.message<span class="star">&nbsp;*</span></label></dt>
+                                <dd>
+                                    @Html.TextArea("body", null, new { @class = "required", @cols = "50", @rows = "10", @required = "required" })
+                                </dd>
+
+                            </div>
+                            <div class="field_one">
+                                <dd style="float: left; clear: both; overflow: hidden">
+                                    <input type="submit" class="button gray" value="@ContactRess.ContactStrings.send" />
+                                </dd>
+                            </div>
+                        </dl>
+                    </fieldset>
+                </div>
+            }
+        </div>
+    </div>
+</div>

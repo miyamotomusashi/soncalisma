@@ -1,0 +1,41 @@
+﻿@model IEnumerable<deneysan_DAL.Entities.BankInfo>
+@{
+    Layout = "~/Views/Shared/frontlayout.cshtml";
+}
+
+<div class="main_content mainpage pageheight" style="">
+    <div class="wrapper mainpage grid_12">
+        <div class="content_page page">
+
+            <h2>@ContactRess.ContactStrings.bankaccounts</h2>
+            <hr>
+            @foreach(var bank in Model)
+                {
+            <div class="column one-third">
+                <div style="height:80px;">
+                    <img src="@bank.Logo" />
+                </div>
+                <p>
+                    <strong>
+                        <span>@ContactRess.ContactStrings.bank</span>
+                    </strong>
+                    <span>: @bank.BankName</span>
+                </p>
+                <p>
+                    <strong>
+                        <span>@ContactRess.ContactStrings.accountnumber</span>
+                    </strong>
+                    <span>: @bank.BankNumber</span>
+                </p>
+                <p>
+                    <strong>
+                        <span>IBAN</span>
+                    </strong>
+                    <span>: @bank.IBAN</span>
+                </p>
+            </div>
+            }
+
+        </div>
+    </div>
+</div>

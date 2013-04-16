@@ -1,0 +1,26 @@
+﻿@model IEnumerable<deneysan_DAL.Entities.DocumentGroup>
+@{
+    Layout = "~/Views/Shared/frontlayout.cshtml";
+}
+
+
+<div class="main_content mainpage pageheight" style="">
+    <div class="wrapper mainpage grid_12">
+        <div class="content_page page">
+            <h2 style="width: 800px; float: left;">@DocumentsRess.DocumentsStrings.documentarchive
+            </h2>
+            <input onclick="history.back();" type="button" value="&lt;&lt;@SharedRess.SharedStrings.goback">
+            <hr class="wide">
+            <ul class="folderList">
+                @foreach (var doc in Model)
+                {
+                    <li style="height: 160px;"><a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_documents/@doc.PageSlug/@doc.DocumentGroupId" title="@doc.GroupName">@doc.GroupName</a></li>
+                }
+            </ul>
+            <div class="clear"></div>
+            <p>&nbsp;</p>
+            <div class="clear"></div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>

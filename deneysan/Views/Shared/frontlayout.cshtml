@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="/Content/Styles/layout.css" rel="stylesheet" />
+    <script src="/Content/scripts/jquery-1.7.2.min.js"></script>
+    <script src="/Content/scripts/cufon-yui.js"></script>
+    <script src="/Content/scripts/jquery.jcarousel.min.js"></script>
+    <script src="/Content/scripts/neue77.js"></script>
+    <script src="/Content/scripts/jquery.cycle.all.js"></script>
+    <script src="/Content/scripts/toppanel.js"></script>
+    <script src="/Content/Scripts/main.js"></script>
+    <script src="/Content/Scripts/modernizr-2.5.3.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&async=2"></script>
+</head>
+<body>
+    <div id="mapPanel">
+        <div id="googleMap" class="googleMap" data-zoom="14"></div>
+        <div class="wrap">
+            <div class="oneThird">
+                <address>
+                <p>
+                    <strong>
+                         DENEYSAN EĞİTİM CİHAZLARI SAN. VE TİC. LTD. ŞTİ.</strong><br />
+                    @SharedRess.SharedStrings.address: 
+Yeni Sanayi Sitesi 12 Ekim Cad. 52.Sok. No:18A    
+BALIKESİR 
+                </p></address>
+            </div>
+            <div class="oneThird last">
+                <p>
+                    <span>@SharedRess.SharedStrings.phone</span>: (266)  246 10 75<br />
+                    <span>@SharedRess.SharedStrings.fax</span>: (266)  246 09 48
+                </p>
+            </div>
+            <div class="oneThird last">
+                <p>
+                    <span>@SharedRess.SharedStrings.email</span>: <a href="mailto:info@deneysan.com" id="a_ust_mail">info@deneysan.com</a><br />
+                    <span>@SharedRess.SharedStrings.taxoffice</span>: Karesi V.D. / 2910797535
+                </p>
+            </div>
+            <div class="clear"></div>
+            <div id="mapPanelHandle">
+                <span style="text-transform: capitalize !important">@SharedRess.SharedStrings.map</span>
+            </div>
+            <div id="lang">
+                 @Html.ActionLink(SharedRess.SharedStrings.culturename, "ChangeCulture", "FHome", new { lang = SharedRess.SharedStrings.culture,returnUrl = this.Request.RawUrl }, null)
+            </div>
+        </div>
+    </div>
+    <header>
+        <div class="wrapper">
+            <div class="Right rmenu">
+                <div class="social-icons">
+                    <a href="http://www.facebook.com" title="" class="facebook"></a>
+                    <a href="http://www.tweeter.com" title="" class="twitter"></a>
+                    <a href="http://www.youtube.com" title="" class="youtube"></a>
+                </div>
+                <div id="searchform">
+                    <fieldset>
+                        <input name="Search" type="text" onblur="this.value=(this.value=='') ? '@SharedRess.SharedStrings.searchinsite' : this.value;" onfocus="this.value=(this.value=='@SharedRess.SharedStrings.searchinsite') ? '' : this.value;" value="@SharedRess.SharedStrings.searchinsite" alt="@SharedRess.SharedStrings.searchinsite" class="text_input">
+                        <input name="submit" type="submit" value="">
+                    </fieldset>
+                </div>
+            </div>
+            <div class="head_content container_16">
+                <div class="logo"><a href="/" title="@SharedRess.SharedStrings.pagetitle"></a></div>
+                <div class="menu">
+                        <ul class="cssdropdown">
+                            <li>
+                                <a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_homepage">@SharedRess.SharedStrings.homepage</a>
+                            </li>
+                            <li class="mnslc">
+                                <a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_institutional">@SharedRess.SharedStrings.institutional</a>
+                                <ul class="submenu">
+                                    <li><a href='/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_institutional'>@SharedRess.SharedStrings.aboutus</a></li>
+                                    <li><a href='/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_visionmision'>@SharedRess.SharedStrings.visionmision</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_products">@SharedRess.SharedStrings.products</a>
+                            </li>
+                            <li>
+                                <a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_documents">@SharedRess.SharedStrings.documents</a>
+                            </li>
+                            <li class="mnslc">
+                                <a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_contactdetails">@SharedRess.SharedStrings.contact</a>
+                                <ul class="submenu">
+                                    <li><a href='/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_contactdetails'>@SharedRess.SharedStrings.contactdetails</a></li>
+                                    <li><a href='/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_contactform'>@SharedRess.SharedStrings.contactform</a></li>
+                                    <li><a href='/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_bankaccounts'>@SharedRess.SharedStrings.bankaccounts</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                   
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="main_page container_16">
+        @RenderBody()
+    </div>
+    <footer class="footer-copyright">
+        <div class="copyright-content">
+            <nav>
+                <ul>
+                    <li><a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_homepage" title="@SharedRess.SharedStrings.homepage">@SharedRess.SharedStrings.homepage</a></li>
+                    <li><a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_institutional" title="@SharedRess.SharedStrings.institutional">@SharedRess.SharedStrings.institutional</a></li>
+                    <li><a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_products" title="@SharedRess.SharedStrings.products">@SharedRess.SharedStrings.products</a></li>
+                    <li><a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_documents" title="@SharedRess.SharedStrings.documents">@SharedRess.SharedStrings.documents</a></li>
+                    <li><a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_contactdetails" title="@SharedRess.SharedStrings.contact">@SharedRess.SharedStrings.contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>

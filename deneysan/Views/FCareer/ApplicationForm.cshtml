@@ -1,0 +1,54 @@
+﻿@model dynamic
+@{
+    Layout = "~/Views/Shared/frontlayout.cshtml";
+}
+<div class="main_content mainpage pageheight" style="">
+    <div class="wrapper mainpage grid_12">
+
+        <div class="form_block page">
+            <h2>@CareerRess.CareerStrings.applicationform</h2>
+            <hr>
+            <p>@Html.ValidationMessage("_FORM")</p>
+            @if (TempData["sent"] != null)
+                {
+                    if (TempData["sent"].ToString().Equals("true"))
+                    {
+                        <div class="notification success">@CareerRess.CareerStrings.applicationsent</div>
+                    }
+                    else if (TempData["sent"].ToString().Equals("false"))
+                    {
+                        <div class="notification error">@CareerRess.CareerStrings.applicationnotsent</div>
+                    }
+                }
+            @using (Html.BeginForm("applicationform", "FCareer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div class="contact-form">
+                    <fieldset>
+                        <legend>* doldurulması zorunlu alanlardır.</legend>
+                        <dl>
+                            <div class="field_one">
+                                <dt>
+                                    <label class="hasTip required">@CareerRess.CareerStrings.namesurname<span class="star">&nbsp;*</span></label></dt>
+                                <dd>
+                                    @Html.TextBox("namesurname", null, new { @class = "required", @size = "30", @required = "required" })
+                                </dd>
+                            </div>
+                            <div class="field_one">
+                                <dt>
+                                    <label class="hasTip required">CV (pdf, doc, docx)<span class="star">&nbsp;*</span></label></dt>
+                                <dd>
+                                    <input type="file" name="attachedfile" id="attachedfile"/>
+                                </dd>
+                            </div>
+                            <div class="field_one">
+                                <dd style="float: left; clear: both; overflow: hidden">
+                                    <input type="submit" class="button gray" value="Başvur" />
+                                </dd>
+                            </div>
+                        </dl>
+                    </fieldset>
+                </div>
+            }
+        </div>
+    </div>
+</div>

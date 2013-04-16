@@ -1,0 +1,103 @@
+﻿@model deneysan.Models.HomePageWrapperModel
+@{
+    ViewBag.Title = "Deneysan Eğitim Cihazları";
+    Layout = "/Views/Shared/frontlayout.cshtml";
+}
+
+<div class="main_content main_equal">
+    <div class="wrapper grid_12">
+        <div class="ebso_news_panel">
+            <div id="news_tabs" class="news_tabs">
+                <div id="ebso_haberler" class="ebso_news">
+                    <div class="cycle">
+                       @foreach(var newsitem in Model.news)
+                        {
+                         <div class="news_content">
+                            <div class="news_image">
+                                <a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_news/@newsitem.PageSlug/@newsitem.NewsId">
+                                    <img src="@newsitem.NewsImage" alt="@newsitem.Header" width="280" height="230"></a>
+                            </div>
+                            <h2>@newsitem.Header
+                            </h2>
+                            <p>
+                               @newsitem.Spot
+                                 <a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_news/@newsitem.PageSlug/@newsitem.NewsId">Devamı »</a>
+                            </p>
+                        </div>
+                        }
+                    </div>
+                    <div class="slide-controls-bar slide-controls"></div>
+                </div>
+                <ul class="news_tab_menu ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" role="tablist">
+                    <div class="ebso_arsiv"><a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_allnews">» @HomeRess.HomeStrings.allnews</a></div>
+                </ul>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="main_sidebar main_equal" style="height: 305px">
+    <div class="wrapper grid_4">
+        <div class="box kurumsal">
+            <a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_products"><img src="@HomeRess.HomeStrings.ourproductsimage" /></a>
+            <a href="/@SharedRess.SharedStrings.menu_culture/offers"><img src="@HomeRess.HomeStrings.takeofferimage" /></a>
+            <a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_career"><img src="@HomeRess.HomeStrings.workwithusimage" /></a>
+        </div>
+
+    </div>
+</div>
+<a href="/Projects">
+    <div class="column one-third  ">
+        <div class="bordered-box-content">
+            <div class="box-container">
+                <div class="icon"><span class="projects-icon"></span></div>
+                <h2>@HomeRess.HomeStrings.ourprojects</h2>
+                <p>
+                    Son olarak gerçekleştirdiğimiz projelerimizden birisi olan Soğutma eğitim setlerinde gerçek zamanlı 
+                    log p-h diyagramı ve veri toplama sistemini gerçekleştirdik. Diğer tüm projelerimizi buradan takip edebilirsiniz.
+                </p>
+            </div>
+            <span class="border"></span>
+        </div>
+    </div>
+</a>
+<a href="/Documents">
+    <div class="column one-third">
+        <div class="bordered-box-content">
+            <div class="box-container">
+                <div class="icon"><span class="strategy-icon"></span></div>
+                <h2>@HomeRess.HomeStrings.documents</h2>
+                <p>
+                    Uluslararası alanlarda kongre, sempozyum ve dergilerde yayınlanmış olan tüm bildiri ve makalelere konu başlıkları dahilinde 
+                    buradan ulaşabilirsiniz. 
+                </p>
+            </div>
+            <span class="border"></span>
+        </div>
+    </div>
+</a>
+<a href="/Links">
+    <div class="column one-third last">
+        <div class="bordered-box-content">
+            <div class="box-container">
+                <div class="icon"><span class="connection-icon"></span></div>
+                <h2>@HomeRess.HomeStrings.links</h2>
+                <p>Ulusal ve uluslararası alandaki çözüm ortaklarımıza, mesleki alandaki eğitim vakıfları, dernekler ve odalara buradan ulaşabilirsiniz.</p>
+            </div>
+            <span class="border"></span>
+        </div>
+    </div>
+</a>
+<div class="clients-skin-carousel">
+    <div style="width: 960px; margin: 0 auto;">
+        <h2>@HomeRess.HomeStrings.references</h2>
+        <ul class="clients-carousel">
+            @foreach(var reference in Model.references)
+            {
+            <li>
+                <a href="@reference.Logo" title="@reference.ReferenceName"><img src="@reference.Logo" width="96" height="96" alt="" title="" /></a>
+            </li>
+            }
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,67 @@
+﻿@model deneysan_DAL.Entities.Contact
+@{
+    Layout = "~/Views/Shared/frontlayout.cshtml";
+}
+<script>
+    jQuery(document).ready(function ($) {
+        var optScript = {};
+        optScript = {
+            initSite: function () {
+                $(".gmap").iaosb_Map([["<strong>DENEYSAN</strong><br />DENEYSAN EĞİTİM CİHAZLARI SAN. VE TİC. LTD. ŞTİ.<br />Yönetim Merkezi", 39.674064, 27.935615, "DENEYSAN", "/Content/images/front/map-deneysan.png"], ]);
+            }
+        }
+        optScript.initSite();
+    });</script>
+
+<div class="main_content mainpage pageheight" style="">
+    <div class="wrapper mainpage grid_12">
+        <div class="content_page page">
+            <h2>@ContactRess.ContactStrings.contact</h2>
+            <hr>
+            <div>
+                <div class="iletisim_left">
+                    <p>
+                        <strong>
+                            <span>@SharedRess.SharedStrings.address:</span>
+                        </strong>
+                        <br />
+                        <span>@Html.Raw(Model.Address)</span>
+                    </p>
+                    <p>
+                        <strong><span>@SharedRess.SharedStrings.phone:</span> </strong>
+                        <br />
+                        <span>@Model.Phone</span>
+                    </p>
+                    <p>
+                        <strong><span>@SharedRess.SharedStrings.fax:</span> </strong>
+                        <br />
+                        <span>@Model.Fax</span>
+                    </p>
+                    <p>
+                        <strong><span>@SharedRess.SharedStrings.email:</span> </strong>
+                        <br />
+                        <a href="mailto:@Model.Email">
+                            <span>@Model.Email</span></a>
+                    </p>
+                    <p>
+                        <strong>Web:</strong><br />
+                        <a href="http://www.deneysan.com.tr"><span>http://www.deneysan.com.tr</span></a>
+                    </p>
+                    <p>
+                        <strong><span>@ContactRess.ContactStrings.mapcoordinates</span> </strong>
+                        <br />
+                        <span>39.674064;27.935615</span>
+                    </p>
+                </div>
+
+                <div class="iletisim_map">
+                    <div id="gMap" class="gmap" data-zoom="14"></div>
+                </div>
+
+                <br style="clear: both" />
+
+            </div>
+
+        </div>
+    </div>
+</div>

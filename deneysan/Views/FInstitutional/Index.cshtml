@@ -1,0 +1,19 @@
+﻿@model deneysan_DAL.Entities.Institutional
+@{
+    Layout = "~/Views/Shared/frontlayout.cshtml";
+}
+
+<div class="main_content mainpage pageheight" style="">
+    <div class="wrapper mainpage grid_12">
+        <div class="content_page page">
+
+            <h2>@InstitutionalRess.InstitutionalStrings.aboutus</h2>
+            <hr class="wide">
+          
+            @Html.Raw(Model.Content)
+       
+            <div class="clear"></div>
+        </div>
+
+    </div>
+</div>

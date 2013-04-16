@@ -1,0 +1,58 @@
+﻿@model deneysan_DAL.Entities.Institutional
+
+@{
+    ViewBag.Title = "Vizyon";
+    Layout = "~/Areas/Admin/Views/Shared/adminlayout.cshtml";
+}
+@*sayfa css leri*@
+@System.Web.Optimization.Styles.Render("~/admin/formstylecss")  
+
+@Html.Partial("Instituional_leftbar")
+
+<div id="page-content" class="container_12">
+    <div id="page-header">
+       <h2>MİSYON</h2>
+    </div>  
+  <section class="grid_12 form">
+  
+  @Html.Hidden("ProcessMessage",(object)@ViewBag.ProcessMessage)
+    @using(Html.BeginForm())
+    {
+         @Html.Hidden("hdfieldcategory")
+         @Html.Hidden("hdfieldtaglist")
+        @Html.ValidationSummary(true)
+        <fieldset>
+        <legend>Misyonumuz</legend>
+        <p>
+            @Html.Label("Dil Seçimi")
+            @Html.DropDownList("ddllanguage", (IEnumerable<SelectListItem>)ViewBag.LanguageList)
+           
+            
+        </p>
+        
+              <br />
+        <p>
+            @Html.TextAreaFor(m => m.Content, new { id="txtcontent",@class="required"})
+            @Html.ValidationMessageFor(m=>m.Content)
+        </p>
+        <br />
+      
+        <p>
+            <input type="submit" value="Kaydet" id="btnsave" />
+        </p>
+    </fieldset>
+
+
+    }
+</section>
+</div>
+@section Scripts {
+<link href="~/Areas/Admin/Content/styles/pluginstyles/jquery.msgbox.css" rel="stylesheet" />
+<script src="~/Areas/Admin/Content/scripts/plugins/jquery.msgbox.min.js"></script>
+<script src="~/Areas/Admin/Content/scripts/myscripts/MessageBox.js"></script>
+@System.Web.Optimization.Scripts.Render("~/admin/editor")
+
+
+<script src="~/Areas/Admin/Content/scripts/pagescripts/instituional/mision.js"></script>
+
+}

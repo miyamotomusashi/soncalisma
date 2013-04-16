@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Yönetim Paneli Ana Sayfa</title>
+<meta name="description" content="">
+<meta name="author" content="">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+@System.Web.Optimization.Styles.Render("~/admin/layoutcss")
+<script src="~/Areas/Admin/Content/scripts/plugins/jquery-1.7.2.min.js"></script>
+<script src="~/Areas/Admin/Content/scripts/plugins/jquery-ui-1.8.20.min.js"></script>
+<script src="~/Areas/Admin/Content/scripts/myscripts/StopReload.js"></script>
+</head>
+<body class="sidebar-left chart">
+  <header>
+    <div class="header-top tr">
+    <p>Hoşgeldin, <strong></strong>  @HttpContext.Current.User.Identity.Name
+    &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="/cikis">Sistemden Çıkış</a>
+    </p>
+  </div>
+    <nav class="header-middle">
+      <ul id="nav" class="fr ">
+  
+      <li class="settings"><a class="settings" href="#">Ayarlar</a>
+        <ul>
+          <li><a href="#">Sayfalama Ayarları</a></li>
+          <li><a href="#">Server Setup</a></li>
+        </ul>
+      </li>
+      <li class="content"><a class="dashboard" href="#">İçerik Yönetimi</a>
+        <ul>
+         
+          <li><a href="/yonetim/haberler">Haber İşlemleri</a></li>
+          <li><a href="/yonetim/galerigruplari">Resim Galerileri</a></li>
+          <li><a href="/yonetim/dokumanlar">Dökümanlar</a></li>
+          <li><a href="/yonetim/referanslar">Referanslar</a></li>
+        </ul>
+      </li>
+     <li class="content"><a class="dashboard" href="#">Firma Bilgileri</a>
+        <ul>
+          <li><a href="/yonetim/kurumsal">Kurumsal</a></li>
+          <li><a href="/yonetim/iletisim">İletişim Bilgileri</a></li>
+            <li><a href="/yonetim/bankabilgileri">Banka Bilgileri</a></li>
+        </ul>
+      </li>
+      <!-- Nav - End Users --> 
+      <!-- Nav - Start Content -->
+      <li class="content"><a class="content" href="#">Ürün İşlemleri</a>
+         <ul>
+          <li><a href="/yonetim/urungruplari">Ürün Kategorileri</a></li>
+          <li><a href="/yonetim/urunlistesi">Ürünler</a></li>
+        </ul>
+      </li>
+      <!-- Nav - End Dashboard -->
+    </ul>
+        <img src="~/Areas/Admin/Content/images/logo-deneysan.png" width="285px" height="55px"/>
+    </nav>
+      
+     
+ <div class="header-bottom"> 
+    <ul id="breadcrumbs">
+       <li><a href="/yonetim/anasayfa">Ana Sayfa&nbsp;&nbsp;</a>&raquo;</li>
+    </ul>
+  </div>
+  </header>
+  <section id="page">
+     
+    @RenderBody()
+ 
+  </section>
+    
+<script src="~/Areas/Admin/Content/scripts/myscripts/setup.js"></script>
+         
+ @RenderSection("scripts", required: false)  
+</body>
+</html>
+
+      
+    
