@@ -20,8 +20,8 @@ namespace deneysan.Areas.Admin
             context.MapRoute("homepage", "yonetim/anasayfa", new { action = "Index", Controller = "Home" });
             context.MapRoute("instituional_index", "yonetim/kurumsal", new { action = "Index", Controller = "Institutional" });
             context.MapRoute("instituional_mision_default", "yonetim/kurumsal/misyon", new { action = "Misyon", Controller = "Institutional" });
-            context.MapRoute("instituional_vision_default", "yonetim/kurumsal/vizyon", new { action = "Vizyon", Controller = "Institutional" });
-            context.MapRoute("instituional_vision", "yonetim/kurumsal/vizyon/{lang}", new { action = "Vizyon", Controller = "Institutional" });
+            context.MapRoute("instituional_vision_default", "yonetim/kurumsal/hakkimizda", new { action = "Vizyon", Controller = "Institutional" });
+            context.MapRoute("instituional_vision", "yonetim/kurumsal/hakkimizda/{lang}", new { action = "Vizyon", Controller = "Institutional" });
             context.MapRoute("instituional_mision", "yonetim/kurumsal/misyon/{lang}", new { action = "Misyon", Controller = "Institutional" });
 
             //HABERLER

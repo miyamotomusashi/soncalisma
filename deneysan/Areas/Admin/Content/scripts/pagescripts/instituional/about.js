@@ -10,6 +10,6 @@
 
     $("#ddllanguage").change(function () {
         var lang = $("#ddllanguage option:selected").val();
-        window.location.href = "/yonetim/kurumsal/vizyon/" + lang;
+        window.location.href = "/yonetim/kurumsal/hakkimizda/" + lang;
     });
 });
