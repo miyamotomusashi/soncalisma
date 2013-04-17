@@ -32,7 +32,7 @@ namespace deneysan.Areas.Admin.Helpers
             try
             {
                 img = Image.FromStream(httpPostedFileBase.InputStream);
-                fileName = fileName + Path.GetExtension(httpPostedFileBase.FileName);
+                //fileName = fileName + Path.GetExtension(httpPostedFileBase.FileName);
                 Resize(dir, width,height, fileName, img, img.RawFormat, String.Empty, true);
                 return HttpUtility.UrlPathEncode(Path.Combine(path, fileName));
             }

@@ -24,7 +24,7 @@ namespace deneysan.Areas.Admin.Controllers
         {
             string lang=FillLanguagesList();
             
-            var vision_info = InstituionalManager.GetInstationalByLanguage(lang, Convert.ToInt32(EnumInstituionalTypes.Vizyon));
+            var vision_info = InstituionalManager.GetInstationalByLanguage(lang, Convert.ToInt32(EnumInstituionalTypes.Hakkimizda));
             return View(vision_info);
             
         }
@@ -35,7 +35,7 @@ namespace deneysan.Areas.Admin.Controllers
         {
             string lang=FillLanguagesList();
             record.Language = lang;
-            record.TypeId=Convert.ToInt32(EnumInstituionalTypes.Vizyon);
+            record.TypeId=Convert.ToInt32(EnumInstituionalTypes.Hakkimizda);
             ViewBag.ProcessMessage = InstituionalManager.EditInstituional(record);
             
 

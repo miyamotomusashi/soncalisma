@@ -7,7 +7,7 @@ namespace deneysan.Helpers.Enums
 {
     public enum EnumInstituionalTypes
     {
-        Vizyon=0, 
+        Hakkimizda=0, 
         Misyon=1
     }
 }
