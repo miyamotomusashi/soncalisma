@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using deneysan.Areas.Admin.Filters;
 using deneysan.Areas.Admin.Helpers;
 using deneysan_BLL.LanguageBL;
 using deneysan_BLL.ReferenceBL;
@@ -11,6 +12,7 @@ using deneysan_DAL.Entities;
 
 namespace deneysan.Areas.Admin.Controllers
 {
+    [AuthenticateUser]
     public class ReferenceController : Controller
     {
         //

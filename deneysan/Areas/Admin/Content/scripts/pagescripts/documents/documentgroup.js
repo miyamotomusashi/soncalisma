@@ -25,6 +25,7 @@ function EditRecord(id) {
     $("#textitem_" + id).css("display", "block");
     $("#textitem_" + id).val($("#spanitem_" + id).text());
     $("#btn_update_" + id).css("display", "none");
+    $("#btn_save_" + id).attr("src", "/Areas/Admin/Content/images/icons/16/save.png");
     $("#btn_save_" + id).css("display", "inline-block");
     $("#btn_cancel_" + id).css("display", "inline-block");
     $("#DeleteImage_" + id).css("display", "none");

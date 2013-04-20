@@ -9,8 +9,10 @@ using deneysan_DAL.Entities;
 using deneysan.Areas.Admin.Helpers;
 using System.IO;
 using System.Drawing;
+using deneysan.Areas.Admin.Filters;
 namespace deneysan.Areas.Admin.Controllers
 {
+    [AuthenticateUser]
     public class NewsController : Controller
     {
         //
