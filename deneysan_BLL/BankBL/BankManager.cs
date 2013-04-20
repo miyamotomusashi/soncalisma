@@ -23,6 +23,16 @@ namespace deneysan_BLL.BankBL
             }
         }
 
+
+        public static List<BankInfo> GetBankInfoListForFront(string language)
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                var list = db.BankInfo.Where(d => d.Language == language && d.Online==true).ToList();
+                return list;
+            }
+        }
+
         public static bool AddBankInfo(BankInfo record)
         {
             using (DeneysanContext db = new DeneysanContext())

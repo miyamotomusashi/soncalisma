@@ -24,7 +24,7 @@ namespace deneysan.Controllers
 
         public ActionResult Bank()
         {
-            var banks = BankManager.GetBankInfoList(lang);
+            var banks = BankManager.GetBankInfoListForFront(lang);
             return View(banks);
         }
 

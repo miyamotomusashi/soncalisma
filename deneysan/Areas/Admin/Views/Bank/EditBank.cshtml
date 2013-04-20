@@ -12,7 +12,7 @@
 
 <div id="page-content" class="container_12">
     <div id="page-header">
-       <h1>BANKA İŞLEMLERİ</h1>
+       <h1>BANKA BİLGİLERİ</h1>
     </div> 
     
 <section class="grid_12 form">
@@ -23,7 +23,7 @@
          @Html.Hidden("hdfieldtaglist")
         @Html.ValidationSummary(true)
         <fieldset>
-        <legend>Banka Bilgisi Ekle</legend>
+        <legend>Banka Bilgisi Düzenle</legend>
         <p>
             @Html.LabelFor(m=>m.Language)
             @Html.DropDownListFor(m=>m.Language,(IEnumerable<SelectListItem>)ViewBag.LanguageList,"Dil Seçiniz...")

@@ -43,7 +43,7 @@ namespace deneysan.Areas.Admin.Controllers
                 {
                     Random random = new Random();
                     int rand = random.Next(1000, 99999999);
-                    new ImageHelper(280, 240).SaveThumbnail(uploadfile, "/Content/images/bankinfo/", Utility.SetPagePlug(bank.BankName) + "_" + rand + Path.GetExtension(uploadfile.FileName));
+                    new ImageHelper(280, 80).SaveThumbnail(uploadfile, "/Content/images/bankinfo/", Utility.SetPagePlug(bank.BankName) + "_" + rand + Path.GetExtension(uploadfile.FileName));
                     bank.Logo = "/Content/images/bankinfo/" + Utility.SetPagePlug(bank.BankName) + "_" + rand + Path.GetExtension(uploadfile.FileName);
                 }
                 else
