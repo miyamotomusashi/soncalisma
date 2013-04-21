@@ -651,7 +651,7 @@ ul.folderList li a:hover{color:#0072bc}
 
 ul.fileList li{overflow: hidden; float:left; margin:0 5px 15px; border:solid 1px #fff; }
 ul.fileList li:hover{border:solid 1px #eaeaea; }
-ul.fileList li a{width:150px; text-align:center; color: #666; display:block; padding:5px; font-size:0.85em}
+ul.fileList li a{width:150px; text-align:center; color: #666; display:block; padding:5px; font-size:1em}
 ul.fileList li a:hover{color:#0072bc}
 ul.fileList li a img{display:block; margin:0 auto; margin-bottom:5px}
 

@@ -7,13 +7,13 @@
         <div class="content_page page">
             <h2 style="width: 800px; float: left;">@ViewBag.title
             </h2>
-            <input onclick="history.back();" type="button" value="&lt;&lt;geri dön">
+            <input onclick="history.back();" style="cursor:pointer" class="blue" type="button" value="&lt;&lt; @SharedRess.SharedStrings.goback">
             <hr class="wide">
 
             <ul class="fileList">
                 @foreach (var doc in Model)
                 {
-                    <li style="height: 107px;"><a href="@doc.DocumentFile" title="@doc.Name">
+                    <li style="height: 120px;"><a href="@doc.DocumentFile" title="@doc.Name">
                         <img src="/Content/Images/Front/@(doc.DocumentFile.Split('.')[1].ToString()).png" title="@(doc.DocumentFile.Split('.')[1].ToString())" width="32" height="32">@doc.Name</a>
                     </li>
                 }

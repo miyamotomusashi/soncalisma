@@ -8,7 +8,7 @@
         <div class="content_page page">
 
             <h2 style="width: 800px; float: left;">@Model.Header</h2>
-            <input onclick="history.back();" type="button" value="&lt;&lt;geri dön">
+            <input onclick="history.back();" style="cursor:pointer" class="blue" type="button" value="&lt;&lt; @SharedRess.SharedStrings.goback">
             <hr class="wide">
             @Html.Raw(Model.Content)
         </div>
