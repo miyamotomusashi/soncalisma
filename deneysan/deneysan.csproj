@@ -1541,7 +1541,6 @@
     <Content Include="Areas\Admin\Content\scripts\plugins\ba.hashchange.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\dd_belatedpng.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\functions.js" />
-    <Content Include="Areas\Admin\Content\CKEditor\ckeditor\images\Thumbs.db" />
     <None Include="Areas\Admin\Content\scripts\plugins\jquery-1.7.1.intellisense.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery-1.7.1.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery-1.7.1.min.js" />
@@ -1709,6 +1708,7 @@
     <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Product\product_leftbar.cshtml" />
     <None Include="Properties\PublishProfiles\ftp.pubxml" />
+    <None Include="Properties\PublishProfiles\soncalisma-ftp-son.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -1724,7 +1724,9 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
