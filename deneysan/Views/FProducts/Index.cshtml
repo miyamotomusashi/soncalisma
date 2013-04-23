@@ -1,29 +1,67 @@
-﻿@{
+﻿@model deneysan.Models.ProductWrapperModel
+@{
     Layout = "~/Views/Shared/frontlayout.cshtml";
 }
+<link rel="stylesheet" href="~/Content/Styles/prettyPhoto.css" type="text/css" />
+<link rel="stylesheet" href="~/Content/Styles/portfolio.css" type="text/css" />
+<script src="~/Content/Scripts/plugins.js" type="text/javascript"></script>
+<script src="~/Content/Scripts/custom.js" type="text/javascript"></script>
+
 <div class="main_content mainpage pageheight" style="">
     <div class="wrapper mainpage grid_12">
-        <div id="sub-sidebar" style="float:left;">
-            <h1>KATEGORİLER
-            </h1>
-            <ul style="margin-top: -9px" id="ul1">
-                <li><a href='/urunler/elektrik'>ELEKTRİK</a></li>
-                <li><a href='/urunler/enerji-verimliligi'>ENERJİ VERİMLİLİĞİ</a></li>
-                <li><a href='/urunler/enerji-verimliligi'>ISITMA SİSTEMLERİ</a></li>
-                <li><a href='/urunler/enerji-verimliligi'>ISI TRANSFERİ</a></li>
-                <li><a href='/urunler/enerji-verimliligi'>İKLİMLENDİRME</a></li>
-                <li><a href='/urunler/enerji-verimliligi'>KONTROL SİSTEMLERİ</a></li>
-                <li><a href='/urunler/enerji-verimliligi'>SOĞUTMA SİSTEMLERİ</a></li>
-                <li><a href='/urunler/enerji-verimliligi'>SIHHİ TESİSAT</a></li>
-                <li><a href='/urunler/enerji-verimliligi'>AKIŞKANLAR MEKANİĞİ</a></li>
-                <li><a href='/urunler/enerji-verimliligi'>TERMODİNAMİK</a></li>
-                <li><a href='/urunler/enerji-verimliligi'>YENİLENEBİLİR ENERJİ</a></li>
+        <div class="content_page page">
+            <h2>@ProductRess.ProductStrings.productsheader</h2>
+            <hr class="wide">
+            <ul id="portfolio-filter" class="clearfix">
+                <li class="activeFilter"><a href="#" data-filter="*">@ProductRess.ProductStrings.allproducts</a></li>
+                @foreach (var cat in Model.productgroups)
+                {
+                    <li><a href="/ProductDetail" data-filter=".@cat.PageSlug">@cat.GroupName</a></li>
+                }
             </ul>
-        </div>
+            <div id="portfolio">
+                @foreach (var product in Model.products)
+                {
+                        <div class="portfolio-item @product.ProductGroup.PageSlug">
+                            <div class="portfolio-image">
+                                <a href="#">
+                                    <img src="@product.ProductImage" alt="@product.Name" title="@product.Name" /></a>
+                                <div class="portfolio-overlay">
+                                    <div class="portfolio-overlay-wrap">
+                                        @*<p>Sed ut perspiciatis unde omnis iste natus voluptatem fringilla tempor dignissim at, pretium et arcu.</p>
+                                            <span><span></span></span>
+                                        <a href="#">Icons</a> &middot; <a href="#">Media</a>*@
+                                    </div>
+                                    <div class="p-overlay-icons clearfix">
+                                        <a href="@product.ProductImage" class="p-o-image" rel="prettyPhoto"></a>
+                                        <a href="portfolio-single.php" class="p-o-link"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="portfolio-title">
+                                <h3 title="@product.Name"><a href="portfolio-single.php">@product.Name</a></h3>
+                            </div>
+                        </div>
+                }
+            </div>
 
-        <div id="sub-content" class="fl">
-            <h1>Ürünler</h1>
 
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var $container = $('#portfolio');
+        $container.isotope();
+        $('#portfolio-filter a').click(function () {
+            $('#portfolio-filter li').removeClass('activeFilter');
+            $(this).parent('li').addClass('activeFilter');
+            var selector = $(this).attr('data-filter');
+            $container.isotope({ filter: selector });
+            return false;
+        });
+        $(window).resize(function () {
+            $container.isotope('reLayout');
+        });
+    });
+</script>

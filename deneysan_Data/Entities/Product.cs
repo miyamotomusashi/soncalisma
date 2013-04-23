@@ -16,7 +16,9 @@ namespace deneysan_DAL.Entities
         public string Name { get; set; }
         [Required(ErrorMessage = "Ürün Grubunu Seçiniz.")]
         public int ProductGroupId{get;set;}
-        
+
+        public ProductGroup ProductGroup { get; set; }
+
         public string ProductImage { get; set; }
         public string Content { get; set; }
         public string filetraining { get; set; }

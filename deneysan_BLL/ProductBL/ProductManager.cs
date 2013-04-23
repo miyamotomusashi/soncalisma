@@ -195,7 +195,15 @@ namespace deneysan_BLL.ProductBL
 
         #region Product
 
-
+        public static List<Product> GetProductListAll(string lang)
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                db.Product.Include("ProductGroup").ToList();
+                var list = db.Product.Where(d => d.Deleted == false && d.Language == lang).OrderBy(d => d.SortNumber).ToList();
+                return list;
+            }
+        }
 
         public static List<Product> GetProductList(int gid)
         {

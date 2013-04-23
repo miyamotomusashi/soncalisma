@@ -208,6 +208,7 @@
     <Compile Include="Helpers\Enums\InstituionalTypes.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\HomePageWrapperModel.cs" />
+    <Compile Include="Models\ProductWrapperModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Views\Career\CareerStrings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -268,6 +269,16 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>NewsStrings.en.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Views\Products\ProductStrings.en.Designer.cs">
+      <DependentUpon>ProductStrings.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Views\Products\ProductStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductStrings.resx</DependentUpon>
     </Compile>
     <Compile Include="Resources\Views\Shared\NotFoundStrings.en.Designer.cs">
       <DependentUpon>NotFoundStrings.en.resx</DependentUpon>
@@ -1654,6 +1665,47 @@
     <Content Include="Content\Images\Front\urunlerimiz.png" />
     <Content Include="Content\Images\Front\xls.png" />
     <Content Include="Content\Images\Front\xlsx.png" />
+    <Content Include="Content\Images\icons\portfolio-nav.png" />
+    <Content Include="Content\Images\icons\portfolio-overlay.png" />
+    <Content Include="Content\Images\prettyPhoto\dark_rounded\btnNext.png" />
+    <Content Include="Content\Images\prettyPhoto\dark_rounded\btnPrevious.png" />
+    <Content Include="Content\Images\prettyPhoto\dark_rounded\contentPattern.png" />
+    <Content Include="Content\Images\prettyPhoto\dark_rounded\default_thumbnail.gif" />
+    <Content Include="Content\Images\prettyPhoto\dark_rounded\loader.gif" />
+    <Content Include="Content\Images\prettyPhoto\dark_rounded\sprite.png" />
+    <Content Include="Content\Images\prettyPhoto\dark_square\btnNext.png" />
+    <Content Include="Content\Images\prettyPhoto\dark_square\btnPrevious.png" />
+    <Content Include="Content\Images\prettyPhoto\dark_square\contentPattern.png" />
+    <Content Include="Content\Images\prettyPhoto\dark_square\default_thumbnail.gif" />
+    <Content Include="Content\Images\prettyPhoto\dark_square\loader.gif" />
+    <Content Include="Content\Images\prettyPhoto\dark_square\sprite.png" />
+    <Content Include="Content\Images\prettyPhoto\default\default_thumb.png" />
+    <Content Include="Content\Images\prettyPhoto\default\loader.gif" />
+    <Content Include="Content\Images\prettyPhoto\default\sprite.png" />
+    <Content Include="Content\Images\prettyPhoto\default\sprite_next.png" />
+    <Content Include="Content\Images\prettyPhoto\default\sprite_prev.png" />
+    <Content Include="Content\Images\prettyPhoto\default\sprite_x.png" />
+    <Content Include="Content\Images\prettyPhoto\default\sprite_y.png" />
+    <Content Include="Content\Images\prettyPhoto\facebook\btnNext.png" />
+    <Content Include="Content\Images\prettyPhoto\facebook\btnPrevious.png" />
+    <Content Include="Content\Images\prettyPhoto\facebook\contentPatternBottom.png" />
+    <Content Include="Content\Images\prettyPhoto\facebook\contentPatternLeft.png" />
+    <Content Include="Content\Images\prettyPhoto\facebook\contentPatternRight.png" />
+    <Content Include="Content\Images\prettyPhoto\facebook\contentPatternTop.png" />
+    <Content Include="Content\Images\prettyPhoto\facebook\default_thumbnail.gif" />
+    <Content Include="Content\Images\prettyPhoto\facebook\loader.gif" />
+    <Content Include="Content\Images\prettyPhoto\facebook\sprite.png" />
+    <Content Include="Content\Images\prettyPhoto\light_rounded\btnNext.png" />
+    <Content Include="Content\Images\prettyPhoto\light_rounded\btnPrevious.png" />
+    <Content Include="Content\Images\prettyPhoto\light_rounded\default_thumbnail.gif" />
+    <Content Include="Content\Images\prettyPhoto\light_rounded\loader.gif" />
+    <Content Include="Content\Images\prettyPhoto\light_rounded\sprite.png" />
+    <Content Include="Content\Images\prettyPhoto\light_square\btnNext.png" />
+    <Content Include="Content\Images\prettyPhoto\light_square\btnPrevious.png" />
+    <Content Include="Content\Images\prettyPhoto\light_square\default_thumbnail.gif" />
+    <Content Include="Content\Images\prettyPhoto\light_square\loader.gif" />
+    <Content Include="Content\Images\prettyPhoto\light_square\sprite.png" />
+    <Content Include="Content\Images\products\11.jpg" />
     <Content Include="Content\Scripts\cufon-yui.js" />
     <Content Include="Content\Scripts\jquery-1.7.2.min.js" />
     <Content Include="Content\Scripts\jquery.cycle.all.js" />
@@ -1663,8 +1715,12 @@
     <Content Include="Content\Scripts\main.js" />
     <Content Include="Content\Scripts\modernizr-2.5.3.js" />
     <Content Include="Content\Scripts\neue77.js" />
+    <Content Include="Content\Scripts\plugins.js" />
     <Content Include="Content\Scripts\toppanel.js" />
+    <Content Include="Content\Scripts\custom.js" />
     <Content Include="Content\Styles\layout.css" />
+    <Content Include="Content\Styles\portfolio.css" />
+    <Content Include="Content\Styles\prettyPhoto.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Areas\Admin\Views\Web.config" />
@@ -1856,6 +1912,16 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>NewsStrings.Designer.cs</LastGenOutput>
       <CustomToolNamespace>NewsRess</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Products\ProductStrings.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProductStrings.en.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>ProductRess</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Products\ProductStrings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProductStrings.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>ProductRess</CustomToolNamespace>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Views\Shared\NotFoundStrings.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

@@ -19,6 +19,8 @@ namespace deneysan_DAL.Entities
         public bool Online { get; set; }
         public bool Deleted { get; set; }
 
+        public List<Product> Product { get; set; }
+
         public Nullable<DateTime> TimeCreated { get; set; }
         public Nullable<DateTime> TimeUpdated { get; set; }
 
