@@ -20,6 +20,7 @@ namespace deneysan_DAL.Entities
         public ProductGroup ProductGroup { get; set; }
 
         public string ProductImage { get; set; }
+        public string ProductImageThumb { get; set; }
         public string Content { get; set; }
         public string filetraining { get; set; }
         public string filexperiment { get; set; }

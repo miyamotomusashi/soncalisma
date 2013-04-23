@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
+using deneysan.Areas.Admin.Filters;
 using deneysan_BLL.LanguageBL;
 using deneysan_BLL.LinkBL;
 using deneysan_DAL.Entities;
 
 namespace deneysan.Areas.Admin.Controllers
 {
+     [AuthenticateUser]
     public class LinkController : Controller
     {
         //
@@ -16,10 +19,10 @@ namespace deneysan.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
-            string sellang = FillLanguagesList();
+            string sellang = FillLanguagesForList();
 
-            var referncelist = LinkManager.GetImportantLinksList(sellang);
-            return View(referncelist);
+            var list = LinkManager.GetImportantLinksList(sellang);
+            return View(list);
         }
 
         public ActionResult AddLink()
@@ -122,7 +125,32 @@ namespace deneysan.Areas.Admin.Controllers
             //  else return false;
         }
 
+        public JsonResult SortRecords(string list)
+        {
+            JsonList psl = (new JavaScriptSerializer()).Deserialize<JsonList>(list);
+            string[] idsList = psl.list;
+            bool issorted = LinkManager.SortRecords(idsList);
+            return Json(issorted);
 
+
+        }
+
+        public class JsonList
+        {
+            public string[] list { get; set; }
+        }
+        string FillLanguagesForList()
+        {
+            string lang = "";
+            if (RouteData.Values["lang"] == null)
+                lang = "tr";
+            else lang = RouteData.Values["lang"].ToString();
+
+            var languages = LanguageManager.GetLanguages();
+            var list = new SelectList(languages, "Culture", "Language", lang);
+            ViewBag.LanguageList = list;
+            return lang;
+        }
 
         string FillLanguagesList()
         {

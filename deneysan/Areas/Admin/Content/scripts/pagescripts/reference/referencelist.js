@@ -5,4 +5,5 @@
         window.location.href = "/yonetim/referanslar/" + lang;
     });
 
+    SortOrder("/Reference/SortRecords");
 });

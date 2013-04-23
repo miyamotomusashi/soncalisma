@@ -47,11 +47,14 @@ namespace deneysan.Areas.Admin.Controllers
                     Random random = new Random();
                     int rand = random.Next(1000, 99999999);
                     new ImageHelper(280, 240).SaveThumbnail(uploadfile, "/Content/images/products/", Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadfile.FileName));
-                    model.ProductImage = "/Content/images/news/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadfile.FileName);
+                    model.ProductImageThumb = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadfile.FileName);
+                    uploadfile.SaveAs(Server.MapPath( "/Content/images/products/"+ Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadfile.FileName)));
+                    model.ProductImage = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadfile.FileName);
                 }
                 else
                 {
                     model.ProductImage = "/Content/images/front/noimage.jpeg";
+                    model.ProductImageThumb = "/Content/images/front/noimage.jpeg";
                 }
 
                 if (uploadtechfile != null && uploadtraining.ContentLength > 0)

@@ -117,6 +117,36 @@ namespace deneysan_BLL.LinkBL
             }
         }
 
+
+        public class JsonList
+        {
+            public string[] list { get; set; }
+        }
+        public static bool SortRecords(string[] idsList)
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                try
+                {
+
+                    int row = 0;
+                    foreach (string id in idsList)
+                    {
+                        int mid = Convert.ToInt32(id);
+                        ImportantLinks sortingrecord = db.ImportantLinks.SingleOrDefault(d => d.LinkId == mid);
+                        sortingrecord.SortNumber = Convert.ToInt32(row);
+                        db.SaveChanges();
+                        row++;
+                    }
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+
         public static bool EditImportantLink(ImportantLinks model)
         {
             using (DeneysanContext db = new DeneysanContext())

@@ -5,6 +5,6 @@
         window.location.href = "/yonetim/linkler/" + lang;
     });
 
- 
+    SortOrder("/Link/SortRecords");
 
 });
