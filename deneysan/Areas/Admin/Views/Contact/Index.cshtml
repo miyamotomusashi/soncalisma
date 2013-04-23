@@ -4,7 +4,9 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/adminlayout.cshtml";
 }
-@System.Web.Optimization.Styles.Render("~/admin/formstylecss")  
+<link href="~/Areas/Admin/Content/styles/forms.css" rel="stylesheet" />
+<link href="~/Areas/Admin/Content/styles/table.css" rel="stylesheet" />
+
 
 @Html.Partial("contactleftbar")
 

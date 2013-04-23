@@ -6,8 +6,9 @@
 }
 @*css dosyaları*@
 <link href="~/Areas/Admin/Content/styles/pluginstyles/jquery.msgbox.css" rel="stylesheet" />
-@System.Web.Optimization.Styles.Render("~/admin/formstylecss")  
-@System.Web.Optimization.Styles.Render("~/admin/tablecss")
+<link href="~/Areas/Admin/Content/styles/forms.css" rel="stylesheet" />
+<link href="~/Areas/Admin/Content/styles/table.css" rel="stylesheet" />
+
 @Html.Partial("news_leftbar")
 
 <div id="page-content" class="container_12">
@@ -64,7 +65,7 @@
 </div>
 
 
-@System.Web.Optimization.Scripts.Render("~/admin/tablesorterscripts") 
+
 
 <link href="~/Areas/Admin/Content/styles/pluginstyles/jquery.msgbox.css" rel="stylesheet" />
 <script src="~/Areas/Admin/Content/scripts/plugins/jquery.msgbox.min.js"></script>
@@ -72,7 +73,10 @@
 <script src="~/Areas/Admin/Content/scripts/myscripts/SortOrder.js"></script>
 <script src="~/Areas/Admin/Content/scripts/myscripts/generalprocess.js"></script>
 
-@System.Web.Optimization.Scripts.Render("~/admin/tablesorterscripts") 
+<script src="~/Areas/Admin/Content/scripts/plugins/tablesorter/tablesorter.js"></script>
+<script src="~/Areas/Admin/Content/scripts/plugins/tablesorter/jquery.tablesorter.pager.js"></script>
+<script src="~/Areas/Admin/Content/scripts/plugins/tablesorter/TableSorterScript.js"></script>
+
 <script src="~/Areas/Admin/Content/scripts/myscripts/SetOnlineStatusRecord.js"></script>
 <script src="~/Areas/Admin/Content/scripts/myscripts/DeleteRecordTable.js"></script>
 
