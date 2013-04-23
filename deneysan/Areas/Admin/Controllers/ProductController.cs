@@ -57,7 +57,7 @@ namespace deneysan.Areas.Admin.Controllers
                     model.ProductImageThumb = "/Content/images/front/noimage.jpeg";
                 }
 
-                if (uploadtechfile != null && uploadtraining.ContentLength > 0)
+                if (uploadtraining != null && uploadtraining.ContentLength > 0)
                 {
                     Random random = new Random();
                     int rand = random.Next(1000, 99999999);
