@@ -11,7 +11,7 @@
     
     if (selval == "") {
         $("#ProductGroupId").attr("disabled", "disabled");
-        $("#ProductGroupId").empty().append($("<option></option>").val("").html("Dökümanı Seçiniz..."));
+        $("#ProductGroupId").empty().append($("<option></option>").val("").html("Ürün Grubunu Seçiniz..."));
     }
 
     $("#Language").change(function () {

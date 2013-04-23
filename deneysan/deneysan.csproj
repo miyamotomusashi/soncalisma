@@ -185,6 +185,7 @@
     <Compile Include="Areas\Admin\Controllers\GalleryGroupController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\InstitutionalController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LinkController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductGroupController.cs" />
@@ -1422,6 +1423,7 @@
     <Content Include="Areas\Admin\Content\scripts\pagescripts\documents\documentlist.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\gallery\gallerygroup.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\instituional\mision.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\links\linklist.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\news\addnews.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\news\newslist.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\product\addproduct.js" />
@@ -1763,6 +1765,10 @@
     <Content Include="Areas\Admin\Views\Product\EditProduct.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Product\product_leftbar.cshtml" />
+    <Content Include="Areas\Admin\Views\Link\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Link\link_leftbar.cshtml" />
+    <Content Include="Areas\Admin\Views\Link\AddLink.cshtml" />
+    <Content Include="Areas\Admin\Views\Link\EditLink.cshtml" />
     <None Include="Properties\PublishProfiles\ftp.pubxml" />
     <None Include="Properties\PublishProfiles\soncalisma-ftp-son.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />

@@ -28,6 +28,7 @@ namespace deneysan_DAL.Context
         public DbSet<BankInfo> BankInfo { get; set; }
         public DbSet<ProductGroup> ProductGroup { get; set; }
         public DbSet<Product> Product { get; set; }
+        public DbSet<ImportantLinks> ImportantLinks { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 
@@ -48,6 +49,7 @@ namespace deneysan_DAL.Context
             modelBuilder.Entity<BankInfo>().ToTable("BankInfo");
             modelBuilder.Entity<ProductGroup>().ToTable("ProductGroup");
             modelBuilder.Entity<Product>().ToTable("Product");
+            modelBuilder.Entity<ImportantLinks>().ToTable("ImportantLinks");
             
         }
     }

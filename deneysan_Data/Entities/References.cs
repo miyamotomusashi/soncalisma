@@ -23,7 +23,7 @@ namespace deneysan_DAL.Entities
         public bool Deleted { get; set; }
         public bool Online { get; set; }
 
-        [Url(ErrorMessage = "Adres formatı doğru değil.")]
+        [Url(ErrorMessage = "Url formatı doğru değil.")]
         public string Link{get;set;}
        
         [Required(ErrorMessage = "Dili Seçiniz.")]

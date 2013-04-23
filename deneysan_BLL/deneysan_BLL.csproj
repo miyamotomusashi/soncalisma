@@ -57,6 +57,7 @@
     <Compile Include="Gallery\GalleryManager.cs" />
     <Compile Include="InstituionalBL\InstituionalManager.cs" />
     <Compile Include="LanguageBL\LanguageManager.cs" />
+    <Compile Include="LinkBL\LinkManager.cs" />
     <Compile Include="LogBL\EnumLogType.cs" />
     <Compile Include="LogBL\LogMessages.cs" />
     <Compile Include="LogBL\LogtrackManager.cs" />
