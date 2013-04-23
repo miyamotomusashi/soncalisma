@@ -1,5 +1,0 @@
-   1. Kariyer sayfasý oluþturulacak 
-   2. Anasayfa search yapýlacak
-+  3. Ürün listesi ve ürün detay sayfalarý yapýlacak
-+  4. Anasayfadaki Linkler sayfasý yapýlacak
-+  5. Logo yeni logo olacak
