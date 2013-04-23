@@ -295,6 +295,15 @@ namespace SharedRess {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to linkler.
+        /// </summary>
+        public static string menu_links {
+            get {
+                return ResourceManager.GetString("menu_links", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to haberler.
         /// </summary>
         public static string menu_news {
@@ -309,6 +318,15 @@ namespace SharedRess {
         public static string menu_products {
             get {
                 return ResourceManager.GetString("menu_products", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to projeler.
+        /// </summary>
+        public static string menu_projects {
+            get {
+                return ResourceManager.GetString("menu_projects", resourceCulture);
             }
         }
         

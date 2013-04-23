@@ -195,11 +195,17 @@
   <data name="menu_institutional" xml:space="preserve">
     <value>aboutus</value>
   </data>
+  <data name="menu_links" xml:space="preserve">
+    <value>links</value>
+  </data>
   <data name="menu_news" xml:space="preserve">
     <value>news</value>
   </data>
   <data name="menu_products" xml:space="preserve">
     <value>products</value>
+  </data>
+  <data name="menu_projects" xml:space="preserve">
+    <value>projects</value>
   </data>
   <data name="menu_visionmision" xml:space="preserve">
     <value>vision-mision</value>

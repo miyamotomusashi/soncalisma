@@ -16,7 +16,7 @@
                 <li class="activeFilter"><a href="#" data-filter="*">@ProductRess.ProductStrings.allproducts</a></li>
                 @foreach (var cat in Model.productgroups)
                 {
-                    <li><a href="/ProductDetail" data-filter=".@cat.PageSlug">@cat.GroupName</a></li>
+                    <li><a href="#" data-filter=".@cat.PageSlug">@cat.GroupName</a></li>
                 }
             </ul>
             <div id="portfolio">
@@ -29,17 +29,34 @@
                                 <div class="portfolio-overlay">
                                     <div class="portfolio-overlay-wrap">
                                         @*<p>Sed ut perspiciatis unde omnis iste natus voluptatem fringilla tempor dignissim at, pretium et arcu.</p>
-                                            <span><span></span></span>
-                                        <a href="#">Icons</a> &middot; <a href="#">Media</a>*@
+                                            <span><span></span></span>*@
+                                         @if(product.filetechnical != null)   
+                                          {
+                                            <a href="@product.filetechnical">Teknik Şartname</a>
+                                            <br />
+                                          }
+                                        @if(product.filetraining != null)   
+                                          {
+                                            <a href="@product.filetraining">Eğitim Dökümanı</a>
+                                            <br />
+                                          }
+                                        @if (product.filexperiment != null)
+                                        {
+                                            <a href="@product.filexperiment">Örnek Deney</a>
+                                            <br />
+                                        }
                                     </div>
                                     <div class="p-overlay-icons clearfix">
                                         <a href="@product.ProductImage" class="p-o-image" rel="prettyPhoto"></a>
-                                        <a href="portfolio-single.php" class="p-o-link"></a>
+                                        @if (@product.filevideo != null)
+                                        {
+                                            <a href="@product.filevideo" class="p-o-video" rel="prettyPhoto"></a>
+                                        }
                                     </div>
                                 </div>
                             </div>
                             <div class="portfolio-title">
-                                <h3 title="@product.Name"><a href="portfolio-single.php">@product.Name</a></h3>
+                                <h3 title="@product.Name"><a href="@product.ProductImage" class="p-o-image" rel="prettyPhoto">@product.Name</a></h3>
                             </div>
                         </div>
                 }

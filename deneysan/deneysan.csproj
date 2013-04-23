@@ -200,6 +200,7 @@
     <Compile Include="Controllers\FContactController.cs" />
     <Compile Include="Controllers\FCareerController.cs" />
     <Compile Include="Controllers\FInstitutionalController.cs" />
+    <Compile Include="Controllers\FLinksController.cs" />
     <Compile Include="Controllers\FProductsController.cs" />
     <Compile Include="Controllers\FNewsController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -260,6 +261,16 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>InstitutionalStrings.en.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Views\Links\LinksStrings.en.Designer.cs">
+      <DependentUpon>LinksStrings.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Views\Links\LinksStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LinksStrings.resx</DependentUpon>
     </Compile>
     <Compile Include="Resources\Views\News\NewsStrings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1827,6 +1838,7 @@
     <Content Include="Views\FCareer\ApplicationForm.cshtml" />
     <Content Include="Views\Shared\NotFound.cshtml" />
     <Content Include="Views\FInstitutional\VisionMision.cshtml" />
+    <Content Include="Views\FLinks\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1908,6 +1920,16 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>InstitutionalStrings.Designer.cs</LastGenOutput>
       <CustomToolNamespace>InstitutionalRess</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Links\LinksStrings.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LinksStrings.en.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>LinksRess</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Links\LinksStrings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LinksStrings.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>LinksRess</CustomToolNamespace>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Views\News\NewsStrings.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

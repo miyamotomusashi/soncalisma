@@ -54,6 +54,9 @@ namespace deneysan
             routes.MapRoute("career_app_tr", "tr/kariyer/basvuru", new { action = "ApplicationForm", Controller = "FCareer" });
             routes.MapRoute("career_app_en", "en/career/application", new { action = "ApplicationForm", Controller = "FCareer" });
 
+            routes.MapRoute("links_tr", "tr/linkler", new { action = "Index", Controller = "FLinks" });
+            routes.MapRoute("links_en", "en/links", new { action = "Index", Controller = "FLinks" });
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
