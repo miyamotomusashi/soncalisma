@@ -1621,9 +1621,6 @@
     <Content Include="Areas\Admin\Content\styles\style.css" />
     <Content Include="Areas\Admin\Content\styles\table.css" />
     <Content Include="Areas\Admin\Content\styles\visualize.css" />
-    <Content Include="Content\Images\Banka\Garanti-Bank.png" />
-    <Content Include="Content\Images\Banka\tisbankasi.png" />
-    <Content Include="Content\Images\Banka\yapi-kredi.png" />
     <Content Include="Content\Images\Front\address-ico.png" />
     <Content Include="Content\Images\Front\agri-eml.png" />
     <Content Include="Content\Images\Front\aksaray.png" />
@@ -1718,7 +1715,6 @@
     <Content Include="Content\Images\prettyPhoto\light_square\default_thumbnail.gif" />
     <Content Include="Content\Images\prettyPhoto\light_square\loader.gif" />
     <Content Include="Content\Images\prettyPhoto\light_square\sprite.png" />
-    <Content Include="Content\Images\products\11.jpg" />
     <Content Include="Content\Scripts\cufon-yui.js" />
     <Content Include="Content\Scripts\jquery-1.7.2.min.js" />
     <Content Include="Content\Scripts\jquery.cycle.all.js" />
@@ -1780,8 +1776,8 @@
     <Content Include="Areas\Admin\Views\Link\link_leftbar.cshtml" />
     <Content Include="Areas\Admin\Views\Link\AddLink.cshtml" />
     <Content Include="Areas\Admin\Views\Link\EditLink.cshtml" />
-    <None Include="Properties\PublishProfiles\ftp.pubxml" />
     <None Include="Properties\PublishProfiles\soncalisma-ftp-son.pubxml" />
+    <None Include="Properties\PublishProfiles\soncalisma.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -1851,9 +1847,11 @@
     <Folder Include="Areas\Admin\Content\CKEditor\ckfinder\plugins\watermark\bin\Debug\" />
     <Folder Include="Areas\Admin\Content\CKEditor\ckfinder\plugins\watermark\bin\Release\" />
     <Folder Include="Areas\Admin\Content\images\icons\small\" />
+    <Folder Include="Content\Images\Banka\" />
     <Folder Include="Content\Images\bankinfo\" />
     <Folder Include="Content\Images\documents\" />
     <Folder Include="Content\Images\news\" />
+    <Folder Include="Content\Images\products\" />
     <Folder Include="Content\Images\references\" />
   </ItemGroup>
   <ItemGroup>
