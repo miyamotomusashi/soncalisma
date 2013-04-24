@@ -189,6 +189,7 @@
     <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductGroupController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProjectController.cs" />
     <Compile Include="Areas\Admin\Controllers\ReferenceController.cs" />
     <Compile Include="Areas\Admin\Filters\AuthenticateUser.cs" />
     <Compile Include="Areas\Admin\Helpers\ImageHelper.cs" />
@@ -1440,6 +1441,7 @@
     <Content Include="Areas\Admin\Content\scripts\pagescripts\product\addproduct.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\product\productgroup.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\product\productlist.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\projects\projectlist.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\reference\addreference.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\reference\referencelist.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery.min.js" />
@@ -1776,6 +1778,11 @@
     <Content Include="Areas\Admin\Views\Link\link_leftbar.cshtml" />
     <Content Include="Areas\Admin\Views\Link\AddLink.cshtml" />
     <Content Include="Areas\Admin\Views\Link\EditLink.cshtml" />
+    <Content Include="Areas\Admin\Views\Project\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Project\AddProject.cshtml" />
+    <Content Include="Areas\Admin\Views\Project\EditProject.cshtml" />
+    <Content Include="Areas\Admin\Views\Project\project_leftbar.cshtml" />
+    <None Include="Properties\PublishProfiles\ftp.pubxml" />
     <None Include="Properties\PublishProfiles\soncalisma-ftp-son.pubxml" />
     <None Include="Properties\PublishProfiles\soncalisma.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
@@ -1852,6 +1859,7 @@
     <Folder Include="Content\Images\documents\" />
     <Folder Include="Content\Images\news\" />
     <Folder Include="Content\Images\products\" />
+    <Folder Include="Content\Images\projects\" />
     <Folder Include="Content\Images\references\" />
   </ItemGroup>
   <ItemGroup>

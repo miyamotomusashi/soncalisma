@@ -30,6 +30,13 @@ namespace deneysan.Areas.Admin
             context.MapRoute("newsadd", "yonetim/haberekle", new { action = "AddNews", Controller = "News" });
             context.MapRoute("newsedit", "yonetim/haberduzenle/{id}", new { action = "EditNews", Controller = "News" });
 
+            //PROJECTS
+            context.MapRoute("project_default", "yonetim/projeler", new { action = "Index", Controller = "Project" });
+            context.MapRoute("project", "yonetim/projeler/{lang}", new { action = "Index", Controller = "Project" });
+            context.MapRoute("projectadd", "yonetim/projeekle", new { action = "AddProject", Controller = "Project" });
+            context.MapRoute("projectedit", "yonetim/projeduzenle/{id}", new { action = "EditProject", Controller = "Project" });
+
+
             //LİnKLER
             context.MapRoute("link_default", "yonetim/linkler", new { action = "Index", Controller = "Link" });
             context.MapRoute("linkadd", "yonetim/linkekle", new { action = "AddLink", Controller = "Link" });
