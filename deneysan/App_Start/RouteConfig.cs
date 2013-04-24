@@ -63,6 +63,9 @@ namespace deneysan
             routes.MapRoute("projectcontent_tr", "tr/projeler/{header}/{id}", new { action = "ProjectContent", Controller = "FProjects" });
             routes.MapRoute("projectcontent_en", "en/projects/{header}/{id}", new { action = "ProjectContent", Controller = "FProjects" });
 
+            routes.MapRoute("offers_tr", "tr/teklif", new { action = "Index", Controller = "FOffers" });
+            routes.MapRoute("offers_en", "en/offer", new { action = "Index", Controller = "FOffers" });
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

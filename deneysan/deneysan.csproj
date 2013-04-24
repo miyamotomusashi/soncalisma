@@ -202,6 +202,7 @@
     <Compile Include="Controllers\FCareerController.cs" />
     <Compile Include="Controllers\FInstitutionalController.cs" />
     <Compile Include="Controllers\FLinksController.cs" />
+    <Compile Include="Controllers\FOffersController.cs" />
     <Compile Include="Controllers\FProductsController.cs" />
     <Compile Include="Controllers\FNewsController.cs" />
     <Compile Include="Controllers\FProjectsController.cs" />
@@ -233,6 +234,16 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ContactStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Views\Offers\OffersStrings.en.Designer.cs">
+      <DependentUpon>OffersStrings.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Views\Offers\OffersStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OffersStrings.resx</DependentUpon>
     </Compile>
     <Compile Include="Resources\Views\Projects\ProjectsStrings.Designer.cs">
       <DependentUpon>ProjectsStrings.resx</DependentUpon>
@@ -1657,6 +1668,7 @@
     <Content Include="Content\Images\Front\carousel-next.png" />
     <Content Include="Content\Images\Front\carousel-prev.png" />
     <Content Include="Content\Images\Front\clients-bg.jpg" />
+    <Content Include="Content\Images\Front\deneysan-logo.jpg" />
     <Content Include="Content\Images\Front\doc.png" />
     <Content Include="Content\Images\Front\docx.png" />
     <Content Include="Content\Images\Front\footer-gradient.png" />
@@ -1671,7 +1683,9 @@
     <Content Include="Content\Images\Front\join-us.jpg" />
     <Content Include="Content\Images\Front\li-arrow1.png" />
     <Content Include="Content\Images\Front\list-arrow.png" />
+    <Content Include="Content\Images\Front\logo-deneysan.jpg" />
     <Content Include="Content\Images\Front\logo-deneysan.png" />
+    <Content Include="Content\Images\Front\logo-deneysan2.png" />
     <Content Include="Content\Images\Front\logo.png" />
     <Content Include="Content\Images\Front\mail-ico.png" />
     <Content Include="Content\Images\Front\map-deneysan.png" />
@@ -1855,6 +1869,7 @@
     <Content Include="Views\FLinks\Index.cshtml" />
     <Content Include="Views\FProjects\Index.cshtml" />
     <Content Include="Views\FProjects\ProjectContent.cshtml" />
+    <Content Include="Views\FOffers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1909,6 +1924,16 @@
       <LastGenOutput>ContactStrings1.Designer.cs</LastGenOutput>
       <CustomToolNamespace>ContactRess</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Offers\OffersStrings.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>OffersStrings.en.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>OfferRess</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Offers\OffersStrings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>OffersStrings.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>OfferRess</CustomToolNamespace>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Views\Projects\ProjectsStrings.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
