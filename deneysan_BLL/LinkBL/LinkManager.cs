@@ -15,7 +15,7 @@ namespace deneysan_BLL.LinkBL
         {
             using (DeneysanContext db = new DeneysanContext())
             {
-                var list = db.ImportantLinks.Where(d => d.Language == language).ToList();
+                var list = db.ImportantLinks.Where(d => d.Language == language).OrderBy(d=>d.SortNumber).ToList();
                 return list;
             }
         }
