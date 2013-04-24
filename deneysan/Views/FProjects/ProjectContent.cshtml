@@ -1,0 +1,25 @@
+﻿@model deneysan_DAL.Entities.Projects
+@{
+    Layout = "~/Views/Shared/frontlayout.cshtml";
+}
+
+<div class="main_content mainpage pageheight" style="">
+    <div class="wrapper mainpage grid_12">
+        <div class="content_page page">
+
+            <h2 style="width: 800px; float: left;">@Model.Name</h2>
+            <input onclick="history.back();" style="cursor:pointer" class="blue" type="button" value="&lt;&lt; @SharedRess.SharedStrings.goback">
+            <hr class="wide">
+            @Html.Raw(Model.Content)
+            @if (Model.ProjectFile != null)
+            { 
+                <hr class="wide" />
+                <img src="/Content/Images/Front/@(Model.ProjectFile.Split('.')[1].ToString()).png" title="@(Model.ProjectFile.Split('.')[1].ToString())" width="32" height="32">
+                
+                <a href="@Model.ProjectFile" title="@Model.Name" style="line-height:30px">
+                    @ProjectsRess.ProjectsStrings.projectdetailfile
+                </a>
+            }
+        </div>
+    </div>
+</div>

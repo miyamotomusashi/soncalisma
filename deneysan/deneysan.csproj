@@ -204,6 +204,7 @@
     <Compile Include="Controllers\FLinksController.cs" />
     <Compile Include="Controllers\FProductsController.cs" />
     <Compile Include="Controllers\FNewsController.cs" />
+    <Compile Include="Controllers\FProjectsController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -232,6 +233,16 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ContactStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Views\Projects\ProjectsStrings.Designer.cs">
+      <DependentUpon>ProjectsStrings.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Views\Projects\ProjectsStrings.en.Designer.cs">
+      <DependentUpon>ProjectsStrings.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Resources\Views\Documents\DocumentsStrings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1842,6 +1853,8 @@
     <Content Include="Views\Shared\NotFound.cshtml" />
     <Content Include="Views\FInstitutional\VisionMision.cshtml" />
     <Content Include="Views\FLinks\Index.cshtml" />
+    <Content Include="Views\FProjects\Index.cshtml" />
+    <Content Include="Views\FProjects\ProjectContent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1896,6 +1909,16 @@
       <LastGenOutput>ContactStrings1.Designer.cs</LastGenOutput>
       <CustomToolNamespace>ContactRess</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Projects\ProjectsStrings.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProjectsStrings.en.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>ProjectsRess</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Projects\ProjectsStrings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProjectsStrings.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>ProjectsRess</CustomToolNamespace>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Views\Documents\DocumentsStrings.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

@@ -36,6 +36,7 @@ namespace deneysan.Areas.Admin.Controllers
 
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult AddProject(Projects newmodel, HttpPostedFileBase uploadfile)
         {
             var languages = LanguageManager.GetLanguages();
@@ -50,7 +51,7 @@ namespace deneysan.Areas.Admin.Controllers
                     uploadfile.SaveAs(Server.MapPath("/Content/images/projects/" + Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(uploadfile.FileName)));
                     newmodel.ProjectFile = "/Content/images/projects/" + Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(uploadfile.FileName);
                 }
-              
+                newmodel.PageSlug = Utility.SetPagePlug(newmodel.Name);
                 newmodel.TimeCreated = DateTime.Now;
                 ViewBag.ProcessMessage = ProjectManager.AddProject(newmodel);
                 ModelState.Clear();
@@ -86,6 +87,7 @@ namespace deneysan.Areas.Admin.Controllers
 
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult EditProject(Projects newmodel, HttpPostedFileBase uploadfile)
         {
             var languages = LanguageManager.GetLanguages();
@@ -102,6 +104,7 @@ namespace deneysan.Areas.Admin.Controllers
                     newmodel.ProjectFile = "/Content/images/projects/" + Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(uploadfile.FileName);
                 }
 
+                newmodel.PageSlug = Utility.SetPagePlug(newmodel.Name);
 
                 if (RouteData.Values["id"] != null)
                 {

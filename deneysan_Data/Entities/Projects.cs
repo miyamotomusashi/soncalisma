@@ -24,5 +24,6 @@ namespace deneysan_DAL.Entities
         [Display(Name = "Dil")]
         [Required(ErrorMessage = "Dili Seçiniz.")]
         public string Language { get; set; }
+        public string PageSlug { get; set; }
     }
 }

@@ -45,12 +45,11 @@
        
         <p>
             @Html.LabelFor(m=>m.Content)
-            @Html.TextAreaFor(m=>m.Content,5,0, new { @class="textwidth50"})
+            @Html.TextAreaFor(m=>m.Content,5,0, new { id="txtcontent", @class="textwidth50"})
             @Html.ValidationMessageFor(m=>m.Content,"", new { @class="verticalaligntop"})
            
         </p>
         <p>
-            <label></label>
             <input type="submit" value="Kaydet" id="btnsave" />
         </p>
        
@@ -66,4 +65,8 @@
 <script src="~/Areas/Admin/Content/scripts/plugins/jquery.validate.unobtrusive.js"></script>
 <script src="~/Areas/Admin/Content/scripts/plugins/jquery.ui.datepicker-tr.js"></script>
 <script src="~/Areas/Admin/Content/scripts/pagescripts/reference/addreference.js"></script>
+
+<script src="~/Areas/Admin/Content/CKEditor/ckeditor/ckeditor.js"></script>
+<script src="~/Areas/Admin/Content/CKEditor/ckfinder/ckfinder.js"></script>
+<script src="~/Areas/Admin/Content/scripts/myscripts/CKEditorCreate.js"></script>
 }
