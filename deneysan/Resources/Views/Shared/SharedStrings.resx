@@ -201,6 +201,9 @@
   <data name="menu_news" xml:space="preserve">
     <value>haberler</value>
   </data>
+  <data name="menu_offer" xml:space="preserve">
+    <value>teklif</value>
+  </data>
   <data name="menu_products" xml:space="preserve">
     <value>urunler</value>
   </data>

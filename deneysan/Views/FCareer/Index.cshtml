@@ -1,4 +1,5 @@
-﻿@{
+﻿@model deneysan_DAL.Entities.HumanResource
+@{
     Layout = "~/Views/Shared/frontlayout.cshtml";
 }
 
@@ -16,14 +17,7 @@
 
         <div id="sub-content" class="fl">
             <h1>@CareerRess.CareerStrings.joinus</h1>
-            <p>Her geçen gün, çalışanlarımız sayesinde müşterilerimizin katma değer yaratarak güvenle büyümelerinde önemli bir rol üstleniyoruz.</p>
-            <p>Müşterilerimizden yatırımcılarımıza, kamu kurum ve kuruluşlarına kadar birlikte çalıştığımız bütün paydaşlarımızın bizden çok büyük 
-                beklentileri olduğunu biliyoruz. Bu beklentiye karşılık olarak, gerçekten olağanüstü nitelikli kişileri işe alıyoruz.</p>
-            <img src="/Content/Images/Front/join-us.jpg" />
-            <p>DENEYSAN olarak, her zaman yetenekli bireyleri işe almanın önemine inanıyoruz. Profesyonel hizmetler ekiplerimize destek veren ve başarılarımızda 
-                önemli rol oynayan Destek Hizmet birimlerimizde de,  Pazarlama, Finans, İK ve Bilgi Teknolojileri gibi farklı alanlarda deneyimlere sahip 
-                profesyoneller için gelecek vaat eden kariyer fırsatları sunmaktayız.</p>
-            
+            @Html.Raw(Model.Content)
         </div>
     </div>
 </div>

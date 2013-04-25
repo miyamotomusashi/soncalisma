@@ -14,10 +14,13 @@ namespace deneysan.Areas.Admin.Controllers
     [AuthenticateUser]
     public class InstitutionalController : Controller
     {
-               
         public ActionResult Index()
         {
-            return View();string lang=FillLanguagesList();
+            return View();
+        }
+        public ActionResult Vizyon()
+        {
+            string lang=FillLanguagesList();
             
             var vision_info = InstituionalManager.GetInstationalByLanguage(lang, Convert.ToInt32(EnumInstituionalTypes.Hakkimizda));
             return View(vision_info);
@@ -27,7 +30,7 @@ namespace deneysan.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Index(Institutional record)
+        public ActionResult Vizyon(Institutional record)
         {
             string lang=FillLanguagesList();
             record.Language = lang;

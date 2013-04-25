@@ -1,4 +1,5 @@
-﻿using System;
+﻿using deneysan_BLL.HRBL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -11,12 +12,15 @@ namespace deneysan.Controllers
 {
     public class FCareerController : Controller
     {
+        string lang = System.Threading.Thread.CurrentThread.CurrentUICulture.ToString();
+        
         //
         // GET: /Kariyer/
 
         public ActionResult Index()
         {
-            return View();
+            var content = HumanResourceManager.GetHRByLanguage(lang);
+            return View(content);
         }
 
         [HttpGet]

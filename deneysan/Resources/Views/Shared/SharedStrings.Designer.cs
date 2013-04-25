@@ -313,6 +313,15 @@ namespace SharedRess {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to teklif.
+        /// </summary>
+        public static string menu_offer {
+            get {
+                return ResourceManager.GetString("menu_offer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to urunler.
         /// </summary>
         public static string menu_products {

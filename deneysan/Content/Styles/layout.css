@@ -267,7 +267,7 @@ header {height:150px; width:100%; background:url(/Content/images/front/bg-header
 #lang a{color:#fff; zoom: 1; opacity:0.8; -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)"; filter: alpha(opacity=80); -moz-opacity:0.8; -khtml-opacity: 0.8;}
 #lang a:hover{zoom: 1; opacity:1; -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"; filter: alpha(opacity=100); -moz-opacity:1; -khtml-opacity: 1;}
 header .logo{z-index:2; position:absolute}
-header .logo a{display:block; width:460px; height:88px; background:url(/Content/images/front/logo-deneysan2.png) no-repeat;}
+header .logo a{display:block; width:460px; height:88px; background:url(/Content/images/front/logo-deneysan.png) no-repeat;}
 header .head_content{position:relative; height:150px}
 
 header .rmenu {margin-top:70px; z-index: 999999; position: absolute;right: 0px;}

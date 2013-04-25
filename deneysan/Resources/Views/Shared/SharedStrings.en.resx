@@ -201,6 +201,9 @@
   <data name="menu_news" xml:space="preserve">
     <value>news</value>
   </data>
+  <data name="menu_offer" xml:space="preserve">
+    <value>offer</value>
+  </data>
   <data name="menu_products" xml:space="preserve">
     <value>products</value>
   </data>
