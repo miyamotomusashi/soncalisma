@@ -55,6 +55,7 @@
     <Compile Include="ContactBL\ContactManager.cs" />
     <Compile Include="DocumentsBL\DocumentManager.cs" />
     <Compile Include="Gallery\GalleryManager.cs" />
+    <Compile Include="HRBL\InstituionalManager.cs" />
     <Compile Include="InstituionalBL\InstituionalManager.cs" />
     <Compile Include="LanguageBL\LanguageManager.cs" />
     <Compile Include="LinkBL\LinkManager.cs" />

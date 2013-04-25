@@ -30,6 +30,8 @@ namespace deneysan_DAL.Context
         public DbSet<Product> Product { get; set; }
         public DbSet<ImportantLinks> ImportantLinks { get; set; }
         public DbSet<Projects> Projects { get; set; }
+        public DbSet<HumanResource> HumanResource { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 
@@ -52,7 +54,7 @@ namespace deneysan_DAL.Context
             modelBuilder.Entity<Product>().ToTable("Product");
             modelBuilder.Entity<ImportantLinks>().ToTable("ImportantLinks");
             modelBuilder.Entity<Projects>().ToTable("Projects");
-            
+            modelBuilder.Entity<HumanResource>().ToTable("HumanResource");
         }
     }
 }

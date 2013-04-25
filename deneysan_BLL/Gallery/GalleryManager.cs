@@ -188,5 +188,58 @@ namespace deneysan_BLL.Gallery
         }
 
         #endregion GalleryGroup
+
+
+        #region Gallery
+
+    
+
+        public static object DeleteImage(int id)
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                try
+                {
+                    var record = db.Gallery.FirstOrDefault(d => d.GalleryId == id);
+                    db.Gallery.Remove(record);
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+
+        public static deneysan_DAL.Entities.Gallery GetGalleryById(int nid)
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                try
+                {
+                    deneysan_DAL.Entities.Gallery record = db.Gallery.Where(d => d.GalleryId == nid).SingleOrDefault();
+                    if (record != null)
+                        return record;
+                    else
+                        return null;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public static List<deneysan_DAL.Entities.Gallery> GetGalleryList(int gid)
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                var list = db.Gallery.Where(d => d.GalleryGroupId == gid).ToList();
+                return list;
+            }
+        }
+        #endregion Gallery
+
     }
 }

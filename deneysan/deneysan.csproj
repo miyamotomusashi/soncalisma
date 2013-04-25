@@ -182,8 +182,10 @@
     <Compile Include="Areas\Admin\Controllers\ContactController.cs" />
     <Compile Include="Areas\Admin\Controllers\DocumentGroupController.cs" />
     <Compile Include="Areas\Admin\Controllers\DocumentsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\GalleryController.cs" />
     <Compile Include="Areas\Admin\Controllers\GalleryGroupController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HumanResourceController.cs" />
     <Compile Include="Areas\Admin\Controllers\InstitutionalController.cs" />
     <Compile Include="Areas\Admin\Controllers\LinkController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
@@ -1455,7 +1457,9 @@
     <Content Include="Areas\Admin\Content\scripts\pagescripts\documents\editdocument.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\documents\documentgroup.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\documents\documentlist.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\gallery\addimage.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\gallery\gallerygroup.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\instituional\hr.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\instituional\mision.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\links\linklist.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\news\addnews.js" />
@@ -1807,6 +1811,10 @@
     <Content Include="Areas\Admin\Views\Project\AddProject.cshtml" />
     <Content Include="Areas\Admin\Views\Project\EditProject.cshtml" />
     <Content Include="Areas\Admin\Views\Project\project_leftbar.cshtml" />
+    <Content Include="Areas\Admin\Views\Gallery\AddImage.cshtml" />
+    <Content Include="Areas\Admin\Views\Gallery\gallery_leftbar.cshtml" />
+    <Content Include="Areas\Admin\Views\HumanResource\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\HumanResource\hr_leftbar.cshtml" />
     <None Include="Properties\PublishProfiles\ftp.pubxml" />
     <None Include="Properties\PublishProfiles\soncalisma-ftp-son.pubxml" />
     <None Include="Properties\PublishProfiles\soncalisma.pubxml" />

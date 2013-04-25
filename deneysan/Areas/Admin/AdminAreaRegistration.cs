@@ -75,7 +75,8 @@ namespace deneysan.Areas.Admin
             context.MapRoute("gallerygroup", "yonetim/galeriler", new { action = "Index", Controller = "Gallery" });
             context.MapRoute("gallerygroups_default", "yonetim/galerigruplari", new { action = "Index", Controller = "GalleryGroup" });
             context.MapRoute("gallerygroups", "yonetim/galerigruplari/{lang}", new { action = "Index", Controller = "GalleryGroup" });
-            
+            context.MapRoute("galleryimageadd", "yonetim/resimekle", new { action = "AddImage", Controller = "Gallery" });
+            context.MapRoute("gallerylist", "yonetim/galeriresimleri", new { action = "GalleryList", Controller = "Gallery" });
 
 
             //BANKA BİLGİLERİ
@@ -87,6 +88,14 @@ namespace deneysan.Areas.Admin
 
             context.MapRoute("contact_default", "yonetim/iletisim", new { action = "Index", Controller = "Contact" });
             context.MapRoute("contact", "yonetim/iletisim/{lang}", new { action = "Index", Controller = "Contact" });
+
+
+            context.MapRoute("ik_index", "yonetim/insankaynaklari", new { action = "Index", Controller = "HumanResource" });
+            context.MapRoute("ik_mision_default", "yonetim/insankaynaklari/{lang}", new { action = "Index", Controller = "HumanResource" });
+            
+
+
+
 
             context.MapRoute(
                 "Admin_default",

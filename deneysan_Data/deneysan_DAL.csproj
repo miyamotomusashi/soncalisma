@@ -54,6 +54,7 @@
     <Compile Include="Entities\Document.cs" />
     <Compile Include="Entities\Gallery.cs" />
     <Compile Include="Entities\GalleryGroup.cs" />
+    <Compile Include="Entities\HumanResource.cs" />
     <Compile Include="Entities\ImportantLinks.cs" />
     <Compile Include="Entities\Institutional.cs" />
     <Compile Include="Entities\Languages.cs" />
