@@ -17,21 +17,17 @@ namespace deneysan.Areas.Admin.Controllers
                
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult Vizyon()
-        {
-            string lang=FillLanguagesList();
+            return View();string lang=FillLanguagesList();
             
             var vision_info = InstituionalManager.GetInstationalByLanguage(lang, Convert.ToInt32(EnumInstituionalTypes.Hakkimizda));
             return View(vision_info);
-            
         }
+
+       
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Vizyon(Institutional record)
+        public ActionResult Index(Institutional record)
         {
             string lang=FillLanguagesList();
             record.Language = lang;

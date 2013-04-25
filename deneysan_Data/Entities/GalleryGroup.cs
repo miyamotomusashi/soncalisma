@@ -12,6 +12,7 @@ namespace deneysan_DAL.Entities
         public string GroupName { get; set; }
         public string Language { get; set; }
         public bool Online { get; set; }
+        public string PageSlug{get;set;}
         public bool Deleted { get; set; }
         public bool TimeCreated { get; set; }
         public bool TimeUpdated { get; set; }
