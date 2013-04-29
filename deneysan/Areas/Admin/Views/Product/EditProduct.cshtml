@@ -13,7 +13,7 @@
 
 <div id="page-content" class="container_12">
     <div id="page-header">
-       <h2>ÜRÜN DÜZENLE</h2>
+       <h2>ÜRÜN BİLGİLERİ</h2>
     </div> 
     
 <section class="grid_12 form">
@@ -24,7 +24,7 @@
          @Html.Hidden("hdfieldtaglist")
         @Html.ValidationSummary(true)
         <fieldset>
-        <legend>ürün Düzenle</legend>
+        <legend>Ürün Düzenle</legend>
         <p>
             @Html.Label("Dil")
             @Html.DropDownListFor(d=>d.Language, (IEnumerable<SelectListItem>)ViewBag.LanguageList, "Dil Seçiniz...", new {@class="required" })

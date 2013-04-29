@@ -27,6 +27,7 @@
         <p>
             @Html.Label("Dil Seçimi")
             @Html.DropDownListFor(m=>m.Language, (IEnumerable<SelectListItem>)ViewBag.LanguageList)
+            @Html.ValidationMessageFor(m=>m.Language)
         </p>
          <p>
             @Html.LabelFor(m=>m.Address)
@@ -44,6 +45,7 @@
         <p>
             @Html.LabelFor(m=>m.Email)
             @Html.TextBoxFor(m => m.Email, new { @class="textwidth30"})
+            @Html.ValidationMessageFor(m=>m.Email)
         </p>
         <p>
             @Html.LabelFor(m=>m.Taxoffice)
