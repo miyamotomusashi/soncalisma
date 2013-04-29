@@ -139,7 +139,7 @@ hr{border:none; background:#666666; margin:5px 0;padding:0; height:1px;}
 a{text-decoration:none; color:#555555; outline:none}
 a:hover{color:#e60000;text-decoration:none; outline:none}
 a.nochange{color:inherit}
-input,select,textarea{outline:none; font-family:'lucida grande', tahoma, verdana, arial, sans-serif; font-size:12px;} 
+input,select,textarea,button{outline:none; font-family:'lucida grande', tahoma, verdana, arial, sans-serif; font-size:12px;} 
 
 /*-- Site Globals --*/
 body{background: url(/Content/images/front/all-bg.png) repeat left top; background-color: #06053a; color:#666666;width:100%; margin:0 auto;font-family:'lucida grande', tahoma, verdana, arial, sans-serif; font-size:12px;} 
@@ -156,7 +156,7 @@ h5{font-size:12px}
 .displaynone{ display: none;}
 .center{text-align: center;}
 
-input, select, textarea{background:#fcfcfc; border:solid 1px #cccccc;-webkit-border-radius:4px; -moz-border-radius:4px; border-radius:4px;; padding:4px 9px; color:#999999}
+input, select, textarea, button{background:#fcfcfc; border:solid 1px #cccccc;-webkit-border-radius:4px; -moz-border-radius:4px; border-radius:4px;; padding:4px 9px; color:#999999}
 select{padding-right:4px}
 input:hover{background:#ffffff}
 /* Clients Carousel */
@@ -263,7 +263,7 @@ img.scale-with-grid {max-width: 100%;height: auto;}
 /*-- header  --*/
 
 header {height:150px; width:100%; background:url(/Content/images/front/bg-header.png) repeat-x; position:relative; z-index:100; padding:5px 0}
-#lang{position:absolute; right:10px; top:45px; line-height:30px; text-align:center; border: 1px solid #13586d; background:#13586d; -webkit-border-radius:0 0 4px 4px; -moz-border-radius: 0 0 4px 4px; border-radius: 0 0 4px 4px; behavior: url(/js/PIE.htc); padding: 0 10px;}
+#lang{position:absolute; right:10px; top:45px; line-height:30px; text-align:center; border: 1px solid #09244d; background:#09244d; -webkit-border-radius:0 0 4px 4px; -moz-border-radius: 0 0 4px 4px; border-radius: 0 0 4px 4px; behavior: url(/js/PIE.htc); padding: 0 10px;}
 #lang a{color:#fff; zoom: 1; opacity:0.8; -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)"; filter: alpha(opacity=80); -moz-opacity:0.8; -khtml-opacity: 0.8;}
 #lang a:hover{zoom: 1; opacity:1; -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"; filter: alpha(opacity=100); -moz-opacity:1; -khtml-opacity: 1;}
 header .logo{z-index:2; position:absolute}
@@ -315,10 +315,10 @@ header .menu ul.cssdropdown li>ul>li:hover .submenu{display:block !important; bo
 #searchform input[type="submit"] { background:url(/Content/images/front/search-ico.png) no-repeat; }
 
 /* Top panel */
-#mapPanel{background:#13586d;display:none;position:relative;z-index:2147483646;}
+#mapPanel{background:#09244d;display:none;position:relative;z-index:2147483646;}
 #mapPanel .wrap{position:relative;width:1002px;margin:0 auto;padding: 10px 0 10px;color: #fff; z-index:2147483647}
 
-#mapPanelHandle{ cursor:pointer; background: url(/Content/images/front/top-panel-arrow.png) no-repeat right top transparent; z-index: 999999; position:absolute; right:75px; top:45px; line-height:30px; text-align:center; border: 1px solid #13586d;-webkit-border-radius:0 0 4px 4px; -moz-border-radius: 0 0 4px 4px; border-radius: 0 0 4px 4px; background: #13586d; behavior: url(/js/PIE.htc); padding: 0 10px;}
+#mapPanelHandle{ cursor:pointer; background: url(/Content/images/front/top-panel-arrow.png) no-repeat right top transparent; z-index: 999999; position:absolute; right:75px; top:45px; line-height:30px; text-align:center; border: 1px solid #09244d;-webkit-border-radius:0 0 4px 4px; -moz-border-radius: 0 0 4px 4px; border-radius: 0 0 4px 4px; background: #09244d; behavior: url(/js/PIE.htc); padding: 0 10px;}
 #mapPanelHandle span{color:#fff; zoom: 1; opacity:0.8; -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)"; filter: alpha(opacity=80); -moz-opacity:0.8; -khtml-opacity: 0.8;}
 #mapPanelHandle span:hover{zoom: 1; opacity:1; -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"; filter: alpha(opacity=100); -moz-opacity:1; -khtml-opacity: 1;}
 

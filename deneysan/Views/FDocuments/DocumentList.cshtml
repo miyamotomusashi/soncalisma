@@ -7,7 +7,7 @@
         <div class="content_page page">
             <h2 style="width: 800px; float: left;">@ViewBag.title
             </h2>
-            <input onclick="history.back();" style="cursor:pointer" class="blue" type="button" value="&lt;&lt; @SharedRess.SharedStrings.goback">
+            <button type="button" onclick="history.go(-1)" style="cursor:pointer">&lt;&lt; @SharedRess.SharedStrings.goback</button>
             <hr class="wide">
 
             <ul class="fileList">
