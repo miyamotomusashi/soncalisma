@@ -2,26 +2,30 @@
 @{
     Layout = "~/Views/Shared/frontlayout.cshtml";
 }
-<div class="main_content mainpage pageheight" style="min-height:500px">
+<div class="main_content mainpage pageheight" style="">
     <div class="wrapper mainpage grid_12">
-
-        <div class="form_block page">       
-            <h2 style="width: 800px; float: left;">@CareerRess.CareerStrings.applicationform
-            </h2>
-            <input onclick="history.back();" type="button" value="&lt;&lt;geri dön">
-            <hr class="wide">
+        <div id="sub-sidebar" style="float: left; min-height: 500px">
+            <h1>@CareerRess.CareerStrings.career</h1>
+            <ul style="margin-top: -9px" id="ul1">
+                <li><a href='/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_career'>@CareerRess.CareerStrings.joinus</a></li>
+                <li><a href='/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_career/@SharedRess.SharedStrings.menu_application'>@CareerRess.CareerStrings.applicationform</a></li>
+            </ul>
+        </div>
+        <div id="sub-content" class="fl">
+            <h1>@CareerRess.CareerStrings.applicationform</h1>
+            <hr />
             <p>@Html.ValidationMessage("_FORM")</p>
             @if (TempData["sent"] != null)
+            {
+                if (TempData["sent"].ToString().Equals("true"))
                 {
-                    if (TempData["sent"].ToString().Equals("true"))
-                    {
-                        <div class="notification success">@CareerRess.CareerStrings.applicationsent</div>
-                    }
-                    else if (TempData["sent"].ToString().Equals("false"))
-                    {
-                        <div class="notification error">@CareerRess.CareerStrings.applicationnotsent</div>
-                    }
+                <div class="notification success">@CareerRess.CareerStrings.applicationsent</div>
                 }
+                else if (TempData["sent"].ToString().Equals("false"))
+                {
+                <div class="notification error">@CareerRess.CareerStrings.applicationnotsent</div>
+                }
+            }
             @using (Html.BeginForm("applicationform", "FCareer", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
                 <div class="contact-form">
@@ -39,7 +43,7 @@
                                 <dt>
                                     <label class="hasTip required">CV (pdf, doc, docx)<span class="star">&nbsp;*</span></label></dt>
                                 <dd>
-                                    <input type="file" name="attachedfile" id="attachedfile"/>
+                                    <input type="file" name="attachedfile" id="attachedfile" />
                                 </dd>
                             </div>
                             <div class="field_one">

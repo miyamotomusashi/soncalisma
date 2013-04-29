@@ -606,7 +606,7 @@ width: 660px;
 #sub-content fieldset label{font-size:11px; font-weight:bold; margin:5px}
 #sub-content fieldset select{padding:5px}
 #sub-content fieldset input,
-#sub-content fieldset textarea{padding:5px; width:670px}
+#sub-content fieldset textarea{padding:5px; /*width:670px*/}
 
 
 #sub-content.member li{border:none; border-bottom:dotted 1px #ccc; padding:10px 0}
@@ -616,12 +616,15 @@ width: 660px;
 #sub-content fieldset label{font-size:11px; font-weight:bold; margin:5px}
 #sub-content fieldset select{padding:5px}
 #sub-content fieldset input,
-#sub-content fieldset textarea{padding:5px; width:670px}
+#sub-content fieldset textarea{padding:5px; /*width:670px*/}
 /* -- İÇERİK SAYFALARI -- */
 .page{padding:30px 20px 0 20px; overflow:hidden}
 .page * {line-height:1.5em}
 .page .wrap_content{float:left}
 .page h2{font-weight:bold;}
+
+#sub-content hr{display:list-item; list-style:url(/Content/Images/Front/bg-hrline.png) inside; height:15px; width:100%; margin:10px 0; text-align:center; border:none !important; width:660px}
+
 .page hr{display:list-item; list-style:url(/Content/Images/Front/bg-hrline.png) inside; height:15px; width:100%; margin:10px 0; text-align:center; border:none !important; width:660px}
 .page hr.wide{list-style:url(/Content/Images/Front/bg-hrline-wide.png) inside; width:927px}
 .page p{margin:5px 0 10px;}
