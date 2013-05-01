@@ -1816,7 +1816,7 @@
     <Content Include="Areas\Admin\Views\Gallery\gallery_leftbar.cshtml" />
     <Content Include="Areas\Admin\Views\HumanResource\Index.cshtml" />
     <Content Include="Areas\Admin\Views\HumanResource\hr_leftbar.cshtml" />
-    <None Include="Properties\PublishProfiles\soncalisma.pubxml" />
+    <None Include="Properties\PublishProfiles\son.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
