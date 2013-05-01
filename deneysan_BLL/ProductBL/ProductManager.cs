@@ -20,6 +20,15 @@ namespace deneysan_BLL.ProductBL
             }
         }
 
+        public static List<ProductGroup> GetProductGroupListForFront(string language)
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                var list = db.ProductGroup.Where(d => d.Deleted == false && d.Language == language && d.Online==true).OrderBy(d => d.SortNumber).ToList();
+                return list;
+            }
+        }
+
         public static bool AddProductGroup(ProductGroup record)
         {
             using (DeneysanContext db = new DeneysanContext())
@@ -205,6 +214,16 @@ namespace deneysan_BLL.ProductBL
             }
         }
 
+        public static List<Product> GetProductListAllForFront(string lang)
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                db.Product.Include("ProductGroup").ToList();
+                var list = db.Product.Where(d => d.Deleted == false && d.Language == lang && d.Online==true).OrderBy(d => d.SortNumber).ToList();
+                return list;
+            }
+        }
+
         public static List<Product> GetProductList(int gid)
         {
             using (DeneysanContext db = new DeneysanContext())
@@ -262,7 +281,12 @@ namespace deneysan_BLL.ProductBL
                         record.ProductGroupId = data.ProductGroupId;
                         if (!string.IsNullOrEmpty(data.ProductImage))
                         {
+                            record.ProductImageThumb = data.ProductImageThumb;
                             record.ProductImage = data.ProductImage;
+                        }
+                        if (!string.IsNullOrEmpty(data.filexperiment))
+                        {
+                            record.filexperiment = data.filexperiment;
                         }
                         if (!string.IsNullOrEmpty(data.filetechnical))
                         {

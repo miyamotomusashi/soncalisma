@@ -17,8 +17,8 @@ namespace deneysan.Controllers
 
         public ActionResult Index()
         {
-            var product_group_list = ProductManager.GetProductGroupList(lang);
-            var product_list = ProductManager.GetProductListAll(lang);
+            var product_group_list = ProductManager.GetProductGroupListForFront(lang);
+            var product_list = ProductManager.GetProductListAllForFront(lang);
             ProductWrapperModel modelbind = new ProductWrapperModel(product_list, product_group_list);
             return View(modelbind);
         }

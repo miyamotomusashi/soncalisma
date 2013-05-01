@@ -46,10 +46,12 @@ namespace deneysan.Areas.Admin.Controllers
                 {
                     Random random = new Random();
                     int rand = random.Next(1000, 99999999);
+                    uploadfile.SaveAs(Server.MapPath("/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_original" + rand + Path.GetExtension(uploadfile.FileName)));
+                    model.ProductImage = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_original" + rand + Path.GetExtension(uploadfile.FileName);
+                    rand = random.Next(1000, 99999999);
                     new ImageHelper(280, 240).SaveThumbnail(uploadfile, "/Content/images/products/", Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadfile.FileName));
                     model.ProductImageThumb = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadfile.FileName);
-                    uploadfile.SaveAs(Server.MapPath( "/Content/images/products/"+ Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadfile.FileName)));
-                    model.ProductImage = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadfile.FileName);
+                    
                 }
                 else
                 {
@@ -61,7 +63,7 @@ namespace deneysan.Areas.Admin.Controllers
                 {
                     Random random = new Random();
                     int rand = random.Next(1000, 99999999);
-                    uploadtechfile.SaveAs(Server.MapPath("/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadtraining.FileName)));
+                    uploadtraining.SaveAs(Server.MapPath("/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadtraining.FileName)));
                     model.filetraining = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadtraining.FileName);
                 }
 
@@ -78,7 +80,7 @@ namespace deneysan.Areas.Admin.Controllers
                 {
                     Random random = new Random();
                     int rand = random.Next(1000, 99999999);
-                    uploadtechfile.SaveAs(Server.MapPath("/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadexperimentfile.FileName)));
+                    uploadexperimentfile.SaveAs(Server.MapPath("/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadexperimentfile.FileName)));
                     model.filexperiment = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadexperimentfile.FileName);
                 }
 
@@ -166,13 +168,14 @@ namespace deneysan.Areas.Admin.Controllers
                 {
                     Random random = new Random();
                     int rand = random.Next(1000, 99999999);
+                    uploadfile.SaveAs(Server.MapPath("/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_original" + rand + Path.GetExtension(uploadfile.FileName)));
+                    model.ProductImage = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_original" + rand + Path.GetExtension(uploadfile.FileName);
+                    rand = random.Next(1000, 99999999);
                     new ImageHelper(280, 240).SaveThumbnail(uploadfile, "/Content/images/products/", Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadfile.FileName));
-                    model.ProductImage = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadfile.FileName);
+                    model.ProductImageThumb = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadfile.FileName);
+                    
                 }
-                else
-                {
-                    model.ProductImage = "/Content/images/front/noimage.jpeg";
-                }
+               
 
                 if (uploadtechfile != null && uploadtechfile.ContentLength > 0)
                 {
@@ -185,14 +188,14 @@ namespace deneysan.Areas.Admin.Controllers
                 {
                     Random random = new Random();
                     int rand = random.Next(1000, 99999999);
-                    uploadtechfile.SaveAs(Server.MapPath("/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadtraining.FileName)));
+                    uploadtraining.SaveAs(Server.MapPath("/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadtraining.FileName)));
                     model.filetraining = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadtraining.FileName);
                 }
                 if (uploadexperimentfile != null && uploadexperimentfile.ContentLength > 0)
                 {
                     Random random = new Random();
                     int rand = random.Next(1000, 99999999);
-                    uploadtechfile.SaveAs(Server.MapPath("/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadexperimentfile.FileName)));
+                    uploadexperimentfile.SaveAs(Server.MapPath("/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadexperimentfile.FileName)));
                     model.filexperiment = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadexperimentfile.FileName);
                 }
 
