@@ -12,7 +12,7 @@ namespace deneysan.Controllers
 
         public ActionResult Index()
         {
-            var news = ProjectManager.GetProjectList(lang);
+            var news = ProjectManager.GetProjectListForFront(lang);
             return View(news);
         }
 

@@ -19,6 +19,15 @@ namespace deneysan_BLL.Project
             }
         }
 
+        public static List<Projects> GetProjectListForFront(string language)
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                var list = db.Projects.Where(d => d.Language == language && d.Online==true).OrderBy(d => d.SortOrder).ToList();
+                return list;
+            }
+        }
+
         public static bool AddProject(Projects record)
         {
             using (DeneysanContext db = new DeneysanContext())
