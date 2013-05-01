@@ -23,6 +23,15 @@ namespace deneysan_BLL.ReferenceBL
             }
         }
 
+        public static List<References> GetReferenceListForFront(string language)
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                var list = db.References.Where(d => d.Deleted == false && d.Language == language && d.Online==true).ToList();
+                return list;
+            }
+        }
+
         public static bool AddReference(References record)
         {
             using (DeneysanContext db = new DeneysanContext())

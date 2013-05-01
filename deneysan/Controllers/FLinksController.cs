@@ -15,7 +15,7 @@ namespace deneysan.Controllers
 
         public ActionResult Index()
         {
-            var news = LinkManager.GetImportantLinksList(lang);
+            var news = LinkManager.GetImportantLinksListForFront(lang);
             return View(news);
         }
 

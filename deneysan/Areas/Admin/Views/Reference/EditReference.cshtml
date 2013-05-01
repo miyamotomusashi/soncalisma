@@ -1,5 +1,4 @@
-
-﻿@model deneysan_DAL.Entities.References
+@model deneysan_DAL.Entities.References
 
 @{
     ViewBag.Title = "EditReference";
@@ -15,7 +14,7 @@
 
 <div id="page-content" class="container_12">
     <div id="page-header">
-       <h2>REFERANS DÜZENLE</h2>
+       <h2>REFERANS BILGILERI</h2>
     </div> 
     
 <section class="grid_12 form">
@@ -26,7 +25,7 @@
          @Html.Hidden("hdfieldtaglist")
         @Html.ValidationSummary(true)
         <fieldset>
-        <legend>Referans Ekle</legend>
+        <legend>Referans Düzenle</legend>
         <p>
             @Html.LabelFor(m=>m.Language)
             @Html.DropDownListFor(m=>m.Language,(IEnumerable<SelectListItem>)ViewBag.LanguageList,"Dil Seçiniz...")

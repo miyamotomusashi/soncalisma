@@ -17,7 +17,7 @@ namespace deneysan.Controllers
         public ActionResult Index()
         {
             var news = NewsManager.GetNewsListForFront(lang);
-            var references = ReferenceManager.GetReferenceList(lang);
+            var references = ReferenceManager.GetReferenceListForFront(lang);
             HomePageWrapperModel modelbind = new HomePageWrapperModel(news, references);
             return View(modelbind);
         }
