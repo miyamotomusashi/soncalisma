@@ -1463,6 +1463,7 @@
     <Content Include="Areas\Admin\Content\scripts\pagescripts\instituional\mision.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\links\linklist.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\news\addnews.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\news\editnews.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\news\newslist.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\product\addproduct.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\product\productgroup.js" />

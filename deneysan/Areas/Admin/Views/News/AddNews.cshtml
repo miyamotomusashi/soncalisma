@@ -45,7 +45,12 @@
         <p>
             @Html.LabelFor(m=>m.Spot)
             @Html.TextAreaFor(m=>m.Spot,5,0, new { @class="textwidth50"})
-            @Html.ValidationMessageFor(m=>m.Spot,"", new { @class="verticalaligntop"})
+            @Html.ValidationMessageFor(m=>m.Spot,"", new { @class="verticalaligntop", @maxlength = 10})
+            <br /> 
+            <label class="colorredright">Haber açıklaması en fazla 350 karakter olabilir.</label>
+           <br />
+            <label class="colorred" id="wordcounter">Kalan Karakter: 350</label>
+          
         </p>
         <p>
             @Html.TextAreaFor(m => m.Content, new { id="txtcontent",@class="required"})
@@ -54,7 +59,7 @@
         <br />
         <p>
             @Html.LabelFor(m=>m.TimeCreated)
-             @Html.TextBox("txtdate")  
+             @Html.TextBox("txtdate","", new { @class = "textwidth10"})  
             @* @Html.TextBox("txtdate")*@
         </p>
         <br />

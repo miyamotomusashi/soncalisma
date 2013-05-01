@@ -520,7 +520,9 @@ button images, .button images {
 
 .colorredright
 {
-    color:#ff0000;
+   color: #ff0000;
+width: 350px !important;
+margin-left: 155px;
     
 }
 

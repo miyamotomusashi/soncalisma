@@ -6,6 +6,10 @@
     else if (status == "False" || status == "false")
         MessageBox("İşlem Sırasında Bir Hata Oluştu.", "alert");
 
+    var spotlen = $("#Spot").val().length;
+    var left = 350 - parseInt(spotlen);
+  
+    $('#wordcounter').text('Kalan Karakter: ' + left);
     
     $("#Spot").keyup(function () {
         var count = 350;
@@ -19,11 +23,10 @@
             $('#wordcounter').text('Kalan Karakter: ' + leftword);
         }
 
-
         
     });
 
-    $("#txtdate").datepicker({ dateFormat: 'dd.mm.yy' });
+  
     $("#Header").focus();
 });
 

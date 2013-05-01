@@ -24,7 +24,7 @@
          @Html.Hidden("hdfieldtaglist")
         @Html.ValidationSummary(true)
         <fieldset>
-        <legend>Haber Ekle</legend>
+        <legend>Haber Düzenle</legend>
         <p>
             @Html.LabelFor(m=>m.Language)
             @*@Html.DropDownListFor("ddllanguage",(IEnumerable<SelectListItem>)ViewBag.LanguageList,"Dil Seçiniz...")*@
@@ -48,6 +48,11 @@
             @Html.LabelFor(m=>m.Spot)
             @Html.TextAreaFor(m=>m.Spot,5,0, new { @class="textwidth50"})
             @Html.ValidationMessageFor(m=>m.Spot,"", new { @class="verticalaligntop"})
+            <br /> 
+            <label class="colorredright">Haber açıklaması en fazla 350 karakter olabilir.</label>
+           <br />
+            <label class="colorred" id="wordcounter">Kalan Karakter: 350</label>
+          
         </p>
         <p>
             @Html.TextAreaFor(m => m.Content, new { id="txtcontent",@class="required"})
@@ -76,7 +81,7 @@
 
 
     <script src="~/Areas/Admin/Content/scripts/plugins/jquery.ui.datepicker-tr.js"></script>
-<script src="~/Areas/Admin/Content/scripts/pagescripts/news/addnews.js"></script>
+<script src="~/Areas/Admin/Content/scripts/pagescripts/news/editnews.js"></script>
 }
 
 
