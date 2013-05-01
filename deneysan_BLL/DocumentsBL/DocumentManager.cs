@@ -25,6 +25,16 @@ namespace deneysan_BLL.DocumentsBL
             }
         }
 
+        public static List<DocumentGroup> GetDocumentGroupListForFront(string language)
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                var list = db.DocumentGroup.Where(d => d.Deleted == false && d.Language == language && d.Online==true).OrderBy(d => d.SortNumber).ToList();
+                return list;
+            }
+        }
+
+
         public static bool AddDocumentGroup(DocumentGroup record)
         {
             using (DeneysanContext db = new DeneysanContext())
@@ -203,6 +213,15 @@ namespace deneysan_BLL.DocumentsBL
             using (DeneysanContext db = new DeneysanContext())
             {
                 var list = db.Document.Where(d => d.Deleted == false && d.DocumentGroupId == gid).OrderBy(d => d.SortNumber).ToList();
+                return list;
+            }
+        }
+
+        public static List<Document> GetDocumentListForFront(int gid)
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                var list = db.Document.Where(d => d.Deleted == false && d.DocumentGroupId == gid && d.Online==true).OrderBy(d => d.SortNumber).ToList();
                 return list;
             }
         }

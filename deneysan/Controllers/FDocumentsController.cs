@@ -15,13 +15,13 @@ namespace deneysan.Controllers
 
         public ActionResult Index()
         {
-            var group = DocumentManager.GetDocumentGroupList(lang);
+            var group = DocumentManager.GetDocumentGroupListForFront(lang);
             return View(group);
         }
 
         public ActionResult DocumentList(int gid)
         {
-            var doclist = DocumentManager.GetDocumentList(gid);
+            var doclist = DocumentManager.GetDocumentListForFront(gid);
             ViewBag.title = DocumentManager.GetDocumentGroupById(gid).GroupName;
             return View(doclist);
         }
