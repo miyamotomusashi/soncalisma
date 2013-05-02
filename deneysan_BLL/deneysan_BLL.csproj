@@ -53,6 +53,7 @@
     <Compile Include="AccountBL\AccountManager.cs" />
     <Compile Include="BankBL\BankManager.cs" />
     <Compile Include="ContactBL\ContactManager.cs" />
+    <Compile Include="SearchBL\ObjectContextExtensions.cs" />
     <Compile Include="DocumentsBL\DocumentManager.cs" />
     <Compile Include="Gallery\GalleryManager.cs" />
     <Compile Include="HRBL\InstituionalManager.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="Project\ProjectManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReferenceBL\ReferenceManager.cs" />
+    <Compile Include="SearchBL\SearchManager.cs" />
     <Compile Include="SecurityBL\SecurityManager.cs" />
   </ItemGroup>
   <ItemGroup>

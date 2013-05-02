@@ -208,6 +208,7 @@
     <Compile Include="Controllers\FProductsController.cs" />
     <Compile Include="Controllers\FNewsController.cs" />
     <Compile Include="Controllers\FProjectsController.cs" />
+    <Compile Include="Controllers\FSearchController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1676,6 +1677,7 @@
     <Content Include="Content\Images\Front\deneysan-logo.jpg" />
     <Content Include="Content\Images\Front\doc.png" />
     <Content Include="Content\Images\Front\docx.png" />
+    <Content Include="Content\Images\Front\error.png" />
     <Content Include="Content\Images\Front\footer-gradient.png" />
     <Content Include="Content\Images\Front\footer-quote.png" />
     <Content Include="Content\Images\Front\footer-shadow.png" />
@@ -1696,11 +1698,13 @@
     <Content Include="Content\Images\Front\map-deneysan.png" />
     <Content Include="Content\Images\Front\mn-arw.png" />
     <Content Include="Content\Images\Front\mn-spr.png" />
+    <Content Include="Content\Images\Front\noimage.jpeg" />
     <Content Include="Content\Images\Front\pdf.png" />
     <Content Include="Content\Images\Front\phone-ico.png" />
     <Content Include="Content\Images\Front\search-ico.png" />
     <Content Include="Content\Images\Front\slider.png" />
     <Content Include="Content\Images\Front\social-icons.png" />
+    <Content Include="Content\Images\Front\success.png" />
     <Content Include="Content\Images\Front\testimonial-prev.png" />
     <Content Include="Content\Images\Front\top-panel-arrow.png" />
     <Content Include="Content\Images\Front\teklif-iste.jpg" />
@@ -1816,7 +1820,6 @@
     <Content Include="Areas\Admin\Views\Gallery\gallery_leftbar.cshtml" />
     <Content Include="Areas\Admin\Views\HumanResource\Index.cshtml" />
     <Content Include="Areas\Admin\Views\HumanResource\hr_leftbar.cshtml" />
-    <None Include="Properties\PublishProfiles\son.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -1877,6 +1880,8 @@
     <Content Include="Views\FProjects\Index.cshtml" />
     <Content Include="Views\FProjects\ProjectContent.cshtml" />
     <Content Include="Views\FOffers\Index.cshtml" />
+    <Content Include="Views\Shared\_search.cshtml" />
+    <Content Include="Views\FSearch\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

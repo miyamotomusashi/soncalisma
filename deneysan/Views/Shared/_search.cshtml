@@ -1,0 +1,5 @@
+﻿@using (Html.BeginForm("Index", "FSearch"))
+{
+    <input name="SearchText" type="text" onblur="this.value=(this.value=='') ? '@SharedRess.SharedStrings.searchinsite' : this.value;" onfocus="this.value=(this.value=='@SharedRess.SharedStrings.searchinsite') ? '' : this.value;" value="@SharedRess.SharedStrings.searchinsite" alt="@SharedRess.SharedStrings.searchinsite" class="text_input">
+    <input name="submit" type="submit" value="">
+}

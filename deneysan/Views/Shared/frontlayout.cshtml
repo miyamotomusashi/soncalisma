@@ -21,13 +21,13 @@
         <div class="wrap">
             <div class="oneThird">
                 <address>
-                <p>
-                    <strong>
-                         DENEYSAN EĞİTİM CİHAZLARI SAN. VE TİC. LTD. ŞTİ.</strong><br />
-                    @SharedRess.SharedStrings.address: 
+                    <p>
+                        <strong>DENEYSAN EĞİTİM CİHAZLARI SAN. VE TİC. LTD. ŞTİ.</strong><br />
+                        @SharedRess.SharedStrings.address: 
 Yeni Sanayi Sitesi 12 Ekim Cad. 52.Sok. No:18A    
 BALIKESİR 
-                </p></address>
+                    </p>
+                </address>
             </div>
             <div class="oneThird last">
                 <p>
@@ -46,7 +46,7 @@ BALIKESİR
                 <span style="text-transform: capitalize !important">@SharedRess.SharedStrings.map</span>
             </div>
             <div id="lang">
-                 @Html.ActionLink(SharedRess.SharedStrings.culturename, "ChangeCulture", "FHome", new { lang = SharedRess.SharedStrings.culture,returnUrl = this.Request.RawUrl }, null)
+                @Html.ActionLink(SharedRess.SharedStrings.culturename, "ChangeCulture", "FHome", new { lang = SharedRess.SharedStrings.culture, returnUrl = this.Request.RawUrl }, null)
             </div>
         </div>
     </div>
@@ -59,42 +59,39 @@ BALIKESİR
                     <a href="http://www.youtube.com/results?search_query=deneysan" title="Deneysan Youtube" class="youtube"></a>
                 </div>
                 <div id="searchform">
-                    <fieldset>
-                        <input name="Search" type="text" onblur="this.value=(this.value=='') ? '@SharedRess.SharedStrings.searchinsite' : this.value;" onfocus="this.value=(this.value=='@SharedRess.SharedStrings.searchinsite') ? '' : this.value;" value="@SharedRess.SharedStrings.searchinsite" alt="@SharedRess.SharedStrings.searchinsite" class="text_input">
-                        <input name="submit" type="submit" value="">
-                    </fieldset>
+                    @{ Html.RenderAction("_search", "FSearch"); }
                 </div>
             </div>
             <div class="head_content container_16">
                 <div class="logo"><a href="/" title="@SharedRess.SharedStrings.pagetitle"></a></div>
                 <div class="menu">
-                        <ul class="cssdropdown">
-                            <li>
-                                <a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_homepage">@SharedRess.SharedStrings.homepage</a>
-                            </li>
-                            <li class="mnslc">
-                                <a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_institutional">@SharedRess.SharedStrings.institutional</a>
-                                <ul class="submenu">
-                                    <li><a href='/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_institutional'>@SharedRess.SharedStrings.aboutus</a></li>
-                                    <li><a href='/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_visionmision'>@SharedRess.SharedStrings.visionmision</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_products">@SharedRess.SharedStrings.products</a>
-                            </li>
-                            <li>
-                                <a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_documents">@SharedRess.SharedStrings.documents</a>
-                            </li>
-                            <li class="mnslc">
-                                <a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_contactdetails">@SharedRess.SharedStrings.contact</a>
-                                <ul class="submenu">
-                                    <li><a href='/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_contactdetails'>@SharedRess.SharedStrings.contactdetails</a></li>
-                                    <li><a href='/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_contactform'>@SharedRess.SharedStrings.contactform</a></li>
-                                    <li><a href='/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_bankaccounts'>@SharedRess.SharedStrings.bankaccounts</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                   
+                    <ul class="cssdropdown">
+                        <li>
+                            <a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_homepage">@SharedRess.SharedStrings.homepage</a>
+                        </li>
+                        <li class="mnslc">
+                            <a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_institutional">@SharedRess.SharedStrings.institutional</a>
+                            <ul class="submenu">
+                                <li><a href='/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_institutional'>@SharedRess.SharedStrings.aboutus</a></li>
+                                <li><a href='/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_visionmision'>@SharedRess.SharedStrings.visionmision</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_products">@SharedRess.SharedStrings.products</a>
+                        </li>
+                        <li>
+                            <a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_documents">@SharedRess.SharedStrings.documents</a>
+                        </li>
+                        <li class="mnslc">
+                            <a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_contactdetails">@SharedRess.SharedStrings.contact</a>
+                            <ul class="submenu">
+                                <li><a href='/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_contactdetails'>@SharedRess.SharedStrings.contactdetails</a></li>
+                                <li><a href='/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_contactform'>@SharedRess.SharedStrings.contactform</a></li>
+                                <li><a href='/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_bankaccounts'>@SharedRess.SharedStrings.bankaccounts</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
                 </div>
             </div>
         </div>
@@ -119,14 +116,14 @@ BALIKESİR
 </html>
 <script type="text/javascript">
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-40474919-1']);
-  _gaq.push(['_trackPageview']);
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-40474919-1']);
+    _gaq.push(['_trackPageview']);
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+    (function () {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
 
 </script>

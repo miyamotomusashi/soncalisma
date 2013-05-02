@@ -1,0 +1,24 @@
+﻿@model List<Tuple<string, string>>
+@{
+    Layout = "~/Views/Shared/frontlayout.cshtml";
+}
+<div class="main_content mainpage pageheight" style="">
+    <div class="wrapper mainpage grid_12">
+        <div class="content_page page">
+            <h2>ARAMA SONUÇLARI</h2>
+            <hr class="wide" />
+            <div class="ulListe">
+                <ul id="newslist">
+                    @foreach(var links in Model)
+                    {
+                    <li>
+                        <a href="@links.Item2">
+                            <span class="Left">@links.Item1</span>
+                        </a>
+                    </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
