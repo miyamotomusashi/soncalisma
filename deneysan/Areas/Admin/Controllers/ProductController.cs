@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using deneysan.Areas.Admin.Filters;
 using deneysan.Areas.Admin.Helpers;
 using deneysan_BLL.LanguageBL;
@@ -270,5 +271,18 @@ namespace deneysan.Areas.Admin.Controllers
             return Json(ProductManager.DeleteProduct(id));
         }
 
+        public JsonResult SortRecords(string list)
+        {
+            JsonList psl = (new JavaScriptSerializer()).Deserialize<JsonList>(list);
+            string[] idsList = psl.list;
+            bool issorted = ProductManager.SortProducts(idsList);
+            return Json(issorted);
+
+
+        }
+        public class JsonList
+        {
+            public string[] list { get; set; }
+        }
     }
 }

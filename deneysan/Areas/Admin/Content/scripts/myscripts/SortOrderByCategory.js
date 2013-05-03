@@ -1,4 +1,4 @@
-﻿function SortOrderByCategory(catid, section) {
+﻿function SortOrderByCategory(catid, url) {
     //Sorting
 
     var d;
@@ -16,8 +16,8 @@
             //   alert(json); return;
             $.ajax({
                 type: 'POST',
-                url: '/AdminPanel/services/General/Sorting.asmx/SortRecordByCategory',
-                data: "{'dataid':'" + json + "', 'section':'" + section + "',categoryid:'" + catid + "'}",
+                url: url,
+                data: "{'catid':'" + catid + "', 'list':'" + json + "'}",
                 //data: "{jsondata: '" + json + "'}",
                 contentType: "application/json; charset=utf-8",
                 dataType: 'json',

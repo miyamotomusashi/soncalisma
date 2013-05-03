@@ -204,6 +204,31 @@ namespace deneysan_BLL.ProductBL
 
         #region Product
 
+        public static bool SortProducts(string[] idsList)
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                try
+                {
+
+                    int row = 0;
+                    foreach (string id in idsList)
+                    {
+                        int mid = Convert.ToInt32(id);
+                        Product sortingrecord = db.Product.SingleOrDefault(d => d.ProductId == mid);
+                        sortingrecord.SortNumber = Convert.ToInt32(row);
+                        db.SaveChanges();
+                        row++;
+                    }
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+
         public static List<Product> GetProductListAll(string lang)
         {
             using (DeneysanContext db = new DeneysanContext())
@@ -219,7 +244,7 @@ namespace deneysan_BLL.ProductBL
             using (DeneysanContext db = new DeneysanContext())
             {
                 db.Product.Include("ProductGroup").ToList();
-                var list = db.Product.Where(d => d.Deleted == false && d.Language == lang && d.Online==true).OrderBy(d => d.SortNumber).ToList();
+                var list = db.Product.Where(d => d.Deleted == false && d.Language == lang && d.Online==true).OrderByDescending(d=>d.TimeCreated).OrderBy(d => d.SortNumber).ToList();
                 return list;
             }
         }
@@ -228,7 +253,7 @@ namespace deneysan_BLL.ProductBL
         {
             using (DeneysanContext db = new DeneysanContext())
             {
-                var list = db.Product.Where(d => d.Deleted == false && d.ProductGroupId == gid).OrderBy(d => d.SortNumber).ToList();
+                var list = db.Product.Where(d => d.Deleted == false && d.ProductGroupId == gid).OrderByDescending(d=>d.TimeCreated).OrderBy(d => d.SortNumber).ToList();
                 return list;
             }
         }
@@ -244,7 +269,7 @@ namespace deneysan_BLL.ProductBL
                     record.Deleted = false;
                     
                     record.Online = true;
-                    //record.SortNumber = 9999;
+                    record.SortNumber = 9999;
                     db.Product.Add(record);
                     db.SaveChanges();
 

@@ -26,6 +26,7 @@
     <table id="tblcategory" class="table no-border tablesorter">
         <thead>
             <tr>
+                <th class="width5">Sırala</th>
                 <th class="width50">Ürün Adı</th>
                 <th class="center witdh10">Durum</th>
                 <th class="center witdh10">Eklenme Tarihi</th>
@@ -36,6 +37,9 @@
             @foreach (var item in Model)
             {
                 <tr id="listItem_@item.ProductId"  class="handle">
+                     <td class="center">
+                        <img src="/Areas/Admin/Content/images/icons/tablesorter/arrow2.png" alt="move" border="0" class="handle sortimg" align="middle" />
+                    </td>  
                     <td>
                         <span id="spanitem_@item.ProductId">@item.Name</span>
                         <input type="text" id="textitem_@item.ProductId" value="" class="displaynone textwidth90"/>
@@ -73,8 +77,8 @@
 
 <script src="~/Areas/Admin/Content/scripts/plugins/tablesorter/tablesorter.js"></script>
 <script src="~/Areas/Admin/Content/scripts/plugins/tablesorter/jquery.tablesorter.pager.js"></script>
-
-
+<script src="~/Areas/Admin/Content/scripts/myscripts/SortOrder.js"></script>
+<script src="~/Areas/Admin/Content/scripts/myscripts/SortOrderByCategory.js"></script>
 <script src="~/Areas/Admin/Content/scripts/myscripts/SetOnlineStatusRecord.js"></script>
 <script src="~/Areas/Admin/Content/scripts/myscripts/DeleteRecordTable.js"></script>
 
