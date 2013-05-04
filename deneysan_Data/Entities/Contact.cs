@@ -19,7 +19,7 @@ namespace deneysan_DAL.Entities
         public string Fax { get; set; }
         [Display(Name = "Email")]
         [Required(ErrorMessage = "Email Bilgisini Giriniz")]
-        [EmailAddress(ErrorMessage = "Email formatı doğru değil.")]
+        
         public string Email { get; set; }
         [Display(Name = "Vergi Dairesi")]
         public string Taxoffice { get; set; }
