@@ -271,6 +271,26 @@ namespace deneysan.Areas.Admin.Controllers
             return Json(ProductManager.DeleteProduct(id));
         }
 
+        public JsonResult RemoveTechnic(int id)
+        {
+            return Json(ProductManager.RemoveTechnic(id));
+        }
+
+        public JsonResult RemoveTraining(int id)
+        {
+            return Json(ProductManager.RemoveTraining(id));
+        }
+
+        public JsonResult RemoveExperimental(int id)
+        {
+            return Json(ProductManager.RemoveExperimental(id));
+        }
+        
+        public JsonResult RemoveVideo(int id)
+        {
+            return Json(ProductManager.RemoveVideo(id));
+        }
+        
         public JsonResult SortRecords(string list)
         {
             JsonList psl = (new JavaScriptSerializer()).Deserialize<JsonList>(list);

@@ -26,10 +26,11 @@
     <table id="tblcategory" class="table no-border tablesorter">
         <thead>
             <tr>
-                <th class="width5">Sırala</th>
+                <th class="center width5">Sırala</th>
+                 <th class="center widt5">Resim</th>
                 <th class="width50">Ürün Adı</th>
                 <th class="center witdh10">Durum</th>
-                <th class="center witdh10">Eklenme Tarihi</th>
+                <th class="center witdh30">Döküman İşlemleri</th>
                 <th class="center witdh10">İşlem</th>
             </tr>
         </thead>
@@ -37,9 +38,16 @@
             @foreach (var item in Model)
             {
                 <tr id="listItem_@item.ProductId"  class="handle">
-                     <td class="center">
+                    <td class="center">
                         <img src="/Areas/Admin/Content/images/icons/tablesorter/arrow2.png" alt="move" border="0" class="handle sortimg" align="middle" />
                     </td>  
+                    <td>
+                        <center>
+                            <a href="@item.ProductImageThumb" onclick="return false;"
+                                class="preview">
+                                <img src="@item.ProductImageThumb" alt="image" with="48" height="48" /></a></center>
+                    </td>
+
                     <td>
                         <span id="spanitem_@item.ProductId">@item.Name</span>
                         <input type="text" id="textitem_@item.ProductId" value="" class="displaynone textwidth90"/>
@@ -49,13 +57,55 @@
                         {<img   id="img_online_@item.ProductId" src="/Areas/Admin/Content/images/icons/online.png" class="cursorpointer" title="Offline yap" onclick="SetOnlineStatus('/Product/EditStatus',@item.ProductId)" />}
                         else{<img id="img_online_@item.ProductId" src="/Areas/Admin/Content/images/icons/offline.png" class="cursorpointer" title="Online yap" onclick="SetOnlineStatus('/Product/EditStatus',@item.ProductId)" />}
                     </td>
-                    <td class="center">@item.TimeCreated</td>
+                    <td class="center">
+                         @if (@item.filetechnical != null)   
+                         {
+                            <div id="divtechnical" style="float:left;"> 
+                            <img id="btntechnic_@item.ProductId"  src="/Areas/Admin/Content/images/icons//technic.png"  title="Teknik Döküman Kaldır" class="cursorpointer" width="16" height="16" onclick="RemoveTechnic(@item.ProductId)">
+                            <a href="@item.filetechnical" target="blank">
+                                <img id="btn_save_@item.ProductId"  src="/Areas/Admin/Content/images/icons//lookup.png"  title="Teknik Döküman Gör" class="cursorpointer" width="16" height="16">
+                            </a>
+                            &nbsp;&nbsp;&nbsp;|
+                           </div>
+                         }
+                        
+                         @if (@item.filetraining != null)   
+                         {
+                              <div id="divtraining" style="float:left;">
+                                   &nbsp;&nbsp;&nbsp;
+                            <img id="btnmanual_@item.ProductId"  src="/Areas/Admin/Content/images/icons//usermanual.png"  title="Eğitim Dökümanı Kaldır" class="cursorpointer" width="16" height="16" onclick="RemoveTraining(@item.ProductId)">
+                             <a href="@item.filetraining" target="blank">
+                                <img id="btn_save_@item.ProductId"  src="/Areas/Admin/Content/images/icons//lookup.png"  title="Eğitim Dökümanını Gör" class="cursorpointer" width="16" height="16">
+                            </a>
+                                   &nbsp;&nbsp;&nbsp;|
+                           </div>
+                        }
+                       
+                          @if (@item.filexperiment != null)   
+                         {
+                             <div id="divexperimental" style="float:left;">
+                                  &nbsp;&nbsp;&nbsp;
+                            <img id="btnexerimental_@item.ProductId"  src="/Areas/Admin/Content/images/icons//experimental.png"  title="Deney Dökümanı Kaldır" class="cursorpointer" width="16" height="16" onclick="RemoveExperimental(@item.ProductId)">
+                             <a href="@item.filexperiment" target="blank">
+                              <img id="btn_save_@item.ProductId"  src="/Areas/Admin/Content/images/icons//lookup.png"  title="Deney Dökümanını Gör" class="cursorpointer" width="16" height="16">
+                             </a>
+                                  &nbsp;&nbsp;&nbsp;|
+                            </div>
+                           
+                         }
+                     
+                         @if (@item.filevideo != null)   
+                         {
+                             <div id="divvideo" style="float:left;width:40px;float:left;">
+                             &nbsp;&nbsp;&nbsp;
+                                <img id="btnvideo_@item.ProductId"  src="/Areas/Admin/Content/images/icons/video.png"  title="Video Kaldır" class="cursorpointer" width="16" height="16" onclick="RemoveVideo(@item.ProductId)">
+                            </div>
+                         }                     
+                    </td>
                     <td class="center">
                        <a href="/yonetim/urunduzenle/@item.ProductId">
                         <img id="btn_update_@item.ProductId"  src="/Areas/Admin/Content/images/icons/16/edit.png"  title="Güncelle" class="cursorpointer" >
                         </a>
-                        <img id="btn_save_@item.ProductId"  src="/Areas/Admin/Content/images/icons/16/save.png"  title="Kaydet" class="displaynone cursorpointer" onclick="UpdateRecord(@item.ProductId)">
-                        <img id="btn_cancel_@item.ProductId"  src="/Areas/Admin/Content/images/icons/16/error.png"  title="İptal" class="displaynone cursorpointer" onclick="CancelRecord(@item.ProductId)">
                        <img id="DeleteImage_@item.ProductId"  src="/Areas/Admin/Content/images/icons/16/delete.png" class="cursorpointer"  title="Sil" onclick="DeleteRecord('/Product/DeleteRecord',@item.ProductId)">
                     </td>
                 </tr>
@@ -68,7 +118,7 @@
 </div>
 
 
-
+<script src="~/Areas/Admin/Content/scripts/myscripts/main.js"></script>
 <link href="~/Areas/Admin/Content/styles/pluginstyles/jquery.msgbox.css" rel="stylesheet" />
 <script src="~/Areas/Admin/Content/scripts/plugins/jquery.msgbox.min.js"></script>
 <script src="~/Areas/Admin/Content/scripts/myscripts/MessageBox.js"></script>

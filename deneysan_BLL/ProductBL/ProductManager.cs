@@ -427,7 +427,103 @@ namespace deneysan_BLL.ProductBL
                 }
             }
         }
-      
-       
+
+
+
+        public static bool RemoveTechnic(int id)
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                try
+                {
+                    Product record = db.Product.Where(d => d.ProductId == id && d.Deleted == false).SingleOrDefault();
+                    if (record != null)
+                    {
+                        record.filetechnical = null;
+                        db.SaveChanges();
+                        return true;
+                    }
+                    else
+                        return false;
+                                      
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+        }
+
+        public static object RemoveTraining(int id)
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                try
+                {
+                    Product record = db.Product.Where(d => d.ProductId == id && d.Deleted == false).SingleOrDefault();
+                    if (record != null)
+                    {
+                        record.filetraining = null;
+                        db.SaveChanges();
+                        return true;
+                    }
+                    else
+                        return false;
+
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+        }
+
+        public static object RemoveExperimental(int id)
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                try
+                {
+                    Product record = db.Product.Where(d => d.ProductId == id && d.Deleted == false).SingleOrDefault();
+                    if (record != null)
+                    {
+                        record.filexperiment = null;
+                        db.SaveChanges();
+                        return true;
+                    }
+                    else
+                        return false;
+
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+        }
+
+        public static object RemoveVideo(int id)
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                try
+                {
+                    Product record = db.Product.Where(d => d.ProductId == id && d.Deleted == false).SingleOrDefault();
+                    if (record != null)
+                    {
+                        record.filevideo = null;
+                        db.SaveChanges();
+                        return true;
+                    }
+                    else
+                        return false;
+
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+        }
     }
 }
