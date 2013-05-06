@@ -13,10 +13,10 @@
             $.iaosb_Map_Maps.each(function () {
                 var mapName = $(this).attr('class');
                 map = $(this),
-				mapName = new google.maps.Map(map.get(0), { zoom: map.data("zoom") || 10, zoomControlOptions: { style: google.maps.ZoomControlStyle.SMALL }, panControl: false, streetViewControl: false, center: new google.maps.LatLng(39.674064, 27.935615), html: "İAOSB", popup: true, mapTypeId: google.maps.MapTypeId.ROADMAP });
+				mapName = new google.maps.Map(map.get(0), { zoom: map.data("zoom") || 10, zoomControlOptions: { style: google.maps.ZoomControlStyle.SMALL }, panControl: false, streetViewControl: false, center: new google.maps.LatLng(39.674064, 27.935615), html: "DENEYSAN", popup: true, mapTypeId: google.maps.MapTypeId.HYBRID });
 
                 locations = $.iaosb_Map_Locations || [
-	                   ["<strong>DENEYSAN</strong><br />DENEYSAN EĞİTİM CİHAZLARI SAN. VE TİC. LTD. ŞTİ.<br />Yönetim Merkezi", 39.674064, 27.935615, "DENEYSAN", "/Content/images/front/map-deneysan.png"]
+	                   ["<center style='padding:5px'><strong>DENEYSAN</strong><br />DENEYSAN EĞİTİM CİHAZLARI SAN. VE TİC. LTD. ŞTİ.<br /><img src=/Content/Images/Front/oncephe.jpg></center>", 39.674064, 27.935615, "DENEYSAN", "/Content/images/front/map-deneysan.png"]
                     //,["<strong>İAOSB</strong><br />İzmir Atatürk Organize Sanayi Bölgesi<br />Atık Su Arıtma Tesisi", 38.481814, 27.031345, "Atık Su Arıtma Tesisi", "/Media/images/map-marker-3.png"]
                     //,["<strong>İAOSB</strong><br />İzmir Atatürk Organize Sanayi Bölgesi<br />ATAER Enerji", 38.478891, 27.032418, "ATAER Enerji", "/Media/images/map-marker-2.png"]
                     //,["<strong>İAOSB</strong><br />İzmir Atatürk Organize Sanayi Bölgesi<br />Sürekli Sergi Alanı", 38.498743, 27.043791, "Sürekli Sergi Alanı", "/Media/images/map-marker-4.png"]
@@ -32,7 +32,7 @@
                         title: locations[i][3],
                         icon: locations[i][4]
                     });
-                    google.maps.event.addListener(marker, 'click', (function (marker, i) { return function () { infowindow.setContent(locations[i][0]); infowindow.open(mapName, marker); } })(marker, i));
+                    google.maps.event.addListener(marker, 'mouseover', (function (marker, i) { return function () { infowindow.setContent(locations[i][0]); infowindow.open(mapName, marker); } })(marker, i));
                 }
             });
         }
@@ -76,12 +76,3 @@ jQuery(document).ready(function ($) {
     }
     optScript.initSite();
 });
-
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-878085-1']);
-_gaq.push(['_trackPageview']);
-(function(){
-	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();

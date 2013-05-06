@@ -239,6 +239,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ContactStrings.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Views\References\ReferencesStrings.Designer.cs">
+      <DependentUpon>ReferencesStrings.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Views\References\ReferencesStrings.en.Designer.cs">
+      <DependentUpon>ReferencesStrings.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Resources\Views\Offers\OffersStrings.en.Designer.cs">
       <DependentUpon>OffersStrings.en.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -1700,6 +1710,7 @@
     <Content Include="Content\Images\Front\mn-arw.png" />
     <Content Include="Content\Images\Front\mn-spr.png" />
     <Content Include="Content\Images\Front\noimage.jpeg" />
+    <Content Include="Content\Images\Front\oncephe.jpg" />
     <Content Include="Content\Images\Front\pdf.png" />
     <Content Include="Content\Images\Front\phone-ico.png" />
     <Content Include="Content\Images\Front\search-ico.png" />
@@ -1883,7 +1894,7 @@
     <Content Include="Views\FOffers\Index.cshtml" />
     <Content Include="Views\Shared\_search.cshtml" />
     <Content Include="Views\FSearch\Index.cshtml" />
-    <Content Include="Views\FReference\Index.cshtml" />
+    <Content Include="Views\FReferences\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1938,6 +1949,16 @@
       <LastGenOutput>ContactStrings1.Designer.cs</LastGenOutput>
       <CustomToolNamespace>ContactRess</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\References\ReferencesStrings.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ReferencesStrings.en.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>ReferencesRess</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\References\ReferencesStrings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ReferencesStrings.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>ReferencesRess</CustomToolNamespace>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Views\Offers\OffersStrings.en.resx">
       <Generator>ResXFileCodeGenerator</Generator>
