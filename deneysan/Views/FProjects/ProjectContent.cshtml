@@ -8,7 +8,7 @@
         <div class="content_page page">
 
             <h2 style="width: 800px; float: left;">@Model.Name</h2>
-            <input onclick="history.back();" style="cursor:pointer" class="blue" type="button" value="&lt;&lt; @SharedRess.SharedStrings.goback">
+            <button type="button" onclick="history.go(-1)" style="cursor:pointer">&lt;&lt; @SharedRess.SharedStrings.goback</button>
             <hr class="wide">
             @Html.Raw(Model.Content)
             @if (Model.ProjectFile != null)

@@ -340,6 +340,15 @@ namespace SharedRess {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to referanslar.
+        /// </summary>
+        public static string menu_references {
+            get {
+                return ResourceManager.GetString("menu_references", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to vizyon-misyon.
         /// </summary>
         public static string menu_visionmision {

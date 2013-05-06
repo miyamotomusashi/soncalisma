@@ -1,0 +1,31 @@
+﻿@model IEnumerable<deneysan_DAL.Entities.References>
+@{
+    Layout = "~/Views/Shared/frontlayout.cshtml";
+}
+<style>
+    .refdiv:hover { background-color:#fafafa; }
+    .refdiv { display: block; float: left; border:1px solid #efefef; padding:5px; height:140px; width:160px; margin: 0 16px 15px 0; }
+</style>
+<div class="main_content mainpage pageheight" style="">
+    <div class="wrapper mainpage grid_12">
+        <div class="content_page page">
+            <h2>@HomeRess.HomeStrings.references</h2>
+            <hr class="wide" />
+            <div id="reflist">
+                @foreach (var reference in Model)
+                {
+                    <a href="@reference.Link" target="_blank">
+                        <div class="refdiv">
+                            <div style="height:100px; text-align:center">
+                                <img width="96" height="96" src="@reference.Logo" alt="@reference.ReferenceName" />
+                            </div>
+                            <div style="text-align:center">
+                                @reference.ReferenceName
+                            </div>
+                        </div>
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+</div>

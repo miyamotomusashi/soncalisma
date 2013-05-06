@@ -198,6 +198,7 @@
     <Compile Include="Areas\Admin\Helpers\ImageResizer.cs" />
     <Compile Include="Areas\Admin\Helpers\Utility.cs" />
     <Compile Include="Areas\Admin\Models\LoginModel.cs" />
+    <Compile Include="Controllers\FReferencesController.cs" />
     <Compile Include="Controllers\FDocumentsController.cs" />
     <Compile Include="Controllers\FHomeController.cs" />
     <Compile Include="Controllers\FContactController.cs" />
@@ -1882,6 +1883,7 @@
     <Content Include="Views\FOffers\Index.cshtml" />
     <Content Include="Views\Shared\_search.cshtml" />
     <Content Include="Views\FSearch\Index.cshtml" />
+    <Content Include="Views\FReference\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -69,6 +69,9 @@ namespace deneysan
             routes.MapRoute("search_tr", "tr/arama", new { action = "Index", Controller = "FSearch" });
             routes.MapRoute("search_en", "en/search", new { action = "Index", Controller = "FSearch" });
 
+            routes.MapRoute("reference_tr", "tr/referanslar", new { action = "Index", Controller = "FReferences" });
+            routes.MapRoute("reference_en", "en/references", new { action = "Index", Controller = "FReferences" });
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

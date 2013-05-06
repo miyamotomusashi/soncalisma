@@ -210,6 +210,9 @@
   <data name="menu_projects" xml:space="preserve">
     <value>projeler</value>
   </data>
+  <data name="menu_references" xml:space="preserve">
+    <value>referanslar</value>
+  </data>
   <data name="menu_visionmision" xml:space="preserve">
     <value>vizyon-misyon</value>
   </data>
