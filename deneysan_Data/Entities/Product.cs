@@ -14,6 +14,21 @@ namespace deneysan_DAL.Entities
         [Display(Name="Ürün Adı")]
         [Required(ErrorMessage="Ürün Adını Giriniz.")]
         public string Name { get; set; }
+
+        [Display(Name = "Ürün Kodu")]
+        [Required(ErrorMessage = "Ürün Kodunu Giriniz.")]
+        public string Code { get; set; }
+
+        [Display(Name = "Ürün Fiyatı")]
+        [Required(ErrorMessage = "Ürün Fiyatını Giriniz.")]
+        public decimal Price { get; set; }
+
+        [Display(Name = "Ürün Donanım Fiyatı")]
+        public decimal HardwarePrice { get; set; }
+
+        [Display(Name = "Ürün Donanımı Varmı?")]
+        public bool Hardware { get; set; }
+
         [Required(ErrorMessage = "Ürün Grubunu Seçiniz.")]
         public int ProductGroupId{get;set;}
 

@@ -6,7 +6,7 @@
     else if (status == "False" || status == "false")
         MessageBox("İşlem Sırasında Bir Hata Oluştu.", "alert");
 
-  
+    $("#tabs").tabs();
     var selval = $("#Language option:selected").val();
     
     if (selval == "") {
