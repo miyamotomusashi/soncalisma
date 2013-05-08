@@ -1832,6 +1832,7 @@
     <Content Include="Areas\Admin\Views\Gallery\gallery_leftbar.cshtml" />
     <Content Include="Areas\Admin\Views\HumanResource\Index.cshtml" />
     <Content Include="Areas\Admin\Views\HumanResource\hr_leftbar.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductGroup\EdtiGroup.cshtml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -1911,6 +1912,7 @@
     <Folder Include="Content\Images\bankinfo\" />
     <Folder Include="Content\Images\documents\" />
     <Folder Include="Content\Images\news\" />
+    <Folder Include="Content\Images\productcategory\" />
     <Folder Include="Content\Images\products\" />
     <Folder Include="Content\Images\projects\" />
     <Folder Include="Content\Images\references\" />

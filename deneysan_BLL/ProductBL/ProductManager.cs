@@ -62,6 +62,45 @@ namespace deneysan_BLL.ProductBL
         }
 
 
+        public static bool EditProductGroup(ProductGroup record)
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                try
+                {
+                    ProductGroup editrecord = db.ProductGroup.Where(d => d.ProductGroupId == record.ProductGroupId && d.Deleted == false).SingleOrDefault();
+                    if (record != null)
+                    {
+                        editrecord.TimeUpdated = DateTime.Now;
+                        editrecord.GroupName = record.GroupName;
+                        editrecord.PageSlug = record.PageSlug;
+                        if (!string.IsNullOrEmpty(record.GroupImage))
+                            editrecord.GroupImage = record.GroupImage;
+
+                        db.SaveChanges();
+
+                        //LogtrackManager logkeeper = new LogtrackManager();
+                        //logkeeper.LogDate = DateTime.Now;
+                        //logkeeper.LogProcess = EnumLogType.DokumanGrup.ToString();
+                        //logkeeper.Message = LogMessages.ProductGroupAdded;
+                        //logkeeper.User = HttpContext.Current.User.Identity.Name;
+                        //logkeeper.Data = record.GroupName;
+                        //logkeeper.AddInfoLog(logger);
+
+
+                        return true;
+                    }
+                    else
+                        return false;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+
+        }
+        
         public static bool UpdateGroupStatus(int id)
         {
             using (DeneysanContext db = new DeneysanContext())
@@ -525,5 +564,30 @@ namespace deneysan_BLL.ProductBL
                 }
             }
         }
+
+        public static ProductGroup GetGroupById(int nid)
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                try
+                {
+                    ProductGroup record = db.ProductGroup.Where(d => d.ProductGroupId == nid && d.Deleted==false).SingleOrDefault();
+                    if (record != null)
+                        return record;
+                    else
+                        return null;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+
+
+        }
+
+
+       
+        
     }
 }

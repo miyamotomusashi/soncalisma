@@ -15,6 +15,8 @@ namespace deneysan_DAL.Entities
         [Required(ErrorMessage = "Grup Adını Giriniz")]
         [Display(Name = "Grup Adı")]
         public string GroupName { get; set; }
+      
+        public string GroupImage { get; set; }
 
         public bool Online { get; set; }
         public bool Deleted { get; set; }

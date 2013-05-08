@@ -17,18 +17,22 @@
    </div>
    <section class="grid_12 form">
     @Html.Hidden("ProcessMessage",(object)@ViewBag.ProcessMessage) 
-    @using (Html.BeginForm())
+     @using(Html.BeginForm("Index", "ProductGroup", FormMethod.Post, new { enctype = "multipart/form-data"}))
     {
     <fieldset>
         <legend>Grup Ekle</legend>
         <p>
          <label for="drplanguage">Dil</label>
          @Html.DropDownList("drplanguage", (IEnumerable<SelectListItem>)ViewBag.LanguageList, "Dil Seçiniz...", new {@class="required" })
-         
         </p>
         <p>
          <label for="txtname">Grup Adı</label>
          <input type="text" class="textwidth50 required" id="txtname" name="txtname" />
+        </p>
+         <p>
+            <label for="txtname">Grup Resmi</label>
+            
+            <input type="file" name="uploadfile" id="uploadfile" class="required" />
         </p>
         <p>
             <label></label>
@@ -42,6 +46,7 @@
         <thead>
             <tr>
                 <th class="width5">Sırala</th>
+                 <th class="center widt5">Resim</th>
                 <th class="width50">Grup Adı</th>
                 <th class="center witdh10">Durum</th>
                 <th class="center witdh10">Eklenme Tarihi</th>
@@ -55,6 +60,13 @@
                     <td class="center">
                         <img src="/Areas/Admin/Content/images/icons/tablesorter/arrow2.png" alt="move" border="0" class="handle sortimg" align="middle" />
                     </td>
+                     <td>
+                        <center>
+                            <a href="@item.GroupImage" onclick="return false;"
+                                class="preview">
+                                <img src="@item.GroupImage" alt="image" with="48" height="48" /></a></center>
+                    </td>
+
                     <td>
                         <span id="spanitem_@item.ProductGroupId">@item.GroupName</span>
                         <input type="text" id="textitem_@item.ProductGroupId" value="" class="displaynone textwidth90"/>
@@ -66,7 +78,9 @@
                     </td>
                     <td class="center">@item.TimeCreated</td>
                     <td class="center">
-                       <img id="btn_update_@item.ProductGroupId"  src="/Areas/Admin/Content/images/icons/16/edit.png"  title="Güncelle" class="cursorpointer" onclick="EditRecord(@item.ProductGroupId)">
+                       <a href="/yonetim/urungrubuduzenle/@item.ProductGroupId">
+                           <img id="btn_update_@item.ProductGroupId"  src="/Areas/Admin/Content/images/icons/16/edit.png"  title="Güncelle" class="cursorpointer" >
+                        </a>
                         <img id="btn_save_@item.ProductGroupId"  src="/Areas/Admin/Content/images/icons/16/save.png"  title="Kaydet" class="displaynone cursorpointer" onclick="UpdateRecord(@item.ProductGroupId)">
                         <img id="btn_cancel_@item.ProductGroupId"  src="/Areas/Admin/Content/images/icons/16/error.png"  title="İptal" class="displaynone cursorpointer" onclick="CancelRecord(@item.ProductGroupId)">
                        <img id="DeleteImage_@item.ProductGroupId"  src="/Areas/Admin/Content/images/icons/16/delete.png" class="cursorpointer"  title="Sil" onclick="DeleteRecord('/ProductGroup/DeleteRecord',@item.ProductGroupId)">
@@ -81,10 +95,10 @@
     <br class="cl" />
 <div id="info"></div>
 </div>
-
+<script src="~/Areas/Admin/Content/scripts/myscripts/main.js"></script>
 <script src="~/Areas/Admin/Content/scripts/plugins/tablesorter/tablesorter.js"></script>
 <script src="~/Areas/Admin/Content/scripts/plugins/tablesorter/jquery.tablesorter.pager.js"></script>
-<script src="~/Areas/Admin/Content/scripts/plugins/tablesorter/TableSorterScript.js"></script>
+
 @System.Web.Optimization.Scripts.Render("~/admin/validationscripts") 
 <link href="~/Areas/Admin/Content/styles/pluginstyles/jquery.msgbox.css" rel="stylesheet" />
 <script src="~/Areas/Admin/Content/scripts/plugins/jquery.msgbox.min.js"></script>

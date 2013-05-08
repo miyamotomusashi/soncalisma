@@ -64,6 +64,7 @@ namespace deneysan.Areas.Admin
             //ÜRÜNLER
             context.MapRoute("products", "yonetim/urunler", new { action = "Index", Controller = "Product" });
             context.MapRoute("productsgroups_default", "yonetim/urungruplari", new { action = "Index", Controller = "ProductGroup" });
+            context.MapRoute("productsgroups_edit", "yonetim/urungrubuduzenle/{id}", new { action = "EdtiGroup", Controller = "ProductGroup" });
             context.MapRoute("productsgroups", "yonetim/urungruplari/{lang}", new { action = "Index", Controller = "ProductGroup" });
             context.MapRoute("addproducts", "yonetim/urunekle", new { action = "AddProduct", Controller = "Product" });
             context.MapRoute("editproducts", "yonetim/urunduzenle/{id}", new { action = "EditProduct", Controller = "Product" });
