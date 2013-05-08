@@ -77,5 +77,14 @@ namespace ProductRess {
                 return ResourceManager.GetString("productsheader", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to İlgili Dökümanlar.
+        /// </summary>
+        public static string relateddocs {
+            get {
+                return ResourceManager.GetString("relateddocs", resourceCulture);
+            }
+        }
     }
 }

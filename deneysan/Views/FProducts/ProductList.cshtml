@@ -10,17 +10,17 @@
             <h2>@ProductRess.ProductStrings.productsheader</h2>
             <hr class="wide">
             <div id="portfolio">
-                @foreach (var group in Model.productgroups)
+                @foreach (var product in Model.products)
                 {
                     <div class="portfolio-item">
                         <div class="portfolio-image" style="display: block">
-                            <a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_products/@group.PageSlug/@group.ProductGroupId">
-                                <img src="/Content/Images/products/e-106-iks-tek-faz-elektrik-kumanda-egitim-seti_29586559.jpg" alt="@group.GroupName" title="@group.GroupName" />
+                            <a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_products/@product.ProductGroup.PageSlug/@product.ProductGroup.PageSlug/@product.ProductId">
+                                <img src="@product.ProductImageThumb" alt="@product.Name" title="@product.Name" />
                             </a>
                         </div>
                         <div class="portfolio-title">
-                            <h3 title="@group.GroupName">
-                                <a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_products/@group.PageSlug/@group.ProductGroupId">@group.GroupName</a>
+                            <h3>
+                                <a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_products/@product.ProductGroup.PageSlug/@product.ProductGroup.PageSlug/@product.ProductId">@product.Name</a>
                             </h3>
                         </div>
                     </div>

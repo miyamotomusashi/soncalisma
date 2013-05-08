@@ -27,6 +27,12 @@ namespace deneysan
             routes.MapRoute("products_tr", "tr/urunler", new { action = "Index", Controller = "FProducts" });
             routes.MapRoute("products_en", "en/products", new { action = "Index", Controller = "FProducts" });
 
+            routes.MapRoute("product_list_tr", "tr/urunler/{group}/{gid}", new { action = "ProductList", Controller = "FProducts" });
+            routes.MapRoute("product_list_en", "en/products/{group}/{gid}", new { action = "ProductList", Controller = "FProducts" });
+
+            routes.MapRoute("product_detail_tr", "tr/urunler/{group}/{productname}/{pid}", new { action = "ProductDetail", Controller = "FProducts" });
+            routes.MapRoute("product_detail_en", "en/products/{group}/{productname}/{pid}", new { action = "ProductDetail", Controller = "FProducts" });
+
             routes.MapRoute("documentgroups_tr", "tr/dokumanlar", new { action = "Index", Controller = "FDocuments" });
             routes.MapRoute("documentgroups_en", "en/documents", new { action = "Index", Controller = "FDocuments" });
 

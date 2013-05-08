@@ -1767,6 +1767,7 @@
     <Content Include="Content\Scripts\jquery-1.7.2.min.js" />
     <Content Include="Content\Scripts\jquery.cycle.all.js" />
     <Content Include="Content\Scripts\jquery.jcarousel.min.js" />
+    <Content Include="Content\Scripts\jquery.prettyPhoto.js" />
     <Content Include="Content\Scripts\layoutscripts.js" />
     <Content Include="Content\Scripts\layoutscriptsui.js" />
     <Content Include="Content\Scripts\main.js" />
@@ -1896,6 +1897,8 @@
     <Content Include="Views\Shared\_search.cshtml" />
     <Content Include="Views\FSearch\Index.cshtml" />
     <Content Include="Views\FReferences\Index.cshtml" />
+    <Content Include="Views\FProducts\ProductList.cshtml" />
+    <Content Include="Views\FProducts\ProductDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

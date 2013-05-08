@@ -123,4 +123,7 @@
   <data name="productsheader" xml:space="preserve">
     <value>Products</value>
   </data>
+  <data name="relateddocs" xml:space="preserve">
+    <value>Related Documents</value>
+  </data>
 </root>

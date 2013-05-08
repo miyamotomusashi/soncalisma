@@ -23,5 +23,18 @@ namespace deneysan.Controllers
             return View(modelbind);
         }
 
+        public ActionResult ProductList(int gid)
+        {
+            var product_group_list = ProductManager.GetProductGroupListForFront(lang);
+            var product_list = ProductManager.GetProductList(gid);
+            ProductWrapperModel modelbind = new ProductWrapperModel(product_list, product_group_list);
+            return View(modelbind);
+        }
+
+        public ActionResult ProductDetail(int pid)
+        {
+            var product = ProductManager.GetProductById(pid);
+            return View(product);
+        }
     }
 }

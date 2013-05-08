@@ -123,4 +123,7 @@
   <data name="productsheader" xml:space="preserve">
     <value>Ürünler</value>
   </data>
+  <data name="relateddocs" xml:space="preserve">
+    <value>İlgili Dökümanlar</value>
+  </data>
 </root>

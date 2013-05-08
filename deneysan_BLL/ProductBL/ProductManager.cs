@@ -282,8 +282,7 @@ namespace deneysan_BLL.ProductBL
         {
             using (DeneysanContext db = new DeneysanContext())
             {
-                db.Product.Include("ProductGroup").ToList();
-                var list = db.Product.Where(d => d.Deleted == false && d.Language == lang && d.Online==true).OrderByDescending(d=>d.TimeCreated).OrderBy(d => d.SortNumber).ToList();
+                var list = db.Product.Include("ProductGroup").Where(d => d.Deleted == false && d.Language == lang && d.Online==true).OrderByDescending(d=>d.TimeCreated).OrderBy(d => d.SortNumber).ToList();
                 return list;
             }
         }
@@ -292,7 +291,7 @@ namespace deneysan_BLL.ProductBL
         {
             using (DeneysanContext db = new DeneysanContext())
             {
-                var list = db.Product.Where(d => d.Deleted == false && d.ProductGroupId == gid).OrderByDescending(d=>d.TimeCreated).OrderBy(d => d.SortNumber).ToList();
+                var list = db.Product.Include("ProductGroup").Where(d => d.Deleted == false && d.ProductGroupId == gid).OrderByDescending(d=>d.TimeCreated).OrderBy(d => d.SortNumber).ToList();
                 return list;
             }
         }
