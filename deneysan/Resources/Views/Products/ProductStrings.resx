@@ -120,10 +120,22 @@
   <data name="allproducts" xml:space="preserve">
     <value>TÜM ÜRÜNLER</value>
   </data>
+  <data name="productinfo" xml:space="preserve">
+    <value>Ürün Bilgileri</value>
+  </data>
   <data name="productsheader" xml:space="preserve">
     <value>Ürünler</value>
   </data>
   <data name="relateddocs" xml:space="preserve">
     <value>İlgili Dökümanlar</value>
+  </data>
+  <data name="sampleexp" xml:space="preserve">
+    <value>Örnek Deney</value>
+  </data>
+  <data name="techspecs" xml:space="preserve">
+    <value>Teknik Şartname</value>
+  </data>
+  <data name="video" xml:space="preserve">
+    <value>Ürün Videosu</value>
   </data>
 </root>

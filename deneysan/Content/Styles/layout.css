@@ -693,7 +693,7 @@ ul.pagination li a#currentPage {background-color: #ccc9d3;color: white;}
 /* -- HABER DETAY ve ARŞİV SAYFALARI -- */
 .page .news_panel{float:left; overflow:hidden}
 .page .news_panel .news_main_image img{border:solid 10px #f0f7fe}
-.page .news_task {padding-bottom:20px; background:url(/Content/Images/Front/bg-news-task.png) bottom center no-repeat;}
+.page .news_task {padding-bottom:20px; margin-top:10px; background:url(/Content/Images/Front/bg-news-task.png) bottom center no-repeat;}
 .page .news_task h4{font-weight:bold; color:#0072bc; margin-bottom:5px; padding:10px 0; border-bottom:solid 1px #e5e5e5}
 .page .news_task img{border:solid 2px #e5e5e5; margin:5px 2px}
 .page .news_task li{display:inline;}

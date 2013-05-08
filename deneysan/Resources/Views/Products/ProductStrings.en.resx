@@ -120,10 +120,22 @@
   <data name="allproducts" xml:space="preserve">
     <value>ALL PRODUCTS</value>
   </data>
+  <data name="productinfo" xml:space="preserve">
+    <value>Product Document</value>
+  </data>
   <data name="productsheader" xml:space="preserve">
     <value>Products</value>
   </data>
   <data name="relateddocs" xml:space="preserve">
     <value>Related Documents</value>
+  </data>
+  <data name="sampleexp" xml:space="preserve">
+    <value>Sample Experiment</value>
+  </data>
+  <data name="techspecs" xml:space="preserve">
+    <value>Technical Specification</value>
+  </data>
+  <data name="video" xml:space="preserve">
+    <value>Product Video</value>
   </data>
 </root>

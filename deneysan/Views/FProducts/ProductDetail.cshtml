@@ -11,7 +11,7 @@
         <div class="content_page page">
 
             <h2>@Model.Name</h2>
-            <hr />
+            <hr class="wide" />
             <div class="news_panel grid_4">
                 <div class="news_main_image">
                     <ul class="gallery clearfix">
@@ -25,36 +25,61 @@
                 <div id="contentmain_divrelateddocuments" class="news_task list">
                     <h3><span id="contentmain_lblrelateddocumentsheader">@ProductRess.ProductStrings.relateddocs</span></h3>
                     <ul>
+                        @if(Model.filetechnical != null)
+                        {
+                            <li class="fl100">
+                                <div class="icon">
+                                    <a href='@Model.filetechnical' title="@ProductRess.ProductStrings.productinfo">
+                                        <img src='/Content/Images/Front/@(Model.filetechnical.Split('.')[1].ToString()).png' title='@(Model.filetechnical.Split('.')[1].ToString())' width='32' height='32' /></a>
+                                </div>
+                                <div class="dosya"><a href='@Model.filetechnical' title="@ProductRess.ProductStrings.productinfo">@ProductRess.ProductStrings.productinfo<span>@(Model.filetechnical.Split('.')[1].ToUpper().ToString())</span></a></div>
+                            </li>
+                        }
 
-                        <li class="fl100">
-                            <div class="icon">
-                                <a href='/ebsomedia/documents/kobi-okulu-egtim-notu_20093941.doc' title="">
-                                    <img src='/Content/Images/Front/doc.png' title='DOC' width='32' height='32' /></a>
-                            </div>
-                            <div class="dosya"><a href='/ebsomedia/documents/kobi-okulu-egtim-notu_20093941.doc' title="">KOBİ Okulu Eğtim Notu <span>MS WORD</span></a></div>
-                        </li>
+                        @if(Model.filetraining != null)
+                        {
+                            <li class="fl100">
+                                <div class="icon">
+                                    <a href='@Model.filetraining' title="@ProductRess.ProductStrings.techspecs">
+                                        <img src='/Content/Images/Front/@(Model.filetraining.Split('.')[1].ToString()).png' title='@(Model.filetraining.Split('.')[1].ToString())' width='32' height='32' /></a>
+                                </div>
+                                <div class="dosya"><a href='@Model.filetraining' title="@ProductRess.ProductStrings.techspecs">@ProductRess.ProductStrings.techspecs<span>@(Model.filetraining.Split('.')[1].ToUpper().ToString())</span></a></div>
+                            </li>
+                        }
 
-                        <li class="fl100">
-                            <div class="icon">
-                                <a href='/Content/Images/kobi-okulu-egtim-sunumu_41677186.ppt' title="">
-                                    <img src='/Content/Images/Front/ppt.png' title='PPT' width='32' height='32' /></a>
-                            </div>
-                            <div class="dosya"><a href='/ebsomedia/documents/kobi-okulu-egtim-sunumu_41677186.ppt' title="">KOBİ Okulu Eğtim Sunumu <span>POWER POİNT</span></a></div>
-                        </li>
+                        @if(Model.filexperiment != null)
+                        {
+                            <li class="fl100">
+                                <div class="icon">
+                                    <a href='@Model.filexperiment' title="@ProductRess.ProductStrings.sampleexp">
+                                        <img src='/Content/Images/Front/@(Model.filexperiment.Split('.')[1].ToString()).png' title='@(Model.filexperiment.Split('.')[1].ToString())' width='32' height='32' /></a>
+                                </div>
+                                <div class="dosya"><a href='@Model.filexperiment' title="@ProductRess.ProductStrings.sampleexp">@ProductRess.ProductStrings.sampleexp<span>@(Model.filexperiment.Split('.')[1].ToUpper().ToString())</span></a></div>
+                            </li>
+                        }
 
+                        @if(Model.filevideo != null)
+                        {
+                            <li class="fl100">
+                                <div class="icon">
+                                    <a href='@Model.filevideo' title="@ProductRess.ProductStrings.video">
+                                        <img src='/Content/Images/Front/@(Model.filevideo.Split('.')[1].ToString()).png' title='@(Model.filevideo.Split('.')[1].ToString())' width='32' height='32' /></a>
+                                </div>
+                                <div class="dosya"><a href='@Model.filevideo' title="@ProductRess.ProductStrings.video">@ProductRess.ProductStrings.video<span>@(Model.filevideo.Split('.')[1].ToUpper().ToString())</span></a></div>
+                            </li>
+                        }
                     </ul>
                 </div>
                 <div class="clear"></div>
-                        
                 <script>
                     $(document).ready(function () {
-                        $(".gallery:first a[rel^='prettyPhoto']").prettyPhoto();
+                        $("a[rel^='prettyPhoto']").prettyPhoto({ social_tools: false });
                     });                </script>
             </div>
             <div class="wrap_content grid_7">
                 <span id="contentmain_lblcontentmenu">
                     <p>
-                        Ürün içeriği
+                        @Html.Raw(Model.Content)
                     </p>
                 </span>
             </div>

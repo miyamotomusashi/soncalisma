@@ -70,6 +70,15 @@ namespace ProductRess {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ürün Bilgileri.
+        /// </summary>
+        public static string productinfo {
+            get {
+                return ResourceManager.GetString("productinfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ürünler.
         /// </summary>
         public static string productsheader {
@@ -84,6 +93,33 @@ namespace ProductRess {
         public static string relateddocs {
             get {
                 return ResourceManager.GetString("relateddocs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Örnek Deney.
+        /// </summary>
+        public static string sampleexp {
+            get {
+                return ResourceManager.GetString("sampleexp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Teknik Şartname.
+        /// </summary>
+        public static string techspecs {
+            get {
+                return ResourceManager.GetString("techspecs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ürün Videosu.
+        /// </summary>
+        public static string video {
+            get {
+                return ResourceManager.GetString("video", resourceCulture);
             }
         }
     }
