@@ -341,6 +341,8 @@ namespace deneysan_BLL.ProductBL
                     if (record != null)
                     {
                         record.Name = data.Name;
+                        record.Content = data.Content;
+                        record.PageSlug = data.PageSlug;
                         record.Language = data.Language;
                         record.ProductGroupId = data.ProductGroupId;
                         if (!string.IsNullOrEmpty(data.ProductImage))

@@ -36,6 +36,7 @@ namespace deneysan.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult AddProduct(Product model, HttpPostedFileBase uploadfile, HttpPostedFileBase uploadtechfile, HttpPostedFileBase uploadvideo, HttpPostedFileBase uploadexperimentfile, HttpPostedFileBase uploadtraining)
         {
             FillLanguagesList();
@@ -92,7 +93,7 @@ namespace deneysan.Areas.Admin.Controllers
                     uploadvideo.SaveAs(Server.MapPath("/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadvideo.FileName)));
                     model.filevideo = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadvideo.FileName);
                 }
-
+                model.PageSlug = Utility.SetPagePlug(model.Name);
                 ModelState.Clear();
                 ViewBag.ProcessMessage = ProductManager.AddProduct(model);
             }
@@ -158,6 +159,7 @@ namespace deneysan.Areas.Admin.Controllers
 
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult EditProduct(Product model, HttpPostedFileBase uploadfile, HttpPostedFileBase uploadtechfile, HttpPostedFileBase uploadvideo, HttpPostedFileBase uploadexperimentfile, HttpPostedFileBase uploadtraining)
         {
             FillLanguagesList();
@@ -215,6 +217,7 @@ namespace deneysan.Areas.Admin.Controllers
                     bool isnumber = int.TryParse(RouteData.Values["id"].ToString(), out nid);
                     if (isnumber)
                     {
+                        model.PageSlug = Utility.SetPagePlug(model.Name);
                         model.ProductId = nid;
                         ViewBag.ProcessMessage = ProductManager.EditProduct(model);
                         return View(model);

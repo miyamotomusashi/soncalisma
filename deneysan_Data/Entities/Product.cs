@@ -32,5 +32,7 @@ namespace deneysan_DAL.Entities
         public bool Online { get; set; }
         public DateTime TimeCreated { get; set; }
         public int SortNumber { get; set; }
+        [Display(Name = "Ürün Açıklaması")]
+        public string PageSlug { get; set; }
     }
 }
