@@ -385,6 +385,15 @@ namespace SharedRess {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lütfen gerekli alanları eksiksiz ve doğru bir şekilde doldurunuz.
+        /// </summary>
+        public static string requiredfields {
+            get {
+                return ResourceManager.GetString("requiredfields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Site içi arama.
         /// </summary>
         public static string searchinsite {

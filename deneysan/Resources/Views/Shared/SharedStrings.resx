@@ -225,6 +225,9 @@
   <data name="products" xml:space="preserve">
     <value>ÜRÜNLER</value>
   </data>
+  <data name="requiredfields" xml:space="preserve">
+    <value>Lütfen gerekli alanları eksiksiz ve doğru bir şekilde doldurunuz</value>
+  </data>
   <data name="searchinsite" xml:space="preserve">
     <value>Site içi arama</value>
   </data>

@@ -9,6 +9,13 @@
             <h2>@ContactRess.ContactStrings.contactform</h2>
             <hr>
             <p>@Html.ValidationMessage("_FORM")</p>
+            @if (TempData["required"] != null)
+            {
+                if (TempData["required"].ToString().Equals("true"))
+                {
+                    <div class="notification error">@SharedRess.SharedStrings.requiredfields</div>
+                }
+            }
             @if (TempData["sent"] != null)
                 {
                     if (TempData["sent"].ToString().Equals("true"))
@@ -57,6 +64,7 @@
                             </div>
                             <div class="field_one">
                                 <dd style="float: left; clear: both; overflow: hidden">
+                                    <button type="button" class="button gray">@ContactRess.ContactStrings.send</button>
                                     <input type="submit" class="button gray" value="@ContactRess.ContactStrings.send" />
                                 </dd>
                             </div>

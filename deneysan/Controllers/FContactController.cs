@@ -41,6 +41,12 @@ namespace deneysan.Controllers
         {
             try
             {
+                if (namesurname == String.Empty || email == String.Empty || subject == String.Empty || body == String.Empty)
+                {
+                    TempData["required"] = "true";
+                    return RedirectToAction("Form");
+                }
+
                 using (var client = new SmtpClient("mail.deneysan.com.tr", 587))
                 {
                     client.EnableSsl = false;

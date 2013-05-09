@@ -191,7 +191,7 @@ input:hover{background:#ffffff}
 .clients-skin-carousel { background:url(/Content/images/front/clients-bg.jpg) repeat; }
 .clients-skin-carousel .jcarousel-prev-horizontal { background:url(/Content/images/front/carousel-prev.png) no-repeat; }
 .clients-skin-carousel .jcarousel-next-horizontal { background:url(/Content/images/front/carousel-next.png) no-repeat; }
-
+.red-border { border-color: #b94a48 }
 /*----*****---- << Services >> ----*****----*/
 .bordered-box-content .icon span, .social-share a, blockquote span { background:url(/Content/images/front/icons-sprite.png) no-repeat; }	
 .intro-text { text-align:center; width:100%; clear:both; float:left; margin:40px 0px 25px; }
@@ -811,7 +811,7 @@ html>body form fieldset dd {
 .tablesorter tbody tr:hover{background-color:#edeff4;}
 .tablesorter tbody tr.odd td {background-color:#F0F0F6;}
 .tablesorter td{white-space:nowrap; border:solid 1px #d2d2d2; padding:5px;}
-
+.input-error { border-color: #b94a48; }
 /* -- Notification -- */
 .notification.error {background:#fccac3 url('/Content/images/Front/error.png') no-repeat 10px 50%;border-color:#ea5338;}
 .notification {border-width:1px;border-style:solid;padding:17px 17px 17px 55px;margin-bottom:15px;-moz-border-radius:3px;-webkit-border:3px;border-radius:3px;}
