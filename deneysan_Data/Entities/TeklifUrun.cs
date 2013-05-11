@@ -14,6 +14,8 @@ namespace deneysan_DAL.Entities
         public decimal Fiyat { get; set; }
         public int Adet { get; set; }
         public string Toplam { get; set; }
+        public bool Donanim { get; set; }
+        public decimal DonanimFiyat { get; set; }
       
     }
 }
