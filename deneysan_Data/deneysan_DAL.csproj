@@ -63,6 +63,8 @@
     <Compile Include="Entities\ProductGroup.cs" />
     <Compile Include="Entities\Projects.cs" />
     <Compile Include="Entities\References.cs" />
+    <Compile Include="Entities\Teklif.cs" />
+    <Compile Include="Entities\TeklifUrun.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

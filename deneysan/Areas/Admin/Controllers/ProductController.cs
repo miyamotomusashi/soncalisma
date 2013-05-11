@@ -37,7 +37,7 @@ namespace deneysan.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult AddProduct(Product model, HttpPostedFileBase uploadfile, HttpPostedFileBase uploadtechfile, HttpPostedFileBase uploadvideo, HttpPostedFileBase uploadexperimentfile, HttpPostedFileBase uploadtraining)
+        public ActionResult AddProduct(Product model, HttpPostedFileBase uploadfile, HttpPostedFileBase uploadfile2, HttpPostedFileBase uploadtechfile, HttpPostedFileBase uploadvideo, HttpPostedFileBase uploadexperimentfile, HttpPostedFileBase uploadtraining)//, string txtHardwarePrice, string txtPrice)
         {
             FillLanguagesList();
 
@@ -46,14 +46,20 @@ namespace deneysan.Areas.Admin.Controllers
 
                 if (uploadfile != null && uploadfile.ContentLength > 0)
                 {
+                    uploadfile2 = uploadfile;
                     Random random = new Random();
                     int rand = random.Next(1000, 99999999);
-                    uploadfile.SaveAs(Server.MapPath("/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_original" + rand + Path.GetExtension(uploadfile.FileName)));
-                    model.ProductImage = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_original" + rand + Path.GetExtension(uploadfile.FileName);
+                    uploadfile2.SaveAs(Server.MapPath("/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_original" + rand + Path.GetExtension(uploadfile2.FileName)));
+                  //  new ImageHelper(280, 240).SaveThumbnail(uploadfile2, "/Content/images/products/", Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadfile2.FileName));
+                    model.ProductImage = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_original" + rand + Path.GetExtension(uploadfile2.FileName);
+                    rand = random.Next(1000, 99999999);
+
+                    //uploadfile.SaveAs(Server.MapPath("/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_original" + rand + Path.GetExtension(uploadfile.FileName)));
+                    //model.ProductImage = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_original" + rand + Path.GetExtension(uploadfile.FileName);
                     rand = random.Next(1000, 99999999);
                     new ImageHelper(280, 240).SaveThumbnail(uploadfile, "/Content/images/products/", Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadfile.FileName));
                     model.ProductImageThumb = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadfile.FileName);
-                    
+
                 }
                 else
                 {
@@ -94,10 +100,31 @@ namespace deneysan.Areas.Admin.Controllers
                     model.filevideo = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadvideo.FileName);
                 }
                 model.PageSlug = Utility.SetPagePlug(model.Name);
+                string mprice = model.Price.Substring(0, model.Price.Length - 3);
+                mprice = mprice.Replace(",", "");
+                string dprice = model.Price.Substring(model.Price.Length - 2, 2);
+                string newprice = mprice + "," + dprice;
+                model.Price = newprice;
+
+                if (!string.IsNullOrEmpty(model.HardwarePrice))
+                {
+                    mprice = model.HardwarePrice.Replace(",", "").Substring(0, model.HardwarePrice.Length - 3);
+                    dprice = model.HardwarePrice.Substring(model.HardwarePrice.Length - 2, 2);
+                    newprice = mprice + "," + dprice;
+                    model.HardwarePrice = newprice;
+                }
+                else
+                {
+                    model.Hardware = false;
+                }
+                
                 ModelState.Clear();
                 ViewBag.ProcessMessage = ProductManager.AddProduct(model);
+                return Redirect("/yonetim/urunlistesi/" + model.Language + "/" + model.ProductGroupId);
             }
-            return View();
+            else
+                return View();
+            
         }
 
 

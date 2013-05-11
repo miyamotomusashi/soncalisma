@@ -1483,6 +1483,10 @@
     <Content Include="Areas\Admin\Content\scripts\pagescripts\projects\projectlist.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\reference\addreference.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\reference\referencelist.js" />
+    <Content Include="Areas\Admin\Content\scripts\plugins\Formatter.js" />
+    <Content Include="Areas\Admin\Content\scripts\plugins\jquery-1.9.1.js" />
+    <Content Include="Areas\Admin\Content\scripts\plugins\jquery-ui-1.10.3.custom.js" />
+    <Content Include="Areas\Admin\Content\scripts\plugins\jquery-ui-1.10.3.custom.min.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery.min.js" />
     <Content Include="Areas\Admin\Content\CKEditor\ckeditor\.htaccess" />
     <Content Include="Areas\Admin\Content\CKEditor\ckeditor\ckeditor.pack" />
@@ -1606,6 +1610,8 @@
     <Content Include="Areas\Admin\Content\scripts\plugins\ba.hashchange.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\dd_belatedpng.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\functions.js" />
+    <Content Include="Areas\Admin\Content\scripts\plugins\change log.md" />
+    <Content Include="Areas\Admin\Content\scripts\plugins\df-number-format.jquery.json" />
     <None Include="Areas\Admin\Content\scripts\plugins\jquery-1.7.1.intellisense.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery-1.7.1.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery-1.7.1.min.js" />
@@ -1617,6 +1623,8 @@
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery.cookie.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery.lightbox-0.5.min.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery.msgbox.min.js" />
+    <Content Include="Areas\Admin\Content\scripts\plugins\jquery.number.js" />
+    <Content Include="Areas\Admin\Content\scripts\plugins\jquery.number.min.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery.tipsy.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery.tokeninput.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery.treeview.min.js" />
@@ -1629,6 +1637,7 @@
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery.wysiwyg.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\main.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\modernizr-2.5.3.js" />
+    <Content Include="Areas\Admin\Content\scripts\plugins\moneyconverter.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\prettify.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\tablesorter\jquery.table.filter.min.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\tablesorter\jquery.tablesorter.min.js" />
@@ -1835,6 +1844,7 @@
     <Content Include="Areas\Admin\Views\HumanResource\Index.cshtml" />
     <Content Include="Areas\Admin\Views\HumanResource\hr_leftbar.cshtml" />
     <Content Include="Areas\Admin\Views\ProductGroup\EdtiGroup.cshtml" />
+    <Content Include="Areas\Admin\Content\scripts\plugins\maskmoney.jquery.json" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />

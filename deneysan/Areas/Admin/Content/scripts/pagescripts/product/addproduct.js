@@ -7,6 +7,28 @@
         MessageBox("İşlem Sırasında Bir Hata Oluştu.", "alert");
 
     $("#tabs").tabs();
+
+    $("#Hardware").attr("checked",false);
+    $('.pprice').css("display", "none");
+  //  $("#Price").maskMoney({ thousands: '.', decimal: ',' });
+    $('#HardwarePrice').number(true, 2);
+    $('#Price').number(true, 2);
+  //  $('#Price').autoNumeric();
+  //  $('#tPrice').addClass("required");
+
+    $('#Hardware').click(function() {
+        var stat = $('#Hardware:checked').val();
+        if (stat == "True" || stat == "true") {
+            $('.pprice').css("display", "block");
+            $('#HardwarePrice').addClass("required");
+        }
+        else {
+            $('.pprice').css("display", "none");
+           $('#HardwarePrice').removeClass("required");
+        }
+    });
+
+
     var selval = $("#Language option:selected").val();
     
     if (selval == "") {

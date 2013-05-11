@@ -31,7 +31,8 @@ namespace deneysan_DAL.Context
         public DbSet<ImportantLinks> ImportantLinks { get; set; }
         public DbSet<Projects> Projects { get; set; }
         public DbSet<HumanResource> HumanResource { get; set; }
-
+        public DbSet<Teklif> Teklif { get; set; }
+        public DbSet<TeklifUrun> TeklifUrun { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 
@@ -55,6 +56,8 @@ namespace deneysan_DAL.Context
             modelBuilder.Entity<ImportantLinks>().ToTable("ImportantLinks");
             modelBuilder.Entity<Projects>().ToTable("Projects");
             modelBuilder.Entity<HumanResource>().ToTable("HumanResource");
+            modelBuilder.Entity<Projects>().ToTable("Teklif");
+            modelBuilder.Entity<HumanResource>().ToTable("TeklifUrun");
         }
     }
 }
