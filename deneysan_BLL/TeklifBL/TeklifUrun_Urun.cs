@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace deneysan_DAL.Entities
+namespace deneysan_BLL.TeklifBL
 {
-    public class TeklifUrun
+    public class TeklifUrun_Urun
     {
         public int TeklifUrunId { get; set; }
         public int TeklifId { get; set; }
@@ -17,6 +17,8 @@ namespace deneysan_DAL.Entities
         public bool Donanim { get; set; }
         public decimal DonanimFiyat { get; set; }
         public string ParaBirimi { get; set; }
-       
+        public string UrunKod { get; set; }
+        public string UrunResim { get; set; }
+        public string UrunAdi { get; set; }
     }
 }

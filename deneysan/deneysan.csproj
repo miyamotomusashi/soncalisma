@@ -198,6 +198,7 @@
     <Compile Include="Areas\Admin\Helpers\ImageResizer.cs" />
     <Compile Include="Areas\Admin\Helpers\Utility.cs" />
     <Compile Include="Areas\Admin\Models\LoginModel.cs" />
+    <Compile Include="Areas\Admin\Models\TeklifModel.cs" />
     <Compile Include="Controllers\FReferencesController.cs" />
     <Compile Include="Controllers\FDocumentsController.cs" />
     <Compile Include="Controllers\FHomeController.cs" />
@@ -1847,6 +1848,7 @@
     <Content Include="Areas\Admin\Content\scripts\plugins\maskmoney.jquery.json" />
     <Content Include="Areas\Admin\Views\Home\home_leftbar.cshtml" />
     <Content Include="Areas\Admin\Views\Home\AllList.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Details.cshtml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />

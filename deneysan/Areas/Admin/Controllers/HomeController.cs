@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using deneysan.Areas.Admin.Filters;
+using deneysan.Areas.Admin.Models;
 using deneysan_BLL.TeklifBL;
 
 namespace deneysan.Areas.Admin.Controllers
@@ -61,7 +62,25 @@ namespace deneysan.Areas.Admin.Controllers
 
         public ActionResult Details(int id)
         {
-            return View();
+            int teklifid = 0;
+            if (RouteData.Values["id"] != null)
+            {
+                bool isnumber = int.TryParse(RouteData.Values["id"].ToString(), out teklifid);
+                if (isnumber)
+                {
+                    var teklif = TeklifManager.GetTeklifById(teklifid);
+                    var urunler = TeklifManager.GetUrunList(teklifid);
+                    TeklifModel modelbind = new TeklifModel(teklif, urunler);
+                    return View(modelbind);
+                }
+                else
+                    return View();
+           
+            }
+            else
+                return View();
+           
+           
         }
 
         //

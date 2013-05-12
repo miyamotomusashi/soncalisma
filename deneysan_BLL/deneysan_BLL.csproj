@@ -70,6 +70,7 @@
     <Compile Include="ReferenceBL\ReferenceManager.cs" />
     <Compile Include="SearchBL\SearchManager.cs" />
     <Compile Include="SecurityBL\SecurityManager.cs" />
+    <Compile Include="TeklifBL\TeklifUrun_Urun.cs" />
     <Compile Include="TeklifBL\EnumTeklifTip.cs" />
     <Compile Include="TeklifBL\TeklifManager.cs" />
   </ItemGroup>
