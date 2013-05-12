@@ -17,12 +17,13 @@ namespace deneysan_DAL.Entities
         public string Fax { get; set; }
        
         public string TeslimatSuresi { get; set; }
-        public DateTime TeklifTarihi { get; set; }
-        public DateTime CevapTarihi { get; set; }
+        public Nullable<DateTime> TeklifTarihi { get; set; }
+        public Nullable<DateTime> CevapTarihi { get; set; }
         public string TeklifNo { get; set; }
         public int GecerlilikSuresi { get; set; }
-        public bool Durum { get; set; }
+        public int Durum { get; set; }
         public decimal FaturaTutar { get; set; }
+        public string ParaBirimi { get; set; }
     
     }
 

@@ -70,6 +70,8 @@
     <Compile Include="ReferenceBL\ReferenceManager.cs" />
     <Compile Include="SearchBL\SearchManager.cs" />
     <Compile Include="SecurityBL\SecurityManager.cs" />
+    <Compile Include="TeklifBL\EnumTeklifTip.cs" />
+    <Compile Include="TeklifBL\TeklifManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\deneysan_Data\deneysan_DAL.csproj">

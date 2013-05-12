@@ -18,6 +18,8 @@ namespace deneysan.Areas.Admin
             context.MapRoute("logout", "cikis", new { action = "Logout", Controller = "Account" });
             context.MapRoute("homepage_default", "yonetim", new { action = "Index", Controller = "Home" });
             context.MapRoute("homepage", "yonetim/anasayfa", new { action = "Index", Controller = "Home" });
+            context.MapRoute("homepage_prm", "yonetim/{type}", new { action = "Index", Controller = "Home" });
+            context.MapRoute("homepage_all", "yonetim/teklif/tumteklifler", new { action = "AllList", Controller = "Home" });
             context.MapRoute("instituional_index", "yonetim/kurumsal", new { action = "Index", Controller = "Institutional" });
             context.MapRoute("instituional_mision_default", "yonetim/kurumsal/misyon", new { action = "Misyon", Controller = "Institutional" });
             context.MapRoute("instituional_vision_default", "yonetim/kurumsal/hakkimizda", new { action = "Vizyon", Controller = "Institutional" });
