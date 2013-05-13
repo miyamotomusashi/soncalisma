@@ -1989,6 +1989,7 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>OffersStrings.Designer.cs</LastGenOutput>
       <CustomToolNamespace>OfferRess</CustomToolNamespace>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Views\Projects\ProjectsStrings.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -2014,11 +2015,13 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>HomeStrings.en.Designer.cs</LastGenOutput>
       <CustomToolNamespace>HomeRess</CustomToolNamespace>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Views\Home\HomeStrings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>HomeStrings.Designer.cs</LastGenOutput>
       <CustomToolNamespace>HomeRess</CustomToolNamespace>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Views\Institutional\InstitutionalStrings.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -2079,6 +2082,7 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SharedStrings.Designer.cs</LastGenOutput>
       <CustomToolNamespace>SharedRess</CustomToolNamespace>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
