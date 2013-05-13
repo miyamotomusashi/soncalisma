@@ -15,7 +15,7 @@ namespace deneysan_DAL.Entities
         public string Gsm { get; set; }
         public string Tel { get; set; }
         public string Fax { get; set; }
-       
+        public decimal KDV { get; set; }
         public string TeslimatSuresi { get; set; }
         public Nullable<DateTime> TeklifTarihi { get; set; }
         public Nullable<DateTime> CevapTarihi { get; set; }

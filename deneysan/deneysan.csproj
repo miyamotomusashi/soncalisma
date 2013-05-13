@@ -1484,6 +1484,7 @@
     <Content Include="Areas\Admin\Content\scripts\pagescripts\projects\projectlist.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\reference\addreference.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\reference\referencelist.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\teklif\teklif.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\Formatter.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery-1.9.1.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery-ui-1.10.3.custom.js" />
