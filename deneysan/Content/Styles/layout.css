@@ -748,7 +748,7 @@ ul.pagination li a#currentPage {background-color: #ccc9d3;color: white;}
 #jform_contact_email_copy { float:left; margin-top:3px; position:absolute; margin:-23px 0 0 150px; border:none; background:none }
 .contact-form legend { display:none }
 .contact-form fieldset { padding:0 !important; margin:0 !important; }
-.field_one { width:532px; height:60px }
+.field_one { width:460px; height:60px; line-height:2.5em; }
 #contact-form fieldset dt { clear:left; float:left; width:90px !important; text-align:right !important; padding:15px 0 0 !important; margin:0 14px 0 0 !important }
 form fieldset dd { float:left; padding:3px 0 }
 html>body form fieldset dd {

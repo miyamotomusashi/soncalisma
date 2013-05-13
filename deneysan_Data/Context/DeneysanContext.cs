@@ -56,8 +56,8 @@ namespace deneysan_DAL.Context
             modelBuilder.Entity<ImportantLinks>().ToTable("ImportantLinks");
             modelBuilder.Entity<Projects>().ToTable("Projects");
             modelBuilder.Entity<HumanResource>().ToTable("HumanResource");
-            modelBuilder.Entity<Projects>().ToTable("Teklif");
-            modelBuilder.Entity<HumanResource>().ToTable("TeklifUrun");
+            modelBuilder.Entity<Teklif>().ToTable("Teklif");
+            modelBuilder.Entity<TeklifUrun>().ToTable("TeklifUrun");
         }
     }
 }
