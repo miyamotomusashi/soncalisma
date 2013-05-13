@@ -1,5 +1,6 @@
 ﻿using deneysan.Models;
 using deneysan_BLL.ProductBL;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +36,40 @@ namespace deneysan.Controllers
         {
             var product = ProductManager.GetProductById(pid);
             return View(product);
+        }
+
+        [HttpPost]
+        public string AddToList(string id)
+        {
+            if (!this.ControllerContext.HttpContext.Request.Cookies.AllKeys.Contains("OfferList"))
+            {
+                HttpCookie cookie = new HttpCookie("OfferList");
+                cookie.Value = "[{id:'" + id + "'}]";
+                this.ControllerContext.HttpContext.Response.Cookies.Add(cookie);
+                return "1";
+            }
+            else
+            {
+                HttpCookie cookie = this.ControllerContext.HttpContext.Request.Cookies["OfferList"];
+                var values = JsonConvert.DeserializeObject<Dictionary<string, string>[]>(cookie.Value);
+                cookie.Value = "[";
+
+                foreach (var element in values)
+                {
+                    foreach (var entry in element)
+                    {
+                        if (entry.Value == id)
+                            return values.Count().ToString();
+
+                        cookie.Value += "{id:'" + entry.Value + "'},";
+                    }
+                }
+
+                cookie.Value += "{id:'" + id + "'}]";
+
+                this.ControllerContext.HttpContext.Response.Cookies.Add(cookie);
+                return (values.Count() + 1).ToString();
+            }
         }
     }
 }

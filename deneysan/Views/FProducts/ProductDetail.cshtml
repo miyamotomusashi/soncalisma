@@ -25,7 +25,7 @@
                 <div id="contentmain_divrelateddocuments" class="news_task list">
                     <h3><span id="contentmain_lblrelateddocumentsheader">@ProductRess.ProductStrings.relateddocs</span></h3>
                     <ul>
-                        @if(Model.filetechnical != null)
+                        @if (Model.filetechnical != null)
                         {
                             <li class="fl100">
                                 <div class="icon">
@@ -36,7 +36,7 @@
                             </li>
                         }
 
-                        @if(Model.filetraining != null)
+                        @if (Model.filetraining != null)
                         {
                             <li class="fl100">
                                 <div class="icon">
@@ -47,7 +47,7 @@
                             </li>
                         }
 
-                        @if(Model.filexperiment != null)
+                        @if (Model.filexperiment != null)
                         {
                             <li class="fl100">
                                 <div class="icon">
@@ -58,7 +58,7 @@
                             </li>
                         }
 
-                        @if(Model.filevideo != null)
+                        @if (Model.filevideo != null)
                         {
                             <li class="fl100">
                                 <div class="icon">
@@ -83,9 +83,44 @@
                     </p>
                 </span>
             </div>
+            <div class="wrap_content grid_4" style="background-color: #f3f3f3; float: right">
+                <p style="text-align: center">
+                    <a id="addToList" href="#">Teklif Listesine Ekle</a>
+                </p>
+
+            </div>
             <div class="clear"></div>
         </div>
 
     </div>
 </div>
+<script>
+    $(function () {
+        var status = $("#ProcessMessage").val();
+        $("#imgloader").css("display", "none");
+        if (status == "True" || status == "true")
+            MessageBox("İşlem Başarıyla Tamamlandı", "info");
+        else if (status == "False" || status == "false")
+            MessageBox("İşlem Sırasında Bir Hata Oluştu.", "alert");
 
+        $("#addToList").click(function () {
+            var val = '@(Model.ProductId)';
+            if (val != "")
+            {
+                $.ajax({
+                    type: 'POST',
+                    url: '/FProducts/AddToList',
+                    data: '{id:"' + val + '"}',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'json',
+                    success: function (result) {
+                        $("#teklifAdedi").text(result);
+                    },
+                    error: function () {
+
+                    }
+                });
+            }
+        });
+    });
+</script>
