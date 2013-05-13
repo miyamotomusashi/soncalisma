@@ -10,21 +10,21 @@
 
     $("#Hardware").attr("checked",false);
     $('.pprice').css("display", "none");
-  //  $("#Price").maskMoney({ thousands: '.', decimal: ',' });
-    $('#HardwarePrice').number(true, 2);
-    $('#Price').number(true, 2);
-  //  $('#Price').autoNumeric();
-  //  $('#tPrice').addClass("required");
+
+   
+    $('#txtPrice').autoNumeric('init');
+ 
 
     $('#Hardware').click(function() {
         var stat = $('#Hardware:checked').val();
         if (stat == "True" || stat == "true") {
             $('.pprice').css("display", "block");
-            $('#HardwarePrice').addClass("required");
+            $('#txtHardWarePrice').addClass("required");
+            $('#txtHardWarePrice').autoNumeric('init');
         }
         else {
             $('.pprice').css("display", "none");
-           $('#HardwarePrice').removeClass("required");
+            $('#txtHardWarePrice').removeClass("required");
         }
     });
 

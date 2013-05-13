@@ -22,10 +22,12 @@ namespace deneysan_DAL.Entities
 
         [Display(Name = "Ürün Fiyatı")]
         [Required(ErrorMessage = "Ürün Fiyatını Giriniz.")]
+       // [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:0.00}")]
         public decimal Price { get; set; }
 
         [Display(Name = "Ürün Donanım Fiyatı")]
-        public decimal HardwarePrice { get; set; }
+       
+        public decimal ? HardwarePrice { get; set; }
 
         [Display(Name = "Ürün Donanımı Varmı?")]
         public bool Hardware { get; set; }

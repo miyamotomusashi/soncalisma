@@ -1485,6 +1485,7 @@
     <Content Include="Areas\Admin\Content\scripts\pagescripts\reference\addreference.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\reference\referencelist.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\teklif\teklif.js" />
+    <Content Include="Areas\Admin\Content\scripts\plugins\autoNumeric.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\Formatter.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery-1.9.1.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery-ui-1.10.3.custom.js" />
@@ -1614,6 +1615,7 @@
     <Content Include="Areas\Admin\Content\scripts\plugins\functions.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\change log.md" />
     <Content Include="Areas\Admin\Content\scripts\plugins\df-number-format.jquery.json" />
+    <Content Include="Areas\Admin\Content\scripts\plugins\autoNumeric.jquery.json" />
     <None Include="Areas\Admin\Content\scripts\plugins\jquery-1.7.1.intellisense.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery-1.7.1.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery-1.7.1.min.js" />
@@ -1666,7 +1668,22 @@
     <Content Include="Areas\Admin\Content\styles\pluginstyles\jquery-ui-1.9.0.custom.css" />
     <Content Include="Areas\Admin\Content\styles\pluginstyles\jquery-ui-1.9.0.custom.min.css" />
     <Content Include="Areas\Admin\Content\styles\pluginstyles\jquery-ui-multiselect.css" />
+    <Content Include="Areas\Admin\Content\styles\pluginstyles\jquery-ui.css" />
     <Content Include="Areas\Admin\Content\styles\pluginstyles\jquery.msgbox.css" />
+    <Content Include="Areas\Admin\Content\styles\pluginstyles\jquery.ui.accordion.css" />
+    <Content Include="Areas\Admin\Content\styles\pluginstyles\jquery.ui.all.css" />
+    <Content Include="Areas\Admin\Content\styles\pluginstyles\jquery.ui.autocomplete.css" />
+    <Content Include="Areas\Admin\Content\styles\pluginstyles\jquery.ui.base.css" />
+    <Content Include="Areas\Admin\Content\styles\pluginstyles\jquery.ui.button.css" />
+    <Content Include="Areas\Admin\Content\styles\pluginstyles\jquery.ui.core.css" />
+    <Content Include="Areas\Admin\Content\styles\pluginstyles\jquery.ui.datepicker.css" />
+    <Content Include="Areas\Admin\Content\styles\pluginstyles\jquery.ui.dialog.css" />
+    <Content Include="Areas\Admin\Content\styles\pluginstyles\jquery.ui.progressbar.css" />
+    <Content Include="Areas\Admin\Content\styles\pluginstyles\jquery.ui.resizable.css" />
+    <Content Include="Areas\Admin\Content\styles\pluginstyles\jquery.ui.selectable.css" />
+    <Content Include="Areas\Admin\Content\styles\pluginstyles\jquery.ui.slider.css" />
+    <Content Include="Areas\Admin\Content\styles\pluginstyles\jquery.ui.tabs.css" />
+    <Content Include="Areas\Admin\Content\styles\pluginstyles\jquery.ui.theme.css" />
     <Content Include="Areas\Admin\Content\styles\pluginstyles\prettify.css" />
     <Content Include="Areas\Admin\Content\styles\pluginstyles\style.css" />
     <Content Include="Areas\Admin\Content\styles\reset.css" />
@@ -1848,6 +1865,7 @@
     <Content Include="Areas\Admin\Views\ProductGroup\EdtiGroup.cshtml" />
     <Content Include="Areas\Admin\Content\scripts\plugins\maskmoney.jquery.json" />
     <Content Include="Areas\Admin\Views\Home\home_leftbar.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Copy of AddProduct.cshtml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
