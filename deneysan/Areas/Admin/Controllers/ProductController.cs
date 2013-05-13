@@ -50,7 +50,9 @@ namespace deneysan.Areas.Admin.Controllers
                     Random random = new Random();
                     int rand = random.Next(1000, 99999999);
                     uploadfile2.SaveAs(Server.MapPath("/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_original" + rand + Path.GetExtension(uploadfile2.FileName)));
-                  //  new ImageHelper(280, 240).SaveThumbnail(uploadfile2, "/Content/images/products/", Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadfile2.FileName));
+
+                    //  new ImageHelper(280, 240).SaveThumbnail(uploadfile2, "/Content/images/products/", Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadfile2.FileName));
+
                     model.ProductImage = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_original" + rand + Path.GetExtension(uploadfile2.FileName);
                     rand = random.Next(1000, 99999999);
 
@@ -100,6 +102,7 @@ namespace deneysan.Areas.Admin.Controllers
                     model.filevideo = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadvideo.FileName);
                 }
                 model.PageSlug = Utility.SetPagePlug(model.Name);
+
                 string mprice = txtPrice.Substring(0, txtPrice.Length - 3);
                 mprice = mprice.Replace(",", "");
                 string dprice = txtPrice.Substring(txtPrice.Length - 2, 2);
@@ -119,6 +122,7 @@ namespace deneysan.Areas.Admin.Controllers
                 {
                     model.Hardware = false;
                 }
+
 
                 ModelState.Clear();
                 ViewBag.ProcessMessage = ProductManager.AddProduct(model);

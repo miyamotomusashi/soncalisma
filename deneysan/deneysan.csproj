@@ -1931,6 +1931,7 @@
     <Content Include="Views\FReferences\Index.cshtml" />
     <Content Include="Views\FProducts\ProductList.cshtml" />
     <Content Include="Views\FProducts\ProductDetail.cshtml" />
+    <Content Include="Views\Shared\_addOfferList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

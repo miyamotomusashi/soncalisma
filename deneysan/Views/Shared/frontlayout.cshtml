@@ -52,6 +52,9 @@ BALIKESİR
     </div>
     <header>
         <div class="wrapper">
+            <div style="margin-top: 60px; font-weight: bold; z-index: 999999; position: absolute; right: 10px; float: right;">
+                <a href="\">TEKLİF LİSTEM (<span id="teklifAdedi">&nbsp;&nbsp;</span>)</a>
+            </div>
             <div class="Right rmenu">
                 <div class="social-icons">
                     <a href="https://www.facebook.com/pages/Deneysan-E%C4%9Fitim-Cihazlar%C4%B1-San-ve-Tic-Ltd-%C5%9Eti/199417720130248?ref=ts&fref=ts" title="Deneysan Facebook" class="facebook"></a>
@@ -117,6 +120,25 @@ BALIKESİR
     </footer>
 </body>
 </html>
+
+<script>
+    $(function () {
+        $.ajax({
+            type: 'POST',
+            url: '/FOffers/GetOfferCount',
+            data: "",
+            contentType: "application/json; charset=utf-8",
+            dataType: 'json',
+            success: function (result) {
+                $("#teklifAdedi").text(result);
+            },
+            error: function () {
+
+            }
+        });
+    });
+</script>
+
 <script type="text/javascript">
 
     var _gaq = _gaq || [];
@@ -130,3 +152,4 @@ BALIKESİR
     })();
 
 </script>
+

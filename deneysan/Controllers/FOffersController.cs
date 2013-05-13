@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,6 +15,10 @@ namespace deneysan.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+            if (!this.ControllerContext.HttpContext.Request.Cookies.AllKeys.Contains("OfferList"))
+            {
+
+            }
             return View();
         }
 
@@ -23,5 +28,20 @@ namespace deneysan.Controllers
             return View();
         }
 
+        [HttpPost]
+        public string GetOfferCount()
+        {
+            if (!this.ControllerContext.HttpContext.Request.Cookies.AllKeys.Contains("OfferList"))
+            {
+                return "0";
+            }
+            else
+            {
+                HttpCookie cookie = this.ControllerContext.HttpContext.Request.Cookies["OfferList"];
+                var values = JsonConvert.DeserializeObject<Dictionary<string, string>[]>(cookie.Value);
+                
+                return values.Count().ToString();
+            }
+        }
     }
 }
