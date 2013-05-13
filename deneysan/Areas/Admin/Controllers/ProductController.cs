@@ -39,90 +39,90 @@ namespace deneysan.Areas.Admin.Controllers
         [ValidateInput(false)]
         public ActionResult AddProduct(Product model, HttpPostedFileBase uploadfile, HttpPostedFileBase uploadfile2, HttpPostedFileBase uploadtechfile, HttpPostedFileBase uploadvideo, HttpPostedFileBase uploadexperimentfile, HttpPostedFileBase uploadtraining)//, string txtHardwarePrice, string txtPrice)
         {
-            FillLanguagesList();
+            //FillLanguagesList();
 
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
 
-                if (uploadfile != null && uploadfile.ContentLength > 0)
-                {
-                    uploadfile2 = uploadfile;
-                    Random random = new Random();
-                    int rand = random.Next(1000, 99999999);
-                    uploadfile2.SaveAs(Server.MapPath("/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_original" + rand + Path.GetExtension(uploadfile2.FileName)));
-                  //  new ImageHelper(280, 240).SaveThumbnail(uploadfile2, "/Content/images/products/", Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadfile2.FileName));
-                    model.ProductImage = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_original" + rand + Path.GetExtension(uploadfile2.FileName);
-                    rand = random.Next(1000, 99999999);
+            //    if (uploadfile != null && uploadfile.ContentLength > 0)
+            //    {
+            //        uploadfile2 = uploadfile;
+            //        Random random = new Random();
+            //        int rand = random.Next(1000, 99999999);
+            //        uploadfile2.SaveAs(Server.MapPath("/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_original" + rand + Path.GetExtension(uploadfile2.FileName)));
+            //      //  new ImageHelper(280, 240).SaveThumbnail(uploadfile2, "/Content/images/products/", Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadfile2.FileName));
+            //        model.ProductImage = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_original" + rand + Path.GetExtension(uploadfile2.FileName);
+            //        rand = random.Next(1000, 99999999);
 
-                    //uploadfile.SaveAs(Server.MapPath("/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_original" + rand + Path.GetExtension(uploadfile.FileName)));
-                    //model.ProductImage = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_original" + rand + Path.GetExtension(uploadfile.FileName);
-                    rand = random.Next(1000, 99999999);
-                    new ImageHelper(280, 240).SaveThumbnail(uploadfile, "/Content/images/products/", Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadfile.FileName));
-                    model.ProductImageThumb = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadfile.FileName);
+            //        //uploadfile.SaveAs(Server.MapPath("/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_original" + rand + Path.GetExtension(uploadfile.FileName)));
+            //        //model.ProductImage = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_original" + rand + Path.GetExtension(uploadfile.FileName);
+            //        rand = random.Next(1000, 99999999);
+            //        new ImageHelper(280, 240).SaveThumbnail(uploadfile, "/Content/images/products/", Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadfile.FileName));
+            //        model.ProductImageThumb = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadfile.FileName);
 
-                }
-                else
-                {
-                    model.ProductImage = "/Content/images/front/noimage.jpeg";
-                    model.ProductImageThumb = "/Content/images/front/noimage.jpeg";
-                }
+            //    }
+            //    else
+            //    {
+            //        model.ProductImage = "/Content/images/front/noimage.jpeg";
+            //        model.ProductImageThumb = "/Content/images/front/noimage.jpeg";
+            //    }
 
-                if (uploadtraining != null && uploadtraining.ContentLength > 0)
-                {
-                    Random random = new Random();
-                    int rand = random.Next(1000, 99999999);
-                    uploadtraining.SaveAs(Server.MapPath("/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadtraining.FileName)));
-                    model.filetraining = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadtraining.FileName);
-                }
+            //    if (uploadtraining != null && uploadtraining.ContentLength > 0)
+            //    {
+            //        Random random = new Random();
+            //        int rand = random.Next(1000, 99999999);
+            //        uploadtraining.SaveAs(Server.MapPath("/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadtraining.FileName)));
+            //        model.filetraining = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadtraining.FileName);
+            //    }
 
 
-                if (uploadtechfile != null && uploadtechfile.ContentLength > 0)
-                {
-                    Random random = new Random();
-                    int rand = random.Next(1000, 99999999);
-                    uploadtechfile.SaveAs(Server.MapPath("/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadtechfile.FileName)));
-                    model.filetechnical = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadtechfile.FileName);
-                }
+            //    if (uploadtechfile != null && uploadtechfile.ContentLength > 0)
+            //    {
+            //        Random random = new Random();
+            //        int rand = random.Next(1000, 99999999);
+            //        uploadtechfile.SaveAs(Server.MapPath("/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadtechfile.FileName)));
+            //        model.filetechnical = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadtechfile.FileName);
+            //    }
 
-                if (uploadexperimentfile != null && uploadexperimentfile.ContentLength > 0)
-                {
-                    Random random = new Random();
-                    int rand = random.Next(1000, 99999999);
-                    uploadexperimentfile.SaveAs(Server.MapPath("/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadexperimentfile.FileName)));
-                    model.filexperiment = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadexperimentfile.FileName);
-                }
+            //    if (uploadexperimentfile != null && uploadexperimentfile.ContentLength > 0)
+            //    {
+            //        Random random = new Random();
+            //        int rand = random.Next(1000, 99999999);
+            //        uploadexperimentfile.SaveAs(Server.MapPath("/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadexperimentfile.FileName)));
+            //        model.filexperiment = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadexperimentfile.FileName);
+            //    }
 
-                if (uploadvideo != null && uploadvideo.ContentLength > 0)
-                {
-                    Random random = new Random();
-                    int rand = random.Next(1000, 99999999);
-                    uploadvideo.SaveAs(Server.MapPath("/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadvideo.FileName)));
-                    model.filevideo = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadvideo.FileName);
-                }
-                model.PageSlug = Utility.SetPagePlug(model.Name);
-                string mprice = model.Price.Substring(0, model.Price.Length - 3);
-                mprice = mprice.Replace(",", "");
-                string dprice = model.Price.Substring(model.Price.Length - 2, 2);
-                string newprice = mprice + "," + dprice;
-                model.Price = newprice;
+            //    if (uploadvideo != null && uploadvideo.ContentLength > 0)
+            //    {
+            //        Random random = new Random();
+            //        int rand = random.Next(1000, 99999999);
+            //        uploadvideo.SaveAs(Server.MapPath("/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadvideo.FileName)));
+            //        model.filevideo = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadvideo.FileName);
+            //    }
+            //    model.PageSlug = Utility.SetPagePlug(model.Name);
+            //    string mprice = model.Price.Substring(0, model.Price.Length - 3);
+            //    mprice = mprice.Replace(",", "");
+            //    string dprice = model.Price.Substring(model.Price.Length - 2, 2);
+            //    string newprice = mprice + "," + dprice;
+            //    model.Price = newprice;
 
-                if (!string.IsNullOrEmpty(model.HardwarePrice))
-                {
-                    mprice = model.HardwarePrice.Replace(",", "").Substring(0, model.HardwarePrice.Length - 3);
-                    dprice = model.HardwarePrice.Substring(model.HardwarePrice.Length - 2, 2);
-                    newprice = mprice + "," + dprice;
-                    model.HardwarePrice = newprice;
-                }
-                else
-                {
-                    model.Hardware = false;
-                }
+            //    if (!string.IsNullOrEmpty(model.HardwarePrice))
+            //    {
+            //        mprice = model.HardwarePrice.Replace(",", "").Substring(0, model.HardwarePrice.Length - 3);
+            //        dprice = model.HardwarePrice.Substring(model.HardwarePrice.Length - 2, 2);
+            //        newprice = mprice + "," + dprice;
+            //        model.HardwarePrice = newprice;
+            //    }
+            //    else
+            //    {
+            //        model.Hardware = false;
+            //    }
                 
-                ModelState.Clear();
-                ViewBag.ProcessMessage = ProductManager.AddProduct(model);
-                return Redirect("/yonetim/urunlistesi/" + model.Language + "/" + model.ProductGroupId);
-            }
-            else
+            //    ModelState.Clear();
+            //    ViewBag.ProcessMessage = ProductManager.AddProduct(model);
+            //    return Redirect("/yonetim/urunlistesi/" + model.Language + "/" + model.ProductGroupId);
+            //}
+            //else
                 return View();
             
         }

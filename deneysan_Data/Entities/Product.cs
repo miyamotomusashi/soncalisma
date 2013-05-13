@@ -12,6 +12,7 @@ namespace deneysan_DAL.Entities
         [Key]
         public int ProductId { get; set; }
         [Display(Name="Ürün Adı")]
+        
         [Required(ErrorMessage="Ürün Adını Giriniz.")]
         public string Name { get; set; }
 
@@ -21,10 +22,10 @@ namespace deneysan_DAL.Entities
 
         [Display(Name = "Ürün Fiyatı")]
         [Required(ErrorMessage = "Ürün Fiyatını Giriniz.")]
-        public string Price { get; set; }
+        public decimal Price { get; set; }
 
         [Display(Name = "Ürün Donanım Fiyatı")]
-        public string HardwarePrice { get; set; }
+        public decimal HardwarePrice { get; set; }
 
         [Display(Name = "Ürün Donanımı Varmı?")]
         public bool Hardware { get; set; }
