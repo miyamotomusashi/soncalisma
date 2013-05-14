@@ -1479,6 +1479,7 @@
     <Content Include="Areas\Admin\Content\scripts\pagescripts\news\editnews.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\news\newslist.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\product\addproduct.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\product\editproduct.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\product\productgroup.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\product\productlist.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\projects\projectlist.js" />
@@ -1866,6 +1867,7 @@
     <Content Include="Areas\Admin\Content\scripts\plugins\maskmoney.jquery.json" />
     <Content Include="Areas\Admin\Views\Home\home_leftbar.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Copy of AddProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Copy of EditProduct.cshtml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />

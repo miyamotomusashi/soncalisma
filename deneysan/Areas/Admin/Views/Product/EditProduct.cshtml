@@ -7,7 +7,6 @@
 
 <link href="~/Areas/Admin/Content/styles/pluginstyles/jquery.msgbox.css" rel="stylesheet" />
 <link href="~/Areas/Admin/Content/styles/forms.css" rel="stylesheet" />
-<link href="~/Areas/Admin/Content/styles/table.css" rel="stylesheet" />
 
 @Html.Partial("product_leftbar")
 
@@ -15,88 +14,132 @@
     <div id="page-header">
        <h2>ÜRÜN BİLGİLERİ</h2>
     </div> 
-    
 <section class="grid_12 form">
-    @Html.Hidden("ProcessMessage",(object)@ViewBag.ProcessMessage) 
-    @using(Html.BeginForm("EditProduct", "Product", FormMethod.Post, new { enctype = "multipart/form-data"}))
+    @Html.Hidden("ProcessMessage", (object)@ViewBag.ProcessMessage) 
+    @using (Html.BeginForm("EditProduct", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
-         @Html.Hidden("hdfieldcategory")
-         @Html.Hidden("hdfieldtaglist")
+        @Html.Hidden("hdfieldcategory")
+        @Html.Hidden("hdfieldtaglist")
         @Html.ValidationSummary(true)
-        <fieldset>
-        <legend>Ürün Düzenle</legend>
-        <p>
+         <input type="submit" value="Kaydet" id="btnsave" />
+         <div id="tabs">
+              <ul>
+                <li><a href="#tabs-1">Ürün Bilgileri</a></li>
+                <li><a href="#tabs-2">Ürün Dökümanları</a></li>
+                <li><a href="#tabs-3">Ürün Açıklaması</a></li>
+              </ul>
+          <div id="tabs-1">
+                  
+              <p>
             @Html.Label("Dil")
-            @Html.DropDownListFor(d=>d.Language, (IEnumerable<SelectListItem>)ViewBag.LanguageList, "Dil Seçiniz...", new {@class="required" })
-            @Html.ValidationMessageFor(m=>m.Language)
+            @Html.DropDownListFor(d => d.Language, (IEnumerable<SelectListItem>)ViewBag.LanguageList, "Dil Seçiniz...", new { @class = "required" })
+            @Html.ValidationMessageFor(m => m.Language)
         </p>
         <p>
             @Html.Label("Ürün Grubu")
-            @Html.DropDownListFor(m=>m.ProductGroupId,(IEnumerable<SelectListItem>)ViewBag.grouplist, "Dökümanı Seçiniz...", new {@class="required" })
-            @Html.ValidationMessageFor(m=>m.ProductGroupId)
+            @Html.DropDownListFor(m => m.ProductGroupId, (IEnumerable<SelectListItem>)ViewBag.grouplist, "Dökümanı Seçiniz...", new { @class = "required" })
+            @Html.ValidationMessageFor(m => m.ProductGroupId)
            <img src="/Areas/Admin/Content/images/icons/16/loader.gif" id="imgloader" class="imgloader" />
         </p>
         <p>
-            @Html.LabelFor(m=>m.Name)
-            @Html.TextBoxFor(m=>m.Name, new { @class="textwidth50",Rows="5"})
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name, new { @class = "textwidth50", Rows = "5" })
             @Html.ValidationMessageFor(m => m.Name)
         </p>
+         <p>
+            @Html.LabelFor(m=>m.Code)
+            @Html.TextBoxFor(m=>m.Code, new { @class="textwidth50"})
+            @Html.ValidationMessageFor(m => m.Code)
+        </p>
+         <p>
+            @Html.LabelFor(m=>m.Price)
+         @*   @Html.TextBoxFor(m=>m.Price, new { @class="textwidth10"})*@
+             @Html.TextBox("txtPrice",@Model.Price,new { @class="textwidth10 required"})
+
+            @Html.ValidationMessage("1212")
+        </p>
         
+          <p>
+                <label>Para Birimi</label>
+           
+                 @Html.DropDownListFor(m => m.MoneyType, new[] {
+                    new SelectListItem{ Text="TL", Value="TL" },
+                    new SelectListItem{ Text= "$", Value="$" },
+                    new SelectListItem{ Text= "€", Value="€" }
+                 }, new { @class = "textwidth10"})
+           </p>
         <p>
             <label for="txtname">Ürün Resmi</label>
             
             <input type="file" name="uploadfile" id="uploadfile"  />
-        </p>
-        <br />
-         <p>
-            @Html.TextAreaFor(m => m.Content, new { id="txtcontent",@class="required"})
-            @Html.ValidationMessageFor(m=>m.Content)
-        </p>
-        <fieldset>
-            <legend>Ürün Dökümanları</legend>
-       <p>
-            <label for="txtname">Teknik Döküman</label>
+        </p><br />
             
-            <input type="file" name="uploadtechfile" id="uploadtechfile"  />
-        </p>
-        <p>
-            <label for="txtname">Eğitim Dökümanı</label>
+          <p>
+                <label>Ürün Donanımı Var mı?</label>
+                @Html.CheckBox("chchardware",@Model.Hardware)
+               
+           </p>
+           <p class="pprice">
+                @Html.LabelFor(m=>m.HardwarePrice)
             
-            <input type="file" name="uploadtraining" id="uploadtraining"  />
-        </p>
-         <p>
-            <label for="txtname">Deney Dökümanı</label>
+             @Html.TextBox("txtHardWarePrice", @Model.HardwarePrice,new { @class="textwidth10 required",@value="123"})
+
+            @Html.ValidationMessage("1212")
+             
+           </p>
+         @*   <p class="pprice">
+                <label>Para Birimi</label>
+                 @Html.DropDownListFor(m=>m.HMoneyType, new[] {
+                    new SelectListItem{ Text="TL", Value="TL" },
+                    new SelectListItem{ Text= "$", Value="$" },
+                    new SelectListItem{ Text= "€", Value="€" }
+                 }, new { @class = "textwidth10"})
+           </p>*@
+
+         </div>
+          <div id="tabs-2">
             
-            <input type="file" name="uploadexperimentfile" id="uploadexperimentfile"  />
+              <p>
+                <label for="txtname" class="label2">Ürün Döküman</label>
+                 <input type="file" name="uploadtechfile" id="uploadtechfile"  />
+             </p>
+             <p>
+                <label for="txtname">Teknik Şartname</label>
+                <input type="file" name="uploadtraining" id="uploadtraining"  />
+            </p>
+            <p>
+                <label for="txtname">Deney Dökümanı</label>
+                <input type="file" name="uploadexperimentfile" id="uploadexperimentfile"  />
+            </p>
+            <p>
+                <label for="txtname">Ürün Video</label>
+                <input type="file" name="uploadvideo" id="uploadvideo"/>
+            </p>
+
+          </div>
+          <div id="tabs-3">
+                 <p>
+            @Html.TextAreaFor(m => m.Content, new { id = "txtcontent", @class = "required" })
+            @Html.ValidationMessageFor(m => m.Content)
         </p>
-        <p>
-            <label for="txtname">Ürün Video</label>
-            
-            <input type="file" name="uploadvideo" id="uploadvideo"/>
-        </p>
+          </div>
+        </div>
         
-        </fieldset>
-        <br />
-        <p>
-         
-            <input type="submit" value="Kaydet" id="btnsave" />
-       </p>
-    </fieldset>
-
-
     }
+   
 </section>
 </div>
 @section Scripts {
+<link href="~/Areas/Admin/Content/styles/pluginstyles/jquery.ui.all.css" rel="stylesheet" />
 <link href="~/Areas/Admin/Content/styles/pluginstyles/jquery.msgbox.css" rel="stylesheet" />
+<script src="~/Areas/Admin/Content/scripts/plugins/autoNumeric.js"></script>
 <script src="~/Areas/Admin/Content/scripts/plugins/jquery.msgbox.min.js"></script>
 <script src="~/Areas/Admin/Content/scripts/myscripts/MessageBox.js"></script>
 <script src="~/Areas/Admin/Content/scripts/plugins/jquery.validate.js"></script>
 <script src="~/Areas/Admin/Content/scripts/plugins/jquery.validate.unobtrusive.js"></script>
+<script src="~/Areas/Admin/Content/scripts/pagescripts/product/editproduct.js"></script>
 <script src="~/Areas/Admin/Content/CKEditor/ckeditor/ckeditor.js"></script>
 <script src="~/Areas/Admin/Content/CKEditor/ckfinder/ckfinder.js"></script>
 <script src="~/Areas/Admin/Content/scripts/myscripts/CKEditorCreate.js"></script>
 
-    <script src="~/Areas/Admin/Content/scripts/plugins/jquery.ui.datepicker-tr.js"></script>
-<script src="~/Areas/Admin/Content/scripts/pagescripts/product/addProduct.js"></script>
 }

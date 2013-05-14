@@ -343,6 +343,10 @@ namespace deneysan_BLL.ProductBL
                         record.Content = data.Content;
                         record.PageSlug = data.PageSlug;
                         record.Language = data.Language;
+                        record.Hardware = data.Hardware;
+                        record.HardwarePrice = data.HardwarePrice;
+                        record.Price = data.Price;
+                        
                         record.ProductGroupId = data.ProductGroupId;
                         if (!string.IsNullOrEmpty(data.ProductImage))
                         {

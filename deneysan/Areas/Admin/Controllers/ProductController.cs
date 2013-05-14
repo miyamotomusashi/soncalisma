@@ -126,7 +126,7 @@ namespace deneysan.Areas.Admin.Controllers
 
                 ModelState.Clear();
                 ViewBag.ProcessMessage = ProductManager.AddProduct(model);
-                return Redirect("/yonetim/urunlistesi/" + model.Language + "/" + model.ProductGroupId);
+                return View();
             }
             else
                 return View();
@@ -180,6 +180,7 @@ namespace deneysan.Areas.Admin.Controllers
                     var groups = ProductManager.GetProductGroupList(record.Language);
                     var grouplist = new SelectList(groups, "ProductGroupId", "GroupName", record.ProductGroupId);
                     ViewBag.GroupList = grouplist;
+                   
                     return View(record);
                 }
                 else
@@ -193,7 +194,8 @@ namespace deneysan.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult EditProduct(Product model, HttpPostedFileBase uploadfile, HttpPostedFileBase uploadtechfile, HttpPostedFileBase uploadvideo, HttpPostedFileBase uploadexperimentfile, HttpPostedFileBase uploadtraining)
+
+        public ActionResult EditProduct(Product model, HttpPostedFileBase uploadfile, HttpPostedFileBase uploadfile2, HttpPostedFileBase uploadtechfile, HttpPostedFileBase uploadvideo, HttpPostedFileBase uploadexperimentfile, HttpPostedFileBase uploadtraining, string txtPrice, string txtHardwarePrice, bool chchardware)
         {
             FillLanguagesList();
 
@@ -202,16 +204,35 @@ namespace deneysan.Areas.Admin.Controllers
 
                 if (uploadfile != null && uploadfile.ContentLength > 0)
                 {
+                    uploadfile2 = uploadfile;
                     Random random = new Random();
                     int rand = random.Next(1000, 99999999);
-                    uploadfile.SaveAs(Server.MapPath("/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_original" + rand + Path.GetExtension(uploadfile.FileName)));
-                    model.ProductImage = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_original" + rand + Path.GetExtension(uploadfile.FileName);
+                    uploadfile2.SaveAs(Server.MapPath("/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_original" + rand + Path.GetExtension(uploadfile2.FileName)));
+                  //  new ImageHelper(280, 240).SaveThumbnail(uploadfile2, "/Content/images/products/", Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadfile2.FileName));
+                    model.ProductImage = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_original" + rand + Path.GetExtension(uploadfile2.FileName);
+                    rand = random.Next(1000, 99999999);
+
+                    //uploadfile.SaveAs(Server.MapPath("/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_original" + rand + Path.GetExtension(uploadfile.FileName)));
+                    //model.ProductImage = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_original" + rand + Path.GetExtension(uploadfile.FileName);
                     rand = random.Next(1000, 99999999);
                     new ImageHelper(280, 240).SaveThumbnail(uploadfile, "/Content/images/products/", Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadfile.FileName));
                     model.ProductImageThumb = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadfile.FileName);
-                    
+
                 }
-               
+                else
+                {
+                    model.ProductImage = "/Content/images/front/noimage.jpeg";
+                    model.ProductImageThumb = "/Content/images/front/noimage.jpeg";
+                }
+
+                if (uploadtraining != null && uploadtraining.ContentLength > 0)
+                {
+                    Random random = new Random();
+                    int rand = random.Next(1000, 99999999);
+                    uploadtraining.SaveAs(Server.MapPath("/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadtraining.FileName)));
+                    model.filetraining = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadtraining.FileName);
+                }
+
 
                 if (uploadtechfile != null && uploadtechfile.ContentLength > 0)
                 {
@@ -220,13 +241,7 @@ namespace deneysan.Areas.Admin.Controllers
                     uploadtechfile.SaveAs(Server.MapPath("/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadtechfile.FileName)));
                     model.filetechnical = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadtechfile.FileName);
                 }
-                if (uploadtraining != null && uploadtraining.ContentLength > 0)
-                {
-                    Random random = new Random();
-                    int rand = random.Next(1000, 99999999);
-                    uploadtraining.SaveAs(Server.MapPath("/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadtraining.FileName)));
-                    model.filetraining = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadtraining.FileName);
-                }
+
                 if (uploadexperimentfile != null && uploadexperimentfile.ContentLength > 0)
                 {
                     Random random = new Random();
@@ -242,7 +257,28 @@ namespace deneysan.Areas.Admin.Controllers
                     uploadvideo.SaveAs(Server.MapPath("/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadvideo.FileName)));
                     model.filevideo = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadvideo.FileName);
                 }
+                model.PageSlug = Utility.SetPagePlug(model.Name);
+                string mprice = txtPrice.Substring(0, txtPrice.Length - 3);
+                mprice = mprice.Replace(",", "");
+                string dprice = txtPrice.Substring(txtPrice.Length - 2, 2);
+                string newprice = mprice + "," + dprice;
+                model.Price = Convert.ToDecimal(newprice);
 
+                if (chchardware == true)
+                {
+                    mprice = txtHardwarePrice.Substring(0, txtHardwarePrice.Length - 3);
+                    mprice = mprice.Replace(",", "");
+                     dprice = txtHardwarePrice.Substring(txtHardwarePrice.Length - 2, 2);
+                     newprice = mprice + "," + dprice;
+                    newprice = mprice + "," + dprice;
+                    model.HardwarePrice = Convert.ToDecimal(newprice);
+                    model.Hardware = true;
+                }
+                else
+                {
+                    model.Hardware = false;
+                    model.HardwarePrice = 0;
+                }
 
                 if (RouteData.Values["id"] != null)
                 {
@@ -250,7 +286,6 @@ namespace deneysan.Areas.Admin.Controllers
                     bool isnumber = int.TryParse(RouteData.Values["id"].ToString(), out nid);
                     if (isnumber)
                     {
-                        model.PageSlug = Utility.SetPagePlug(model.Name);
                         model.ProductId = nid;
                         ViewBag.ProcessMessage = ProductManager.EditProduct(model);
                         return View(model);
@@ -261,13 +296,16 @@ namespace deneysan.Areas.Admin.Controllers
                         return View(model);
                     }
                 }
-                else return View();
+                else
+                    return View();
 
 
-
-
+               
+                
             }
-            return View();
+            else
+                return View();
+            
         }
 
         string FillLanguagesList()

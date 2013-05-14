@@ -31,6 +31,7 @@ namespace deneysan
 
      protected void Application_AcquireRequestState(object sender, EventArgs e)
      {
+         
          if (Session["culture"] == null)
          {
              CultureInfo ci = new CultureInfo("tr");
