@@ -94,7 +94,30 @@ namespace deneysan_BLL.TeklifBL
             }
         }
 
-        
+        public static bool AddTeklif(Teklif teklif, IEnumerable<TeklifUrun> teklifurun)
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                try
+                {
+                    teklif.Durum = (int)EnumTeklifTip.Onaylanmadi;
+                    teklif.TeklifTarihi = DateTime.Now;
+                    
+                    db.Teklif.Add(teklif);
+                    foreach (var item in teklifurun)
+                    {
+                        db.TeklifUrun.Add(item);
+                    }
+                    db.SaveChanges();
+
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+        }
     }
 
    

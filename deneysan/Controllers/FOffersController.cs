@@ -1,4 +1,5 @@
-﻿using deneysan_BLL.ProductBL;
+﻿using deneysan.Models;
+using deneysan_BLL.ProductBL;
 using deneysan_BLL.TeklifBL;
 using deneysan_DAL.Entities;
 using Newtonsoft.Json;
@@ -22,28 +23,28 @@ namespace deneysan.Controllers
             {
                 HttpCookie cookie = this.ControllerContext.HttpContext.Request.Cookies["OfferList"];
                 var values = JsonConvert.DeserializeObject<Dictionary<string, string>[]>(cookie.Value);
-                var list = ProductManager.GetProductByIds(values);
-                return View(list);
+                var products = ProductManager.GetProductByIds(values);
+                
+                OfferWrapperModel modelbind = new OfferWrapperModel(products,null,null);
+                return View(modelbind);
             }
             else
             {
-                return View(new List<deneysan_DAL.Entities.Product>());
+                return View(new OfferWrapperModel(new List<Product>(),null,null));
             }
         }
 
         [HttpPost]
-        public ActionResult Index(Teklif teklif, TeklifUrun urunler)
+        public ActionResult Index(Teklif teklif, TeklifUrun[] teklifurun)
         {
-            teklif.Durum = (int)EnumTeklifTip.Onaylanmadi;
-            teklif.TeklifTarihi = DateTime.Now;
-            
+            TeklifManager.AddTeklif(teklif, teklifurun);
             if (this.ControllerContext.HttpContext.Request.Cookies.AllKeys.Contains("OfferList"))
             {
                 HttpCookie cookie = this.ControllerContext.HttpContext.Request.Cookies["OfferList"];
                 cookie.Expires = DateTime.Now.AddDays(-1);
                 this.ControllerContext.HttpContext.Response.Cookies.Add(cookie);
             } 
-            return View(new List<deneysan_DAL.Entities.Product>());
+            return View(new OfferWrapperModel(new List<Product>(),null,null));
         }
 
         [HttpPost]

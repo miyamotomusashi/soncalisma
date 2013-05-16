@@ -217,6 +217,7 @@
     </Compile>
     <Compile Include="Helpers\Enums\InstituionalTypes.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\OfferWrapperModel.cs" />
     <Compile Include="Models\HomePageWrapperModel.cs" />
     <Compile Include="Models\ProductWrapperModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1694,6 +1695,7 @@
     <Content Include="Content\Images\Front\address-ico.png" />
     <Content Include="Content\Images\Front\agri-eml.png" />
     <Content Include="Content\Images\Front\aksaray.png" />
+    <Content Include="Content\Images\Front\alert.png" />
     <Content Include="Content\Images\Front\all-bg.png" />
     <Content Include="Content\Images\Front\balkes.png" />
     <Content Include="Content\Images\Front\bayburt.png" />
