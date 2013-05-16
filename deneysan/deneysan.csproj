@@ -1806,6 +1806,7 @@
     <Content Include="Content\Scripts\plugins.js" />
     <Content Include="Content\Scripts\toppanel.js" />
     <Content Include="Content\Scripts\custom.js" />
+    <Content Include="Content\Scripts\watermark.min.js" />
     <Content Include="Content\Styles\layout.css" />
     <Content Include="Content\Styles\portfolio.css" />
     <Content Include="Content\Styles\prettyPhoto.css" />

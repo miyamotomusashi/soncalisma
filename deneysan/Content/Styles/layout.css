@@ -544,7 +544,16 @@ width: 660px;
 .content_page p img.left{margin:0 10px 10px 0; float:left}
 .content_page p img.right{margin:0 0 10px 10px; float:right}
 
+input.watermark, textarea.watermark { color: #000; }
+input.marked, textarea.marked { color: #999; }
+
 /* Subpage SideBar */
+#offer-list { width:460px; background:#f1f2f3; padding:20px 10px;margin:0 -10px -10px 0px; float:left; }
+#offer-list h1{font-size:16px; font-weight:bold; border:solid 1px #ebebeb; padding:5px 12px 5px 12px; background:url(/Content/Images/Front/bg-title-subsidebar.png) repeat-x;}
+#offer-list ul{font-family:'Lucida Grande',Tahoma, Geneva, sans-serif; color:#333; font-size:13px; }
+#offer-list li{background:#fff; border:solid 1px #ddd; border-top:none; margin-bottom:1px}
+#offer-list li a{line-height:20px; display:block; padding:10px; color:#666}
+
 #sub-sidebar {width:248px; background:#f1f2f3; padding:20px 10px;margin:0 -10px -10px 0px;} /*height:auto !important*/
 /*#sub-sidebar {width:258px; background:#f1f2f3; padding:20px 10px;margin:0 -10px -10px -10px; height:auto !important}*/
 #sub-sidebar h1{font-size:16px; font-weight:bold; border:solid 1px #ebebeb; padding:12px 12px 17px 12px; background:url(/Content/Images/Front/bg-title-subsidebar.png) repeat-x;}
@@ -749,6 +758,11 @@ ul.pagination li a#currentPage {background-color: #ccc9d3;color: white;}
 .contact-form legend { display:none }
 .contact-form fieldset { padding:0 !important; margin:0 !important; }
 .field_one { width:460px; height:60px; line-height:2.5em; }
+.field_offer_one { width:460px; height:40px; line-height:2.5em; }
+.field_offer_two { width:220px; height:40px; line-height:2.5em; float:left }
+.field_offer_two input[type=text] { width:180px;}
+.input_180px input[type=text] { width:180px;}
+
 #contact-form fieldset dt { clear:left; float:left; width:90px !important; text-align:right !important; padding:15px 0 0 !important; margin:0 14px 0 0 !important }
 form fieldset dd { float:left; padding:3px 0 }
 html>body form fieldset dd {

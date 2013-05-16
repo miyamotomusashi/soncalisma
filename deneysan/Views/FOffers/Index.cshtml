@@ -1,12 +1,19 @@
-﻿@model IEnumerable<deneysan_DAL.Entities.Product>
+﻿@model List<deneysan_DAL.Entities.Product>
 @{
     Layout = "~/Views/Shared/frontlayout.cshtml";
 }
+<script src="~/Content/Scripts/watermark.min.js"></script>
+<script src="/Areas/Admin/Content/scripts/plugins/jquery.validate.unobtrusive.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.watermark').watermark();
+    });
+</script>
 <div class="main_content mainpage pageheight" style="">
     <div class="wrapper mainpage grid_12">
         <div class="form_block page">
             <h2>@OfferRess.OffersStrings.offerform</h2>
-            <hr>
+            <hr class="wide">
             <p>@Html.ValidationMessage("_FORM")</p>
             @if (TempData["sent"] != null)
             {
@@ -21,55 +28,62 @@
             }
             @using (Html.BeginForm())
             {
-                <div class="contact-form" style="width:460px; float:left">
-                    <div class="field_one">
-                        <label class="hasTip required">@ContactRess.ContactStrings.namesurname<span class="star">&nbsp;*</span></label>
-                        <br />
-                        @Html.TextBox("Kurum", null, new { @class = "required", @size = "30", @required = "required" })
+                @Html.ValidationSummary(true)
+                <div class="contact-form" style="width: 460px; float: left">
+                    <div class="field_offer_one">
+                        <input type="text" id="Kurum" name="Kurum" class="watermark required" title="Kurum" size="30" data-val="true" data-val-required="Kurum adı giriniz"> *
                     </div>
-                    <div class="field_one">
-                        <label class="hasTip required">@ContactRess.ContactStrings.namesurname<span class="star">&nbsp;*</span></label>
-                        <br />
-                        @Html.TextBox("Unvan", null, new { @class = "required", @size = "30", @required = "required" })
+                    
+                    <div class="field_offer_two">
+                        @Html.TextBox("Unvan", null, new { @class = "watermark required", @title="Ünvan", @size = "30" })
                     </div>
-                    <div class="field_one">
-                        <label class="hasTip required">@ContactRess.ContactStrings.namesurname<span class="star">&nbsp;*</span></label>
-                        <br />
-                        @Html.TextBox("AdSoyad", null, new { @class = "required", @size = "30", @required = "required" })
+                    
+                    <div class="field_offer_two">
+                        @Html.TextBox("Adsoyad", null, new { @class = "watermark required", @title="Ad Soyad", @size = "30" }) *
                     </div>
-                    <div class="field_one">
-                        <label class="hasTip required">@ContactRess.ContactStrings.namesurname<span class="star">&nbsp;*</span></label>
-                        <br />
-                        @Html.TextBox("Tel", null, new { @class = "required", @size = "30", @required = "required" })
-                    </div>
-                     <div class="field_one">
-                        <label class="hasTip required">@ContactRess.ContactStrings.namesurname<span class="star">&nbsp;*</span></label>
-                        <br />
-                        @Html.TextBox("Gsm", null, new { @class = "required", @size = "30", @required = "required" })
-                    </div>
-                     <div class="field_one">
-                        <label class="hasTip required">@ContactRess.ContactStrings.namesurname<span class="star">&nbsp;*</span></label>
-                        <br />
-                        @Html.TextBox("Fax", null, new { @class = "required", @size = "30", @required = "required" })
+                    <div style="clear:both"></div>
+                    <div class="field_offer_two">
+                        @Html.TextBox("Telefon", null, new { @class = "watermark required", @title="Telefon", @size = "30" })
                     </div>
 
-                    <p>@ContactRess.ContactStrings.requiredfiled</p>
+                    <div class="field_offer_two">
+                        @Html.TextBox("Fax", null, new { @class = "watermark required", @title="Fax", @size = "30" })
+                    </div>
+                    <div style="clear:both"></div>
+                    
+                    <div class="field_offer_one input_180px">
+                        @Html.TextBox("Gsm", null, new { @class = "watermark required", @title="GSM", @size = "30" }) *
+                    </div>
+                    
+                    <div class="field_offer_one" style="margin-top:25px">
+                        @Html.CheckBox("Donanim", false, new { @style="float:left" }) <span style="float:left; font-weight:bold">Yazılım, donanım ve PC bağlantısı istiyorum</span> 
+                    </div>
+                    <p style="color:red">@ContactRess.ContactStrings.requiredfiled</p>
 
                     <div class="field_one" style="margin-top: 10px">
                         <input type="submit" class="button gray" value="@ContactRess.ContactStrings.send" />
                     </div>
                 </div>
-                <div style="float:left; width:410px;">
+                <div id="offer-list">
                     @if (Model.Count() == 0)
                     {
                         <p><b>Teklif listenizde hiç ürün bulunmamakta!</b></p>
                         <p>Lütfen ürün sayfasından ürün ekleyiniz</p>
-
                     }
                     else
                     { 
-                        <p><b>Teklif Listenizdeki Ürünler:</b></p>
-                    
+                        <h1>Teklif Listenizdeki Ürünler</h1>
+                        <ul>
+                           @for (int i = 0; i < Model.Count(); i++)
+                            {
+                                <li style="overflow:hidden;">
+                                    @Html.TextBox("Adet", "1", new { @style = "float:left; width:10px; margin-left:3px; padding:10px;clear:both; " })
+                                    @Html.Hidden("UrunID", Model[i].ProductId)
+                                    
+                                    <a style="float:left; width:400px" href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_products/@Model[i].ProductGroup.PageSlug/@Model[i].PageSlug/@Model[i].ProductId">@Model[i].Name</a>
+                                </li>   
+                            }
+                        </ul>
                     }
 
                 </div>

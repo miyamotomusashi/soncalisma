@@ -459,11 +459,37 @@ namespace deneysan_BLL.ProductBL
             {
                 try
                 {
-                    Product record = db.Product.Where(d => d.ProductId == nid && d.Deleted == false).SingleOrDefault();
+                    Product record = db.Product.Include("ProductGroup").Where(d => d.ProductId == nid && d.Deleted == false).SingleOrDefault();
                     if (record != null)
                         return record;
                     else
                         return null;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public static List<Product> GetProductByIds(Dictionary<string, string>[] ids)
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                try
+                {
+                    List<Product> list = new List<Product>();
+
+                    foreach (var element in ids)
+                    {
+                        foreach (var entry in element)
+                        {
+                            Product p = ProductManager.GetProductById(Convert.ToInt32(entry.Value));
+                            list.Add(p);
+                        }
+                    }
+
+                    return list;
                 }
                 catch (Exception ex)
                 {
