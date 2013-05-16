@@ -24,7 +24,6 @@ namespace deneysan.Controllers
                 HttpCookie cookie = this.ControllerContext.HttpContext.Request.Cookies["OfferList"];
                 var values = JsonConvert.DeserializeObject<Dictionary<string, string>[]>(cookie.Value);
                 var products = ProductManager.GetProductByIds(values);
-                
                 OfferWrapperModel modelbind = new OfferWrapperModel(products,null,null);
                 return View(modelbind);
             }
@@ -35,14 +34,16 @@ namespace deneysan.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(Teklif teklif, TeklifUrun[] teklifurun)
+        public ActionResult Index(Teklif teklif, List<TeklifUrun> teklifurun)
         {
-            TeklifManager.AddTeklif(teklif, teklifurun);
-            if (this.ControllerContext.HttpContext.Request.Cookies.AllKeys.Contains("OfferList"))
+            bool result = TeklifManager.AddTeklif(teklif, teklifurun);
+
+            if (result && this.ControllerContext.HttpContext.Request.Cookies.AllKeys.Contains("OfferList"))
             {
                 HttpCookie cookie = this.ControllerContext.HttpContext.Request.Cookies["OfferList"];
                 cookie.Expires = DateTime.Now.AddDays(-1);
                 this.ControllerContext.HttpContext.Response.Cookies.Add(cookie);
+                TempData["sent"] = "true";
             } 
             return View(new OfferWrapperModel(new List<Product>(),null,null));
         }

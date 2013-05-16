@@ -831,7 +831,8 @@ html>body form fieldset dd {
 .notification.error {background:#fccac3 url('/Content/images/Front/error.png') no-repeat 10px 50%;border-color:#ea5338;}
 .notification {border-width:1px;border-style:solid;padding:17px 17px 17px 55px;margin-bottom:15px;-moz-border-radius:3px;-webkit-border:3px;border-radius:3px;}
 .notification.success {background:#effeb9 url('/Content/images/Front/success.png') no-repeat 10px 50%;border-color:#98c700;}
-
+.notification.info { background:#d4e7f5 url('/Content/images/Front/information.png') no-repeat 10px 14px;border-color:#589ad7;}
+.notification.info span.strong {color:#152433;}
 
 /* -- EBSO TV -- */
 .videoHeadLine{overflow:hidden; padding-bottom:10px; border-bottom:solid 1px #dadada; margin-bottom:9px}
