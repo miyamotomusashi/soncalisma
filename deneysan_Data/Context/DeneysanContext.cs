@@ -33,6 +33,8 @@ namespace deneysan_DAL.Context
         public DbSet<HumanResource> HumanResource { get; set; }
         public DbSet<Teklif> Teklif { get; set; }
         public DbSet<TeklifUrun> TeklifUrun { get; set; }
+        public DbSet<MailUsers> MailUsers { get; set; }
+        
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 
@@ -58,6 +60,8 @@ namespace deneysan_DAL.Context
             modelBuilder.Entity<HumanResource>().ToTable("HumanResource");
             modelBuilder.Entity<Teklif>().ToTable("Teklif");
             modelBuilder.Entity<TeklifUrun>().ToTable("TeklifUrun");
+            modelBuilder.Entity<MailUsers>().ToTable("MailUsers");
+            
         }
     }
 }

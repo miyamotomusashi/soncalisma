@@ -1,0 +1,118 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using deneysan_DAL.Context;
+using deneysan_DAL.Entities;
+
+namespace deneysan_BLL.MailBL
+{
+    public class MailManager
+    {
+       
+        public static List<MailUsers> GetMailUsersList(int type)
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                var list = db.MailUsers.Where(d => d.MailType == type).ToList();
+                return list;
+            }
+        }
+
+
+        public static bool AddMailUsers(MailUsers record)
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                try
+                {
+                    db.MailUsers.Add(record);
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+
+        }
+
+
+       
+
+
+        public static bool Delete(int id)
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                try
+                {
+                    var record = db.MailUsers.FirstOrDefault(d => d.MailUserId == id);
+                    db.MailUsers.Remove(record);
+
+                    db.SaveChanges();
+
+                 
+
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+
+        public static MailUsers GetMailUsersById(int nid)
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                try
+                {
+                    MailUsers record = db.MailUsers.Where(d => d.MailUserId == nid).SingleOrDefault();
+                    if (record != null)
+                        return record;
+                    else
+                        return null;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public static bool EditMailUser(MailUsers model)
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                try
+                {
+                    MailUsers record = db.MailUsers.Where(d => d.MailUserId == model.MailUserId).SingleOrDefault();
+                    if (record != null)
+                    {
+                        record.MailType = model.MailType;
+                        record.MailUser = model.MailUser;
+                        record.MailAddress = model.MailAddress;
+           
+                        db.SaveChanges();
+
+                      
+
+                        return true;
+                    }
+                    else
+                        return false;
+
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+        }
+
+    }
+}

@@ -58,6 +58,7 @@
     <Compile Include="Entities\ImportantLinks.cs" />
     <Compile Include="Entities\Institutional.cs" />
     <Compile Include="Entities\Languages.cs" />
+    <Compile Include="Entities\MailUsers.cs" />
     <Compile Include="Entities\News.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\ProductGroup.cs" />

@@ -188,6 +188,7 @@
     <Compile Include="Areas\Admin\Controllers\HumanResourceController.cs" />
     <Compile Include="Areas\Admin\Controllers\InstitutionalController.cs" />
     <Compile Include="Areas\Admin\Controllers\LinkController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MailController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductGroupController.cs" />
@@ -215,6 +216,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Enums\EnumMailUser.cs" />
     <Compile Include="Helpers\Enums\InstituionalTypes.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\OfferWrapperModel.cs" />
@@ -1476,6 +1478,7 @@
     <Content Include="Areas\Admin\Content\scripts\pagescripts\instituional\hr.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\instituional\mision.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\links\linklist.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\Mail\maillist.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\news\addnews.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\news\editnews.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\news\newslist.js" />
@@ -1871,6 +1874,10 @@
     <Content Include="Areas\Admin\Views\Home\home_leftbar.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Copy of AddProduct.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Copy of EditProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Mail\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Mail\mail_leftbar.cshtml" />
+    <Content Include="Areas\Admin\Views\Mail\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Mail\Edit.cshtml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />

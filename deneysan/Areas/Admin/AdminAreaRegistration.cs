@@ -53,6 +53,13 @@ namespace deneysan.Areas.Admin
             context.MapRoute("referenceadd", "yonetim/referansekle", new { action = "AddReference", Controller = "Reference" });
             context.MapRoute("referenceedit", "yonetim/referansduzenle/{id}", new { action = "EditReference", Controller = "Reference" });
 
+            //MAİL KULLANICILARI
+            context.MapRoute("mailuser_def", "yonetim/mailkullanicilari", new { action = "Index", Controller = "Mail" });
+            context.MapRoute("mailuser", "yonetim/mailkullanicilari/{type}", new { action = "Index", Controller = "Mail" });
+            context.MapRoute("mailuser_add", "yonetim/ekle", new { action = "Add", Controller = "Mail" });
+            context.MapRoute("mailuser_edit", "yonetim/duzenle/{id}", new { action = "Edit", Controller = "Mail" });
+
+
             //DÖKÜMANLAR
             context.MapRoute("documents", "yonetim/dokumanlar", new { action = "Index", Controller = "Documents" });
             context.MapRoute("documentsgroups_default", "yonetim/dokumangruplari", new { action = "Index", Controller = "DocumentGroup" });
