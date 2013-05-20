@@ -8,6 +8,7 @@ using deneysan_DAL.Entities;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using System.Web;
 namespace deneysan_BLL.TeklifBL
 {
     public class TeklifManager
@@ -94,7 +95,7 @@ namespace deneysan_BLL.TeklifBL
             }
         }
 
-        public static bool AddTeklif(Teklif teklif, IEnumerable<TeklifUrun> teklifurun)
+        public static bool AddTeklif(Teklif teklif, TeklifUrun[] teklifurun, Dictionary<string,string>[] products)
         {
             using (DeneysanContext db = new DeneysanContext())
             {
@@ -102,12 +103,30 @@ namespace deneysan_BLL.TeklifBL
                 {
                     teklif.Durum = (int)EnumTeklifTip.Onaylanmadi;
                     teklif.TeklifTarihi = DateTime.Now;
-                    
                     db.Teklif.Add(teklif);
-                    foreach (var item in teklifurun)
+                    db.SaveChanges();
+
+                    int[] plist = new int[50];
+                    
+                    int k = 0;
+
+                    foreach (var element in products)
                     {
-                        db.TeklifUrun.Add(item);
+                        foreach (var entry in element)
+                        {
+                            plist[k] = Convert.ToInt32(entry.Value);
+                        }
+                        k++;
                     }
+
+
+                    for (int i = 0; i < teklifurun.Count(); i++)
+                    {
+                        teklifurun[i].TeklifId = teklif.TeklifId;
+                        teklifurun[i].UrunId = plist[i];
+                        db.TeklifUrun.Add(teklifurun[i]);
+                    }
+                    
                     db.SaveChanges();
 
                     return true;

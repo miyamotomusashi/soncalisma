@@ -70,11 +70,29 @@ namespace HomeRess {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Uluslararası alanlarda kongre, sempozyum ve dergilerde yayınlanmış olan tüm bildiri ve makalelere konu başlıkları dahilinde buradan ulaşabilirsiniz..
+        /// </summary>
+        public static string documentBoxContent {
+            get {
+                return ResourceManager.GetString("documentBoxContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to DÖKÜMANLAR.
         /// </summary>
         public static string documents {
             get {
                 return ResourceManager.GetString("documents", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ulusal ve uluslararası alandaki çözüm ortaklarımıza, mesleki alandaki eğitim vakıfları, dernekler ve odalara buradan ulaşabilirsiniz..
+        /// </summary>
+        public static string linkBoxContent {
+            get {
+                return ResourceManager.GetString("linkBoxContent", resourceCulture);
             }
         }
         
@@ -106,6 +124,15 @@ namespace HomeRess {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Son olarak gerçekleştirdiğimiz projelerimizden birisi olan Soğutma eğitim setlerinde gerçek zamanlı log p-h diyagramı ve veri toplama sistemini gerçekleştirdik. Diğer tüm projelerimizi buradan takip edebilirsiniz..
+        /// </summary>
+        public static string projectBoxContent {
+            get {
+                return ResourceManager.GetString("projectBoxContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to REFERANSLAR.
         /// </summary>
         public static string references {
@@ -124,7 +151,7 @@ namespace HomeRess {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to /Content/Images/Front/bizimle-calismak-istemrmisiniz2.png.
+        ///   Looks up a localized string similar to /Content/Images/Front/bizimle-calismak-istermisiniz2.png.
         /// </summary>
         public static string workwithusimage {
             get {

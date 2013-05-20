@@ -358,6 +358,15 @@ namespace SharedRess {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Teklif Listem.
+        /// </summary>
+        public static string myofferlist {
+            get {
+                return ResourceManager.GetString("myofferlist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to DENEYSAN - Eğitim Cihazları.
         /// </summary>
         public static string pagetitle {

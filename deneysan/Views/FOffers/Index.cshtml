@@ -130,8 +130,6 @@ else
                                         new SelectListItem{ Text= "4", Value="4" },
                                         new SelectListItem{ Text= "5", Value="5" }
                                      }, new { @class = "" })
-
-                                            @Html.HiddenFor(m => m.teklifurun[i].TeklifUrunId, Model.products[i].ProductId)
                                         </div>
                                         <div style="float: left; width: 470px;">
                                             <a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_products/@Model.products[i].ProductGroup.PageSlug/@Model.products[i].PageSlug/@Model.products[i].ProductId">@Model.products[i].Name</a>

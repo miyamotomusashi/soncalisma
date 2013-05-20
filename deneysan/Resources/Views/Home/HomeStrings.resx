@@ -120,8 +120,14 @@
   <data name="allnews" xml:space="preserve">
     <value>Tüm Haberler</value>
   </data>
+  <data name="documentBoxContent" xml:space="preserve">
+    <value>Uluslararası alanlarda kongre, sempozyum ve dergilerde yayınlanmış olan tüm bildiri ve makalelere konu başlıkları dahilinde buradan ulaşabilirsiniz.</value>
+  </data>
   <data name="documents" xml:space="preserve">
     <value>DÖKÜMANLAR</value>
+  </data>
+  <data name="linkBoxContent" xml:space="preserve">
+    <value>Ulusal ve uluslararası alandaki çözüm ortaklarımıza, mesleki alandaki eğitim vakıfları, dernekler ve odalara buradan ulaşabilirsiniz.</value>
   </data>
   <data name="links" xml:space="preserve">
     <value>BAĞLANTILAR</value>
@@ -132,6 +138,9 @@
   <data name="ourprojects" xml:space="preserve">
     <value>PROJELERİMİZ</value>
   </data>
+  <data name="projectBoxContent" xml:space="preserve">
+    <value>Son olarak gerçekleştirdiğimiz projelerimizden birisi olan Soğutma eğitim setlerinde gerçek zamanlı log p-h diyagramı ve veri toplama sistemini gerçekleştirdik. Diğer tüm projelerimizi buradan takip edebilirsiniz.</value>
+  </data>
   <data name="references" xml:space="preserve">
     <value>REFERANSLAR</value>
   </data>
@@ -139,6 +148,6 @@
     <value>/Content/Images/Front/teklif-iste.jpg</value>
   </data>
   <data name="workwithusimage" xml:space="preserve">
-    <value>/Content/Images/Front/bizimle-calismak-istemrmisiniz2.png</value>
+    <value>/Content/Images/Front/bizimle-calismak-istermisiniz2.png</value>
   </data>
 </root>

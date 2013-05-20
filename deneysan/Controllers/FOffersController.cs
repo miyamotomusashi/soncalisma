@@ -34,13 +34,15 @@ namespace deneysan.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(Teklif teklif, List<TeklifUrun> teklifurun)
+        public ActionResult Index(Teklif teklif, TeklifUrun[] teklifurun)
         {
-            bool result = TeklifManager.AddTeklif(teklif, teklifurun);
-
-            if (result && this.ControllerContext.HttpContext.Request.Cookies.AllKeys.Contains("OfferList"))
+            if (this.ControllerContext.HttpContext.Request.Cookies.AllKeys.Contains("OfferList"))
             {
                 HttpCookie cookie = this.ControllerContext.HttpContext.Request.Cookies["OfferList"];
+                var values = JsonConvert.DeserializeObject<Dictionary<string, string>[]>(cookie.Value);
+
+                bool result = TeklifManager.AddTeklif(teklif, teklifurun, values);
+
                 cookie.Expires = DateTime.Now.AddDays(-1);
                 this.ControllerContext.HttpContext.Response.Cookies.Add(cookie);
 

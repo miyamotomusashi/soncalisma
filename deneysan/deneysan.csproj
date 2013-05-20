@@ -1716,7 +1716,8 @@
     <Content Include="Content\Images\Front\bg-toolbar.png" />
     <Content Include="Content\Images\Front\bg_sm_li.png" />
     <Content Include="Content\Images\Front\bizimle-calismak-istemrmisiniz.png" />
-    <Content Include="Content\Images\Front\bizimle-calismak-istemrmisiniz2.png" />
+    <Content Include="Content\Images\Front\bizimle-calismak-istermisiniz2.png" />
+    <Content Include="Content\Images\Front\bizimle-calismak-istermisiniz2_en.png" />
     <Content Include="Content\Images\Front\bt-login-girisyap.png" />
     <Content Include="Content\Images\Front\carousel-next.png" />
     <Content Include="Content\Images\Front\carousel-prev.png" />
@@ -1759,6 +1760,7 @@
     <Content Include="Content\Images\Front\top-panel-arrow.png" />
     <Content Include="Content\Images\Front\teklif-iste.jpg" />
     <Content Include="Content\Images\Front\urunlerimiz.png" />
+    <Content Include="Content\Images\Front\urunlerimiz_en.png" />
     <Content Include="Content\Images\Front\xls.png" />
     <Content Include="Content\Images\Front\xlsx.png" />
     <Content Include="Content\Images\icons\portfolio-nav.png" />

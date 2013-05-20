@@ -216,6 +216,9 @@
   <data name="menu_visionmision" xml:space="preserve">
     <value>vizyon-misyon</value>
   </data>
+  <data name="myofferlist" xml:space="preserve">
+    <value>Teklif Listem</value>
+  </data>
   <data name="pagetitle" xml:space="preserve">
     <value>DENEYSAN - Eğitim Cihazları</value>
   </data>

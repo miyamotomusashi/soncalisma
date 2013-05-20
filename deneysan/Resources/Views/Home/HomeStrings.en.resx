@@ -120,17 +120,26 @@
   <data name="allnews" xml:space="preserve">
     <value>All News</value>
   </data>
+  <data name="documentBoxContent" xml:space="preserve">
+    <value>Reach our International areas congresses, symposia and all the papers and articles in journals within the topics can be found here.</value>
+  </data>
   <data name="documents" xml:space="preserve">
     <value>DOCUMENTS</value>
+  </data>
+  <data name="linkBoxContent" xml:space="preserve">
+    <value>Solutions in the field of national and international partners, in the field of professional education foundations, associations and chambers can be found here.</value>
   </data>
   <data name="links" xml:space="preserve">
     <value>LINKS</value>
   </data>
   <data name="ourproductsimage" xml:space="preserve">
-    <value>/Content/Images/Front/urunlerimiz.png</value>
+    <value>/Content/Images/Front/urunlerimiz_en.png</value>
   </data>
   <data name="ourprojects" xml:space="preserve">
     <value>OUR PROJECTS</value>
+  </data>
+  <data name="projectBoxContent" xml:space="preserve">
+    <value>Click here to review our new projects.</value>
   </data>
   <data name="references" xml:space="preserve">
     <value>SERVICES</value>
@@ -139,6 +148,6 @@
     <value>/Content/Images/Front/teklif-iste.jpg</value>
   </data>
   <data name="workwithusimage" xml:space="preserve">
-    <value>/Content/Images/Front/bizimle-calismak-istemrmisiniz2.png</value>
+    <value>/Content/Images/Front/bizimle-calismak-istermisiniz2_en.png</value>
   </data>
 </root>
