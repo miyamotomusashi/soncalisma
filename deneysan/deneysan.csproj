@@ -194,6 +194,7 @@
     <Compile Include="Areas\Admin\Controllers\ProductGroupController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProjectController.cs" />
     <Compile Include="Areas\Admin\Controllers\ReferenceController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TeklifController.cs" />
     <Compile Include="Areas\Admin\Filters\AuthenticateUser.cs" />
     <Compile Include="Areas\Admin\Helpers\ImageHelper.cs" />
     <Compile Include="Areas\Admin\Helpers\ImageResizer.cs" />
@@ -1879,13 +1880,16 @@
     <Content Include="Areas\Admin\Views\HumanResource\hr_leftbar.cshtml" />
     <Content Include="Areas\Admin\Views\ProductGroup\EdtiGroup.cshtml" />
     <Content Include="Areas\Admin\Content\scripts\plugins\maskmoney.jquery.json" />
-    <Content Include="Areas\Admin\Views\Home\home_leftbar.cshtml" />
+    <Content Include="Areas\Admin\Views\Teklif\home_leftbar.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Copy of AddProduct.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Copy of EditProduct.cshtml" />
     <Content Include="Areas\Admin\Views\Mail\Add.cshtml" />
     <Content Include="Areas\Admin\Views\Mail\mail_leftbar.cshtml" />
     <Content Include="Areas\Admin\Views\Mail\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Mail\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Teklif\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\home_leftbar.cshtml" />
+    <Content Include="Areas\Admin\Views\Teklif\Details.cshtml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />

@@ -1,0 +1,103 @@
+﻿@model deneysan.Areas.Admin.Models.TeklifModel
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/adminlayout.cshtml";
+}
+
+<link href="~/Areas/Admin/Content/styles/pluginstyles/jquery.msgbox.css" rel="stylesheet" />
+<link href="~/Areas/Admin/Content/styles/forms.css" rel="stylesheet" />
+<link href="~/Areas/Admin/Content/styles/table.css" rel="stylesheet" />
+
+@Html.Partial("home_leftbar")
+<div id="page-content" class="container_12">
+    <div id="page-header">
+       <h2>TEKLİF DEĞERLENDİR</h2>
+    </div> 
+    
+<section class="grid_12 form">
+    @Html.Hidden("ProcessMessage",(object)@ViewBag.ProcessMessage) 
+    @using(Html.BeginForm("AddDocument", "Documents", FormMethod.Post, new { enctype = "multipart/form-data"}))
+    {
+         @Html.Hidden("hdfieldcategory")
+         @Html.Hidden("hdfieldtaglist")
+        @Html.ValidationSummary(true)
+        <fieldset>
+        <legend>Kurum Bilgileri</legend>
+        <p>
+            @Html.Label("Kurum")
+            @Html.TextBoxFor(d => d.teklif.Kurum, new { @class="textwidth50"})
+            @Html.ValidationMessageFor(d=>d.teklif.Kurum)
+        </p>
+        <p>
+            @Html.Label("Ünvan")
+            @Html.TextBoxFor(d=>d.teklif.Unvan, new { @class="textwidth50"})
+            @Html.ValidationMessageFor(d=>d.teklif.Unvan)
+        </p>
+        <p>
+            @Html.LabelFor(d=>d.teklif.Adsoyad)
+            @Html.TextBoxFor(d=>d.teklif.Adsoyad, new { @class="textwidth50"})
+            @Html.ValidationMessageFor(d => d.teklif.Adsoyad)
+        </p>
+         <p>
+            @Html.LabelFor(d=>d.teklif.Gsm)
+            @Html.TextBoxFor(d=>d.teklif.Gsm, new { @class="textwidth20"})
+            @Html.ValidationMessageFor(d => d.teklif.Gsm)
+        </p>
+        <p>
+            @Html.LabelFor(d=>d.teklif.Tel)
+            @Html.TextBoxFor(d=>d.teklif.Tel, new { @class="textwidth20"})
+            @Html.ValidationMessageFor(d => d.teklif.Tel)
+        </p>
+         <p> 
+            @Html.LabelFor(d=>d.teklif.Fax)
+            @Html.TextBoxFor(d=>d.teklif.Fax, new { @class="textwidth20"})
+            @Html.ValidationMessageFor(d => d.teklif.Fax)
+        </p>
+        <p>
+            @Html.LabelFor(d=>d.teklif.TeklifTarihi)
+            <span style="color:green;font-weight:bold;"> @String.Format("{0:d}",Model.teklif.TeklifTarihi)</span>
+  
+        </p>
+         <p>
+            @Html.LabelFor(d=>d.teklif.CevapTarihi)
+            @Html.TextBox("txtcevaptarihi",null, new { @class="textwidth10"})
+            @Html.ValidationMessageFor(d => d.teklif.CevapTarihi)
+        </p>
+        <p>
+            @Html.LabelFor(d=>d.teklif.TeklifNo)
+            @Html.TextBoxFor(d=>d.teklif.TeklifNo, new { @class="textwidth10"})
+            @Html.ValidationMessageFor(d => d.teklif.TeklifNo)
+        </p>
+         <p>
+            @Html.LabelFor(d=>d.teklif.GecerlilikSuresi)
+            @Html.TextBoxFor(d=>d.teklif.GecerlilikSuresi,"90", new { @class="textwidth10"})
+            @Html.ValidationMessageFor(d => d.teklif.GecerlilikSuresi)
+        </p>
+         <p>
+            @Html.LabelFor(d=>d.teklif.TeslimatSuresi)
+            @Html.TextBoxFor(d=>d.teklif.TeslimatSuresi,"90", new { @class="textwidth10"})
+            @Html.ValidationMessageFor(d => d.teklif.TeslimatSuresi)
+        </p>
+        <br />
+        <p>
+            <label></label>
+            <input type="submit" value="Kaydet" id="btnsave" />
+       </p>
+    </fieldset>
+
+
+    }
+</section>
+</div>
+@section Scripts {
+<link href="~/Areas/Admin/Content/styles/pluginstyles/jquery.msgbox.css" rel="stylesheet" />
+<script src="~/Areas/Admin/Content/scripts/plugins/jquery.msgbox.min.js"></script>
+<script src="~/Areas/Admin/Content/scripts/myscripts/MessageBox.js"></script>
+<script src="~/Areas/Admin/Content/scripts/plugins/jquery.validate.js"></script>
+<script src="~/Areas/Admin/Content/scripts/plugins/jquery.validate.unobtrusive.js"></script>
+
+
+    <script src="~/Areas/Admin/Content/scripts/plugins/jquery.ui.datepicker-tr.js"></script>
+<script src="~/Areas/Admin/Content/scripts/pagescripts/teklif/teklif.js"></script>
+}
+
