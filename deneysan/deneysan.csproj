@@ -1730,6 +1730,7 @@
     <Content Include="Content\Images\Front\haber-02.png" />
     <Content Include="Content\Images\Front\icon-folder.jpg" />
     <Content Include="Content\Images\Front\icons-sprite.png" />
+    <Content Include="Content\Images\Front\information.png" />
     <Content Include="Content\Images\Front\input_bg2.gif" />
     <Content Include="Content\Images\Front\ist.png" />
     <Content Include="Content\Images\Front\join-us.jpg" />
@@ -1745,6 +1746,7 @@
     <Content Include="Content\Images\Front\mn-spr.png" />
     <Content Include="Content\Images\Front\noimage.jpeg" />
     <Content Include="Content\Images\Front\oncephe.jpg" />
+    <Content Include="Content\Images\Front\paylas.png" />
     <Content Include="Content\Images\Front\pdf.png" />
     <Content Include="Content\Images\Front\phone-ico.png" />
     <Content Include="Content\Images\Front\search-ico.png" />
@@ -1759,6 +1761,7 @@
     <Content Include="Content\Images\Front\xlsx.png" />
     <Content Include="Content\Images\icons\portfolio-nav.png" />
     <Content Include="Content\Images\icons\portfolio-overlay.png" />
+    <Content Include="Content\Images\icons\trash.gif" />
     <Content Include="Content\Images\prettyPhoto\dark_rounded\btnNext.png" />
     <Content Include="Content\Images\prettyPhoto\dark_rounded\btnPrevious.png" />
     <Content Include="Content\Images\prettyPhoto\dark_rounded\contentPattern.png" />
@@ -1797,12 +1800,16 @@
     <Content Include="Content\Images\prettyPhoto\light_square\default_thumbnail.gif" />
     <Content Include="Content\Images\prettyPhoto\light_square\loader.gif" />
     <Content Include="Content\Images\prettyPhoto\light_square\sprite.png" />
+    <Content Include="Content\Scripts\jquery.maskedinput-1.3.min.js" />
+    <Content Include="Content\Scripts\jquery.validationEngine-tr.js" />
     <Content Include="Content\Scripts\cufon-yui.js" />
     <Content Include="Content\Scripts\jquery-1.7.2.min.js" />
     <Content Include="Content\Scripts\jquery.cycle.all.js" />
     <Content Include="Content\Scripts\jquery.jcarousel.min.js" />
     <Content Include="Content\Scripts\jquery.prettyPhoto.js" />
     <Content Include="Content\Scripts\jquery.validate.js" />
+    <Content Include="Content\Scripts\jquery.validationEngine-en.js" />
+    <Content Include="Content\Scripts\jquery.validationEngine.js" />
     <Content Include="Content\Scripts\layoutscripts.js" />
     <Content Include="Content\Scripts\layoutscriptsui.js" />
     <Content Include="Content\Scripts\main.js" />
@@ -1815,6 +1822,7 @@
     <Content Include="Content\Styles\layout.css" />
     <Content Include="Content\Styles\portfolio.css" />
     <Content Include="Content\Styles\prettyPhoto.css" />
+    <Content Include="Content\Styles\validationEngine.jquery.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Areas\Admin\Views\Web.config" />
@@ -1944,6 +1952,7 @@
     <Content Include="Views\FProducts\ProductList.cshtml" />
     <Content Include="Views\FProducts\ProductDetail.cshtml" />
     <Content Include="Views\Shared\_addOfferList.cshtml" />
+    <Content Include="Views\Shared\_emptyOfferList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

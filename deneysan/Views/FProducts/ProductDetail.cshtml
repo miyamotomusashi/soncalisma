@@ -1,5 +1,6 @@
 ﻿@model deneysan_DAL.Entities.Product
 @{
+    ViewBag.Title = Model.Name;
     Layout = "~/Views/Shared/frontlayout.cshtml";
 }
 <link rel="stylesheet" href="~/Content/Styles/portfolio.css" type="text/css" />
@@ -83,11 +84,19 @@
                     </p>
                 </span>
             </div>
+            
             <div class="wrap_content grid_4" style="background-color: #f3f3f3; float: right">
                 <p style="text-align: center">
                     <a id="addToList" href="#">Teklif Listesine Ekle</a>
                 </p>
-
+                <p style="text-align:center; margin-top:2px;">
+                    @{
+                        string sharelink = "http://www.facebook.com/sharer.php?u=" + "http://www.google.com";//Request.Url.AbsoluteUri;
+                    }
+                    <a href="#" onclick="javascript: facewindow('@sharelink')" >
+                        <img src="~/Content/Images/Front/paylas.png" />
+                    </a>
+                </p>
             </div>
             <div class="clear"></div>
         </div>
@@ -95,6 +104,12 @@
     </div>
 </div>
 <script>
+
+    function facewindow(url) {
+        yenipencere = window.open(url,
+        "face","location=1,status=1,scrollbars=1,width=600,height=400");
+        yenipencere.moveTo(0, 0);
+    }
     $(function () {
         var status = $("#ProcessMessage").val();
         $("#imgloader").css("display", "none");

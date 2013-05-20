@@ -71,6 +71,7 @@ namespace deneysan
 
             routes.MapRoute("offers_tr", "tr/teklif", new { action = "Index", Controller = "FOffers" });
             routes.MapRoute("offers_en", "en/offer", new { action = "Index", Controller = "FOffers" });
+            routes.MapRoute("empty_offer_list", "offer/empty", new { action = "_emptyOfferList", Controller = "FOffers" });
 
             routes.MapRoute("search_tr", "tr/arama", new { action = "Index", Controller = "FSearch" });
             routes.MapRoute("search_en", "en/search", new { action = "Index", Controller = "FSearch" });

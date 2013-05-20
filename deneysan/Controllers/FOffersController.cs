@@ -24,12 +24,12 @@ namespace deneysan.Controllers
                 HttpCookie cookie = this.ControllerContext.HttpContext.Request.Cookies["OfferList"];
                 var values = JsonConvert.DeserializeObject<Dictionary<string, string>[]>(cookie.Value);
                 var products = ProductManager.GetProductByIds(values);
-                OfferWrapperModel modelbind = new OfferWrapperModel(products,null,null);
+                OfferWrapperModel modelbind = new OfferWrapperModel(products, null, null);
                 return View(modelbind);
             }
             else
             {
-                return View(new OfferWrapperModel(new List<Product>(),null,null));
+                return View(new OfferWrapperModel(new List<Product>(), null, null));
             }
         }
 
@@ -43,9 +43,10 @@ namespace deneysan.Controllers
                 HttpCookie cookie = this.ControllerContext.HttpContext.Request.Cookies["OfferList"];
                 cookie.Expires = DateTime.Now.AddDays(-1);
                 this.ControllerContext.HttpContext.Response.Cookies.Add(cookie);
-                TempData["sent"] = "true";
-            } 
-            return View(new OfferWrapperModel(new List<Product>(),null,null));
+
+                return View(new OfferWrapperModel(new List<Product>(), null, null));
+            }
+            return View(new OfferWrapperModel(new List<Product>(), null, null));
         }
 
         [HttpPost]
@@ -59,9 +60,30 @@ namespace deneysan.Controllers
             {
                 HttpCookie cookie = this.ControllerContext.HttpContext.Request.Cookies["OfferList"];
                 var values = JsonConvert.DeserializeObject<Dictionary<string, string>[]>(cookie.Value);
-                
+
                 return values.Count().ToString();
             }
+        }
+
+        [HttpPost]
+        public string DeleteItem(int OfferID)
+        {
+            if (!this.ControllerContext.HttpContext.Request.Cookies.AllKeys.Contains("OfferList"))
+            {
+                return "0";
+            }
+            else
+            {
+                HttpCookie cookie = this.ControllerContext.HttpContext.Request.Cookies["OfferList"];
+                var values = JsonConvert.DeserializeObject<Dictionary<string, string>[]>(cookie.Value);
+
+                return values.Count().ToString();
+            }
+        }
+
+        public ActionResult _emptyOfferList()
+        {
+            return View();
         }
     }
 }

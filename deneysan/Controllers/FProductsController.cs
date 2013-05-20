@@ -71,5 +71,37 @@ namespace deneysan.Controllers
                 return (values.Count() + 1).ToString();
             }
         }
+
+        [HttpPost]
+        public string RemoveFromList(string id)
+        {
+            HttpCookie cookie = this.ControllerContext.HttpContext.Request.Cookies["OfferList"];
+            var values = JsonConvert.DeserializeObject<Dictionary<string, string>[]>(cookie.Value);
+            cookie.Value = "[";
+
+            foreach (var element in values)
+            {
+                foreach (var entry in element)
+                {
+                    if (entry.Value == id)
+                        continue;
+
+                    cookie.Value += "{id:'" + entry.Value + "'},";
+                }
+            }
+            if (cookie.Value.Equals("["))
+            {
+                cookie.Expires = DateTime.Now.AddDays(-1);
+            }
+            else
+            {
+                cookie.Value = cookie.Value.Substring(0, cookie.Value.Length-1) + "]";
+            }
+
+            this.ControllerContext.HttpContext.Response.Cookies.Add(cookie);
+
+            return (values.Count() - 1).ToString();
+        }
+
     }
 }

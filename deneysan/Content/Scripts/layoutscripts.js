@@ -34,15 +34,15 @@ function validateEmail(n) {
     var t = /^[a-zA-Z0-9]+[a-zA-Z0-9_.-]+[a-zA-Z0-9_-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{2,4}$/;
     return t.test(n) ? !0 : !1
 }
-function init_fields() {
-    $(".head_content input, .head_content textarea").focus(function () {
-        var n = $(this);
-        n.val() == n.attr("title") && (n.val(""), $(this).addClass("input_active"))
-    }).blur(function () {
-        var n = $(this);
-        (n.val() == "" || n.val() == null) && n.val(n.attr("title")), n.val() == n.attr("title") ? n.css("color", "#8E8E8E") : n.css("color", "#444"), $(this).removeClass("input_active")
-    })
-}
+//function init_fields() {
+//    $(".head_content input, .head_content textarea").focus(function () {
+//        var n = $(this);
+//        n.val() == n.attr("title") && (n.val(""), $(this).addClass("input_active"))
+//    }).blur(function () {
+//        var n = $(this);
+//        (n.val() == "" || n.val() == null) && n.val(n.attr("title")), n.val() == n.attr("title") ? n.css("color", "#8E8E8E") : n.css("color", "#444"), $(this).removeClass("input_active")
+//    })
+//}
 function DoLogin(n) {
     var i = $("#login_email").val(),
         r = $("#login_pass").val(),
@@ -7752,7 +7752,8 @@ function (n) {
         cleartypeNoBg: !0
     }), $("#ebso_toolbar .ebso_tool li:last").addClass("last"), $(".ajanda_panel p:gt(1)").addClass("last"), $(".datepicker").datepicker({
         dateFormat: "dd.mm.yy"
-    }), init_fields(), setTimeout(function () {
+        //}), init_fields(), setTimeout(function () {
+    }), setTimeout(function () {
         equalHeight($(".main_equal"))
     }, 400), $(".cssdropdown>li>ul>li").hover(function () {
         var t = $(this).index(),

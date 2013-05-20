@@ -479,7 +479,7 @@ namespace deneysan_BLL.ProductBL
                 try
                 {
                     List<Product> list = new List<Product>();
-
+                    
                     foreach (var element in ids)
                     {
                         foreach (var entry in element)

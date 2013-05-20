@@ -26,9 +26,9 @@ $(document).ready(function () {
     $('.ajanda_panel p:gt(1)').addClass('last');
 
     /* -- Form Input Elements Actions -- */
-    $('input,textarea')
-        .focus(function () { $(this).val(''); $(this).addClass('input_active'); })
-        .blur(function () { $(this).removeClass('input_active'); });
+    //$('input,textarea')
+    //    .focus(function () { $(this).val(''); $(this).addClass('input_active'); })
+    //    .blur(function () { $(this).removeClass('input_active'); });
     $('#header_search').blur(function () { if ($(this).val() == '') { $(this).val('EBSO\'da ara'); } });
     $('#login_email').blur(function () { if ($(this).val() == '') { $(this).val('E-posta adresi'); } });
     $("#login_sifre")

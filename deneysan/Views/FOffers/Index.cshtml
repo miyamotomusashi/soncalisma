@@ -2,10 +2,40 @@
 @{
     Layout = "~/Views/Shared/frontlayout.cshtml";
 }
-<script src="~/Content/Scripts/watermark.min.js"></script>
+
+@if (@SharedRess.SharedStrings.menu_culture.Equals("tr"))
+{
+    <script src="~/Content/Scripts/jquery.validationEngine-tr.js"></script>
+}
+else
+{
+    <script src="~/Content/Scripts/jquery.validationEngine-en.js"></script>
+}
+
+<script src="~/Content/Scripts/jquery.maskedinput-1.3.min.js"></script>
+<script src="~/Content/Scripts/jquery.validationEngine.js"></script>
+<link href="~/Content/Styles/validationEngine.jquery.css" rel="stylesheet" />
 <script>
     $(document).ready(function () {
-        $('.watermark').watermark();
+
+        jQuery("#offerform").validationEngine();
+
+        function maske() {
+            var last = $(this).val().substr($(this).val().indexOf("-") + 1);
+            if (last.length == 3) {
+                var move = $(this).val().substr($(this).val().indexOf("-") - 1, 1);
+                var lastfour = move + last;
+                var first = $(this).val().substr(0, 9);
+                $(this).val(first + '-' + lastfour);
+            }
+        }
+
+        $(".telefon input[type=text]").on("blur", function () { maske(); });
+        $(".telefon input[type=text]").mask("(999) 999 99 99");
+        $(".fax input[type=text]").on("blur", function () { maske(); });
+        $(".fax input[type=text]").mask("(999) 999 99 99");
+        $(".gsm input[type=text]").on("blur", function () { maske(); });
+        $(".gsm input[type=text]").mask("(999) 999 99 99");
     });
 </script>
 <div class="main_content mainpage pageheight" style="">
@@ -25,33 +55,49 @@
                 <div class="notification error">@ContactRess.ContactStrings.messagenotsent</div>
                 }
             }
-            @using (Html.BeginForm())
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "offerform" }))
             {
-                <div class="contact-form" style="width: 450px; float: left">
+                <div class="contact-form" style="width: 340px; float: left">
                     <div class="field_offer_one">
-                        <input type="text" id="Kurum" name="Kurum" class="watermark required" title="Kurum" size="30" data-val="true" data-val-required="Kurum adı giriniz">
-                        *
+                        <div style="width: 64px; float: left; line-height: 30px; font-weight: bold;"><span style="float: right; line-height: 27px;">Kurum Adı</span></div>
+                        <div style="float: left; margin-left: 15px; font-weight: bold;">
+                            @Html.TextBoxFor(m => m.teklif.Kurum, null, new { @class = "validate[required] text-input", @title = "Kurum", @size = "30" }) <span class="star">*</span>
+                        </div>
                     </div>
 
-                    <div class="field_offer_two">
-                        @Html.TextBox("Unvan", null, new { @class = "watermark required", @title = "Ünvan", @size = "30" })
+                    <div class="field_offer_one unvan">
+                        <div style="width: 64px; float: left; line-height: 30px; font-weight: bold;"><span style="float: right; line-height: 27px;">Ünvan</span></div>
+                        <div class="unvan" style="float: left; margin-left: 15px; font-weight: bold;">
+                            @Html.TextBoxFor(m => m.teklif.Unvan, null, new { @class = "", @title = "Ünvan", @size = "30" })
+                        </div>
                     </div>
 
-                    <div class="field_offer_two">
-                        @Html.TextBox("Adsoyad", null, new { @class = "watermark required", @title = "Ad Soyad", @size = "30" }) *
-                    </div>
-                    <div style="clear: both"></div>
-                    <div class="field_offer_two">
-                        @Html.TextBox("Telefon", null, new { @class = "watermark required", @title = "Telefon", @size = "30" })
+                    <div class="field_offer_one adsoyad">
+                        <div style="width: 64px; float: left; line-height: 30px; font-weight: bold;"><span style="float: right; line-height: 27px;">Ad Soyad</span></div>
+                        <div style="float: left; margin-left: 15px; font-weight: bold;">
+                            @Html.TextBoxFor(m => m.teklif.Adsoyad, null, new { @class = "validate[required] text-input", @title = "Ad Soyad", @size = "30" }) <span class="star">*</span>
+                        </div>
                     </div>
 
-                    <div class="field_offer_two">
-                        @Html.TextBox("Fax", null, new { @class = "watermark required", @title = "Fax", @size = "30" })
+                    <div class="field_offer_one telefon">
+                        <div style="width: 64px; float: left; line-height: 30px; font-weight: bold;"><span style="float: right; line-height: 27px;">Telefon</span></div>
+                        <div style="float: left; margin-left: 15px; font-weight: bold;">
+                            @Html.TextBoxFor(m => m.teklif.Tel, null, new { @class = "", @title = "Telefon", @size = "30" })
+                        </div>
                     </div>
-                    <div style="clear: both"></div>
 
-                    <div class="field_offer_one input_180px">
-                        @Html.TextBox("Gsm", null, new { @class = "watermark required", @title = "GSM", @size = "30" }) *
+                    <div class="field_offer_one fax">
+                        <div style="width: 64px; float: left; line-height: 30px; font-weight: bold;"><span style="float: right; line-height: 27px;">Fax</span></div>
+                        <div style="float: left; margin-left: 15px; font-weight: bold;">
+                            @Html.TextBoxFor(m => m.teklif.Fax, null, new { @class = "", @title = "Fax", @size = "30" })
+                        </div>
+                    </div>
+
+                    <div class="field_offer_one gsm">
+                        <div style="width: 64px; float: left; line-height: 30px; font-weight: bold;"><span style="float: right; line-height: 27px;">Gsm</span></div>
+                        <div style="float: left; margin-left: 15px; font-weight: bold;">
+                            @Html.TextBoxFor(m => m.teklif.Gsm, null, new { @class = "validate[required] text-input", @title = "GSM", @size = "30" }) <span class="star">*</span>
+                        </div>
                     </div>
 
                     <div class="field_offer_one" style="margin-top: 25px">
@@ -60,48 +106,78 @@
                     <p style="color: red">@ContactRess.ContactStrings.requiredfiled</p>
 
                     <div class="field_one" style="margin-top: 10px">
-                        <input type="submit" class="button gray" value="@ContactRess.ContactStrings.send" />
+                        <input id="btnOffer" type="submit" class="button gray" value="@ContactRess.ContactStrings.send" />
                     </div>
                 </div>
                 <div id="offer-list">
-                    @if (Model.products.Count() == 0)
-                    {
-                        <div style="text-align:center; padding:5px;">
-                           <img alt="alert, exclamation, message, warning icon" class="tiled-icon" style="margin-top: 20px; width: 128px; height: 128px;" 
-                               src="/Content/Images/Front/alert.png">
-                        </div>
-                        <div style="text-align:center; padding:5px;">
-                            <p style="font-size:12px; color:#00a1d0"><b>Teklif listenizde hiç ürün bulunmamakta!</b></p>
-                            <p style="font-size:12px;">Lütfen ürün sayfasından ürün ekleyiniz</p>
-                        </div>
-                    }
-                    else
-                    { 
-                        <h1>Teklif Listenizdeki Ürünler</h1>
-                        <ul>
-                            @for (int i = 0; i < Model.products.Count(); i++)
-                            {
-                                <li style="overflow: hidden;">
-                                    <div style="float: left; padding: 5px 5px 5px 10px;">
-                                        @Html.DropDownListFor(m => m.teklifurun[i].Adet, new[] {
+                    <div id="offer-content">
+                        @if (Model.products.Count() == 0)
+                        {
+                            Html.RenderPartial("_emptyOfferList");
+                        }
+                        else
+                        { 
+                            <h1>Teklif Listenizdeki Ürünler</h1>
+                            <div>
+                                @for (int i = 0; i < Model.products.Count(); i++)
+                                {
+                                    <div id="item-@Model.products[i].ProductId" class="offeritem" style="overflow: hidden;">
+                                        <div style="float: left; padding: 5px 5px 5px 10px;">
+                                            @Html.DropDownListFor(m => m.teklifurun[i].Adet, new[] {
                                         new SelectListItem{ Text= "1", Value="1" },
                                         new SelectListItem{ Text= "2", Value="2" },
-                                        new SelectListItem{ Text= "3", Value="2" },
-                                        new SelectListItem{ Text= "4", Value="2" },
-                                        new SelectListItem{ Text= "5", Value="3" }
+                                        new SelectListItem{ Text= "3", Value="3" },
+                                        new SelectListItem{ Text= "4", Value="4" },
+                                        new SelectListItem{ Text= "5", Value="5" }
                                      }, new { @class = "" })
 
-                                        @Html.HiddenFor(m => m.teklifurun[i].TeklifUrunId, Model.products[i].ProductId)
-                                    </div>
-                                    <div style="float: left">
-                                        <a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_products/@Model.products[i].ProductGroup.PageSlug/@Model.products[i].PageSlug/@Model.products[i].ProductId">@Model.products[i].Name</a>
-                                    </div>
-                                </li>   
-                            }
-                        </ul>
-                    }
+                                            @Html.HiddenFor(m => m.teklifurun[i].TeklifUrunId, Model.products[i].ProductId)
+                                        </div>
+                                        <div style="float: left; width: 470px;">
+                                            <a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_products/@Model.products[i].ProductGroup.PageSlug/@Model.products[i].PageSlug/@Model.products[i].ProductId">@Model.products[i].Name</a>
+                                        </div>
+                                        <div style="float: left; text-align: center">
+                                            <a id="deleteItem" style="width: 20px" href="#" onclick="deleteItem(@Model.products[i].ProductId)">
+                                                <img src="~/Content/Images/icons/trash.gif" />
+                                            </a>
+                                        </div>
+                                    </div>   
+                                }
+                            </div>
+                        }
+                    </div>
                 </div>
             }
         </div>
     </div>
 </div>
+<script>
+    function deleteItem(id) {
+
+        if (id != "") {
+            $.ajax({
+                type: 'POST',
+                url: '/FProducts/RemoveFromList',
+                data: '{id:"' + id + '"}',
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                success: function (result) {
+
+                    if (result == "0") {
+                        $("#offer-content").empty();
+                        $("#offer-content").load("/offer/empty");
+                        
+                    } else {
+                        $("#item-" + id).fadeOut(500).remove();
+                    }
+
+                    $("#teklifAdedi").text(result);
+                },
+                error: function () {
+
+                }
+            });
+        }
+    }
+
+</script>
