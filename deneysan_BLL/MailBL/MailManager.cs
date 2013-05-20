@@ -114,5 +114,80 @@ namespace deneysan_BLL.MailBL
             }
         }
 
+
+        public static MailSetting GetMailSettings()
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                try
+                {
+                    MailSetting record = db.MailSetting.SingleOrDefault();
+                    if (record != null)
+                    {
+                        return record;
+                    }
+                    else
+                        return null;
+
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public static dynamic AddSetting(MailSetting model)
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                try
+                {
+                    db.MailSetting.Add(model);
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+
+        }
+
+
+
+        public static bool EditSetting(MailSetting model)
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                try
+                {
+                    MailSetting editrec = db.MailSetting.Where(d => d.MailSettingId == model.MailSettingId).SingleOrDefault();
+                    if (editrec != null)
+                    {
+                        editrec.ServerMail = model.ServerMail;
+                        editrec.ServerHost = model.ServerHost;
+                        editrec.Port = model.Port;
+                        if (!string.IsNullOrEmpty(model.Password))
+                        {
+                            editrec.Password = model.Password;
+                        }
+                        db.SaveChanges();
+                        return true;
+                    }
+                    else
+                        return false;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+
+        }
+
+
+
     }
 }

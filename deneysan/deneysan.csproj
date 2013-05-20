@@ -1480,6 +1480,7 @@
     <Content Include="Areas\Admin\Content\scripts\pagescripts\instituional\mision.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\links\linklist.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\Mail\maillist.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\Mail\settings.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\news\addnews.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\news\editnews.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\news\newslist.js" />
@@ -1890,6 +1891,7 @@
     <Content Include="Areas\Admin\Views\Teklif\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Home\home_leftbar.cshtml" />
     <Content Include="Areas\Admin\Views\Teklif\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Mail\MailSetting.cshtml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />

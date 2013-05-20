@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace deneysan_Data.Entities
+namespace deneysan_DAL.Entities
 {
     public class MailSetting
     {

@@ -97,5 +97,49 @@ namespace deneysan.Areas.Admin.Controllers
             else
                 return View();
         }
+
+
+        public ActionResult MailSetting()
+        {
+            var model = MailManager.GetMailSettings();
+            if (model != null)
+            {
+                ViewBag.nullsetting = true;
+                return View(model);
+
+            }
+            else
+            {
+                ViewBag.nullsetting = false;
+                return View();
+            }
+        }
+
+        [HttpPost]
+        public ActionResult MailSetting(MailSetting model, string txtpassword)
+        {
+            var record = MailManager.GetMailSettings();
+            if (record == null)
+            {
+                ViewBag.nullsetting = true;
+                model.Password = txtpassword;
+                ViewBag.ProcessMessage = MailManager.AddSetting(model);
+                return View(model);
+            }
+            else
+            {
+                if(!string.IsNullOrEmpty(txtpassword))
+                    model.Password = txtpassword;
+
+                ViewBag.nullsetting = false;
+                model.MailSettingId = record.MailSettingId;
+                ViewBag.ProcessMessage = MailManager.EditSetting(model);
+            }
+            ////            record.TypeId = Convert.ToInt32(EnumInstituionalTypes.Misyon);
+            //ViewBag.ProcessMessage = MailManager.AddMailUsers(model);
+            //ModelState.Clear();
+            return View();
+        }
+
     }
 }

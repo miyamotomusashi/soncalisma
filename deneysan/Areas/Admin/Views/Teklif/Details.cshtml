@@ -84,9 +84,34 @@
             <input type="submit" value="Kaydet" id="btnsave" />
        </p>
     </fieldset>
-
-
     }
+
+     <table id="tblcategory" class="table no-border tablesorter">
+        <thead>
+            <tr>
+                <th class="width50">Grup Adı</th>
+                 <th class="center witdh10">İşlem</th>
+            </tr>
+        </thead>
+         <tbody id="item-list">
+            @foreach (var item in Model.teklifurun)
+            {
+                <tr id="listItem_@item.UrunId"  class="handle">
+                    <td>
+                        <span id="spanitem_@item.UrunId">@item.UrunAdi</span>
+                        <input type="text" id="textitem_@item.UrunId" value="" class="displaynone textwidth90"/>
+                    </td>
+                    <td class="center">
+                       <img id="btn_update_@item.UrunId"  src="/Areas/Admin/Content/images/icons/16/edit.png"  title="Güncelle" class="cursorpointer" onclick="EditRecord(@item.UrunId)">
+                        <img id="btn_save_@item.UrunId"  src="/Areas/Admin/Content/images/icons/16/save.png"  title="Kaydet" class="displaynone cursorpointer" onclick="UpdateRecord(@item.UrunId)">
+                        <img id="btn_cancel_@item.UrunId"  src="/Areas/Admin/Content/images/icons/16/error.png"  title="İptal" class="displaynone cursorpointer" onclick="CancelRecord(@item.UrunId)">
+                       <img id="DeleteImage_@item.UrunId"  src="/Areas/Admin/Content/images/icons/16/delete.png" class="cursorpointer"  title="Sil" onclick="DeleteRecord('/DocumentGroup/DeleteRecord',@item.UrunId)">
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
 </section>
 </div>
 @section Scripts {
