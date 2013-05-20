@@ -13,7 +13,6 @@ namespace deneysan_BLL.TeklifBL
 {
     public class TeklifManager
     {
-
         public static List<Teklif> GetList()
         {
             using (DeneysanContext db = new DeneysanContext())
@@ -103,6 +102,7 @@ namespace deneysan_BLL.TeklifBL
                 {
                     teklif.Durum = (int)EnumTeklifTip.Onaylanmadi;
                     teklif.TeklifTarihi = DateTime.Now;
+
                     db.Teklif.Add(teklif);
                     db.SaveChanges();
 
@@ -122,8 +122,20 @@ namespace deneysan_BLL.TeklifBL
 
                     for (int i = 0; i < teklifurun.Count(); i++)
                     {
+                        int pid = Convert.ToInt32(plist[i]);
+                        var prod = db.Product.Where(a => a.ProductId == pid).SingleOrDefault(); 
+
                         teklifurun[i].TeklifId = teklif.TeklifId;
                         teklifurun[i].UrunId = plist[i];
+                        teklifurun[i].Fiyat = prod.Price;
+                        if (teklifurun[i].Donanim)
+                        {
+                            teklifurun[i].Toplam = (Convert.ToDouble(prod.Price * teklifurun[i].Adet) * 1.18 + (Convert.ToDouble(prod.HardwarePrice) * 1.18) ).ToString();
+                        }
+                        else
+                        {
+                            teklifurun[i].Toplam = (Convert.ToDouble(prod.Price * teklifurun[i].Adet) * 1.18).ToString();
+                        }
                         db.TeklifUrun.Add(teklifurun[i]);
                     }
                     
