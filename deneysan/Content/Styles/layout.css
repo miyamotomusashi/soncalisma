@@ -555,7 +555,7 @@ input.marked, textarea.marked { color: #999; }
 
 #offer-list .offeritem {background:#fff; border:solid 1px #ddd; border-top:none; margin-bottom:1px}
 #offer-list .offeritem a {line-height:20px; display:block; padding:10px; color:#666;}
-#offer-list .offeritem a:hover {background-color:#fafafa; color:#000;}
+#offer-list .offeritem a:hover {color:#e60606;}
 
 #sub-sidebar {width:248px; background:#f1f2f3; padding:20px 10px;margin:0 -10px -10px 0px;} /*height:auto !important*/
 /*#sub-sidebar {width:258px; background:#f1f2f3; padding:20px 10px;margin:0 -10px -10px -10px; height:auto !important}*/
