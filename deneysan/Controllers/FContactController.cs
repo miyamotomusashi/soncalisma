@@ -8,6 +8,7 @@ using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Net.Mail;
 using System.Net;
+using deneysan_BLL.MailBL;
 
 namespace deneysan.Controllers
 {
@@ -47,13 +48,16 @@ namespace deneysan.Controllers
                     return RedirectToAction("Form");
                 }
 
-                using (var client = new SmtpClient("mail.deneysan.com.tr", 587))
+                var mset = MailManager.GetMailSettings();
+
+
+                using (var client = new SmtpClient(mset.ServerHost, mset.Port))
                 {
                     client.EnableSsl = false;
-                    client.Credentials = new NetworkCredential("info@deneysan.com.tr", "Deneysan2013");
+                    client.Credentials = new NetworkCredential(mset.ServerMail, mset.Password);
                     var mail = new MailMessage();
-                    mail.From = new MailAddress("info@deneysan.com.tr");
-                    mail.To.Add("info@deneysan.com.tr");
+                    mail.From = new MailAddress(mset.ServerMail);
+                    mail.To.Add(mset.ServerMail);
                     mail.Subject = subject;
                     mail.IsBodyHtml = true;
                     mail.Body = "<h5><b>" + namesurname + " - " + email + "</b></h5>" + "<p>" + body + "</p>";

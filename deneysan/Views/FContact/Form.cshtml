@@ -2,12 +2,30 @@
 @{
     Layout = "~/Views/Shared/frontlayout.cshtml";
 }
+@if (@SharedRess.SharedStrings.menu_culture.Equals("tr"))
+{
+    <script src="~/Content/Scripts/jquery.validationEngine-tr.js"></script>
+}
+else
+{
+    <script src="~/Content/Scripts/jquery.validationEngine-en.js"></script>
+}
+
+<script src="~/Content/Scripts/jquery.maskedinput-1.3.min.js"></script>
+<script src="~/Content/Scripts/jquery.validationEngine.js"></script>
+<link href="~/Content/Styles/validationEngine.jquery.css" rel="stylesheet" />
+<script>
+    $(document).ready(function () {
+        jQuery("#contactform").validationEngine();
+    });
+</script>
+
 <div class="main_content mainpage pageheight" style="">
     <div class="wrapper mainpage grid_12">
 
         <div class="form_block page">
             <h2>@ContactRess.ContactStrings.contactform</h2>
-            <hr>
+            <hr class="wide">
             <p>@Html.ValidationMessage("_FORM")</p>
             @if (TempData["required"] != null)
             {
@@ -27,7 +45,7 @@
                         <div class="notification error">@ContactRess.ContactStrings.messagenotsent</div>
                     }
                 }
-            @using (Html.BeginForm())
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "contactform" }))
             {
                 <div class="contact-form">
                     <fieldset>
@@ -37,34 +55,33 @@
                                 <dt>
                                     <label class="hasTip required">@ContactRess.ContactStrings.namesurname<span class="star">&nbsp;*</span></label></dt>
                                 <dd>
-                                    @Html.TextBox("namesurname", null, new { @class = "required", @size = "30", @required = "required" })
+                                    @Html.TextBox("namesurname", null, new { @class = "validate[required] text-input", @size = "30" })
                                 </dd>
                             </div>
                             <div class="field_one">
                                 <dt>
                                     <label class="hasTip required" title="">@ContactRess.ContactStrings.email<span class="star">&nbsp;*</span></label></dt>
                                 <dd>
-                                    @Html.TextBox("email", null, new { @class = "validate-email required", @size = "30", @required = "required", @type = "email" })
+                                    @Html.TextBox("email", null, new { @class = "validate[required,custom[email]] text-input", @size = "100" })
                                 </dd>
                             </div>
                             <div class="field_one">
                                 <dt>
                                     <label class="hasTip required" title="">@ContactRess.ContactStrings.subject<span class="star">&nbsp;*</span></label></dt>
                                 <dd>
-                                    @Html.TextBox("subject", null, new { @class = "validate-email required", @size = "30", @required = "required" })
+                                    @Html.TextBox("subject", null, new { @class = "validate[required] text-input", @size = "100" })
                                 </dd>
                             </div>
                             <div class="field_second">
                                 <dt>
                                     <label class="hasTip required" title="">@ContactRess.ContactStrings.message<span class="star">&nbsp;*</span></label></dt>
                                 <dd>
-                                    @Html.TextArea("body", null, new { @class = "required", @cols = "50", @rows = "10", @required = "required" })
+                                    @Html.TextArea("body", null, new { @class = "validate[required] text-input", @cols = "50", @rows = "10" })
                                 </dd>
 
                             </div>
                             <div class="field_one">
                                 <dd style="float: left; clear: both; overflow: hidden">
-                                    <button type="button" class="button gray">@ContactRess.ContactStrings.send</button>
                                     <input type="submit" class="button gray" value="@ContactRess.ContactStrings.send" />
                                 </dd>
                             </div>
@@ -72,6 +89,8 @@
                     </fieldset>
                 </div>
             }
+            <div style="clear:both"></div>
+            <div><br /></div>
         </div>
     </div>
 </div>

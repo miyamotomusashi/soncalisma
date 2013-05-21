@@ -11,7 +11,11 @@
     <div class="wrapper mainpage grid_12">
         <div class="content_page page">
 
-            <h2>@Model.Name</h2>
+            <h2 style="float:left">@Model.Name</h2>
+            @{
+                string sharelink = "http://www.facebook.com/sharer.php?u=" + Request.Url.AbsoluteUri;
+            }
+            
             <hr class="wide" />
             <div class="news_panel grid_4">
                 <div class="news_main_image">
@@ -20,6 +24,7 @@
                             <a href="@Model.ProductImage" rel="prettyPhoto" title="@Model.Name">
                                 <img id="contentmain_imgnews" title="@Model.Name" src="@Model.ProductImage" style="height: 160px; width: 200px;" />
                             </a>
+                           
                         </li>
                     </ul>
                 </div>
@@ -85,18 +90,21 @@
                 </span>
             </div>
             
-            <div class="wrap_content grid_4" style="background-color: #f3f3f3; float: right">
-                <p style="text-align: center">
-                    <a id="addToList" href="#">Teklif Listesine Ekle</a>
-                </p>
-                <p style="text-align:center; margin-top:2px;">
-                    @{
-                        string sharelink = "http://www.facebook.com/sharer.php?u=" + "http://www.google.com";//Request.Url.AbsoluteUri;
-                    }
-                    <a href="#" onclick="javascript: facewindow('@sharelink')" >
-                        <img src="~/Content/Images/Front/paylas.png" />
-                    </a>
-                </p>
+            <div class="wrap_content grid_4" style=" float: right">
+                     <div class="addbtn">
+                         <span style="margin-left:20px; line-height:45px;">
+                            <a id="addToList" href="#">
+                                TEKLİF LİSTEME EKLE
+                            </a>
+                         </span>
+                     </div>
+                     <div class="sharebtn">
+                         <span style="margin-left:20px; line-height:45px;">
+                            <a href="#" onclick="javascript: facewindow('@sharelink')" >
+                                FACEBOOK'TA PAYLAŞ
+                            </a>
+                         </span>
+                     </div>
             </div>
             <div class="clear"></div>
         </div>

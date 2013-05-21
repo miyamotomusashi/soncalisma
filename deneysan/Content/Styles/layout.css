@@ -165,6 +165,14 @@ input:hover{background:#ffffff}
 .one-third { width:31.1%; }
 .three-fourth { width:74.5%; }	
 .two-third { width:65.8%; }
+
+
+.addbtn {background: url("/Content/images/Front/orange_btn.png") no-repeat scroll 0 0 transparent;color: #000000;cursor: pointer;font-weight: bold;height: 50px;padding-bottom: 2px;width: 230px;}
+.addbtn a {color:white;}
+
+.sharebtn {background: url("/Content/images/Front/shareface.png") no-repeat scroll 0 0 transparent;color: #000000;cursor: pointer;font-weight: bold;height: 50px;padding-bottom: 2px;width: 230px;}
+.sharebtn a {color:white;}
+
 .clients-skin-carousel { position:relative; margin:0px; padding:20px 0px; width:100%; float:left; clear:both; /*-moz-box-shadow: inset 0px 0px 30px 5px #CFCFCF; -webkit-box-shadow: inset 0px 0px 30px 5px #CFCFCF; box-shadow: inset 0px 0px 30px 5px #CFCFCF;*/ behavior:url(PIE.htc); }
 .clients-skin-carousel h2 { margin-bottom:20px; font-weight: bold; }
 			
@@ -755,7 +763,7 @@ ul.pagination li a#currentPage {background-color: #ccc9d3;color: white;}
 .iletisim_map{float:right;width: 390px;height: 322px;border:solid 1px #CCC;}
 .iletisim_mapen{float:right;width: 390px;height: 338px;border:solid 1px #CCC;}
 
-.contact-form input[type=text], input[type=email] { background:#fafafa url(/Content/Images/Front/input_bg2.gif) repeat-x; border:1px solid #e1e1e1; height:28px; line-height:28px; padding:0 10px !important; width:320px; color:#7d7d7d !important; }
+.contact-form input[type=text], input[type=email] { background:#fafafa url(/Content/Images/Front/input_bg2.gif) repeat-x; border:1px solid #e1e1e1; height:28px; line-height:28px; padding:0 10px !important; width:400px; color:#7d7d7d !important; }
 .contact-form textarea { background:#fafafa url(/Content/Images/Front/input_bg2.gif) repeat-x; border:1px solid #e1e1e1; padding:10px 10px !important; width:401px; height:224px; margin-bottom:15px; color:#7d7d7d !important; overflow:auto; max-height:224px; max-width:401px; min-width:401px; min-height:224px; resize:none }
 #jform_contact_email_copy { float:left; margin-top:3px; position:absolute; margin:-23px 0 0 150px; border:none; background:none }
 .contact-form legend { display:none }
