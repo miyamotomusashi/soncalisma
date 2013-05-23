@@ -102,6 +102,8 @@ namespace deneysan_BLL.TeklifBL
                 {
                     teklif.Durum = (int)EnumTeklifTip.Onaylanmadi;
                     teklif.TeklifTarihi = DateTime.Now;
+                    teklif.ParaBirimi = "TL";
+                    teklif.KDV = 18;
 
                     db.Teklif.Add(teklif);
                     db.SaveChanges();
@@ -119,7 +121,7 @@ namespace deneysan_BLL.TeklifBL
                         k++;
                     }
 
-
+                    double toplamTutar = 0;
                     for (int i = 0; i < teklifurun.Count(); i++)
                     {
                         int pid = Convert.ToInt32(plist[i]);
@@ -136,9 +138,11 @@ namespace deneysan_BLL.TeklifBL
                         {
                             teklifurun[i].Toplam = (Convert.ToDouble(prod.Price * teklifurun[i].Adet) * 1.18).ToString();
                         }
+                        toplamTutar += Convert.ToDouble(teklifurun[i].Toplam);
                         db.TeklifUrun.Add(teklifurun[i]);
                     }
                     
+                    teklif.FaturaTutar = Convert.ToDecimal(toplamTutar);
                     db.SaveChanges();
 
                     return true;
