@@ -97,16 +97,23 @@ function UpdateRecord(id) {
         data: '{id:"' + id + '",fiyat:"' + fiyatclear + '",adet:"'+adet+'",donanim:"'+donanimclear+'",teklifid:"'+teklifid+'"}',
         contentType: "application/json; charset=utf-8",
         dataType: 'json',
-        success: function () {
+        success: function (msg) {
 
-            $("#btn_save_" + id).css("display", "none");
+            $("#spantextfiyat_" + id).css("display", "block");
+            $("#textfiyat_" + id).css("display", "none");
+            $("#spantextfiyat_" + id).text(fiyat);
+            $("#spantextdonanim_" + id).css("display", "block");
+            $("#textdonanim_" + id).css("display", "none");
+            $("#spantextdonanim_" + id).text(donanimclear);
+            $("#spantextadet_" + id).css("display", "block");
+            $("#textadet_" + id).css("display", "none");
+            $("#spantextadet_" + id).text(adet);
+
+
             $("#btn_update_" + id).css("display", "inline-block");
+            $("#btn_save_" + id).css("display", "none");
             $("#btn_cancel_" + id).css("display", "none");
             $("#DeleteImage_" + id).css("display", "inline-block");
-
-            $("#spanitem_" + id).css("display", "block");
-            $("#spanitem_" + id).text($("#textitem_" + id).val());
-            $("#textitem_" + id).css("display", "none");
 
             var odd = $("#listItem_" + id).attr("class");
 
@@ -114,6 +121,13 @@ function UpdateRecord(id) {
                 $("#listItem_" + id + " td").animate({ backgroundColor: "#66ff66" }, 'slow').delay(500).animate({ backgroundColor: "#F2F2F2" }, 'slow');
             else
                 $("#listItem_" + id + " td").animate({ backgroundColor: "#66ff66" }, 'slow').delay(500).animate({ backgroundColor: "#fff" }, 'slow');
+
+
+            
+
+          
+            $("#toplamtutar").text(msg[0] +" TL");
+            $("#kdvtutar").text(msg[2]+" TL");
 
         },
         error: function () {

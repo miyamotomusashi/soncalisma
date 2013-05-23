@@ -155,7 +155,7 @@ namespace deneysan_BLL.TeklifBL
         }
 
 
-        public static void HesaplamaYap(int id, string fiyat, int adet, string donanim, int teklifid)
+        public static string[] HesaplamaYap(int id, string fiyat, int adet, string donanim, int teklifid)
         {
             using (DeneysanContext db = new DeneysanContext())
             {
@@ -180,8 +180,12 @@ namespace deneysan_BLL.TeklifBL
                 teklif.FaturaTutar = fatura;
                 teklif.KDV = fatura * 18 / 100;
                 db.SaveChanges();
-                
 
+                string[] returnvalues = new string[3];
+                returnvalues[0] = teklif.FaturaTutar.ToString();
+                returnvalues[1] = ";";
+                returnvalues[2] = teklif.KDV.ToString();
+                return returnvalues;
             }
         }
     }
