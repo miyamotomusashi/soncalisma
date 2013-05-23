@@ -14,7 +14,7 @@ namespace deneysan_DAL.Entities
         [Required(ErrorMessage="Döküman Grubunu Seçiniz.")]
         public int DocumentGroupId { get; set; }
 
-        [Required(ErrorMessage = "Grup Adını Giriniz")]
+        [Required(ErrorMessage = "Döküman Adını Giriniz")]
         [Display(Name = "Döküman Adı")]
         public string Name { get; set; }
 
