@@ -49,19 +49,10 @@ function CancelRecord(id) {
 }
 
 function UpdateRecord(id) {
-    //$("#spantextfiyat_" + id).css("display", "none");
-    //$("#textfiyat_" + id).css("display", "block");
-    //$("#textfiyat_" + id).val($("#spantextfiyat_" + id).text());
-
-    //$("#spantextdonanim_" + id).css("display", "none");
-    //$("#textdonanim_" + id).css("display", "block");
-    //$("#textdonanim_" + id).val($("#spantextdonanim_" + id).text());
-
-    //$("#spantextadet_" + id).css("display", "none");
-    //$("#textadet_" + id).css("display", "block");
-    //$("#textadet_" + id).val($("#spantextadet_" + id).text());
-
-
+   
+    
+    var hrd = $("#hdndonanim_" + id).val();
+  
     var fiyat = $("#textfiyat_" + id).val();
     if (fiyat == "") {
         $.msgbox("Fiyat Alanına Bir Değer Giriniz!", {
@@ -71,17 +62,21 @@ function UpdateRecord(id) {
     }
 
     var fiyatclear = ReplaceAll(fiyat, "TL", "");
+    var donanimclear = 0;
+    if(hrd=="true" || hrd=="True")
+    {
+        var donanim = $("#textdonanim_" + id).val();
+        if (donanim == "") {
+            $.msgbox("Donanım Fiyatı Alanına Bir Değer Giriniz!", {
+                type: "alert", buttons: [{ type: "submit", value: "Tamam" }]
+            });
+            return;
+        }
 
-    var donanim = $("#textdonanim_" + id).val();
-    if (donanim == "") {
-        $.msgbox("Donanım Fiyatı Alanına Bir Değer Giriniz!", {
-            type: "alert", buttons: [{ type: "submit", value: "Tamam" }]
-        });
-        return;
+        donanimclear = ReplaceAll(donanim, "TL", "");
     }
 
-    var donanimclear = ReplaceAll(donanim, "TL", "");
-
+  
     var adet = $("#textadet_" + id).val();
     if (adet == "") {
         $.msgbox("Adet Alanına Bir Değer Giriniz!", {
@@ -91,16 +86,15 @@ function UpdateRecord(id) {
     }
 
 
-    
-    alert(donanim);
-    return;
+    var teklifid = $("#teklifid").val();
+   
     var cssbackgrnd = $("#listItem_" + id + " td").css("background-color");
     $("#btn_save_" + id).attr("src", "/Areas/Admin/Content/images/icons/16/loader.gif");
 
     $.ajax({
         type: 'POST',
         url: '/Teklif/UpdateRecord',
-        data: '{id:"' + id + '",name:"' + name + '"}',
+        data: '{id:"' + id + '",fiyat:"' + fiyatclear + '",adet:"'+adet+'",donanim:"'+donanimclear+'",teklifid:"'+teklifid+'"}',
         contentType: "application/json; charset=utf-8",
         dataType: 'json',
         success: function () {

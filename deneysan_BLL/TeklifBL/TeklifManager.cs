@@ -52,9 +52,9 @@ namespace deneysan_BLL.TeklifBL
 
                // var model = db.TeklifUrun.Where(d => d.TeklifId == teklifid).ToList();
                 var model = (from t in db.TeklifUrun
-                             join
-                                 p in db.Product
-                                 on t.UrunId equals p.ProductId
+                             join p in db.Product on t.UrunId equals p.ProductId
+                             join tk in db.Teklif on t.TeklifId equals tk.TeklifId
+                             where t.TeklifId==teklifid
                              select new
                              {
                                  t.TeklifUrunId,
@@ -147,6 +147,37 @@ namespace deneysan_BLL.TeklifBL
                 {
                     return false;
                 }
+            }
+        }
+
+
+        public static void HesaplamaYap(int id, string fiyat, int adet, string donanim, int teklifid)
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                var urun = db.TeklifUrun.Where(d => d.TeklifId == teklifid && d.UrunId == id).SingleOrDefault();
+                urun.Fiyat = Convert.ToDecimal(fiyat);
+                urun.Adet = adet;
+                if (!string.IsNullOrEmpty(donanim))
+                    urun.Toplam = (Convert.ToDecimal(fiyat) * adet + Convert.ToDecimal(donanim)).ToString();
+                else urun.Toplam = (Convert.ToDecimal(fiyat) * adet).ToString();
+
+                db.SaveChanges();
+
+
+                var urunler = db.TeklifUrun.Where(d => d.TeklifId == teklifid ).ToList();
+                decimal fatura=0;
+                foreach(var item in urunler)
+                {
+                    fatura += Convert.ToDecimal(item.Toplam);
+                }
+
+                var teklif = db.Teklif.Where(d => d.TeklifId == teklifid).SingleOrDefault();
+                teklif.FaturaTutar = fatura;
+                teklif.KDV = fatura * 18 / 100;
+                db.SaveChanges();
+                
+
             }
         }
     }

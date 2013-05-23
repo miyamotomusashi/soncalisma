@@ -20,6 +20,7 @@
     {
          @Html.Hidden("hdfieldcategory")
          @Html.Hidden("hdfieldtaglist")
+        @Html.Hidden("teklifid",(object)@Model.teklif.TeklifId) 
         @Html.ValidationSummary(true)
         <fieldset>
         <legend>Kurum Bilgileri</legend>
@@ -104,17 +105,19 @@
          <tbody id="item-list">
             @foreach (var item in Model.teklifurun)
             {
+               
                 <tr id="listItem_@item.UrunId"  class="handle">
                     <td>
                         <center>
                             <a href="@item.UrunResim" onclick="return false;"
                                 class="preview">
-                                <img src="@item.UrunResim" alt="image" with="48" height="48" /></a></center>
+                                <img src="@item.UrunResim" alt="image" width="48" height="48" /></a></center>
                     </td>
                     <td>@item.UrunAdi</td>
                     <td class="center">
                         <span id="spantextfiyat_@item.UrunId">@item.Fiyat @item.ParaBirimi</span>
                         <input type="text" id="textfiyat_@item.UrunId" value="" class="displaynone textwidth90"/>
+                         <input type="hidden" id="hdndonanim_@item.UrunId" value="@item.Donanim.ToString()" class="displaynone textwidth90"/>
                     </td>
                     <td class="center">
                         @if(@item.Donanim==true){

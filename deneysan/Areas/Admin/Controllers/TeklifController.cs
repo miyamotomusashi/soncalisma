@@ -83,6 +83,12 @@ namespace deneysan.Areas.Admin.Controllers
         }
 
 
+        public void UpdateRecord(int id,string fiyat,int adet, string donanim,int teklifid)
+        {
+            TeklifManager.HesaplamaYap(id,fiyat,adet, donanim,teklifid);
+
+        }
+
     }
 }
 
