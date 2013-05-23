@@ -6,6 +6,8 @@
 <link rel="stylesheet" href="~/Content/Styles/portfolio.css" type="text/css" />
 <script src="/Content/Scripts/jquery.prettyPhoto.js"></script>
 <link href="/Content/Styles/prettyPhoto.css" rel="stylesheet" />
+<link href="~/Content/Styles/jquery.gritter.css" rel="stylesheet" />
+<script src="~/Content/Scripts/jquery.gritter.min.js"></script>
 
 <div class="main_content mainpage pageheight" style="">
     <div class="wrapper mainpage grid_12">
@@ -138,7 +140,10 @@
                     dataType: 'json',
                     success: function (result) {
                         $("#teklifAdedi").text(result);
-                    },
+                        $.gritter.add({
+                            title: 'Listenize bir adet ürün eklendi!',
+                            text: 'Teklif Listem linkine tıklayarak eklediğiniz ürün ya da ürünleri görebilir, teklif formunu doldurarak talebinizi bize ulaştırabilirsiniz.'
+                        });                    },
                     error: function () {
 
                     }

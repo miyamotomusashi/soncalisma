@@ -9,6 +9,9 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using deneysan_BLL.MailBL;
+using System.Net.Mail;
+using System.Net;
 namespace deneysan_BLL.TeklifBL
 {
     public class TeklifManager
@@ -143,7 +146,26 @@ namespace deneysan_BLL.TeklifBL
                     }
                     
                     teklif.FaturaTutar = Convert.ToDecimal(toplamTutar);
+
                     db.SaveChanges();
+                    var mset = MailManager.GetMailSettings();
+                    var msend = MailManager.GetMailUsersList(1);
+                    
+                    using (var client = new SmtpClient(mset.ServerHost, mset.Port))
+                    {
+                        client.EnableSsl = false;
+                        client.Credentials = new NetworkCredential(mset.ServerMail, mset.Password);
+                        var mail = new MailMessage();
+                        mail.From = new MailAddress(mset.ServerMail);
+                        foreach (var item in msend)
+                            mail.To.Add(item.MailAddress);
+                        mail.Subject = "Teklif Talebi";
+                        mail.IsBodyHtml = true;
+                        mail.Body = "<p>" + "Teklif detaylarına aşağıdaki linkten ulaşabilirsiniz: " + "</p>";
+                        mail.Body += "<a href='http://www.deneysan.com/yonetim'>http://www.deneysan.com/yonetim</a>";
+
+                        if (mail.To.Count > 0) client.Send(mail);
+                    }
 
                     return true;
                 }

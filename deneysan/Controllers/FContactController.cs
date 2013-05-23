@@ -49,7 +49,7 @@ namespace deneysan.Controllers
                 }
 
                 var mset = MailManager.GetMailSettings();
-
+                var msend = MailManager.GetMailUsersList(0);
 
                 using (var client = new SmtpClient(mset.ServerHost, mset.Port))
                 {
@@ -57,12 +57,13 @@ namespace deneysan.Controllers
                     client.Credentials = new NetworkCredential(mset.ServerMail, mset.Password);
                     var mail = new MailMessage();
                     mail.From = new MailAddress(mset.ServerMail);
-                    mail.To.Add(mset.ServerMail);
+                    foreach (var item in msend)
+                        mail.To.Add(item.MailAddress);
                     mail.Subject = subject;
                     mail.IsBodyHtml = true;
                     mail.Body = "<h5><b>" + namesurname + " - " + email + "</b></h5>" + "<p>" + body + "</p>";
                    
-                    client.Send(mail);
+                    if(mail.To.Count > 0) client.Send(mail);
                 }
                 TempData["sent"] = "true";
                 return RedirectToAction("Form");

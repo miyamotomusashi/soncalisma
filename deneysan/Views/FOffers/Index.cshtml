@@ -11,10 +11,10 @@ else
 {
     <script src="~/Content/Scripts/jquery.validationEngine-en.js"></script>
 }
-
 <script src="~/Content/Scripts/jquery.maskedinput-1.3.min.js"></script>
 <script src="~/Content/Scripts/jquery.validationEngine.js"></script>
 <link href="~/Content/Styles/validationEngine.jquery.css" rel="stylesheet" />
+
 <script>
     $(document).ready(function () {
 
@@ -101,7 +101,6 @@ else
                     </div>
 
                     <div class="field_offer_one" style="margin-top: 25px">
-                        
                     </div>
                     <p style="color: red">@ContactRess.ContactStrings.requiredfiled</p>
 
@@ -111,12 +110,19 @@ else
                 </div>
                 <div id="offer-list">
                     <div id="offer-content">
-                        @if (Model.products.Count() == 0)
+                         
+                        @if (TempData["sent"] != null)
                         {
-                            Html.RenderPartial("_emptyOfferList");
+                            Html.RenderPartial("_sentOfferList");
+                           
                         }
                         else
-                        { 
+                            if (Model.products.Count() == 0)
+                            {
+                                Html.RenderPartial("_emptyOfferList");
+                            }
+                            else
+                            { 
                             <h1>Teklif Listenizdeki Ürünler</h1>
                             <div>
                                 @for (int i = 0; i < Model.products.Count(); i++)
@@ -139,14 +145,14 @@ else
                                                 <img src="~/Content/Images/icons/trash.gif" />
                                             </a>
                                         </div>
-                                        <div style="clear:both"></div>
-                                        <div style="padding-left:71px; margin-bottom:5px;overflow:hidden;height:25px;">
+                                        <div style="clear: both"></div>
+                                        <div style="padding-left: 71px; margin-bottom: 5px; overflow: hidden; height: 25px;">
                                             @Html.CheckBoxFor(m => m.teklifurun[i].Donanim, new { @style = "float:left" }) <span style="float: left; font-weight: bold">Yazılım, donanım ve PC bağlantısı istiyorum</span>
                                         </div>
                                     </div>   
                                 }
                             </div>
-                        }
+                            }
                     </div>
                 </div>
             }
@@ -168,7 +174,7 @@ else
                     if (result == "0") {
                         $("#offer-content").empty();
                         $("#offer-content").load("/offer/empty");
-                        
+
                     } else {
                         $("#item-" + id).fadeOut(500).remove();
                     }

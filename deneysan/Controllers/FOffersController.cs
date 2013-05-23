@@ -45,8 +45,8 @@ namespace deneysan.Controllers
 
                 cookie.Expires = DateTime.Now.AddDays(-1);
                 this.ControllerContext.HttpContext.Response.Cookies.Add(cookie);
-
-                return View(new OfferWrapperModel(new List<Product>(), null, null));
+                TempData["sent"] = true;
+                return RedirectToAction("Index");
             }
             return View(new OfferWrapperModel(new List<Product>(), null, null));
         }
@@ -87,5 +87,11 @@ namespace deneysan.Controllers
         {
             return View();
         }
+
+        public ActionResult _sentOfferList()
+        {
+            return View();
+        }
+
     }
 }
