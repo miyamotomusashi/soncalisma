@@ -146,9 +146,13 @@ else
                                             </a>
                                         </div>
                                         <div style="clear: both"></div>
-                                        <div style="padding-left: 71px; margin-bottom: 5px; overflow: hidden; height: 25px;">
-                                            @Html.CheckBoxFor(m => m.teklifurun[i].Donanim, new { @style = "float:left" }) <span style="float: left; font-weight: bold">Yazılım, donanım ve PC bağlantısı istiyorum</span>
-                                        </div>
+                                        @if (Model.products[i].Hardware)
+                                        {
+                                            <div style="padding-left: 71px; margin-bottom: 5px; overflow: hidden; height: 25px;">
+                                                @Html.CheckBoxFor(m => m.teklifurun[i].Donanim, new { @style = "float:left" }) <span style="float: left; font-weight: bold">Yazılım, donanım ve PC bağlantısı istiyorum</span>
+                                            </div>    
+                                        }
+                                        
                                     </div>   
                                 }
                             </div>

@@ -133,7 +133,7 @@ namespace deneysan_BLL.TeklifBL
                         teklifurun[i].TeklifId = teklif.TeklifId;
                         teklifurun[i].UrunId = plist[i];
                         teklifurun[i].Fiyat = prod.Price;
-                        if (teklifurun[i].Donanim)
+                        if (teklifurun[i].Donanim && prod.Hardware)
                         {
                             teklifurun[i].Toplam = (Convert.ToDouble(prod.Price * teklifurun[i].Adet) * 1.18 + (Convert.ToDouble(prod.HardwarePrice) * 1.18) ).ToString();
                         }
