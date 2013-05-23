@@ -106,7 +106,6 @@ namespace deneysan_BLL.TeklifBL
                     teklif.Durum = (int)EnumTeklifTip.Onaylanmadi;
                     teklif.TeklifTarihi = DateTime.Now;
                     teklif.ParaBirimi = "TL";
-                    teklif.KDV = 18;
 
                     db.Teklif.Add(teklif);
                     db.SaveChanges();
@@ -146,6 +145,7 @@ namespace deneysan_BLL.TeklifBL
                     }
                     
                     teklif.FaturaTutar = Convert.ToDecimal(toplamTutar);
+                    teklif.KDV = Convert.ToDecimal(Convert.ToDouble(teklif.FaturaTutar) * 0.18);
 
                     db.SaveChanges();
                     var mset = MailManager.GetMailSettings();

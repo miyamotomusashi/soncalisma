@@ -1756,10 +1756,12 @@
     <Content Include="Content\Images\Front\mn-spr.png" />
     <Content Include="Content\Images\Front\noimage.jpeg" />
     <Content Include="Content\Images\Front\oncephe.jpg" />
+    <Content Include="Content\Images\Front\orange_btn.png" />
     <Content Include="Content\Images\Front\paylas.png" />
     <Content Include="Content\Images\Front\pdf.png" />
     <Content Include="Content\Images\Front\phone-ico.png" />
     <Content Include="Content\Images\Front\search-ico.png" />
+    <Content Include="Content\Images\Front\shareface.png" />
     <Content Include="Content\Images\Front\slider.png" />
     <Content Include="Content\Images\Front\social-icons.png" />
     <Content Include="Content\Images\Front\success.png" />
@@ -1774,7 +1776,6 @@
     <Content Include="Content\Images\gritter\gritter-long.png" />
     <Content Include="Content\Images\gritter\gritter.png" />
     <Content Include="Content\Images\gritter\ie-spacer.gif" />
-    <Content Include="Content\Images\gritter\trees.jpg" />
     <Content Include="Content\Images\icons\portfolio-nav.png" />
     <Content Include="Content\Images\icons\portfolio-overlay.png" />
     <Content Include="Content\Images\icons\trash.gif" />
