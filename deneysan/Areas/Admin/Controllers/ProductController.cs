@@ -123,7 +123,7 @@ namespace deneysan.Areas.Admin.Controllers
                     model.Hardware = false;
                 }
 
-
+                model.MoneyType = "TL";
                 ModelState.Clear();
                 ViewBag.ProcessMessage = ProductManager.AddProduct(model);
                 return View();
@@ -219,11 +219,7 @@ namespace deneysan.Areas.Admin.Controllers
                     model.ProductImageThumb = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadfile.FileName);
 
                 }
-                else
-                {
-                    model.ProductImage = "/Content/images/front/noimage.jpeg";
-                    model.ProductImageThumb = "/Content/images/front/noimage.jpeg";
-                }
+             
 
                 if (uploadtraining != null && uploadtraining.ContentLength > 0)
                 {
@@ -287,6 +283,7 @@ namespace deneysan.Areas.Admin.Controllers
                     if (isnumber)
                     {
                         model.ProductId = nid;
+                        
                         ViewBag.ProcessMessage = ProductManager.EditProduct(model);
                         return View(model);
                     }
