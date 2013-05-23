@@ -1467,6 +1467,12 @@
     <Content Include="Areas\Admin\Content\CKEditor\userfiles\images\Jellyfish.jpg" />
     <Content Include="Areas\Admin\Content\CKEditor\userfiles\_thumbs\Images\Desert.jpg" />
     <Content Include="Areas\Admin\Content\CKEditor\userfiles\_thumbs\Images\Jellyfish.jpg" />
+    <Content Include="Areas\Admin\Content\images\icons\experimental.png" />
+    <Content Include="Areas\Admin\Content\images\icons\lookup.png" />
+    <Content Include="Areas\Admin\Content\images\icons\photo.png" />
+    <Content Include="Areas\Admin\Content\images\icons\technic.png" />
+    <Content Include="Areas\Admin\Content\images\icons\usermanual.png" />
+    <Content Include="Areas\Admin\Content\images\icons\video.png" />
     <Content Include="Areas\Admin\Content\images\logo-deneysan.png" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\bank\banklist.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\contact\contact.js" />
