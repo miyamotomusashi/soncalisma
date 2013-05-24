@@ -23,6 +23,7 @@ namespace deneysan_DAL.Entities
         public Nullable<DateTime> TeklifTarihi { get; set; }
         public Nullable<DateTime> CevapTarihi { get; set; }
         public string TeklifNo { get; set; }
+        public string Not { get; set; }
         public int GecerlilikSuresi { get; set; }
         public int Durum { get; set; }
         public decimal FaturaTutar { get; set; }

@@ -117,7 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="addproductmessage" xml:space="preserve">
+    <value>Please add a product on products page.</value>
+  </data>
+  <data name="emptylist" xml:space="preserve">
+    <value>There is no product in your offer list!</value>
+  </data>
+  <data name="instname" xml:space="preserve">
+    <value>Institution</value>
+  </data>
+  <data name="namesurname" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="note" xml:space="preserve">
+    <value>Note</value>
+  </data>
+  <data name="offerdeliveredmessage" xml:space="preserve">
+    <value>Your offer request has been delivered!</value>
+  </data>
   <data name="offerform" xml:space="preserve">
     <value>Offer Form</value>
+  </data>
+  <data name="offernotifymessage" xml:space="preserve">
+    <value>We will notify you soon.</value>
+  </data>
+  <data name="tel" xml:space="preserve">
+    <value>Telephone</value>
+  </data>
+  <data name="title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="wanttohardware" xml:space="preserve">
+    <value>I want to sowtware, hardware and PC connection</value>
   </data>
 </root>

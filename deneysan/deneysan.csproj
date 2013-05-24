@@ -1765,6 +1765,8 @@
     <Content Include="Content\Images\Front\slider.png" />
     <Content Include="Content\Images\Front\social-icons.png" />
     <Content Include="Content\Images\Front\success.png" />
+    <Content Include="Content\Images\Front\teklif-banner-en.png" />
+    <Content Include="Content\Images\Front\teklif-banner-tr.png" />
     <Content Include="Content\Images\Front\testimonial-prev.png" />
     <Content Include="Content\Images\Front\top-panel-arrow.png" />
     <Content Include="Content\Images\Front\teklif-iste.jpg" />

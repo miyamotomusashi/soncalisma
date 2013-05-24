@@ -142,7 +142,7 @@ namespace HomeRess {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to /Content/Images/Front/teklif-iste.jpg.
+        ///   Looks up a localized string similar to /Content/Images/Front/teklif-banner-tr.png.
         /// </summary>
         public static string takeofferimage {
             get {

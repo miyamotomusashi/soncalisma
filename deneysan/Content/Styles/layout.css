@@ -556,7 +556,7 @@ input.watermark, textarea.watermark { color: #000; }
 input.marked, textarea.marked { color: #999; }
 
 /* Subpage SideBar */
-#offer-list { width:580px; background:#f1f2f3; padding:3px 3px;margin:0 -10px -10px 0px; float:left; height: 250px; border: 1px solid #cfcfcf; }
+#offer-list { width:580px; background:#f1f2f3; padding:3px 3px;margin:0 -10px -10px 0px; float:left; height: 330px; border: 1px solid #cfcfcf; }
 #offer-list h1{font-size:16px; font-weight:bold; border:solid 1px #ebebeb; padding:5px 12px 5px 12px; background:url(/Content/Images/Front/bg-title-subsidebar.png) repeat-x;}
 
 #offer-list {font-family:'Lucida Grande',Tahoma, Geneva, sans-serif; color:#333; font-size:13px; }
@@ -765,12 +765,14 @@ ul.pagination li a#currentPage {background-color: #ccc9d3;color: white;}
 
 .contact-form input[type=text], input[type=email] { background:#fafafa url(/Content/Images/Front/input_bg2.gif) repeat-x; border:1px solid #e1e1e1; height:28px; line-height:28px; padding:0 10px !important; width:400px; color:#7d7d7d !important; }
 .contact-form textarea { background:#fafafa url(/Content/Images/Front/input_bg2.gif) repeat-x; border:1px solid #e1e1e1; padding:10px 10px !important; width:401px; height:224px; margin-bottom:15px; color:#7d7d7d !important; overflow:auto; max-height:224px; max-width:401px; min-width:401px; min-height:224px; resize:none }
+.contact-form .not { min-height:75px; max-height:75px; min-width:200px; max-width:200px; width:200px; height:75px; }
 #jform_contact_email_copy { float:left; margin-top:3px; position:absolute; margin:-23px 0 0 150px; border:none; background:none }
 .contact-form legend { display:none }
 .contact-form fieldset { padding:0 !important; margin:0 !important; }
 .field_one { width:460px; height:60px; line-height:2.5em; }
 
 .field_offer_one { height:40px; line-height:2.5em; }
+.field_offer_one.nottitle { height:100px; line-height:2.5em; }
 .field_offer_two { width:220px; height:40px; line-height:2.5em; float:left }
 .contact-form .star { color:red }
 

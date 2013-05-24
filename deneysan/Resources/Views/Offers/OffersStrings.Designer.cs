@@ -61,11 +61,101 @@ namespace OfferRess {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lütfen ürün sayfasından ürün ekleyiniz..
+        /// </summary>
+        public static string addproductmessage {
+            get {
+                return ResourceManager.GetString("addproductmessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Teklif listenizde hiç ürün bulunmamakta!.
+        /// </summary>
+        public static string emptylist {
+            get {
+                return ResourceManager.GetString("emptylist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kurum Adı.
+        /// </summary>
+        public static string instname {
+            get {
+                return ResourceManager.GetString("instname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ad Soyad.
+        /// </summary>
+        public static string namesurname {
+            get {
+                return ResourceManager.GetString("namesurname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not.
+        /// </summary>
+        public static string note {
+            get {
+                return ResourceManager.GetString("note", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Teklif isteğiniz alınmıştır!.
+        /// </summary>
+        public static string offerdeliveredmessage {
+            get {
+                return ResourceManager.GetString("offerdeliveredmessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Teklif Formu.
         /// </summary>
         public static string offerform {
             get {
                 return ResourceManager.GetString("offerform", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to En kısa zamanda değerlendirilerek geri dönüş yapılacaktır..
+        /// </summary>
+        public static string offernotifymessage {
+            get {
+                return ResourceManager.GetString("offernotifymessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Telefon.
+        /// </summary>
+        public static string tel {
+            get {
+                return ResourceManager.GetString("tel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ünvan.
+        /// </summary>
+        public static string title {
+            get {
+                return ResourceManager.GetString("title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yazılım, donanım ve PC bağlantısı istiyorum.
+        /// </summary>
+        public static string wanttohardware {
+            get {
+                return ResourceManager.GetString("wanttohardware", resourceCulture);
             }
         }
     }

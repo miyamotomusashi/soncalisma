@@ -44,43 +44,32 @@ else
             <h2>@OfferRess.OffersStrings.offerform</h2>
             <hr class="wide">
             <p>@Html.ValidationMessage("_FORM")</p>
-            @if (TempData["sent"] != null)
-            {
-                if (TempData["sent"].ToString().Equals("true"))
-                {
-                <div class="notification info">Teklif isteğiniz alınmıştır. En kısa zamanda değerlendirilerek geri dönüş yapılacaktır.</div>
-                }
-                else if (TempData["sent"].ToString().Equals("false"))
-                {
-                <div class="notification error">@ContactRess.ContactStrings.messagenotsent</div>
-                }
-            }
             @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "offerform" }))
             {
                 <div class="contact-form" style="width: 340px; float: left">
                     <div class="field_offer_one">
-                        <div style="width: 64px; float: left; line-height: 30px; font-weight: bold;"><span style="float: right; line-height: 27px;">Kurum Adı</span></div>
+                        <div style="width: 64px; float: left; line-height: 30px; font-weight: bold;"><span style="float: right; line-height: 27px;">@OfferRess.OffersStrings.instname</span></div>
                         <div style="float: left; margin-left: 15px; font-weight: bold;">
                             @Html.TextBoxFor(m => m.teklif.Kurum, null, new { @class = "validate[required] text-input", @title = "Kurum", @size = "30" }) <span class="star">*</span>
                         </div>
                     </div>
 
                     <div class="field_offer_one unvan">
-                        <div style="width: 64px; float: left; line-height: 30px; font-weight: bold;"><span style="float: right; line-height: 27px;">Ünvan</span></div>
+                        <div style="width: 64px; float: left; line-height: 30px; font-weight: bold;"><span style="float: right; line-height: 27px;">@OfferRess.OffersStrings.title</span></div>
                         <div class="unvan" style="float: left; margin-left: 15px; font-weight: bold;">
                             @Html.TextBoxFor(m => m.teklif.Unvan, null, new { @class = "", @title = "Ünvan", @size = "30" })
                         </div>
                     </div>
 
                     <div class="field_offer_one adsoyad">
-                        <div style="width: 64px; float: left; line-height: 30px; font-weight: bold;"><span style="float: right; line-height: 27px;">Ad Soyad</span></div>
+                        <div style="width: 64px; float: left; line-height: 30px; font-weight: bold;"><span style="float: right; line-height: 27px;">@OfferRess.OffersStrings.namesurname</span></div>
                         <div style="float: left; margin-left: 15px; font-weight: bold;">
                             @Html.TextBoxFor(m => m.teklif.Adsoyad, null, new { @class = "validate[required] text-input", @title = "Ad Soyad", @size = "30" }) <span class="star">*</span>
                         </div>
                     </div>
 
                     <div class="field_offer_one telefon">
-                        <div style="width: 64px; float: left; line-height: 30px; font-weight: bold;"><span style="float: right; line-height: 27px;">Telefon</span></div>
+                        <div style="width: 64px; float: left; line-height: 30px; font-weight: bold;"><span style="float: right; line-height: 27px;">@OfferRess.OffersStrings.tel</span></div>
                         <div style="float: left; margin-left: 15px; font-weight: bold;">
                             @Html.TextBoxFor(m => m.teklif.Tel, null, new { @class = "", @title = "Telefon", @size = "30" })
                         </div>
@@ -100,12 +89,17 @@ else
                         </div>
                     </div>
 
-                    <div class="field_offer_one" style="margin-top: 25px">
+                    <div class="field_offer_one nottitle">
+                        <div style="width: 64px; float: left; line-height: 30px; font-weight: bold;"><span style="float: right; line-height: 27px;">@OfferRess.OffersStrings.note</span></div>
+                        <div style="float: left; margin-left: 15px; font-weight: bold;">
+                            @Html.TextAreaFor(m => m.teklif.Not, 1, 1, new { @class="not", @title = "Not", @size = "500" })
+                        </div>
                     </div>
-                    <p style="color: red">@ContactRess.ContactStrings.requiredfiled</p>
+                    <div style="clear:both"></div>
+                    <p style="color: red; margin-left:80px;">@ContactRess.ContactStrings.requiredfiled</p>
 
                     <div class="field_one" style="margin-top: 10px">
-                        <input id="btnOffer" type="submit" class="button gray" value="@ContactRess.ContactStrings.send" />
+                        <input id="btnOffer" style="margin-left:80px;" type="submit" class="button gray" value="@ContactRess.ContactStrings.send" />
                     </div>
                 </div>
                 <div id="offer-list">
@@ -149,7 +143,7 @@ else
                                         @if (Model.products[i].Hardware)
                                         {
                                             <div style="padding-left: 71px; margin-bottom: 5px; overflow: hidden; height: 25px;">
-                                                @Html.CheckBoxFor(m => m.teklifurun[i].Donanim, new { @style = "float:left" }) <span style="float: left; font-weight: bold">Yazılım, donanım ve PC bağlantısı istiyorum</span>
+                                                @Html.CheckBoxFor(m => m.teklifurun[i].Donanim, new { @style = "float:left" }) <span style="float: left; font-weight: bold">@OfferRess.OffersStrings.wanttohardware</span>
                                             </div>    
                                         }
                                         
