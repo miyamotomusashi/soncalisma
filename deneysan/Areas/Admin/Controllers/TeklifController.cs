@@ -72,6 +72,12 @@ namespace deneysan.Areas.Admin.Controllers
             return View();
         }
 
+        public ActionResult Proforma(string tekid)
+        {
+            ViewBag.ProcessMessage = TeklifManager.ProformaGonder(tekid);
+            return RedirectToAction("Details", new { id = tekid });
+        }
+
         public ActionResult Details(int id)
         {
             int teklifid = 0;

@@ -12,6 +12,10 @@ using System.Web;
 using deneysan_BLL.MailBL;
 using System.Net.Mail;
 using System.Net;
+using iTextSharp.text;
+using System.IO;
+using iTextSharp.text.pdf;
+using System.Web.Hosting;
 namespace deneysan_BLL.TeklifBL
 {
     public class TeklifManager
@@ -238,6 +242,35 @@ namespace deneysan_BLL.TeklifBL
                 returnvalues[1] = ";";
                 returnvalues[2] = teklif.KDV.ToString();
                 return returnvalues;
+            }
+        }
+
+        public static bool ProformaGonder(string tekid)
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                try
+                {
+                    var document = new iTextSharp.text.Document(PageSize.A4, 50, 50, 25, 25);
+
+                    // Create a new PdfWrite object, writing the output to a MemoryStream
+                    var output = new MemoryStream();
+                    var writer = PdfWriter.GetInstance(document, output);
+
+                    // Open the Document for writing
+                    document.Open();
+
+                    // Read in the contents of the Receipt.htm HTML template file
+                    string contents = File.ReadAllText(HostingEnvironment.MapPath("~/HTMLTemplate/Receipt.htm"));
+
+
+
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
             }
         }
     }
