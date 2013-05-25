@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using deneysan.Areas.Admin.Models;
 using deneysan_BLL.TeklifBL;
+using deneysan_DAL.Entities;
 
 namespace deneysan.Areas.Admin.Controllers
 {
@@ -58,6 +59,18 @@ namespace deneysan.Areas.Admin.Controllers
             return View(list);
         }
 
+        [HttpPost]
+        public ActionResult Details(Teklif teklif, string teklifid)
+        {
+            if (ModelState.IsValid)
+            {
+                teklif.TeklifId = Convert.ToInt32(teklifid);
+                ViewBag.ProcessMessage = TeklifManager.UpdateTeklif(teklif);
+                return RedirectToAction("Details", new { id = teklifid });
+            }
+
+            return View();
+        }
 
         public ActionResult Details(int id)
         {
@@ -78,8 +91,6 @@ namespace deneysan.Areas.Admin.Controllers
             }
             else
                 return View();
-
-
         }
 
 

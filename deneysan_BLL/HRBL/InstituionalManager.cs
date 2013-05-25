@@ -24,16 +24,22 @@ namespace deneysan_BLL.HRBL
             using (DeneysanContext db = new DeneysanContext())
             {
                 HumanResource editrecord = db.HumanResource.SingleOrDefault(d =>  d.Language == record.Language);
-                if (editrecord != null)
+        
+                if (editrecord == null)
                 {
-                    //editrecord.TimeUpdated = DateTime.Now;
+                    editrecord = new HumanResource();
+                    editrecord.Language = record.Language;
                     editrecord.Content = record.Content;
-                    db.SaveChanges();
-                    return true;
+                    db.HumanResource.Add(editrecord);
                 }
                 else
-                    return false;
-                
+                {
+                    editrecord.Content = record.Content;
+                }
+
+                db.SaveChanges();
+
+                return true;
             }
         }
     }

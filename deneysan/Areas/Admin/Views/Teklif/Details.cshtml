@@ -16,7 +16,7 @@
     
 <section class="grid_12 form">
     @Html.Hidden("ProcessMessage",(object)@ViewBag.ProcessMessage) 
-    @using(Html.BeginForm("AddDocument", "Documents", FormMethod.Post, new { enctype = "multipart/form-data"}))
+    @using(Html.BeginForm("Details", "Teklif", FormMethod.Post, new { enctype = "multipart/form-data"}))
     {
          @Html.Hidden("hdfieldcategory")
          @Html.Hidden("hdfieldtaglist")
@@ -53,6 +53,11 @@
             @Html.LabelFor(d=>d.teklif.Fax)
             @Html.TextBoxFor(d=>d.teklif.Fax, new { @class="textwidth20"})
             @Html.ValidationMessageFor(d => d.teklif.Fax)
+        </p>
+            <p> 
+            @Html.LabelFor(d=>d.teklif.Not)
+            @Html.TextAreaFor(d=>d.teklif.Not, new { @class="textwidth20", @rows="4", @disabled="disabled"})
+            @Html.ValidationMessageFor(d => d.teklif.Not)
         </p>
         <p>
             @Html.LabelFor(d=>d.teklif.TeklifTarihi)
@@ -158,6 +163,9 @@
             <label>KDV Tutarı:</label>
            <span id="kdvtutar" style="color:green;font-weight:bold;"> @Model.teklif.KDV @Model.teklif.ParaBirimi</span>
         </p>
+        <div>
+            <input type="submit" style="float:right" value="Proforma Faturasını Gönder" id="btnsend" />
+        </div>
    </fieldset>
     }
 </section>

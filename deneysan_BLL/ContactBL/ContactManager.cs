@@ -30,12 +30,27 @@ namespace deneysan_BLL.ContactBL
                 try
                 {
                     Contact contact = db.Contact.Where(d => d.Language == record.Language).SingleOrDefault();
-                    contact.Address = record.Address;
-                    contact.Phone = record.Phone;
-                    contact.Fax = record.Fax;
-                    contact.Taxnumber = record.Taxnumber;
-                    contact.Taxoffice = record.Taxoffice;
-                    contact.Email = record.Email;
+                    if (contact == null)
+                    {
+                        contact = new Contact();
+                        contact.Address = record.Address;
+                        contact.Phone = record.Phone;
+                        contact.Fax = record.Fax;
+                        contact.Taxnumber = record.Taxnumber;
+                        contact.Taxoffice = record.Taxoffice;
+                        contact.Email = record.Email;
+                        contact.Language = record.Language;
+                        db.Contact.Add(contact);
+                    }
+                    else
+                    {
+                        contact.Address = record.Address;
+                        contact.Phone = record.Phone;
+                        contact.Fax = record.Fax;
+                        contact.Taxnumber = record.Taxnumber;
+                        contact.Taxoffice = record.Taxoffice;
+                        contact.Email = record.Email;
+                    }
 
                     db.SaveChanges();
 

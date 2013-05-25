@@ -1470,6 +1470,10 @@
     <Content Include="Areas\Admin\Content\images\icons\experimental.png" />
     <Content Include="Areas\Admin\Content\images\icons\lookup.png" />
     <Content Include="Areas\Admin\Content\images\icons\photo.png" />
+    <Content Include="Areas\Admin\Content\images\icons\tablesorter\first.png" />
+    <Content Include="Areas\Admin\Content\images\icons\tablesorter\last.png" />
+    <Content Include="Areas\Admin\Content\images\icons\tablesorter\next.png" />
+    <Content Include="Areas\Admin\Content\images\icons\tablesorter\prev.png" />
     <Content Include="Areas\Admin\Content\images\icons\technic.png" />
     <Content Include="Areas\Admin\Content\images\icons\usermanual.png" />
     <Content Include="Areas\Admin\Content\images\icons\video.png" />

@@ -63,9 +63,7 @@
                             <div id="divtechnical" style="float:left;"> 
                             <img id="btntechnic_@item.ProductId"  src="/Areas/Admin/Content/images/icons/technic.png"  title="Teknik Döküman Kaldır" class="cursorpointer" width="16" height="16" onclick="RemoveTechnic(@item.ProductId)">
                             <a href="@item.filetechnical" target="blank">
-                                <img id="btn_save_@item.ProductId"  src="/Areas/Admin/Content/images/icons/lookup.png"  title="Teknik Döküman Gör" class="cursorpointer" width="16" height="16">
-                            </a>
-                            &nbsp;&nbsp;&nbsp;|
+                                <img id="btn_save_@item.ProductId"  src="/Areas/Admin/Content/images/icons/lookup.png"  title="Teknik Döküman Gör" class="cursorpointer" width="16" height="16"></a>
                            </div>
                          }
                         
@@ -77,10 +75,10 @@
                              <a href="@item.filetraining" target="blank">
                                 <img id="btn_save_@item.ProductId"  src="/Areas/Admin/Content/images/icons/lookup.png"  title="Eğitim Dökümanını Gör" class="cursorpointer" width="16" height="16">
                             </a>
-                                   &nbsp;&nbsp;&nbsp;|
+                                   
                            </div>
                         }
-                       
+                        
                           @if (@item.filexperiment != null)   
                          {
                              <div id="divexperimental" style="float:left;">
@@ -89,12 +87,11 @@
                              <a href="@item.filexperiment" target="blank">
                               <img id="btn_save_@item.ProductId"  src="/Areas/Admin/Content/images/icons/lookup.png"  title="Deney Dökümanını Gör" class="cursorpointer" width="16" height="16">
                              </a>
-                                  &nbsp;&nbsp;&nbsp;|
                             </div>
                            
                          }
-                     
-                         @if (@item.filevideo != null)   
+                         
+                        @if (@item.filevideo != null)   
                          {
                              <div id="divvideo" style="float:left;width:40px;float:left;">
                              &nbsp;&nbsp;&nbsp;

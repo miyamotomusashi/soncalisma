@@ -23,16 +23,33 @@ namespace deneysan_BLL.InstituionalBL
         {
             using (DeneysanContext db = new DeneysanContext())
             {
-                Institutional editrecord = db.Institutional.SingleOrDefault(d => d.TypeId == record.TypeId && d.Language == record.Language);
-                if (editrecord != null)
+                try
                 {
-                    editrecord.TimeUpdated = DateTime.Now;
-                    editrecord.Content = record.Content;
+                    Institutional editrecord = db.Institutional.SingleOrDefault(d => d.TypeId == record.TypeId && d.Language == record.Language);
+
+                    if (editrecord == null)
+                    {
+                        editrecord = new Institutional();
+                        editrecord.TimeUpdated = DateTime.Now;
+                        editrecord.TypeId = record.TypeId;
+                        editrecord.Language = record.Language;
+                        editrecord.Content = record.Content;
+                        db.Institutional.Add(editrecord);
+                    }
+                    else
+                    {
+                        editrecord.TimeUpdated = DateTime.Now;
+                        editrecord.Content = record.Content;
+                    }
+
                     db.SaveChanges();
+
                     return true;
                 }
-                else
+                catch (Exception)
+                {
                     return false;
+                }
                 
             }
         }

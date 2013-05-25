@@ -30,7 +30,7 @@ namespace deneysan_BLL.TeklifBL
         {
             using (DeneysanContext db = new DeneysanContext())
             {
-                
+
                 var list = db.Teklif.Where(d => d.Durum == type).OrderByDescending(d => d.TeklifTarihi).ToList();
                 return list;
             }
@@ -53,51 +53,81 @@ namespace deneysan_BLL.TeklifBL
             using (DeneysanContext db = new DeneysanContext())
             {
 
-               // var model = db.TeklifUrun.Where(d => d.TeklifId == teklifid).ToList();
+                // var model = db.TeklifUrun.Where(d => d.TeklifId == teklifid).ToList();
                 var model = (from t in db.TeklifUrun
                              join p in db.Product on t.UrunId equals p.ProductId
                              join tk in db.Teklif on t.TeklifId equals tk.TeklifId
-                             where t.TeklifId==teklifid
+                             where t.TeklifId == teklifid
                              select new
                              {
                                  t.TeklifUrunId,
                                  t.TeklifId,
                                  t.UrunId,
                                  t.Fiyat,
-                                 t.Adet ,
-                                 t.Toplam ,
-                                 t.Donanim ,
-                                 t.DonanimFiyat ,
+                                 t.Adet,
+                                 t.Toplam,
+                                 t.Donanim,
+                                 t.DonanimFiyat,
                                  t.ParaBirimi,
-                                 p.Code ,
-                                 p.ProductImageThumb, 
-                                 p.Name 
+                                 p.Code,
+                                 p.ProductImageThumb,
+                                 p.Name
                              }).ToList();
 
                 List<TeklifUrun_Urun> liste = new List<TeklifUrun_Urun>();
                 foreach (var item in model)
                 {
                     TeklifUrun_Urun m = new TeklifUrun_Urun();
-                     m.TeklifUrunId = item.TeklifUrunId;
-                     m.TeklifId = item.TeklifId;
-                     m.UrunId = item.UrunId;
-                     m.Fiyat = item.Fiyat;
-                     m.Adet = item.Adet;
-                     m.Toplam = item.Toplam;
-                     m.Donanim = item.Donanim;
-                     m.DonanimFiyat = item.DonanimFiyat;
-                     m.ParaBirimi = item.ParaBirimi;
-                     m.UrunKod = item.Code;
-                     m.UrunResim = item.ProductImageThumb;
-                     m.UrunAdi = item.Name;
-                     liste.Add(m);
+                    m.TeklifUrunId = item.TeklifUrunId;
+                    m.TeklifId = item.TeklifId;
+                    m.UrunId = item.UrunId;
+                    m.Fiyat = item.Fiyat;
+                    m.Adet = item.Adet;
+                    m.Toplam = item.Toplam;
+                    m.Donanim = item.Donanim;
+                    m.DonanimFiyat = item.DonanimFiyat;
+                    m.ParaBirimi = item.ParaBirimi;
+                    m.UrunKod = item.Code;
+                    m.UrunResim = item.ProductImageThumb;
+                    m.UrunAdi = item.Name;
+                    liste.Add(m);
                 }
 
                 return liste;
             }
         }
 
-        public static bool AddTeklif(Teklif teklif, TeklifUrun[] teklifurun, Dictionary<string,string>[] products)
+        public static bool UpdateTeklif(Teklif teklif)
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                try
+                {
+                    var tek = db.Teklif.Where(d => d.TeklifId == teklif.TeklifId).FirstOrDefault();
+                    if (tek != null)
+                    {
+                        tek.Kurum = teklif.Kurum;
+                        tek.Unvan = teklif.Unvan;
+                        tek.Adsoyad = teklif.Adsoyad;
+                        tek.Gsm = teklif.Gsm;
+                        tek.Tel = teklif.Tel;
+                        tek.Fax= teklif.Fax;
+                        tek.CevapTarihi = teklif.CevapTarihi;
+                        tek.TeklifNo = teklif.TeklifNo;
+                        tek.GecerlilikSuresi = teklif.GecerlilikSuresi;
+                        tek.TeslimatSuresi = teklif.TeslimatSuresi;
+                        db.SaveChanges();
+                    }
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+
+        public static bool AddTeklif(Teklif teklif, TeklifUrun[] teklifurun, Dictionary<string, string>[] products)
         {
             using (DeneysanContext db = new DeneysanContext())
             {
@@ -111,7 +141,7 @@ namespace deneysan_BLL.TeklifBL
                     db.SaveChanges();
 
                     int[] plist = new int[50];
-                    
+
                     int k = 0;
 
                     foreach (var element in products)
@@ -127,14 +157,14 @@ namespace deneysan_BLL.TeklifBL
                     for (int i = 0; i < teklifurun.Count(); i++)
                     {
                         int pid = Convert.ToInt32(plist[i]);
-                        var prod = db.Product.Where(a => a.ProductId == pid).SingleOrDefault(); 
+                        var prod = db.Product.Where(a => a.ProductId == pid).SingleOrDefault();
 
                         teklifurun[i].TeklifId = teklif.TeklifId;
                         teklifurun[i].UrunId = plist[i];
                         teklifurun[i].Fiyat = prod.Price;
                         if (teklifurun[i].Donanim && prod.Hardware)
                         {
-                            teklifurun[i].Toplam = (Convert.ToDouble(prod.Price * teklifurun[i].Adet) * 1.18 + (Convert.ToDouble(prod.HardwarePrice) * 1.18) ).ToString();
+                            teklifurun[i].Toplam = (Convert.ToDouble(prod.Price * teklifurun[i].Adet) * 1.18 + (Convert.ToDouble(prod.HardwarePrice) * 1.18)).ToString();
                         }
                         else
                         {
@@ -143,14 +173,14 @@ namespace deneysan_BLL.TeklifBL
                         toplamTutar += Convert.ToDouble(teklifurun[i].Toplam);
                         db.TeklifUrun.Add(teklifurun[i]);
                     }
-                    
+
                     teklif.FaturaTutar = Convert.ToDecimal(toplamTutar);
                     teklif.KDV = Convert.ToDecimal(Convert.ToDouble(teklif.FaturaTutar) * 0.18);
 
                     db.SaveChanges();
                     var mset = MailManager.GetMailSettings();
                     var msend = MailManager.GetMailUsersList(1);
-                    
+
                     using (var client = new SmtpClient(mset.ServerHost, mset.Port))
                     {
                         client.EnableSsl = false;
@@ -191,9 +221,9 @@ namespace deneysan_BLL.TeklifBL
                 db.SaveChanges();
 
 
-                var urunler = db.TeklifUrun.Where(d => d.TeklifId == teklifid ).ToList();
-                decimal fatura=0;
-                foreach(var item in urunler)
+                var urunler = db.TeklifUrun.Where(d => d.TeklifId == teklifid).ToList();
+                decimal fatura = 0;
+                foreach (var item in urunler)
                 {
                     fatura += Convert.ToDecimal(item.Toplam);
                 }
@@ -212,5 +242,5 @@ namespace deneysan_BLL.TeklifBL
         }
     }
 
-   
+
 }
