@@ -18,6 +18,7 @@ namespace deneysan_DAL.Entities
         public string Adsoyad { get; set; }
         public string Gsm { get; set; }
         public string Tel { get; set; }
+        public string Eposta { get; set; }
         public string Fax { get; set; }
         public decimal KDV { get; set; }
         [DisplayName("Teslimat Süresi")]

@@ -16,6 +16,8 @@ using iTextSharp.text;
 using System.IO;
 using iTextSharp.text.pdf;
 using System.Web.Hosting;
+using iTextSharp.text.html.simpleparser;
+using iTextSharp.text.html;
 namespace deneysan_BLL.TeklifBL
 {
     public class TeklifManager
@@ -140,7 +142,8 @@ namespace deneysan_BLL.TeklifBL
                     teklif.Durum = (int)EnumTeklifTip.Onaylanmadi;
                     teklif.TeklifTarihi = DateTime.Now;
                     teklif.ParaBirimi = "TL";
-
+                    teklif.GecerlilikSuresi = 90;
+                    teklif.TeslimatSuresi = "90";
                     db.Teklif.Add(teklif);
                     db.SaveChanges();
 
@@ -245,33 +248,161 @@ namespace deneysan_BLL.TeklifBL
             }
         }
 
-        public static bool ProformaGonder(string tekid)
+        public static MemoryStream ProformaGonder(string tekid)
         {
             using (DeneysanContext db = new DeneysanContext())
             {
                 try
                 {
+                    BaseFont arial = BaseFont.CreateFont("C:\\windows\\fonts\\arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+                    Font font = new Font(arial, 12, Font.NORMAL);
+
+                    var teklif = TeklifManager.GetTeklifById(Convert.ToInt32(tekid));
+                    
                     var document = new iTextSharp.text.Document(PageSize.A4, 50, 50, 25, 25);
 
                     // Create a new PdfWrite object, writing the output to a MemoryStream
                     var output = new MemoryStream();
                     var writer = PdfWriter.GetInstance(document, output);
-
+                    
                     // Open the Document for writing
                     document.Open();
-
                     // Read in the contents of the Receipt.htm HTML template file
                     string contents = File.ReadAllText(HostingEnvironment.MapPath("~/HTMLTemplate/Receipt.htm"));
+                    contents = TurkceKarakter(contents);
+
+                    //PdfPTable table = new PdfPTable(2);
+                    //table.TotalWidth = 516f;
+                    //table.LockedWidth = true;
+                    //float[] widths = new float[] { 3f, 5f };
+                    //table.SetWidths(widths);
+                    
+                    //table.HorizontalAlignment = 1;
+                    //table.SpacingBefore = 0f;
+                    //table.SpacingAfter = 0f;
+                    
+                    //PdfPCell cell = new PdfPCell();
+                    //cell.BorderWidth = 1;
+
+                    //cell.Colspan = 2;
+                    //cell.Border = 1;
+                    //cell.HorizontalAlignment = 1; //0=Left, 1=Centre, 2=Right
+
+                    //table.AddCell(cell);
+                    //table.AddCell("1");
+                    //table.AddCell("DENEYSAN EĞİTİM CİHAZLARI SAN. TİC. LTD. ŞTİ.");
+                    //table.AddCell("2");
+                    //table.AddCell("Col 2 Row 2");
+                    //table.AddCell("3");
+                    //table.AddCell("Col 2 Row 2");
+                    //document.Add(table);
 
 
+                    contents = contents.Replace("[KURUM]", teklif.Kurum);
+                    contents = contents.Replace("[CEVAPTARIHI]", DateTime.Now.ToShortDateString());
+                    contents = contents.Replace("[TEKLIFNO]", teklif.TeklifNo);
+                    contents = contents.Replace("[TEL]", teklif.Tel);
+                    contents = contents.Replace("[GSM]", teklif.Gsm);
+                    contents = contents.Replace("[FAX]", teklif.Fax);
+                    contents = contents.Replace("[DURUM]", ((EnumTeklifTip)teklif.Durum).ToString());
+                    contents = contents.Replace("[GECER]", teklif.GecerlilikSuresi.ToString());
+                    contents = contents.Replace("[TESL]", teklif.TeslimatSuresi);
 
-                    return true;
+
+                    var logo = iTextSharp.text.Image.GetInstance(HostingEnvironment.MapPath("~/Content/images/front/dnysn.jpg"));
+                    logo.SetAbsolutePosition(30, 730);
+                  
+
+                    document.Add(logo);
+
+                    StyleSheet styles = GetStyles();
+
+
+                    var parsedHtmlElements = HTMLWorker.ParseToList(new StringReader(contents), styles);
+                    foreach (var htmlElement in parsedHtmlElements)
+                        document.Add(htmlElement as IElement);
+                    
+                    writer.CloseStream = false;
+                    document.Close();
+
+                    var mset = MailManager.GetMailSettings();
+
+                    using (var client = new SmtpClient(mset.ServerHost, mset.Port))
+                    {
+                        client.EnableSsl = false;
+                        client.Credentials = new NetworkCredential(mset.ServerMail, mset.Password);
+                        var mail = new MailMessage();
+                        mail.From = new MailAddress(mset.ServerMail);
+                        mail.To.Add(teklif.Eposta);
+                        mail.Subject = "Deneysan - Proforma Faturası";
+                        mail.Body = "Proforma faturanız ekte bulunmaktadır.";
+                        if (document != null)
+                        {
+                            output.Position = 0;
+                            var attachment = new Attachment(output, "proforma-fatura.pdf");
+                            mail.Attachments.Add(attachment);
+                        }
+                       // client.Send(mail);
+                    }
+                    
+                    return output;
+
                 }
                 catch (Exception)
                 {
-                    return false;
+                    return null;
                 }
             }
+        }
+
+        public static string TurkceKarakter(string text)
+        {
+            text = text.Replace("İ", "\u0130");
+            text = text.Replace("ı", "\u0131");
+            text = text.Replace("Ş", "\u015e");
+            text = text.Replace("ş", "\u015f");
+            text = text.Replace("Ğ", "\u011e");
+            text = text.Replace("ğ", "\u011f");
+            text = text.Replace("Ö", "\u00d6");
+            text = text.Replace("ö", "\u00f6");
+            text = text.Replace("ç", "\u00e7");
+            text = text.Replace("Ç", "\u00c7");
+            text = text.Replace("ü", "\u00fc");
+            text = text.Replace("Ü", "\u00dc");
+            return text;
+        }
+
+        private static StyleSheet GetStyles()
+        {
+            StyleSheet styles = new StyleSheet();
+
+            string[] elements = {"html","body","div","span","dsds","tbody", "tfoot", "thead", "tr", "th", "td"};
+
+            foreach (var item in elements)
+	        {
+                styles.LoadTagStyle(item, "margin", "0");
+                styles.LoadTagStyle(item, "padding", "0");
+                styles.LoadTagStyle(item, "border", "0");
+                styles.LoadTagStyle(item, "font-size", "100%");
+                styles.LoadTagStyle(item, "font", "inherit");
+                styles.LoadTagStyle(item, "vertical-align", "baseline");
+	        }
+
+            styles.LoadTagStyle("body", "line-height", "1");
+            styles.LoadTagStyle("table", "border-collapse", "collapse");
+            styles.LoadTagStyle("table", "border-spacing", "0");
+            
+
+            styles.LoadStyle("tnone", "border-top", "none !important");
+            styles.LoadStyle("bnone", "border-bottom", "none !important");
+            styles.LoadStyle("pbnone", "padding-bottom", "2px !important");
+            styles.LoadStyle("ptnone", "padding-top", "2px !important");
+
+            styles.LoadStyle("sagust", "float", "right");
+            styles.LoadStyle("sagust", "background-color", "#ccc");
+            styles.LoadStyle("sagust", "border", "1px solid #666");
+            
+            return new StyleSheet();
         }
     }
 

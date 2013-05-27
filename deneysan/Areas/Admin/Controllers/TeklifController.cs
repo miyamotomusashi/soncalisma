@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using deneysan.Areas.Admin.Models;
 using deneysan_BLL.TeklifBL;
 using deneysan_DAL.Entities;
+using System.IO;
 
 namespace deneysan.Areas.Admin.Controllers
 {
@@ -72,10 +73,17 @@ namespace deneysan.Areas.Admin.Controllers
             return View();
         }
 
-        public ActionResult Proforma(string tekid)
+        public FileStreamResult Proforma(string tekid)
         {
-            ViewBag.ProcessMessage = TeklifManager.ProformaGonder(tekid);
-            return RedirectToAction("Details", new { id = tekid });
+            MemoryStream pdf = TeklifManager.ProformaGonder(tekid);
+            
+            Response.ContentType = "application/pdf";
+            Response.AddHeader("Content-Disposition", string.Format("attachment;filename=Receipt-{0}.pdf", "1"));
+            Response.BinaryWrite(pdf.ToArray());
+
+            return new FileStreamResult(pdf, "application/pdf");    
+            //return File(pdf, "application/pdf", "DownloadName.pdf");
+            //return RedirectToAction("Details", new { id = tekid });
         }
 
         public ActionResult Details(int id)

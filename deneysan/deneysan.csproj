@@ -1734,6 +1734,7 @@
     <Content Include="Content\Images\Front\check.png" />
     <Content Include="Content\Images\Front\clients-bg.jpg" />
     <Content Include="Content\Images\Front\deneysan-logo.jpg" />
+    <Content Include="Content\Images\Front\dnysn.jpg" />
     <Content Include="Content\Images\Front\doc.png" />
     <Content Include="Content\Images\Front\docx.png" />
     <Content Include="Content\Images\Front\error.png" />
@@ -1917,6 +1918,7 @@
     <Content Include="Areas\Admin\Views\Mail\MailSetting.cshtml" />
     <None Include="Properties\PublishProfiles\dsadas.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="HTMLTemplate\imza.png" />
     <Content Include="HTMLTemplate\Receipt.htm" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
