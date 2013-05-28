@@ -117,7 +117,7 @@ namespace deneysan_BLL.TeklifBL
                         tek.Adsoyad = teklif.Adsoyad;
                         tek.Gsm = teklif.Gsm;
                         tek.Tel = teklif.Tel;
-                        tek.Fax= teklif.Fax;
+                        tek.Fax = teklif.Fax;
                         tek.CevapTarihi = teklif.CevapTarihi;
                         tek.TeklifNo = teklif.TeklifNo;
                         tek.GecerlilikSuresi = teklif.GecerlilikSuresi;
@@ -254,74 +254,145 @@ namespace deneysan_BLL.TeklifBL
             {
                 try
                 {
-                    BaseFont arial = BaseFont.CreateFont("C:\\windows\\fonts\\arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
-                    Font font = new Font(arial, 12, Font.NORMAL);
-
                     var teklif = TeklifManager.GetTeklifById(Convert.ToInt32(tekid));
-                    
+                    BaseFont arial = BaseFont.CreateFont("C:\\windows\\fonts\\arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+                    Font font = new Font(arial, 8, Font.NORMAL, Color.DARK_GRAY);
+                    Font boldfont = new Font(arial, 8, Font.BOLD, Color.DARK_GRAY);
+                    Font header = new Font(arial, 12, Font.BOLD); 
                     var document = new iTextSharp.text.Document(PageSize.A4, 50, 50, 25, 25);
-
-                    // Create a new PdfWrite object, writing the output to a MemoryStream
                     var output = new MemoryStream();
                     var writer = PdfWriter.GetInstance(document, output);
-                    
-                    // Open the Document for writing
+                    writer.SetPdfVersion(PdfWriter.PDF_VERSION_1_7);
+                    writer.CompressionLevel = PdfStream.NO_COMPRESSION;
                     document.Open();
-                    // Read in the contents of the Receipt.htm HTML template file
-                    string contents = File.ReadAllText(HostingEnvironment.MapPath("~/HTMLTemplate/Receipt.htm"));
-                    contents = TurkceKarakter(contents);
-
-                    //PdfPTable table = new PdfPTable(2);
-                    //table.TotalWidth = 516f;
-                    //table.LockedWidth = true;
-                    //float[] widths = new float[] { 3f, 5f };
-                    //table.SetWidths(widths);
+                    PdfPTable table = new PdfPTable(2);
+                    table.TotalWidth = 516f;
+                    table.LockedWidth = true;
+                    float[] widths = new float[] { 7.2f, 1.8f };
+                    table.SetWidths(widths);
+                    table.HorizontalAlignment = 1;
                     
-                    //table.HorizontalAlignment = 1;
-                    //table.SpacingBefore = 0f;
-                    //table.SpacingAfter = 0f;
+                    table.SpacingBefore = 0f;
+                    table.SpacingAfter = 0f;
+                    table.DefaultCell.Border = 0;
+
+                    PdfPCell cell;
+
+                    cell = new PdfPCell(new Paragraph(""));
+                    cell.Padding = 0;
+                    cell.FixedHeight = 160f;
+                    cell.BorderWidth = 0;
+                    table.AddCell(cell);
+                    table.AddCell(cell);
+
+                    cell = new PdfPCell(new Paragraph(teklif.Kurum,font));
+                    cell.Padding = 0;
+                    cell.PaddingLeft = 2f;
+                    cell.FixedHeight = 9f;
+                    cell.BorderWidth = 0;
+                    table.AddCell(cell);
+
+                    cell = new PdfPCell(new Paragraph(DateTime.Now.ToShortDateString(), font));
+                    cell.Padding = 0;
+                    cell.FixedHeight = 9f;
+                    cell.BorderWidth = 0;
+                    table.AddCell(cell);
+
+                    cell = new PdfPCell(new Paragraph(""));
+                    cell.Padding = 0;
+                    cell.FixedHeight = 9f;
+                    cell.BorderWidth = 0;
+                    table.AddCell(cell);
+
+                    cell = new PdfPCell(new Paragraph(teklif.TeklifNo, font));
+                    cell.Padding = 0;
+                    cell.FixedHeight = 9f;
+                    cell.BorderWidth = 0;
+                    table.AddCell(cell);
+
+                    cell = new PdfPCell(new Paragraph(""));
+                    cell.Padding = 0;
+                    cell.FixedHeight = 9f;
+                    cell.BorderWidth = 0;
+                    table.AddCell(cell);
+
+                    cell = new PdfPCell(new Paragraph("BEKLİYOR", font));
+                    cell.Padding = 0;
+                    cell.FixedHeight = 9f;
+                    cell.BorderWidth = 0;
+                    table.AddCell(cell);
+
+                    cell = new PdfPCell(new Paragraph(""));
+                    cell.Padding = 0;
+                    cell.FixedHeight = 9f;
+                    cell.BorderWidth = 0;
+                    table.AddCell(cell);
+
+                    cell = new PdfPCell(new Paragraph(teklif.GecerlilikSuresi.ToString() + " GÜN", boldfont));
+                    cell.Padding = 0;
+                    cell.FixedHeight = 9f;
+                    cell.BorderWidth = 0;
+                    table.AddCell(cell);
+
+                    cell = new PdfPCell(new Paragraph(""));
+                    cell.Padding = 0;
+                    cell.FixedHeight = 9f;
+                    cell.BorderWidth = 0;
+                    table.AddCell(cell);
+
+                    cell = new PdfPCell(new Paragraph(teklif.TeslimatSuresi + " İŞ GÜNÜ", boldfont));
+                    cell.Padding = 0;
+                    cell.FixedHeight = 9f;
+                    cell.BorderWidth = 0;
+                    table.AddCell(cell);
+
+                    document.Add(table);
+                    ///////////////////////////////////////////////////////////////////////////
+
+                    table = new PdfPTable(2);
+                    table.TotalWidth = 400f;
+                    table.LockedWidth = true;
+                    widths = new float[] { 1.6f, 2.4f };
+                    table.SetWidths(widths);
+                    table.HorizontalAlignment = Element.ALIGN_LEFT;
+
+                    table.SpacingBefore = 0f;
+                    table.SpacingAfter = 0f;
+                    table.DefaultCell.Border = 0;
+
+                    cell = new PdfPCell(new Paragraph(teklif.Gsm, font));
+                    cell.Padding = 0;
+                    cell.PaddingLeft = 30f;
+                    cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                    cell.FixedHeight = 9f;
+                    cell.BorderWidth = 0;
+                    table.AddCell(cell);
+
+                    cell = new PdfPCell(new Paragraph(teklif.Fax, font));
+                    cell.Padding = 0;
+                    cell.PaddingLeft = 2f;
+                    cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                    cell.FixedHeight = 9f;
+                    cell.BorderWidth = 0;
+                    table.AddCell(cell);
                     
-                    //PdfPCell cell = new PdfPCell();
-                    //cell.BorderWidth = 1;
-
-                    //cell.Colspan = 2;
-                    //cell.Border = 1;
-                    //cell.HorizontalAlignment = 1; //0=Left, 1=Centre, 2=Right
-
-                    //table.AddCell(cell);
-                    //table.AddCell("1");
-                    //table.AddCell("DENEYSAN EĞİTİM CİHAZLARI SAN. TİC. LTD. ŞTİ.");
-                    //table.AddCell("2");
-                    //table.AddCell("Col 2 Row 2");
-                    //table.AddCell("3");
-                    //table.AddCell("Col 2 Row 2");
-                    //document.Add(table);
+                    document.Add(table);
 
 
-                    contents = contents.Replace("[KURUM]", teklif.Kurum);
-                    contents = contents.Replace("[CEVAPTARIHI]", DateTime.Now.ToShortDateString());
-                    contents = contents.Replace("[TEKLIFNO]", teklif.TeklifNo);
-                    contents = contents.Replace("[TEL]", teklif.Tel);
-                    contents = contents.Replace("[GSM]", teklif.Gsm);
-                    contents = contents.Replace("[FAX]", teklif.Fax);
-                    contents = contents.Replace("[DURUM]", ((EnumTeklifTip)teklif.Durum).ToString());
-                    contents = contents.Replace("[GECER]", teklif.GecerlilikSuresi.ToString());
-                    contents = contents.Replace("[TESL]", teklif.TeslimatSuresi);
 
 
-                    var logo = iTextSharp.text.Image.GetInstance(HostingEnvironment.MapPath("~/Content/images/front/dnysn.jpg"));
-                    logo.SetAbsolutePosition(30, 730);
-                  
+                    var logo = iTextSharp.text.Image.GetInstance(HostingEnvironment.MapPath("~/Content/images/proforma/top.tif"));
+                    logo.ScalePercent(70f);
+
+                    logo.SetAbsolutePosition(20, 35);
 
                     document.Add(logo);
 
                     StyleSheet styles = GetStyles();
 
 
-                    var parsedHtmlElements = HTMLWorker.ParseToList(new StringReader(contents), styles);
-                    foreach (var htmlElement in parsedHtmlElements)
-                        document.Add(htmlElement as IElement);
-                    
+
+
                     writer.CloseStream = false;
                     document.Close();
 
@@ -342,9 +413,9 @@ namespace deneysan_BLL.TeklifBL
                             var attachment = new Attachment(output, "proforma-fatura.pdf");
                             mail.Attachments.Add(attachment);
                         }
-                       // client.Send(mail);
+                        // client.Send(mail);
                     }
-                    
+
                     return output;
 
                 }
@@ -376,22 +447,22 @@ namespace deneysan_BLL.TeklifBL
         {
             StyleSheet styles = new StyleSheet();
 
-            string[] elements = {"html","body","div","span","dsds","tbody", "tfoot", "thead", "tr", "th", "td"};
+            string[] elements = { "html", "body", "div", "span", "dsds", "tbody", "tfoot", "thead", "tr", "th", "td" };
 
             foreach (var item in elements)
-	        {
+            {
                 styles.LoadTagStyle(item, "margin", "0");
                 styles.LoadTagStyle(item, "padding", "0");
                 styles.LoadTagStyle(item, "border", "0");
                 styles.LoadTagStyle(item, "font-size", "100%");
                 styles.LoadTagStyle(item, "font", "inherit");
                 styles.LoadTagStyle(item, "vertical-align", "baseline");
-	        }
+            }
 
             styles.LoadTagStyle("body", "line-height", "1");
             styles.LoadTagStyle("table", "border-collapse", "collapse");
             styles.LoadTagStyle("table", "border-spacing", "0");
-            
+
 
             styles.LoadStyle("tnone", "border-top", "none !important");
             styles.LoadStyle("bnone", "border-bottom", "none !important");
@@ -401,7 +472,7 @@ namespace deneysan_BLL.TeklifBL
             styles.LoadStyle("sagust", "float", "right");
             styles.LoadStyle("sagust", "background-color", "#ccc");
             styles.LoadStyle("sagust", "border", "1px solid #666");
-            
+
             return new StyleSheet();
         }
     }
