@@ -26,7 +26,7 @@
                 <legend>Kurum Bilgileri</legend>
                 <p>
                     @Html.Label("Kurum")
-                    @Html.TextBoxFor(d => d.teklif.Kurum, new { @class = "textwidth50" })
+                    @Html.TextBoxFor(d => d.teklif.Kurum, new { @class = "textwidth50 required" })
                     @Html.ValidationMessageFor(d => d.teklif.Kurum)
                 </p>
                 <p>
@@ -36,12 +36,12 @@
                 </p>
                 <p>
                     @Html.LabelFor(d => d.teklif.Adsoyad)
-                    @Html.TextBoxFor(d => d.teklif.Adsoyad, new { @class = "textwidth50" })
+                    @Html.TextBoxFor(d => d.teklif.Adsoyad, new { @class = "textwidth50 required" })
                     @Html.ValidationMessageFor(d => d.teklif.Adsoyad)
                 </p>
                 <p>
                     @Html.LabelFor(d => d.teklif.Gsm)
-                    @Html.TextBoxFor(d => d.teklif.Gsm, new { @class = "textwidth20" })
+                    @Html.TextBoxFor(d => d.teklif.Gsm, new { @class = "textwidth20 required" })
                     @Html.ValidationMessageFor(d => d.teklif.Gsm)
                 </p>
                 <p>
@@ -66,22 +66,22 @@
                 </p>
                 <p>
                     @Html.LabelFor(d => d.teklif.CevapTarihi)
-                    @Html.TextBox("txtcevaptarihi", null, new { @class = "textwidth10" })
+                    @Html.TextBox("txtcevaptarihi", null, new { @class = "textwidth10 required" })
                     @Html.ValidationMessageFor(d => d.teklif.CevapTarihi)
                 </p>
                 <p>
                     @Html.LabelFor(d => d.teklif.TeklifNo)
-                    @Html.TextBoxFor(d => d.teklif.TeklifNo, new { @class = "textwidth10" })
+                    @Html.TextBoxFor(d => d.teklif.TeklifNo, new { @class = "textwidth10 required" })
                     @Html.ValidationMessageFor(d => d.teklif.TeklifNo)
                 </p>
                 <p>
                     @Html.LabelFor(d => d.teklif.GecerlilikSuresi)
-                    @Html.TextBoxFor(d => d.teklif.GecerlilikSuresi, new { @class = "textwidth10" })
+                    @Html.TextBoxFor(d => d.teklif.GecerlilikSuresi, new { @class = "textwidth10 required" })
                     @Html.ValidationMessageFor(d => d.teklif.GecerlilikSuresi)
                 </p>
                 <p>
                     @Html.LabelFor(d => d.teklif.TeslimatSuresi)
-                    @Html.TextBoxFor(d => d.teklif.TeslimatSuresi, new { @class = "textwidth10" })
+                    @Html.TextBoxFor(d => d.teklif.TeslimatSuresi, new { @class = "textwidth10 required" })
                     @Html.ValidationMessageFor(d => d.teklif.TeslimatSuresi)
                 </p>
                 <br />
