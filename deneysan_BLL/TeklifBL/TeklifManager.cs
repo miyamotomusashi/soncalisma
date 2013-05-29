@@ -172,6 +172,7 @@ namespace deneysan_BLL.TeklifBL
                         if (teklifurun[i].Donanim && prod.Hardware)
                         {
                             teklifurun[i].Toplam = (Convert.ToDouble(prod.Price * teklifurun[i].Adet) * 1.18 + (Convert.ToDouble(prod.HardwarePrice) * 1.18)).ToString();
+                            teklifurun[i].DonanimFiyat = (decimal)prod.HardwarePrice;
                         }
                         else
                         {
@@ -255,11 +256,12 @@ namespace deneysan_BLL.TeklifBL
                 try
                 {
                     var teklif = TeklifManager.GetTeklifById(Convert.ToInt32(tekid));
+                    var teklifurun = TeklifManager.GetUrunList(Convert.ToInt32(tekid));
                     BaseFont arial = BaseFont.CreateFont("C:\\windows\\fonts\\arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
                     Font font = new Font(arial, 8, Font.NORMAL, Color.DARK_GRAY);
                     Font boldfont = new Font(arial, 8, Font.BOLD, Color.DARK_GRAY);
                     Font header = new Font(arial, 12, Font.BOLD); 
-                    var document = new iTextSharp.text.Document(PageSize.A4, 50, 50, 25, 25);
+                    var document = new iTextSharp.text.Document(PageSize.A4, 37, 30, 25, 25);
                     var output = new MemoryStream();
                     var writer = PdfWriter.GetInstance(document, output);
                     writer.SetPdfVersion(PdfWriter.PDF_VERSION_1_7);
@@ -334,8 +336,10 @@ namespace deneysan_BLL.TeklifBL
                     cell.BorderWidth = 0;
                     table.AddCell(cell);
 
-                    cell = new PdfPCell(new Paragraph(""));
+                    cell = new PdfPCell(new Paragraph(teklif.Gsm, font));
                     cell.Padding = 0;
+                    cell.PaddingLeft = 36f;
+                    cell.HorizontalAlignment = Element.ALIGN_LEFT;
                     cell.FixedHeight = 9f;
                     cell.BorderWidth = 0;
                     table.AddCell(cell);
@@ -360,9 +364,9 @@ namespace deneysan_BLL.TeklifBL
                     table.SpacingAfter = 0f;
                     table.DefaultCell.Border = 0;
 
-                    cell = new PdfPCell(new Paragraph(teklif.Gsm, font));
+                    cell = new PdfPCell(new Paragraph(teklif.Tel, font));
                     cell.Padding = 0;
-                    cell.PaddingLeft = 30f;
+                    cell.PaddingLeft = 42f;
                     cell.HorizontalAlignment = Element.ALIGN_LEFT;
                     cell.FixedHeight = 9f;
                     cell.BorderWidth = 0;
@@ -370,15 +374,181 @@ namespace deneysan_BLL.TeklifBL
 
                     cell = new PdfPCell(new Paragraph(teklif.Fax, font));
                     cell.Padding = 0;
-                    cell.PaddingLeft = 2f;
+                    cell.PaddingLeft = 14f;
                     cell.HorizontalAlignment = Element.ALIGN_LEFT;
                     cell.FixedHeight = 9f;
                     cell.BorderWidth = 0;
                     table.AddCell(cell);
                     
                     document.Add(table);
+                    ////////////////////////////////////////////////////////////////////////////
 
+                    table = new PdfPTable(6);
+                    table.TotalWidth = 522f;
+                    table.LockedWidth = true;
+                    widths = new float[] { 0.8f, 3.9f, 0.7f, 0.7f, 1f, 1f };
+                    table.SetWidths(widths);
+                    table.HorizontalAlignment = Element.ALIGN_LEFT;
 
+                    cell = new PdfPCell(new Paragraph(""));
+                    cell.Padding = 0;
+                    cell.FixedHeight = 15f;
+                    cell.BorderWidth = 0;
+                    table.AddCell(cell);
+                    table.AddCell(cell);
+                    table.AddCell(cell);
+                    table.AddCell(cell);
+                    table.AddCell(cell);
+                    table.AddCell(cell);
+
+                    cell = new PdfPCell(new Paragraph("Stok Kodu", boldfont));
+                    cell.BackgroundColor = Color.LIGHT_GRAY;
+                    cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                    cell.FixedHeight = 13f;
+                    cell.BorderWidth = 1;
+                    cell.BorderColor = Color.LIGHT_GRAY.Darker();
+                    table.AddCell(cell);
+
+                    cell = new PdfPCell(new Paragraph("Stok Adı", boldfont));
+                    cell.BackgroundColor = Color.LIGHT_GRAY;
+                    cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                    cell.FixedHeight = 13f;
+                    cell.BorderWidth = 1;
+                    cell.BorderColor = Color.LIGHT_GRAY.Darker();
+                    table.AddCell(cell);
+
+                    cell = new PdfPCell(new Paragraph("Birimi", boldfont));
+                    cell.BackgroundColor = Color.LIGHT_GRAY;
+                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                    cell.FixedHeight = 13f;
+                    cell.BorderWidth = 1;
+                    cell.BorderColor = Color.LIGHT_GRAY.Darker();
+                    table.AddCell(cell);
+
+                    cell = new PdfPCell(new Paragraph("Miktar", boldfont));
+                    cell.BackgroundColor = Color.LIGHT_GRAY;
+                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                    cell.FixedHeight = 13f;
+                    cell.BorderWidth = 1;
+                    cell.BorderColor = Color.LIGHT_GRAY.Darker();
+                    table.AddCell(cell);
+
+                    cell = new PdfPCell(new Paragraph("Birim Fiyat", boldfont));
+                    cell.BackgroundColor = Color.LIGHT_GRAY;
+                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                    cell.FixedHeight = 13f;
+                    cell.BorderWidth = 1;
+                    cell.BorderColor = Color.LIGHT_GRAY.Darker();
+                    table.AddCell(cell);
+
+                    cell = new PdfPCell(new Paragraph("Tutarı", boldfont));
+                    cell.BackgroundColor = Color.LIGHT_GRAY;
+                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                    cell.FixedHeight = 13f;
+                    cell.BorderWidth = 1;
+                    cell.BorderColor = Color.LIGHT_GRAY.Darker();
+                    table.AddCell(cell);
+
+                    ////////////////////////////////////////////////////////////////////////////
+
+                    foreach (var item in teklifurun)
+                    {
+                        cell = new PdfPCell(new Paragraph(item.UrunKod, font));
+                        cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                        cell.FixedHeight = 13f;
+                        cell.BorderWidth = 1;
+                        cell.BorderColor = Color.LIGHT_GRAY.Darker();
+                        table.AddCell(cell);
+
+                        cell = new PdfPCell(new Paragraph(item.UrunAdi, font));
+                        cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                        cell.FixedHeight = 13f;
+                        cell.BorderWidth = 1;
+                        cell.BorderColor = Color.LIGHT_GRAY.Darker();
+                        table.AddCell(cell);
+
+                        cell = new PdfPCell(new Paragraph("ADET", font));
+                        cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                        cell.FixedHeight = 13f;
+                        cell.BorderWidth = 1;
+                        cell.BorderColor = Color.LIGHT_GRAY.Darker();
+                        table.AddCell(cell);
+
+                        cell = new PdfPCell(new Paragraph(item.Adet.ToString(), font));
+                        cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                        cell.FixedHeight = 13f;
+                        cell.BorderWidth = 1;
+                        cell.BorderColor = Color.LIGHT_GRAY.Darker();
+                        table.AddCell(cell);
+
+                        cell = new PdfPCell(new Paragraph(item.Fiyat.ToString() + "TL", font));
+                        cell.HorizontalAlignment = Element.ALIGN_RIGHT;
+                        cell.FixedHeight = 13f;
+                        cell.BorderWidth = 1;
+                        cell.BorderColor = Color.LIGHT_GRAY.Darker();
+                        table.AddCell(cell);
+
+                        string tutar = (item.Fiyat * Convert.ToDecimal(item.Adet)).ToString();
+
+                        cell = new PdfPCell(new Paragraph(tutar + "TL", font));
+                        cell.HorizontalAlignment = Element.ALIGN_RIGHT;
+                        cell.FixedHeight = 13f;
+                        cell.BorderWidth = 1;
+                        cell.BorderColor = Color.LIGHT_GRAY.Darker();
+                        table.AddCell(cell);
+
+                        if (item.Donanim)
+                        {
+                            cell = new PdfPCell(new Paragraph(item.UrunKod, font));
+                            cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                            cell.FixedHeight = 13f;
+                            cell.BorderWidth = 1;
+                            cell.BorderColor = Color.LIGHT_GRAY.Darker();
+                            table.AddCell(cell);
+
+                            cell = new PdfPCell(new Paragraph("YAZILIM, DONANIM, PC BAĞLANTISI", font));
+                            cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                            cell.FixedHeight = 13f;
+                            cell.BorderWidth = 1;
+                            cell.BorderColor = Color.LIGHT_GRAY.Darker();
+                            table.AddCell(cell);
+
+                            cell = new PdfPCell(new Paragraph("ADET", font));
+                            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                            cell.FixedHeight = 13f;
+                            cell.BorderWidth = 1;
+                            cell.BorderColor = Color.LIGHT_GRAY.Darker();
+                            table.AddCell(cell);
+
+                            cell = new PdfPCell(new Paragraph(item.Adet.ToString(), font));
+                            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                            cell.FixedHeight = 13f;
+                            cell.BorderWidth = 1;
+                            cell.BorderColor = Color.LIGHT_GRAY.Darker();
+                            table.AddCell(cell);
+
+                            cell = new PdfPCell(new Paragraph(item.DonanimFiyat.ToString() + "TL", font));
+                            cell.HorizontalAlignment = Element.ALIGN_RIGHT;
+                            cell.FixedHeight = 13f;
+                            cell.BorderWidth = 1;
+                            cell.BorderColor = Color.LIGHT_GRAY.Darker();
+                            table.AddCell(cell);
+
+                            string donanimtutar = (item.DonanimFiyat * Convert.ToDecimal(item.Adet)).ToString();
+
+                            cell = new PdfPCell(new Paragraph(donanimtutar + "TL", font));
+                            cell.HorizontalAlignment = Element.ALIGN_RIGHT;
+                            cell.FixedHeight = 13f;
+                            cell.BorderWidth = 1;
+                            cell.BorderColor = Color.LIGHT_GRAY.Darker();
+                            table.AddCell(cell);
+                        }
+
+                    }
+
+                    document.Add(table);
+
+                    ////////////////////////////////////////////////////////////////////////////
 
 
                     var logo = iTextSharp.text.Image.GetInstance(HostingEnvironment.MapPath("~/Content/images/proforma/top.tif"));
