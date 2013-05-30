@@ -161,7 +161,7 @@ namespace deneysan_BLL.TeklifBL
                         k++;
                     }
 
-                    double toplamTutar = 0;
+                    decimal toplamTutar = 0;
                     for (int i = 0; i < teklifurun.Count(); i++)
                     {
                         int pid = Convert.ToInt32(plist[i]);
@@ -172,14 +172,14 @@ namespace deneysan_BLL.TeklifBL
                         teklifurun[i].Fiyat = prod.Price;
                         if (teklifurun[i].Donanim && prod.Hardware)
                         {
-                            teklifurun[i].Toplam = (Convert.ToDouble(prod.Price * teklifurun[i].Adet) * 1.18 + (Convert.ToDouble(prod.HardwarePrice) * 1.18)).ToString();
+                            teklifurun[i].Toplam = (Convert.ToDouble((prod.Price + prod.HardwarePrice) * teklifurun[i].Adet) * 1.18).ToString();
                             teklifurun[i].DonanimFiyat = (decimal)prod.HardwarePrice;
                         }
                         else
                         {
                             teklifurun[i].Toplam = (Convert.ToDouble(prod.Price * teklifurun[i].Adet) * 1.18).ToString();
                         }
-                        toplamTutar += Convert.ToDouble(teklifurun[i].Toplam);
+                        toplamTutar += Convert.ToDecimal(teklifurun[i].Toplam);
                         db.TeklifUrun.Add(teklifurun[i]);
                     }
 
@@ -261,6 +261,7 @@ namespace deneysan_BLL.TeklifBL
                     BaseFont arial = BaseFont.CreateFont("C:\\windows\\fonts\\arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
                     Font font = new Font(arial, 8, Font.NORMAL, Color.DARK_GRAY);
                     Font boldfont = new Font(arial, 8, Font.BOLD, Color.DARK_GRAY);
+                    Font ortafont = new Font(arial, 10, Font.NORMAL, Color.DARK_GRAY);
                     Font header = new Font(arial, 12, Font.BOLD); 
                     var document = new iTextSharp.text.Document(PageSize.A4, 37, 30, 25, 25);
                     var output = new MemoryStream();
@@ -552,12 +553,91 @@ namespace deneysan_BLL.TeklifBL
                             cell.BorderColor = Color.LIGHT_GRAY.Darker();
                             table.AddCell(cell);
                         }
-
                     }
 
                     document.Add(table);
 
                     ////////////////////////////////////////////////////////////////////////////
+
+                    table = new PdfPTable(3);
+                    table.TotalWidth = 520f;
+                    table.LockedWidth = true;
+                    widths = new float[] { 3.6f, 1.4f, 0.9f };
+                    table.SetWidths(widths);
+                    table.HorizontalAlignment = Element.ALIGN_LEFT;
+
+                    cell = new PdfPCell(new Paragraph(""));
+                    cell.Padding = 0;
+                    cell.FixedHeight = 170f;
+                    cell.BorderWidth = 0;
+                    table.AddCell(cell);
+                    table.AddCell(cell);
+                    table.AddCell(cell);
+
+                    cell = new PdfPCell(new Paragraph(teklif.Not, ortafont));
+                    cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                    cell.FixedHeight = 12f;
+                    cell.BorderWidth = 0;
+                    cell.PaddingLeft = 15f;
+                    cell.Rowspan = 4;
+                    cell.BorderColor = Color.LIGHT_GRAY.Darker();
+                    table.AddCell(cell);
+
+                    cell = new PdfPCell(new Paragraph(""));
+                    cell.FixedHeight = 12f;
+                    cell.BorderWidth = 0;
+                    table.AddCell(cell);
+
+                    string kdvHaric = (teklif.FaturaTutar - teklif.KDV).ToString() + " TL";
+
+                    cell = new PdfPCell(new Paragraph(kdvHaric, font));
+                    cell.Padding = 0;
+                    cell.FixedHeight = 12f;
+                    cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                    cell.BorderWidth = 0;
+                    table.AddCell(cell);
+
+                    cell = new PdfPCell(new Paragraph(""));
+                    cell.Padding = 0;
+                    cell.FixedHeight = 12f;
+                    cell.BorderWidth = 0;
+                    table.AddCell(cell);
+
+                    cell = new PdfPCell(new Paragraph(kdvHaric, font));
+                    cell.Padding = 0;
+                    cell.FixedHeight = 12f;
+                    cell.BorderWidth = 0;
+                    table.AddCell(cell);
+
+                    cell = new PdfPCell(new Paragraph(""));
+                    cell.Padding = 0;
+                    cell.FixedHeight = 12f;
+                    cell.BorderWidth = 0;
+                    table.AddCell(cell);
+
+                    cell = new PdfPCell(new Paragraph(teklif.KDV.ToString() + " TL", font));
+                    cell.Padding = 0;
+                    cell.FixedHeight = 12f;
+                    cell.BorderWidth = 0;
+                    table.AddCell(cell);
+
+                    cell = new PdfPCell(new Paragraph(""));
+                    cell.Padding = 0;
+                    cell.FixedHeight = 12f;
+                    cell.BorderWidth = 0;
+                    table.AddCell(cell);
+
+                    cell = new PdfPCell(new Paragraph(teklif.FaturaTutar.ToString() + " TL", font));
+                    cell.Padding = 0;
+                    cell.FixedHeight = 12f;
+                    cell.BorderWidth = 0;
+                    table.AddCell(cell);
+
+
+                    document.Add(table);
+
+
+
 
 
                     var logo = iTextSharp.text.Image.GetInstance(HostingEnvironment.MapPath("~/Content/images/proforma/top.tif"));
