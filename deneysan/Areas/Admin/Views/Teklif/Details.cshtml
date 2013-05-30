@@ -39,6 +39,12 @@
                     @Html.TextBoxFor(d => d.teklif.Adsoyad, new { @class = "textwidth50 required" })
                     @Html.ValidationMessageFor(d => d.teklif.Adsoyad)
                 </p>
+
+                <p>
+                    @Html.LabelFor(d => d.teklif.Eposta)
+                    @Html.TextBoxFor(d => d.teklif.Eposta, new { @class = "textwidth50 required" })
+                    @Html.ValidationMessageFor(d => d.teklif.Eposta)
+                </p>
                 <p>
                     @Html.LabelFor(d => d.teklif.Gsm)
                     @Html.TextBoxFor(d => d.teklif.Gsm, new { @class = "textwidth20 required" })

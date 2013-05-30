@@ -7,7 +7,6 @@ using deneysan_DAL.Context;
 using deneysan_DAL.Entities;
 using System.Data;
 using System.Data.Entity;
-using System.Linq;
 using System.Web;
 using deneysan_BLL.MailBL;
 using System.Net.Mail;
