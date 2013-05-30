@@ -116,6 +116,7 @@ namespace deneysan_BLL.TeklifBL
                         tek.Unvan = teklif.Unvan;
                         tek.Adsoyad = teklif.Adsoyad;
                         tek.Gsm = teklif.Gsm;
+                        tek.CevapTarihi = teklif.CevapTarihi;
                         tek.Tel = teklif.Tel;
                         tek.Fax = teklif.Fax;
                         tek.CevapTarihi = teklif.CevapTarihi;
@@ -299,9 +300,17 @@ namespace deneysan_BLL.TeklifBL
                     cell.FixedHeight = 9f;
                     cell.BorderWidth = 0;
                     table.AddCell(cell);
+                    
+                    string unvanadsoyad = string.Empty;
 
-                    cell = new PdfPCell(new Paragraph(""));
+                    if (string.IsNullOrEmpty(teklif.Unvan))
+                        unvanadsoyad = teklif.Adsoyad;
+                    else
+                        unvanadsoyad = teklif.Unvan + " " + teklif.Adsoyad;
+
+                    cell = new PdfPCell(new Paragraph(unvanadsoyad, font));
                     cell.Padding = 0;
+                    cell.PaddingLeft = 2f;
                     cell.FixedHeight = 9f;
                     cell.BorderWidth = 0;
                     table.AddCell(cell);

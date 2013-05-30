@@ -66,7 +66,7 @@
                 </p>
                 <p>
                     @Html.LabelFor(d => d.teklif.CevapTarihi)
-                    @Html.TextBox("txtcevaptarihi", null, new { @class = "textwidth10 required" })
+                    <input type="text" id="txtcevaptarihi" name="txtcevaptarihi" class="textwidth10 required" value="@ViewBag.cevaptrh" />
                     @Html.ValidationMessageFor(d => d.teklif.CevapTarihi)
                 </p>
                 <p>
