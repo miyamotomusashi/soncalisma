@@ -135,6 +135,9 @@
   <data name="career" xml:space="preserve">
     <value>CAREER</value>
   </data>
+  <data name="department" xml:space="preserve">
+    <value>Department you want to apply</value>
+  </data>
   <data name="joinus" xml:space="preserve">
     <value>Join Us</value>
   </data>
@@ -143,6 +146,9 @@
   </data>
   <data name="namesurname" xml:space="preserve">
     <value>Name Surname</value>
+  </data>
+  <data name="not" xml:space="preserve">
+    <value>Your Notes</value>
   </data>
   <data name="tcno" xml:space="preserve">
     <value>TC No</value>

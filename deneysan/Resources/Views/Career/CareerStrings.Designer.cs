@@ -115,6 +115,15 @@ namespace CareerRess {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Başvuracağınız Pozisyon.
+        /// </summary>
+        public static string department {
+            get {
+                return ResourceManager.GetString("department", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bize Katılın.
         /// </summary>
         public static string joinus {
@@ -138,6 +147,15 @@ namespace CareerRess {
         public static string namesurname {
             get {
                 return ResourceManager.GetString("namesurname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notunuz.
+        /// </summary>
+        public static string not {
+            get {
+                return ResourceManager.GetString("not", resourceCulture);
             }
         }
         

@@ -2,9 +2,26 @@
 @{
     Layout = "~/Views/Shared/frontlayout.cshtml";
 }
+
+@if (@SharedRess.SharedStrings.menu_culture.Equals("tr"))
+{
+    <script src="~/Content/Scripts/jquery.validationEngine-tr.js"></script>
+}
+else
+{
+    <script src="~/Content/Scripts/jquery.validationEngine-en.js"></script>
+}
+
+<script src="~/Content/Scripts/jquery.validationEngine.js"></script>
+<link href="~/Content/Styles/validationEngine.jquery.css" rel="stylesheet" />
+<script>
+    $(document).ready(function () {
+        jQuery("#basvuruform").validationEngine();
+    });
+</script>
 <div class="main_content mainpage pageheight" style="">
     <div class="wrapper mainpage grid_12">
-        <div id="sub-sidebar" style="float: left; min-height: 500px">
+        <div id="sub-sidebar" style="float: left; min-height: 540px">
             <h1>@CareerRess.CareerStrings.career</h1>
             <ul style="margin-top: -9px" id="ul1">
                 <li><a href='/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_career'>@CareerRess.CareerStrings.joinus</a></li>
@@ -14,7 +31,6 @@
         <div id="sub-content" class="fl">
             <h1>@CareerRess.CareerStrings.applicationform</h1>
             <hr />
-            <p>@Html.ValidationMessage("_FORM")</p>
             @if (TempData["sent"] != null)
             {
                 if (TempData["sent"].ToString().Equals("true"))
@@ -26,34 +42,60 @@
                 <div class="notification error">@CareerRess.CareerStrings.applicationnotsent</div>
                 }
             }
-            @using (Html.BeginForm("applicationform", "FCareer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            @using (Html.BeginForm("applicationform", "FCareer", FormMethod.Post, new { id="basvuruform", enctype = "multipart/form-data" }))
             {
                 <div class="contact-form">
-                    <fieldset>
-                        <legend>* doldurulması zorunlu alanlardır.</legend>
-                        <dl>
-                            <div class="field_one">
-                                <dt>
-                                    <label class="hasTip required">@CareerRess.CareerStrings.namesurname<span class="star">&nbsp;*</span></label></dt>
-                                <dd>
-                                    @Html.TextBox("namesurname", null, new { @class = "required", @size = "30", @required = "required" })
-                                </dd>
-                            </div>
-                            <div class="field_one">
-                                <dt>
-                                    <label class="hasTip required">CV (pdf, doc, docx)<span class="star">&nbsp;*</span></label></dt>
-                                <dd>
-                                    <input type="file" name="attachedfile" id="attachedfile" />
-                                </dd>
-                            </div>
-                            <div class="field_one">
-                                <dd style="float: left; clear: both; overflow: hidden">
-                                    <input type="submit" class="button gray" value="Başvur" />
-                                </dd>
-                            </div>
-                        </dl>
-                    </fieldset>
+                    <div class="field_offer_one">
+                        <div style="width: 184px; float: left; line-height: 30px; font-weight: bold;">
+                            <span style="float: right; line-height: 27px;">
+                                <span class="star">*</span> @CareerRess.CareerStrings.namesurname</span>
+                        </div>
+                        <div style="float: left; margin-left: 15px; font-weight: bold;">
+                            @Html.TextBox("namesurname", null, new { @class = "validate[required] text-input", @size = "30", @style="width:300px;" })
+                        </div>
+                    </div>
+                    <div class="field_offer_one">
+                        <div style="width: 184px; float: left; line-height: 30px; font-weight: bold;">
+                            <span style="float: right; line-height: 27px;">
+                                @CareerRess.CareerStrings.department</span>
+                        </div>
+                        <div style="float: left; margin-left: 15px; font-weight: bold;">
+                            @Html.DropDownList("departman", new[] {
+                                        new SelectListItem{ Text= "Muhasebe", Value="Muhasebe", Selected=true },
+                                        new SelectListItem{ Text= "Üretim", Value="Üretim" },
+                                        new SelectListItem{ Text= "Grafik Tasarım", Value="Grafik Tasarım" },
+                                        new SelectListItem{ Text= "Elektrik Elektronik", Value="Elektrik Elektronik" },
+                                        new SelectListItem{ Text= "Diğer", Value="Diğer" }
+                                     }, new { @class = "", @style="width:320px" })
+                        </div>
+                    </div>
+                    <div class="field_offer_one">
+                        <div style="width: 184px; float: left; line-height: 30px; font-weight: bold;">
+                            <span style="float: right; line-height: 27px;">
+                               <span class="star">*</span> CV (pdf, doc, docx)</span>
+                        </div>
+                        <div style="float: left; margin-left: 15px; font-weight: bold;">
+                             <input type="file" name="attachedfile" id="attachedfile" style="width:300px" />
+                        </div>
+                    </div>
+                     <div class="field_offer_one">
+                        <div style="width: 184px; float: left; line-height: 30px; font-weight: bold;">
+                            <span style="float: right; line-height: 27px;">
+                                 <span class="star">*</span> @CareerRess.CareerStrings.not</span>
+                        </div>
+                        <div style="float: left; margin-left: 15px; font-weight: bold;">
+                            @Html.TextArea("notlar", null, 1,1, new { @class="not validate[required] text-input", @title = "Not", @size = "500", @style="width:300px;min-width:300px;max-width:300px;" })
+                        </div>
+                    </div>
+                   
+                    <div style="clear: both"></div>
+                    <p style="color: red; margin-left: 200px;">@ContactRess.ContactStrings.requiredfiled</p>
+
+                    <div class="field_one" style="margin-top: 10px">
+                        <input id="btnGonder" style="margin-left:200px;" type="submit" class="button gray" value="@ContactRess.ContactStrings.send" />
+                    </div>
                 </div>
+                           
             }
         </div>
     </div>

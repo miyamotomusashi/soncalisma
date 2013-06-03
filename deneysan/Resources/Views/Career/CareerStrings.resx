@@ -135,6 +135,9 @@
   <data name="career" xml:space="preserve">
     <value>KARİYER</value>
   </data>
+  <data name="department" xml:space="preserve">
+    <value>Başvuracağınız Pozisyon</value>
+  </data>
   <data name="joinus" xml:space="preserve">
     <value>Bize Katılın</value>
   </data>
@@ -143,6 +146,9 @@
   </data>
   <data name="namesurname" xml:space="preserve">
     <value>Ad Soyad</value>
+  </data>
+  <data name="not" xml:space="preserve">
+    <value>Notunuz</value>
   </data>
   <data name="tcno" xml:space="preserve">
     <value>TC No</value>
