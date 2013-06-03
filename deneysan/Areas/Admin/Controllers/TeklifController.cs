@@ -76,7 +76,7 @@ namespace deneysan.Areas.Admin.Controllers
 
         public FileStreamResult Proforma(string tekid)
         {
-            MemoryStream pdf = TeklifManager.ProformaGonder(tekid);
+            MemoryStream pdf = TeklifManager.ProformaOnizle(tekid);
             
             Response.ContentType = "application/pdf";
             Response.AddHeader("Content-Disposition", string.Format("attachment;filename=Receipt-{0}.pdf", "1"));
@@ -85,6 +85,12 @@ namespace deneysan.Areas.Admin.Controllers
             return new FileStreamResult(pdf, "application/pdf");    
             //return File(pdf, "application/pdf", "DownloadName.pdf");
             //return RedirectToAction("Details", new { id = tekid });
+        }
+
+        public ActionResult ProformaGonder(string tekid2)
+        {
+            ViewBag.ProcessMessage = TeklifManager.ProformaGonder(tekid2);
+            return RedirectToAction("Details", new { id = tekid2 });
         }
 
         public ActionResult Details(int id)

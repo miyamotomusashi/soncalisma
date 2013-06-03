@@ -13,7 +13,7 @@
     <div id="page-header">
         <h2>TEKLİF DEĞERLENDİR</h2>
     </div>
-
+    
     <section class="grid_12 form">
         @Html.Hidden("ProcessMessage", (object)@ViewBag.ProcessMessage)
         @using (Html.BeginForm("Details", "Teklif", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -39,7 +39,6 @@
                     @Html.TextBoxFor(d => d.teklif.Adsoyad, new { @class = "textwidth50 required" })
                     @Html.ValidationMessageFor(d => d.teklif.Adsoyad)
                 </p>
-
                 <p>
                     @Html.LabelFor(d => d.teklif.Eposta)
                     @Html.TextBoxFor(d => d.teklif.Eposta, new { @class = "textwidth50 required" })
@@ -175,7 +174,13 @@
                 {
                     @Html.Hidden("tekid", (object)@Model.teklif.TeklifId) 
                         
-                    <input type="submit" style="float: right" value="Proforma Faturasını Gönder" id="btnsend" />
+                    <input type="submit" style="float: right" value="Önizleme" id="btnpreview" />
+                }
+                @using (Html.BeginForm("ProformaGonder", "Teklif", FormMethod.Post))
+                {
+                    @Html.Hidden("tekid2", (object)@Model.teklif.TeklifId) 
+                    
+                    <input type="submit" style="float: right" value="Gönder" id="btnsend" />
                 }
             </div>
         </fieldset>
