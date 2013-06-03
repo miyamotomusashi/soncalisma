@@ -12,7 +12,7 @@
     $('.pprice').css("display", "none");
 
    
-    $('#txtPrice').autoNumeric('init');
+    $('#txtPrice').numeric();
  
 
     $('#Hardware').click(function() {
@@ -20,7 +20,7 @@
         if (stat == "True" || stat == "true") {
             $('.pprice').css("display", "block");
             $('#txtHardWarePrice').addClass("required");
-            $('#txtHardWarePrice').autoNumeric('init');
+            $('#txtHardWarePrice').numeric();
         }
         else {
             $('.pprice').css("display", "none");

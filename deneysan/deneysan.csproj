@@ -1663,6 +1663,7 @@
     <Content Include="Areas\Admin\Content\scripts\plugins\main.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\modernizr-2.5.3.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\moneyconverter.js" />
+    <Content Include="Areas\Admin\Content\scripts\plugins\numeric.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\prettify.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\tablesorter\jquery.table.filter.min.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\tablesorter\jquery.tablesorter.min.js" />
