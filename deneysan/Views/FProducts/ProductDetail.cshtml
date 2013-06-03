@@ -143,7 +143,10 @@
                         $.gritter.add({
                             title: 'Listenize bir adet ürün eklendi!',
                             text: 'Teklif Listem linkine tıklayarak eklediğiniz ürün ya da ürünleri görebilir, teklif formunu doldurarak talebinizi bize ulaştırabilirsiniz.'
-                        });                    },
+                        });                        $("#teklifdiv").fadeOut(200).fadeIn(200);                        $("#offerlisttext").css("color", "#F00");
+                        $("#offertextparantez1").css("color", "#F00");
+                        $("#offertextparantez2").css("color", "#F00");
+                        $("#teklifAdedi").css("color", "#F00");                    },
                     error: function () {
 
                     }

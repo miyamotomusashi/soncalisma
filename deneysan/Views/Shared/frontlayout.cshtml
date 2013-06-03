@@ -50,8 +50,8 @@ BALIKESİR
     </div>
     <header>
         <div class="wrapper">
-            <div style="margin-top: 60px; font-weight: bold; z-index: 999999; position: absolute; right: 10px; float: right;">
-                <a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_offer">@SharedRess.SharedStrings.myofferlist (<span id="teklifAdedi">&nbsp;&nbsp;</span>)</a>
+            <div id="teklifdiv" style="margin-top: 60px; font-weight: bold; z-index: 999999; position: absolute; right: 10px; float: right;">
+                <a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_offer"><span id="offerlisttext">@SharedRess.SharedStrings.myofferlist</span> <span id="offertextparantez1">(</span><span id="teklifAdedi">&nbsp;&nbsp;</span><span id="offertextparantez2">)</span></a>
             </div>
             <div class="Right rmenu">
                 <div class="social-icons">
@@ -129,6 +129,18 @@ BALIKESİR
             dataType: 'json',
             success: function (result) {
                 $("#teklifAdedi").text(result);
+                //alert(result);
+                if (result != "0") {
+                    $("#offerlisttext").css("color", "#F00");
+                    $("#offertextparantez1").css("color", "#F00");
+                    $("#offertextparantez2").css("color", "#F00");
+                    $("#teklifAdedi").css("color", "#F00");
+                } else {
+                    $("#offerlisttext").css("color", "#555");
+                    $("#offertextparantez1").css("color", "#555");
+                    $("#offertextparantez2").css("color", "#555");
+                    $("#teklifAdedi").css("color", "#555");
+                }
             },
             error: function () {
 

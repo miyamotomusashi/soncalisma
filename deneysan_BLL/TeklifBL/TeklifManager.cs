@@ -255,6 +255,8 @@ namespace deneysan_BLL.TeklifBL
             {
                 try
                 {
+                    int rowcount = 0;
+
                     var teklif = TeklifManager.GetTeklifById(Convert.ToInt32(tekid));
                     var teklifurun = TeklifManager.GetUrunList(Convert.ToInt32(tekid));
                     BaseFont arial = BaseFont.CreateFont("C:\\windows\\fonts\\arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
@@ -462,6 +464,8 @@ namespace deneysan_BLL.TeklifBL
 
                     foreach (var item in teklifurun)
                     {
+                        rowcount++;
+
                         cell = new PdfPCell(new Paragraph(item.UrunKod, font));
                         cell.HorizontalAlignment = Element.ALIGN_LEFT;
                         cell.FixedHeight = 13f;
@@ -508,6 +512,7 @@ namespace deneysan_BLL.TeklifBL
 
                         if (item.Donanim)
                         {
+                            rowcount++;
                             cell = new PdfPCell(new Paragraph(item.UrunKod, font));
                             cell.HorizontalAlignment = Element.ALIGN_LEFT;
                             cell.FixedHeight = 13f;
@@ -567,7 +572,7 @@ namespace deneysan_BLL.TeklifBL
 
                     cell = new PdfPCell(new Paragraph(""));
                     cell.Padding = 0;
-                    cell.FixedHeight = 170f;
+                    cell.FixedHeight = 222f - (13f * rowcount);
                     cell.BorderWidth = 0;
                     table.AddCell(cell);
                     table.AddCell(cell);
