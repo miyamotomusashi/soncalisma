@@ -103,20 +103,43 @@ namespace deneysan.Areas.Admin.Controllers
                 }
                 model.PageSlug = Utility.SetPagePlug(model.Name);
 
-                string mprice = txtPrice.Substring(0, txtPrice.Length - 3);
-                mprice = mprice.Replace(",", "");
-                string dprice = txtPrice.Substring(txtPrice.Length - 2, 2);
-                string newprice = mprice + "," + dprice;
-                model.Price = Convert.ToDecimal(newprice);
+                string mprice ="";
+                 string dprice = "";
+                 string newprice = "";
+                if (txtPrice.IndexOf(",") != -1)
+                {
+                    mprice = txtPrice.Substring(0, txtPrice.Length - 3);
+                    mprice = mprice.Replace(",", "");
+                    dprice = txtPrice.Substring(txtPrice.Length - 2, 2);
+                    newprice = mprice + "," + dprice;
+                    model.Price = Convert.ToDecimal(newprice);
+                }
+                else
+                {
+                    model.Price = Convert.ToDecimal(txtPrice);
+
+                }
+             
 
                 if (!string.IsNullOrEmpty(txtHardwarePrice))
                 {
-                    mprice = txtHardwarePrice.Substring(0, txtHardwarePrice.Length - 3);
-                    mprice = mprice.Replace(",", "");
-                     dprice = txtHardwarePrice.Substring(txtHardwarePrice.Length - 2, 2);
-                     newprice = mprice + "," + dprice;
-                    newprice = mprice + "," + dprice;
-                    model.HardwarePrice = Convert.ToDecimal(newprice);
+
+                    if (txtHardwarePrice.IndexOf(",") != -1)
+                    {
+                        mprice = txtHardwarePrice.Substring(0, txtHardwarePrice.Length - 3);
+                        mprice = mprice.Replace(",", "");
+                        dprice = txtHardwarePrice.Substring(txtHardwarePrice.Length - 2, 2);
+                        newprice = mprice + "," + dprice;
+                        newprice = mprice + "," + dprice;
+                        model.HardwarePrice = Convert.ToDecimal(newprice);
+                        model.Hardware = true;
+                    }
+                    else
+                    {
+                        model.HardwarePrice = Convert.ToDecimal(txtHardwarePrice);
+                        model.Hardware = true;
+
+                    }
                 }
                 else
                 {
@@ -254,21 +277,43 @@ namespace deneysan.Areas.Admin.Controllers
                     model.filevideo = "/Content/images/products/" + Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(uploadvideo.FileName);
                 }
                 model.PageSlug = Utility.SetPagePlug(model.Name);
-                string mprice = txtPrice.Substring(0, txtPrice.Length - 3);
-                mprice = mprice.Replace(",", "");
-                string dprice = txtPrice.Substring(txtPrice.Length - 2, 2);
-                string newprice = mprice + "," + dprice;
-                model.Price = Convert.ToDecimal(newprice);
 
+                string mprice = "";
+                string dprice = "";
+                string newprice="";
+                if (txtPrice.IndexOf(",") != -1)
+                {
+                    mprice = txtPrice.Substring(0, txtPrice.Length - 3);
+                    mprice = mprice.Replace(",", "");
+                    dprice = txtPrice.Substring(txtPrice.Length - 2, 2);
+                    newprice = mprice + "," + dprice;
+                    model.Price = Convert.ToDecimal(newprice);
+                }
+                else
+                {
+                    model.Price = Convert.ToDecimal(txtPrice);
+                    
+                }
                 if (chchardware == true)
                 {
-                    mprice = txtHardwarePrice.Substring(0, txtHardwarePrice.Length - 3);
-                    mprice = mprice.Replace(",", "");
-                     dprice = txtHardwarePrice.Substring(txtHardwarePrice.Length - 2, 2);
-                     newprice = mprice + "," + dprice;
-                    newprice = mprice + "," + dprice;
-                    model.HardwarePrice = Convert.ToDecimal(newprice);
-                    model.Hardware = true;
+
+                    
+                    if (txtHardwarePrice.IndexOf(",") != -1)
+                    {
+                        mprice = txtHardwarePrice.Substring(0, txtHardwarePrice.Length - 3);
+                        mprice = mprice.Replace(",", "");
+                        dprice = txtHardwarePrice.Substring(txtHardwarePrice.Length - 2, 2);
+                        newprice = mprice + "," + dprice;
+                        newprice = mprice + "," + dprice;
+                        model.HardwarePrice = Convert.ToDecimal(newprice);
+                        model.Hardware = true;
+                    }
+                    else
+                    {
+                        model.HardwarePrice = Convert.ToDecimal(txtHardwarePrice);
+                        model.Hardware = true;
+ 
+                    }
                 }
                 else
                 {

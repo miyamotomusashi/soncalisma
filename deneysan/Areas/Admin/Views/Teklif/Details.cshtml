@@ -125,7 +125,7 @@
                             </td>
                             <td>@item.UrunAdi</td>
                             <td class="center">
-                                <span id="spantextfiyat_@item.UrunId">@item.Fiyat @item.ParaBirimi</span>
+                                <span id="spantextfiyat_@item.UrunId">@item.Fiyat</span><span id="moneytype_@item.UrunId"> TL</span> 
                                 <input type="text" id="textfiyat_@item.UrunId" value="" class="displaynone textwidth90"/>
                                 <input type="hidden" id="hdndonanim_@item.UrunId" value="@item.Donanim.ToString()" class="displaynone textwidth90"/>
                             </td>
@@ -146,8 +146,8 @@
                             </td>
 
                             <td class="center">
-                                <span id="spanitem_@item.UrunId">
-                                    @(item.Fiyat * item.Adet + item.DonanimFiyat) @item.ParaBirimi
+                                <span id="spanitemtoplam_@item.UrunId">
+                                    @(item.Fiyat * item.Adet + item.DonanimFiyat) TL
                                 </span>
 
                             </td>

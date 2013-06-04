@@ -13,7 +13,8 @@ function EditRecord(id) {
     $("#spantextfiyat_" + id).css("display", "none");
     $("#textfiyat_" + id).css("display", "block");
     $("#textfiyat_" + id).val($("#spantextfiyat_" + id).text());
-
+    $("#moneytype_" + id).css("display", "none");
+    
     $("#spantextdonanim_" + id).css("display", "none");
     $("#textdonanim_" + id).css("display", "block");
     $("#textdonanim_" + id).val($("#spantextdonanim_" + id).text());
@@ -32,7 +33,7 @@ function EditRecord(id) {
 }
 
 function CancelRecord(id) {
-    $("#spantextfiyat_" + id).css("display", "block");
+    $("#spantextfiyat_" + id).css("display", "inline-block");
     $("#textfiyat_" + id).css("display", "none");
   
     $("#spantextdonanim_" + id).css("display", "block");
@@ -45,7 +46,7 @@ function CancelRecord(id) {
     $("#btn_save_" + id).css("display", "none");
     $("#btn_cancel_" + id).css("display", "none");
     $("#DeleteImage_" + id).css("display", "inline-block");
-
+    $("#moneytype_" + id).css("display", "inline-block");
 }
 
 function UpdateRecord(id) {
@@ -99,7 +100,7 @@ function UpdateRecord(id) {
         dataType: 'json',
         success: function (msg) {
 
-            $("#spantextfiyat_" + id).css("display", "block");
+            $("#spantextfiyat_" + id).css("display", "inline-block");
             $("#textfiyat_" + id).css("display", "none");
             $("#spantextfiyat_" + id).text(fiyat);
             $("#spantextdonanim_" + id).css("display", "block");
@@ -124,8 +125,9 @@ function UpdateRecord(id) {
 
 
             
-
-          
+            $("#moneytype_" + id).css("display", "inline-block");
+            var topl = parseFloat(fiyatclear) * parseInt(adet) + parseFloat(donanimclear) * parseInt(adet);
+            $("#spanitemtoplam_" + id).text(topl+" TL");
             $("#toplamtutar").text(msg[0] +" TL");
             $("#kdvtutar").text(msg[2]+" TL");
 
