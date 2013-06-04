@@ -223,7 +223,11 @@ namespace deneysan_BLL.TeklifBL
                 urun.Fiyat = Convert.ToDecimal(fiyat);
                 urun.Adet = adet;
                 if (!string.IsNullOrEmpty(donanim))
-                    urun.Toplam = (Convert.ToDecimal(fiyat) * adet + Convert.ToDecimal(donanim)).ToString();
+                {
+                    urun.DonanimFiyat = Convert.ToDecimal(donanim);
+                    urun.Toplam = (Convert.ToDecimal(fiyat) * adet + Convert.ToDecimal(donanim)*adet).ToString();
+                }
+                 
                 else urun.Toplam = (Convert.ToDecimal(fiyat) * adet).ToString();
 
                 db.SaveChanges();
