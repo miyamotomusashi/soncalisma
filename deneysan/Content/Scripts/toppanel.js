@@ -50,7 +50,7 @@ jQuery(document).ready(function ($) {
         $("#loginPanel").css({ marginTop: -110 });
     },
         topPanel: function () {
-            var topPanel = $("#mapPanel"), panelHandle = $("#mapPanelHandle"), height = 0, wrapHeight = 0, imgs = topPanel.find("img"), imgsNum = imgs.length, readyImg = 0;
+            var topPanel = $("#mapPanel"), panelHandle = $(".mapPanelHandle"), height = 0, wrapHeight = 0, imgs = topPanel.find("img"), imgsNum = imgs.length, readyImg = 0;
             if (imgsNum) { imgs.each(function () { $(this).load(function () { readyImg++; inittopPanel(); }); }); } else { inittopPanel(); }
             function inittopPanel() {
                 if (imgsNum === readyImg) {
