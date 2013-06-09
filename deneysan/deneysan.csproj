@@ -1932,6 +1932,8 @@
     <Content Include="Areas\Admin\Views\Home\home_leftbar.cshtml" />
     <Content Include="Areas\Admin\Views\Teklif\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Mail\MailSetting.cshtml" />
+    <None Include="Properties\PublishProfiles\deneme.pubxml" />
+    <None Include="Properties\PublishProfiles\deneysan.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="HTMLTemplate\imza.png" />
     <Content Include="HTMLTemplate\Receipt.htm" />
