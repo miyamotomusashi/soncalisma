@@ -36,5 +36,5 @@ $(document).ready(function () {
         .blur(function () { if ($(this).val() == '') { $(this).val('Şifre'); this.type = 'text'; } });
     /* -- End -- */
     //setTimeout(function () { equalHeight($(".main_equal")); }, 800);
-    jQuery('.clients-carousel').jcarousel();
+    //jQuery('.clients-carousel').jcarousel();
 });

@@ -182,7 +182,7 @@ input:hover{background:#ffffff}
 .clients-skin-carousel .jcarousel-clip { overflow: hidden; }
 .clients-skin-carousel .jcarousel-clip-horizontal { width:100%; height:auto; }
 .jcarousel-clip-horizontal ul li {text-align:center;}
-.clients-skin-carousel .jcarousel-item { width:183px; margin:0px; height:auto; }
+.clients-skin-carousel .jcarousel-item { width:140px; margin:0px; height:auto; }
 .clients-skin-carousel .jcarousel-item img { height:auto !important; max-width:100%;  }
 .clients-skin-carousel .jcarousel-item-horizontal { margin-left:9px; margin-right:9px; }
 .clients-skin-carousel .jcarousel-direction-rtl .jcarousel-item-horizontal { margin: 10px; }
@@ -653,7 +653,7 @@ input.marked, textarea.marked { color: #999; }
 #sub-sidebar h1{font-size:16px; font-weight:bold; border:solid 1px #ebebeb; padding:12px 12px 17px 12px; background:url(/Content/Images/Front/bg-title-subsidebar.png) repeat-x;}
 #sub-sidebar ul{font-family:'Lucida Grande',Tahoma, Geneva, sans-serif; color:#333; font-size:13px; margin-bottom:10px}
 #sub-sidebar li{background:#fff; border:solid 1px #ddd; border-top:none; margin-bottom:1px}
-#sub-sidebar li:hover {background:#09244d;}
+#sub-sidebar li:hover {background:#a5a5a5;}
 #sub-sidebar li a{line-height:20px; display:block; padding:10px; color:#666}
 #sub-sidebar li a:hover,
 #sub-sidebar li a.active{text-decoration:none; background:url(/Content/Images/Front/li-arrow1.png) 240px center no-repeat; color:#fff}

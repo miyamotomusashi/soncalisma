@@ -103,9 +103,17 @@
 </div>
 
 <script> 
-    //$(document).ready(function () {
-    //    setTimeout(function () {
-    //            jQuery('.jcarousel-next').trigger('click');
-    //        }, 1000);
-    //});
+    $(document).ready(function () {
+
+        $('.clients-carousel').jcarousel({
+            auto: 1, //delay 3 seconds
+            wrap: 'circular',
+            animation: 1000,
+            scroll: 1
+        });
+        //jQuery('.clients-carousel').jcarousel();
+        //setTimeout(function () {
+        //        jQuery('.jcarousel-next').trigger('click');
+        //    }, 1000);
+    });
 </script>

@@ -13,7 +13,7 @@
             <ul class="fileList">
                 @foreach (var doc in Model)
                 {
-                    <li style="height: 120px;"><a href="@doc.DocumentFile" title="@doc.Name" target="_blank">
+                    <li style="height: 130px;"><a href="@doc.DocumentFile" title="@doc.Name" target="_blank">
                         <img src="/Content/Images/Front/@(doc.DocumentFile.Split('.')[1].ToString()).png" title="@(doc.DocumentFile.Split('.')[1].ToString())" width="32" height="32">@doc.Name</a>
                     </li>
                 }
