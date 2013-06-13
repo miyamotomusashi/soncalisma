@@ -1669,6 +1669,13 @@
     <Content Include="Areas\Admin\Content\scripts\plugins\tablesorter\jquery.tablesorter.min.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\tablesorter\jquery.tablesorter.pager.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\tablesorter\tablesorter.js" />
+    <Content Include="Areas\Admin\Content\scripts\plugins\uploadify\Change Log.txt" />
+    <Content Include="Areas\Admin\Content\scripts\plugins\uploadify\jquery.uploadify.js" />
+    <Content Include="Areas\Admin\Content\scripts\plugins\uploadify\jquery.uploadify.min.js" />
+    <Content Include="Areas\Admin\Content\scripts\plugins\uploadify\license.txt" />
+    <Content Include="Areas\Admin\Content\scripts\plugins\uploadify\uploadify-cancel.png" />
+    <Content Include="Areas\Admin\Content\scripts\plugins\uploadify\uploadify.css" />
+    <Content Include="Areas\Admin\Content\scripts\plugins\uploadify\uploadify.swf" />
     <Content Include="Areas\Admin\Content\scripts\plugins\validation\jquery.validate.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\validation\jquery.validate.min.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\_references.js" />
@@ -1932,6 +1939,9 @@
     <Content Include="Areas\Admin\Views\Home\home_leftbar.cshtml" />
     <Content Include="Areas\Admin\Views\Teklif\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Mail\MailSetting.cshtml" />
+    <Content Include="Areas\Admin\Content\scripts\plugins\uploadify\check-exists.php" />
+    <Content Include="Areas\Admin\Content\scripts\plugins\uploadify\index.php" />
+    <Content Include="Areas\Admin\Content\scripts\plugins\uploadify\uploadify.php" />
     <None Include="Properties\PublishProfiles\deneme.pubxml" />
     <None Include="Properties\PublishProfiles\deneysan.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />

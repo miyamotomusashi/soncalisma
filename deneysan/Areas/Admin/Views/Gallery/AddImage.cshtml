@@ -39,8 +39,8 @@
                
         <p>
             <label for="txtname">Galeri</label>
-            
-            <input type="file" name="uploadfile" id="uploadfile" class="required" />
+              <input type="file" name="file_upload" id="file_upload" />
+           @* <input type="file" name="uploadfile" id="uploadfile" class="required" />*@
         </p>
        
         <br />
@@ -64,6 +64,23 @@
 
     <script src="~/Areas/Admin/Content/scripts/plugins/jquery.ui.datepicker-tr.js"></script>
 <script src="~/Areas/Admin/Content/scripts/pagescripts/gallery/addimage.js"></script>
+    <script src="~/Areas/Admin/Content/scripts/plugins/uploadify/jquery.uploadify.min.js"></script>
+ <script type="text/javascript">
+        $(function () {
+            $('#file_upload').uploadify({
+                'swf': "@Url.Content("~/Areas/Admin/Content/scripts/plugins/uploadify/uploadify.swf")",
+                //this is where the file posts when it uploads.
+                'uploader': "@Url.Action("Upload", "Gallery")",
+                'onUploadSuccess' : function(file, data, response) {
+                  //data is whatever you return from the server
+                  //we're sending the URL from the server so we append this as an image to the #uploaded div
+                           $("#uploaded").append("<img src='" + data + "' alt='Uploaded Image' />");
+                }
+            });
+        });
+    </script>
+
+
 }
 
 

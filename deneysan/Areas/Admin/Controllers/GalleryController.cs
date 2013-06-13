@@ -77,5 +77,10 @@ namespace deneysan.Areas.Admin.Controllers
             return result;
         }
 
+        public void Upload(HttpPostedFileBase files)
+        {
+
+        }
+
     }
 }

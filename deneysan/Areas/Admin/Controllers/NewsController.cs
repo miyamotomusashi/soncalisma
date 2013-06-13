@@ -10,6 +10,7 @@ using deneysan.Areas.Admin.Helpers;
 using System.IO;
 using System.Drawing;
 using deneysan.Areas.Admin.Filters;
+using System.Web.Script.Serialization;
 namespace deneysan.Areas.Admin.Controllers
 {
     [AuthenticateUser]
@@ -163,8 +164,21 @@ namespace deneysan.Areas.Admin.Controllers
             else
                 return View();
         }
-     
 
+        public class JsonList
+        {
+            public string[] list { get; set; }
+        }
+
+        public JsonResult SortRecords(string list)
+        {
+            JsonList psl = (new JavaScriptSerializer()).Deserialize<JsonList>(list);
+            string[] idsList = psl.list;
+            bool issorted = NewsManager.SortRecords(idsList);
+            return Json(issorted);
+
+
+        }
 
     }
 }

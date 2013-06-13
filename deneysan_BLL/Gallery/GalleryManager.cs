@@ -15,7 +15,7 @@ namespace deneysan_BLL.Gallery
         {
             using (DeneysanContext db = new DeneysanContext())
             {
-                var list = db.GalleryGroup.Where(d => d.Deleted == false && d.Language == language).ToList();
+                var list = db.GalleryGroup.Where(d => d.Deleted == false && d.Language == language).OrderBy(d=>d.SortOrder).ToList();
                 return list;
             }
         }
@@ -29,7 +29,7 @@ namespace deneysan_BLL.Gallery
                     //record.TimeCreated = DateTime.Now;
                     record.Deleted = false;
                     record.Online = true;
-                    //record.SortNumber = 9999;
+                   record.SortOrder = 9999;
                     db.GalleryGroup.Add(record);
                     db.SaveChanges();
 
@@ -50,6 +50,32 @@ namespace deneysan_BLL.Gallery
                 }
             }
 
+        }
+
+
+        public static bool SortRecords(string[] idsList)
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                try
+                {
+
+                    int row = 0;
+                    foreach (string id in idsList)
+                    {
+                        int mid = Convert.ToInt32(id);
+                        GalleryGroup sortingrecord = db.GalleryGroup.SingleOrDefault(d => d.GalleryGroupId == mid);
+                        sortingrecord.SortOrder = Convert.ToInt32(row);
+                        db.SaveChanges();
+                        row++;
+                    }
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
         }
 
 
@@ -162,30 +188,7 @@ namespace deneysan_BLL.Gallery
         }
 
 
-        public static bool SortRecords(string[] idsList)
-        {
-            using (DeneysanContext db = new DeneysanContext())
-            {
-                try
-                {
-
-                    int row = 0;
-                    foreach (string id in idsList)
-                    {
-                        int mid = Convert.ToInt32(id);
-                        GalleryGroup sortingrecord = db.GalleryGroup.SingleOrDefault(d => d.GalleryGroupId == mid);
-                        //sortingrecord.SortNumber = Convert.ToInt32(row);
-                        db.SaveChanges();
-                        row++;
-                    }
-                    return true;
-                }
-                catch (Exception)
-                {
-                    return false;
-                }
-            }
-        }
+      
 
         #endregion GalleryGroup
 

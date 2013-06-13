@@ -23,7 +23,7 @@
     <table id="tblcategory" class="table no-border tablesorter">
         <thead>
             <tr>
-               
+                <th class="width5">Sırala</th>
                 <th class="width50">Haber Başlığı</th>
                 <th class="center witdh10">Durum</th>
                 <th class="center witdh10">Eklenme Tarihi</th>
@@ -34,7 +34,9 @@
             @foreach (var item in Model)
             {
                 <tr id="listItem_@item.NewsId"  class="handle">
-                  
+                   <td class="center">
+                        <img src="/Areas/Admin/Content/images/icons/tablesorter/arrow2.png" alt="move" border="0" class="handle sortimg" align="middle" />
+                    </td>
                     <td>
                         <span id="spanitem_@item.NewsId">@item.Header</span>
                         <input type="text" id="textitem_@item.NewsId" value="" class="displaynone textwidth90"/>
@@ -73,7 +75,7 @@
 
 <script src="~/Areas/Admin/Content/scripts/plugins/tablesorter/tablesorter.js"></script>
 <script src="~/Areas/Admin/Content/scripts/plugins/tablesorter/jquery.tablesorter.pager.js"></script>
-<script src="~/Areas/Admin/Content/scripts/plugins/tablesorter/TableSorterScript.js"></script>
+@*<script src="~/Areas/Admin/Content/scripts/plugins/tablesorter/TableSorterScript.js"></script>*@
 
 <script src="~/Areas/Admin/Content/scripts/myscripts/SetOnlineStatusRecord.js"></script>
 <script src="~/Areas/Admin/Content/scripts/myscripts/DeleteRecordTable.js"></script>

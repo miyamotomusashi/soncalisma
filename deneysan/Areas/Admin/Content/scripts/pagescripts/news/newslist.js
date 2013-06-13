@@ -5,4 +5,6 @@
         window.location.href = "/yonetim/haberler/" + lang;
     });
 
+    SortOrder("/News/SortRecords");
+
 });

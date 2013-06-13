@@ -38,5 +38,6 @@ namespace deneysan_DAL.Entities
         [Required(ErrorMessage = "Dili Seçiniz.")]
         public string Language { get; set; }
         public string PageSlug { get; set; }
+        public int SortOrder { get; set; }
     }
 }

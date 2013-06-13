@@ -17,7 +17,7 @@ namespace deneysan_BLL.NewsBL
         {
             using (DeneysanContext db = new DeneysanContext())
             {
-                var news_list = db.News.Where(d => d.Deleted == false && d.Language == language).OrderByDescending(d => d.TimeCreated).ToList();
+                var news_list = db.News.Where(d => d.Deleted == false && d.Language == language).OrderByDescending(d => d.TimeCreated).OrderBy(d => d.SortOrder).ToList();
                 return news_list;
             }
         }
@@ -26,7 +26,7 @@ namespace deneysan_BLL.NewsBL
         {
             using (DeneysanContext db = new DeneysanContext())
             {
-                var news_list = db.News.Where(d => d.Deleted == false && d.Language == language && d.Online==true).OrderByDescending(d => d.TimeCreated).ToList();
+                var news_list = db.News.Where(d => d.Deleted == false && d.Language == language && d.Online == true).OrderByDescending(d => d.TimeCreated).OrderBy(d => d.SortOrder).ToList();
                 return news_list;
             }
         }
@@ -50,6 +50,7 @@ namespace deneysan_BLL.NewsBL
                         record.TimeCreated = DateTime.Now;
                     record.Deleted = false;
                     record.Online = true;
+                    record.SortOrder = 9999;
                     db.News.Add(record);
                     db.SaveChanges();
                     return true;
@@ -163,6 +164,31 @@ namespace deneysan_BLL.NewsBL
 
                 }
                 catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+        }
+
+        public static bool SortRecords(string[] idsList)
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                try
+                {
+
+                    int row = 0;
+                    foreach (string id in idsList)
+                    {
+                        int mid = Convert.ToInt32(id);
+                        News sortingrecord = db.News.SingleOrDefault(d => d.NewsId == mid);
+                        sortingrecord.SortOrder = Convert.ToInt32(row);
+                        db.SaveChanges();
+                        row++;
+                    }
+                    return true;
+                }
+                catch (Exception)
                 {
                     return false;
                 }

@@ -16,5 +16,6 @@ namespace deneysan_DAL.Entities
         public bool Deleted { get; set; }
         public bool TimeCreated { get; set; }
         public bool TimeUpdated { get; set; }
+        public int SortOrder { get; set; }
     }
 }
