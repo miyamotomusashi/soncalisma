@@ -61,12 +61,13 @@ namespace deneysan.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Details(Teklif teklif, string teklifid, string txtcevaptarihi)
+        public ActionResult Details(Teklif teklif, string teklifid, string txtcevaptarihi, string TeklifDurum)
         {
             if (ModelState.IsValid)
             {
                 teklif.TeklifId = Convert.ToInt32(teklifid);
                 teklif.CevapTarihi = Convert.ToDateTime(txtcevaptarihi);
+                teklif.Durum = Convert.ToInt32(TeklifDurum);
                 ViewBag.ProcessMessage = TeklifManager.UpdateTeklif(teklif);
                 return RedirectToAction("Details", new { id = teklifid });
             }
@@ -111,6 +112,14 @@ namespace deneysan.Areas.Admin.Controllers
                     {
                         ViewBag.cevaptrh = ((DateTime)teklif.CevapTarihi).ToShortDateString();
                     }
+
+                    var TekDurum = new List<SelectListItem>{ 
+                                           new SelectListItem { Value = "0", Text = "Onaylandı", Selected = false },
+                                           new SelectListItem { Value = "1", Text = "Onaylanmadı", Selected = false },
+                                           new SelectListItem { Value = "2", Text = "İptal Edildi", Selected = false }
+                                 };
+                    TekDurum.FirstOrDefault(d => d.Value == teklif.Durum.ToString()).Selected = true;
+                    ViewBag.TeklifDurum = TekDurum;
                     var urunler = TeklifManager.GetUrunList(teklifid);
                     TeklifModel modelbind = new TeklifModel(teklif, urunler);
                     return View(modelbind);

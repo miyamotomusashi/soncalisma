@@ -89,6 +89,18 @@
                     @Html.TextBoxFor(d => d.teklif.TeslimatSuresi, new { @class = "textwidth10 required" })
                     @Html.ValidationMessageFor(d => d.teklif.TeslimatSuresi)
                 </p>
+                
+                <p>
+                    <label>Teklif Durumu</label>
+
+                @Html.DropDownList("TeklifDurum", null , (List<SelectListItem>)ViewBag.TeklifDurum)
+               @* <select name="TeklifDurum">
+                    <option value="0">Onaylandı</option>
+                    <option value="1">Onaylanmadı</option>
+                    <option value="2">İptal Edildi</option>
+                </select>   *@
+
+                </p>
                 <br />
                 <p>
                     <label></label>

@@ -115,6 +115,7 @@ namespace deneysan_BLL.TeklifBL
                         tek.Unvan = teklif.Unvan;
                         tek.Adsoyad = teklif.Adsoyad;
                         tek.Gsm = teklif.Gsm;
+                        tek.Durum = teklif.Durum;
                         tek.Eposta = teklif.Eposta;
                         tek.CevapTarihi = teklif.CevapTarihi;
                         tek.Tel = teklif.Tel;
@@ -1095,7 +1096,9 @@ namespace deneysan_BLL.TeklifBL
 
                     document.Add(logo);
 
-                    teklif.Durum = (int)EnumTeklifTip.Onaylandi;
+                    //teklif.Durum = (int)EnumTeklifTip.Onaylandi;
+                    int tempTeklifID = Convert.ToInt32(tekid);
+                    db.Teklif.FirstOrDefault(d => d.TeklifId == tempTeklifID).Durum = (int)EnumTeklifTip.Onaylandi;
 
                     db.SaveChanges();
 
