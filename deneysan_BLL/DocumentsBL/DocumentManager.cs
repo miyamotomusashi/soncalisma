@@ -379,6 +379,37 @@ namespace deneysan_BLL.DocumentsBL
                 }
             }
         }
+
+
+
+        public static bool SortDocuments(string[] idsList)
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                try
+                {
+
+                    int row = 0;
+                    foreach (string id in idsList)
+                    {
+                        int mid = Convert.ToInt32(id);
+                        Document sortingrecord = db.Document.SingleOrDefault(d => d.DocumentId == mid);
+                        sortingrecord.SortNumber = Convert.ToInt32(row);
+                        db.SaveChanges();
+                        row++;
+                    }
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+
+
+
+     
     }
 }
 

@@ -22,7 +22,7 @@ namespace deneysan_DAL.Entities
         public Nullable<DateTime> TimeUpdated { get; set; }
         public bool Deleted { get; set; }
         public bool Online { get; set; }
-
+        public int  SortOrder { get; set; }
         [Url(ErrorMessage = "Url formatı doğru değil.")]
         public string Link{get;set;}
        

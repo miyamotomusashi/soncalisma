@@ -59,6 +59,7 @@
     <Compile Include="BankBL\BankManager.cs" />
     <Compile Include="ContactBL\ContactManager.cs" />
     <Compile Include="MailBL\MailManager.cs" />
+    <Compile Include="ReferenceBL\JavaScriptSerializer.cs" />
     <Compile Include="SearchBL\ObjectContextExtensions.cs" />
     <Compile Include="DocumentsBL\DocumentManager.cs" />
     <Compile Include="Gallery\GalleryManager.cs" />

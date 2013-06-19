@@ -9,6 +9,7 @@ using deneysan.Areas.Admin.Helpers;
 using deneysan_BLL.DocumentsBL;
 using deneysan_BLL.LanguageBL;
 using deneysan_DAL.Entities;
+using System.Web.Script.Serialization;
 
 namespace deneysan.Areas.Admin.Controllers
 {
@@ -199,6 +200,20 @@ namespace deneysan.Areas.Admin.Controllers
             var grouplst = DocumentManager.GetDocumentGroupList(lang);
             JsonResult result = Json(new SelectList(grouplst, "DocumentGroupId", "GroupName"));
             return result;
+        }
+
+        public JsonResult SortRecords(string list)
+        {
+            JsonList psl = (new JavaScriptSerializer()).Deserialize<JsonList>(list);
+            string[] idsList = psl.list;
+            bool issorted = DocumentManager.SortDocuments(idsList);
+            return Json(issorted);
+
+
+        }
+        public class JsonList
+        {
+            public string[] list { get; set; }
         }
     }
 }

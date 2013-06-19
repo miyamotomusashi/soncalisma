@@ -69,8 +69,10 @@
         $(function () {
             $('#file_upload').uploadify({
                 'swf': "@Url.Content("~/Areas/Admin/Content/scripts/plugins/uploadify/uploadify.swf")",
+                'auto': false,
+                'script': '/Gallery/UploadFile',
                 //this is where the file posts when it uploads.
-                'uploader': "@Url.Action("Upload", "Gallery")",
+               // 'uploader': "@Url.Action("Upload", "Gallery")",
                 'onUploadSuccess' : function(file, data, response) {
                   //data is whatever you return from the server
                   //we're sending the URL from the server so we append this as an image to the #uploaded div

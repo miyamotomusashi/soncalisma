@@ -55,7 +55,7 @@ namespace deneysan.Areas.Admin.Controllers
                 {
                     newmodel.Logo = "/Content/images/front/noimage.jpeg";
                 }
-
+                newmodel.SortOrder = 9999;
                 newmodel.TimeCreated = DateTime.Now;
                 ViewBag.ProcessMessage = ReferenceManager.AddReference(newmodel);
                 ModelState.Clear();
@@ -160,7 +160,20 @@ namespace deneysan.Areas.Admin.Controllers
             return lang;
         }
 
+        public JsonResult SortRecords(string list)
+        {
+            JsonList psl = (new JavaScriptSerializer()).Deserialize<JsonList>(list);
+            string[] idsList = psl.list;
+            bool issorted = ReferenceManager.SortRecords(idsList);
+            return Json(issorted);
 
+
+        }
+
+        public class JsonList
+        {
+            public string[] list { get; set; }
+        }
        
 
     }

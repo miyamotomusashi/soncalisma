@@ -18,7 +18,7 @@ namespace deneysan_BLL.ReferenceBL
         {
             using (DeneysanContext db = new DeneysanContext())
             {
-                var list = db.References.Where(d => d.Deleted == false && d.Language == language).ToList();
+                var list = db.References.Where(d => d.Deleted == false && d.Language == language).OrderBy(d=>d.SortOrder).ToList();
                 return list;
             }
         }
@@ -27,7 +27,7 @@ namespace deneysan_BLL.ReferenceBL
         {
             using (DeneysanContext db = new DeneysanContext())
             {
-                var list = db.References.Where(d => d.Deleted == false && d.Language == language && d.Online==true).ToList();
+                var list = db.References.Where(d => d.Deleted == false && d.Language == language && d.Online==true).OrderBy(d=>d.SortOrder).ToList();
                 return list;
             }
         }
@@ -179,6 +179,31 @@ namespace deneysan_BLL.ReferenceBL
         }
 
 
-     
+
+
+        public static bool SortRecords(string[] idsList)
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                try
+                {
+
+                    int row = 0;
+                    foreach (string id in idsList)
+                    {
+                        int mid = Convert.ToInt32(id);
+                        References sortingrecord = db.References.SingleOrDefault(d => d.ReferenceId == mid);
+                        sortingrecord.SortOrder = Convert.ToInt32(row);
+                        db.SaveChanges();
+                        row++;
+                    }
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
     }
 }

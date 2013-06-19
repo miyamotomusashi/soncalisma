@@ -48,6 +48,13 @@ namespace deneysan.Areas.Admin.Controllers
 
             return id;
         }
+        [HttpPost]
+        public ActionResult AddImage(HttpPostedFileBase [] files)
+        {
+            FillLanguagesList();
+            return View();
+        }
+
 
 
         string FillLanguagesList()
@@ -76,6 +83,22 @@ namespace deneysan.Areas.Admin.Controllers
             JsonResult result = Json(new SelectList(grouplst, "GalleryGroupId", "GroupName"));
             return result;
         }
+
+
+        [HttpPost]
+        public string UploadFile(HttpPostedFileBase fileData,
+            FormCollection form)
+        {
+            //var guid = form.Get("thisGuid");
+            //var fileName = Server.MapPath("~/Content/upload/" +
+            //     System.IO.Path.GetFileName(guid + fileData.FileName));
+         
+            //person.Picture = guid + fileData.FileName;
+            //_repo.Update(person);
+            //fileData.SaveAs(fileName);
+            return "ok";
+        }
+
 
         public void Upload(HttpPostedFileBase files)
         {
