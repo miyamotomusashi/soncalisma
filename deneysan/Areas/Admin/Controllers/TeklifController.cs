@@ -7,9 +7,11 @@ using deneysan.Areas.Admin.Models;
 using deneysan_BLL.TeklifBL;
 using deneysan_DAL.Entities;
 using System.IO;
+using deneysan.Areas.Admin.Filters;
 
 namespace deneysan.Areas.Admin.Controllers
 {
+    [AuthenticateUser]
     public class TeklifController : Controller
     {
         //

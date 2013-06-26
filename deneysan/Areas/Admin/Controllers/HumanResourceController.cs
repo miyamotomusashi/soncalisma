@@ -6,9 +6,11 @@ using System.Web.Mvc;
 using deneysan_BLL.HRBL;
 using deneysan_BLL.LanguageBL;
 using deneysan_DAL.Entities;
+using deneysan.Areas.Admin.Filters;
 
 namespace deneysan.Areas.Admin.Controllers
 {
+      [AuthenticateUser]
     public class HumanResourceController : Controller
     {
         //

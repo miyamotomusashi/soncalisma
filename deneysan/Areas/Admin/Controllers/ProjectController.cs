@@ -9,9 +9,11 @@ using deneysan.Areas.Admin.Helpers;
 using deneysan_BLL.LanguageBL;
 using deneysan_BLL.Project;
 using deneysan_DAL.Entities;
+using deneysan.Areas.Admin.Filters;
 
 namespace deneysan.Areas.Admin.Controllers
 {
+      [AuthenticateUser]
     public class ProjectController : Controller
     {
         //

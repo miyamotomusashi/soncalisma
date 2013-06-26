@@ -5,9 +5,11 @@ using System.Web;
 using System.Web.Mvc;
 using deneysan_BLL.MailBL;
 using deneysan_DAL.Entities;
+using deneysan.Areas.Admin.Filters;
 
 namespace deneysan.Areas.Admin.Controllers
 {
+      [AuthenticateUser]
     public class MailController : Controller
     {
         //
