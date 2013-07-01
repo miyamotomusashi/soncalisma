@@ -16,6 +16,17 @@ namespace deneysan.Areas.Admin.Controllers
     {
         //
         // GET: /Admin/Teklif/
+        public ActionResult Delete(int id, string type)
+        {
+            TeklifManager.DeleteTeklif(id);
+            return RedirectToAction("Index", new { @type = type });
+        }
+
+        public bool DeleteTeklifUrun(int id)
+        {
+            bool retval = TeklifManager.DeleteTeklifUrun(id);
+            return retval;
+        }
 
         public ActionResult Index()
         {

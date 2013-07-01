@@ -32,6 +32,7 @@
                
                 <th class="center witdh10">Geliş Tarihi</th>
                 <th class="center witdh10">Tutar</th>
+                <th class="center" style="width:40px">İşlem</th>
             </tr>
         </thead>
          <tbody id="item-list">
@@ -72,6 +73,11 @@
                     </td>
                     <td class="center">@item.TeklifTarihi</td>
                     <td class="center">@item.FaturaTutar  @item.ParaBirimi</td>
+                    <td class="center">
+                        <a href="/yonetim/teklifler/sil/@item.TeklifId/@Url.RequestContext.RouteData.Values["type"].ToString()" onclick="return confirm('Silmek istediğinize emin misiniz?');">
+                            <img src="~/Areas/Admin/Content/images/icons/16/delete.png" />
+                        </a>
+                    </td>
                 </tr>
             }
         </tbody>

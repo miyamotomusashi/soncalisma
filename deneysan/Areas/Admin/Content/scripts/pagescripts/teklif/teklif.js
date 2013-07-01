@@ -14,6 +14,7 @@ function EditRecord(id) {
     $("#textfiyat_" + id).css("display", "block");
     $("#textfiyat_" + id).val($("#spantextfiyat_" + id).text());
     $("#moneytype_" + id).css("display", "none");
+    $("#moneytype2_" + id).css("display", "none");
     
     $("#spantextdonanim_" + id).css("display", "none");
     $("#textdonanim_" + id).css("display", "block");
@@ -36,7 +37,7 @@ function CancelRecord(id) {
     $("#spantextfiyat_" + id).css("display", "inline-block");
     $("#textfiyat_" + id).css("display", "none");
   
-    $("#spantextdonanim_" + id).css("display", "block");
+    $("#spantextdonanim_" + id).css("display", "inline-block");
     $("#textdonanim_" + id).css("display", "none");
  
     $("#spantextadet_" + id).css("display", "block");
@@ -47,6 +48,7 @@ function CancelRecord(id) {
     $("#btn_cancel_" + id).css("display", "none");
     $("#DeleteImage_" + id).css("display", "inline-block");
     $("#moneytype_" + id).css("display", "inline-block");
+    $("#moneytype2_" + id).css("display", "inline-block");
 }
 
 function UpdateRecord(id) {
@@ -126,6 +128,7 @@ function UpdateRecord(id) {
 
             
             $("#moneytype_" + id).css("display", "inline-block");
+            $("#moneytype2_" + id).css("display", "inline-block");
             var topl = parseFloat(fiyatclear) * parseInt(adet) + parseFloat(donanimclear) * parseInt(adet);
             $("#spanitemtoplam_" + id).text(topl+" TL");
             $("#toplamtutar").text(msg[0] +" TL");

@@ -1184,7 +1184,33 @@ namespace deneysan_BLL.TeklifBL
 
             return new StyleSheet();
         }
+
+        public static void DeleteTeklif(int id)
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                var model = db.Teklif.SingleOrDefault(d => d.TeklifId == id);
+                if (model != null)
+                {
+                    db.Teklif.Remove(model);
+                    db.SaveChanges();
+                }
+            }
+        }
+
+        public static bool DeleteTeklifUrun(int id)
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                var model = db.TeklifUrun.SingleOrDefault(d => d.TeklifUrunId == id);
+                if (model != null)
+                {
+                    db.TeklifUrun.Remove(model);
+                    db.SaveChanges();
+                    return true;
+                }
+                return false;
+            }
+        }
     }
-
-
 }

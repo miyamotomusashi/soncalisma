@@ -118,7 +118,7 @@
                         <th class="width10">Resim</th>
                         <th class="width40">Ürün Adı</th>
                         <th class="center width10">Birim Fiyat</th>
-                        <th class="center width10">Don. Fiyatı</th>
+                        <th class="center width10">Donanım Fiyatı</th>
                         <th class="center width10">Adet</th>
                         <th class="center width10">Toplam</th>
                         <th class="center witdh10">İşlem</th>
@@ -144,7 +144,7 @@
                             <td class="center">
                                 @if (@item.Donanim == true)
                                 {
-                                    <span id="spantextdonanim_@item.UrunId">@item.DonanimFiyat @item.ParaBirimi</span>
+                                    <span id="spantextdonanim_@item.UrunId">@item.DonanimFiyat</span><span id="moneytype2_@item.UrunId"> TL</span>
                                     <input type="text" id="textdonanim_@item.UrunId" value="" class="displaynone textwidth90"/>
                                 }
                                 else
@@ -167,7 +167,7 @@
                                 <img id="btn_update_@item.UrunId"  src="/Areas/Admin/Content/images/icons/16/edit.png"  title="Güncelle" class="cursorpointer" onclick="EditRecord(@item.UrunId)">
                                 <img id="btn_save_@item.UrunId"  src="/Areas/Admin/Content/images/icons/16/save.png"  title="Kaydet" class="displaynone cursorpointer" onclick="UpdateRecord(@item.UrunId)">
                                 <img id="btn_cancel_@item.UrunId"  src="/Areas/Admin/Content/images/icons/16/error.png"  title="İptal" class="displaynone cursorpointer" onclick="CancelRecord(@item.UrunId)">
-                                <img id="DeleteImage_@item.UrunId"  src="/Areas/Admin/Content/images/icons/16/delete.png" class="cursorpointer"  title="Sil" onclick="DeleteRecord('/DocumentGroup/DeleteRecord',@item.UrunId)">
+                                
                             </td>
                         </tr>
                     }
@@ -207,6 +207,7 @@
     <script src="~/Areas/Admin/Content/scripts/plugins/jquery.validate.unobtrusive.js"></script>
     <script src="~/Areas/Admin/Content/scripts/myscripts/generalprocess.js"></script>
     <script src="~/Areas/Admin/Content/scripts/myscripts/main.js"></script>
+    <script src="~/Areas/Admin/Content/scripts/myscripts/DeleteRecordTable.js"></script>
 
     <script src="~/Areas/Admin/Content/scripts/plugins/jquery.ui.datepicker-tr.js"></script>
     <script src="~/Areas/Admin/Content/scripts/pagescripts/teklif/teklif.js"></script>
