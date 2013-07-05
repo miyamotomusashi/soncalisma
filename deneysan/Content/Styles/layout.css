@@ -636,7 +636,7 @@ input.watermark, textarea.watermark { color: #000; }
 input.marked, textarea.marked { color: #999; }
 
 /* Subpage SideBar */
-#offer-list { width:580px; background:#f1f2f3; padding:3px 3px;margin:0 -10px -10px 0px; float:left; height: 330px; border: 1px solid #cfcfcf; }
+#offer-list { width:580px; background:#f1f2f3; padding:3px 3px;margin:0 -10px 10px 0px; float:left; min-height: 370px; border: 1px solid #cfcfcf; }
 #offer-list h1{font-size:16px; font-weight:bold; border:solid 1px #ebebeb; padding:5px 12px 5px 12px; background:url(/Content/Images/Front/bg-title-subsidebar.png) repeat-x;}
 
 #offer-list {font-family:'Lucida Grande',Tahoma, Geneva, sans-serif; color:#333; font-size:13px; }
