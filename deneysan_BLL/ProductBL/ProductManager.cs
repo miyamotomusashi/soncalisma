@@ -346,7 +346,7 @@ namespace deneysan_BLL.ProductBL
                         record.Hardware = data.Hardware;
                         record.HardwarePrice = data.HardwarePrice;
                         record.Price = data.Price;
-                        
+                        record.Code = data.Code;
                         record.ProductGroupId = data.ProductGroupId;
                         if (!string.IsNullOrEmpty(data.ProductImage))
                         {
