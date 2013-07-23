@@ -22,11 +22,11 @@
     <div class="wrapper mainpage grid_12">
         <div class="content_page page">
 
-            <h2 style="float:left">@Model.Name</h2>
+            <h2 style="float:left; width: 800px;">@Model.Name</h2>
             @{
                 string sharelink = "http://www.facebook.com/sharer.php?u=" + Request.Url.AbsoluteUri;
             }
-            
+            <button type="button" onclick="history.go(-1)" style="cursor:pointer">&lt;&lt; @SharedRess.SharedStrings.goback</button>
             <hr class="wide" />
             <div class="news_panel grid_4">
                 <div class="news_main_image">
