@@ -15,7 +15,8 @@ namespace deneysan_BLL.SearchBL
 
             using (DeneysanContext db = new DeneysanContext())
             {
-                var projects = db.Projects.FullTextSearch(text);
+                var projects = db.Projects.Where(d=>d.Online == true).FullTextSearch(text);
+                var prods = db.Product.Where(d=>d.Online == true & d.Deleted == false).FullTextSearch(text);
                 var result = new List<Tuple<string, string>>();
                 string route, link = string.Empty;
 
@@ -29,6 +30,25 @@ namespace deneysan_BLL.SearchBL
                     link = "/" + lang + "/" + route + "/" + item.PageSlug + "/" + item.ProjectId;
                     
                     result.Add(Tuple.Create(item.Name, link));   
+                }
+
+                foreach (var item in prods)
+                {
+                    if (lang.Equals("tr"))
+                        route = "urunler";
+                    else
+                        route = "products";
+
+                    deneysan_DAL.Entities.Product prod = ProductBL.ProductManager.GetProductById(item.ProductId);
+
+                    if (prod != null)
+                    {
+                        link = "/" + lang + "/" + route + "/" + prod.ProductGroup.PageSlug + "/" + item.PageSlug + "/" + item.ProductId;
+
+                        result.Add(Tuple.Create(item.Name, link));
+                    }
+
+                    
                 }
                 return result;
             }
