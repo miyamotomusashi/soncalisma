@@ -117,6 +117,7 @@ namespace deneysan_BLL.TeklifBL
                         tek.Gsm = teklif.Gsm;
                         tek.Durum = teklif.Durum;
                         tek.Eposta = teklif.Eposta;
+                        tek.Not = teklif.Not;
                         tek.CevapTarihi = teklif.CevapTarihi;
                         tek.Tel = teklif.Tel;
                         tek.Fax = teklif.Fax;

@@ -33,8 +33,10 @@
     </p>
   </div>
     <nav class="header-middle">
-      <ul id="nav" class="fr ">
-  
+
+      @if (!User.Identity.Name.ToString().ToLower().Equals("muhasebe"))
+    {
+       <ul id="nav" class="fr ">
       <li class="settings"><a class="settings" href="#">Ayarlar</a>
         <ul>
           <li><a href="/yonetim/mailkullanicilari">Mail Kişileri</a></li>
@@ -69,7 +71,10 @@
         </ul>
       </li>
       <!-- Nav - End Dashboard -->
-    </ul>
+    </ul> 
+    }
+        
+
         <img src="~/Areas/Admin/Content/images/logo-deneysan.png" width="285px" height="55px"/>
     </nav>
       
@@ -80,7 +85,7 @@
     </ul>
   </div>
   </header>
-  <section id="page">
+  <section id="page" style="min-height:400px">
      
     @RenderBody()
  
