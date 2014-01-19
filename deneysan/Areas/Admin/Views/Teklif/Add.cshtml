@@ -1,0 +1,164 @@
+﻿@model IEnumerable<deneysan_DAL.Entities.Product>
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Areas/Admin/Views/Shared/adminlayout.cshtml";
+}
+
+<link href="~/Areas/Admin/Content/styles/pluginstyles/jquery.msgbox.css" rel="stylesheet" />
+<link href="~/Areas/Admin/Content/styles/forms.css" rel="stylesheet" />
+<link href="~/Areas/Admin/Content/styles/table.css" rel="stylesheet" />
+<style>.form input[type=checkbox]{ margin:0;  }
+
+</style>
+
+@Html.Partial("home_leftbar")
+
+<div id="page-content" class="container_12">
+    <div class="notification info">Yeni oluşturulacak Teklife eklemek istediğiniz ürünleri seçiniz...</div>
+    <div id="page-header">
+        <h2>Yeni Teklif</h2>
+    </div>
+    @using (Html.BeginForm("AddContinue", "Teklif", FormMethod.Post))
+    {
+         <input type="submit" value="Devam >>" id="btnsave" />
+    }
+    <section class="grid_12 form">
+        <div class="box-header">
+            <h1>Ürün Listesi &nbsp;&nbsp;|&nbsp;&nbsp;
+             @Html.DropDownList("LanguageList")</h1>
+        </div>
+        <table id="tblcategory" class="table no-border tablesorter">
+            <thead>
+                <tr>
+                    <th class="center width5">Seçim</th>
+                    <th class="center width5">Resim</th>
+                    <th class="center width5">Adet</th>
+                    <th class="center width10">Ürün Kodu</th>
+                    <th class="width75">Ürün Adı</th>
+                </tr>
+            </thead>
+            <tbody id="item-list">
+                @foreach (var item in Model)
+                {
+                    <tr class="handle">
+                        <td class="center" style="text-align:center">
+                            <a class="remove" style="display:none" href="javascript:void(0)">
+                                <img src="~/Areas/Admin/Content/images/icons/delete.png" />
+                            </a>
+                            <a class="add" href="javascript:void(0)">
+                                <img src="~/Areas/Admin/Content/images/icons/add.png" />
+                            </a>
+                            <input type="hidden" value="@item.ProductId" />
+                        </td>
+                        <td class="center">
+                            <a href="@item.ProductImageThumb" onclick="return false;" class="preview">
+                                <img src="@item.ProductImageThumb" alt="image" width="16" height="16" />
+                            </a>
+                        </td>
+                         <td class="center">
+                            <select class="urunadet@(item.ProductId)" name="urunadet">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </td>
+                        <td class="center">
+                            @item.Code
+                        </td>
+                        <td>
+                            @item.Name
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </section>
+</div>
+
+<script src="~/Areas/Admin/Content/scripts/myscripts/main.js"></script>
+<script src="~/Areas/Admin/Content/scripts/plugins/tablesorter/tablesorter.js"></script>
+<script src="~/Areas/Admin/Content/scripts/plugins/tablesorter/jquery.tablesorter.pager.js"></script>
+@*<script src="~/Areas/Admin/Content/scripts/myscripts/generalprocess.js"></script>*@
+<style>
+    .selected { background-color: #eee; }
+</style>
+<script>
+    $(document).ready(function () {
+        $(".add").click(function () {
+            var element = $(this);
+            var val = $(this).next().val();
+
+            var count = $(".urunadet" + val + " option:selected").val();
+
+            if (val != "") {
+                $.ajax({
+                    type: 'POST',
+                    url: '/Teklif/AddToList',
+                    data: '{id:"' + val + '",count:"' + count + '"}',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'json',
+                    success: function (result) {
+                        element.prev().css("display", "block");
+                        element.css("display", "none");
+                        element.closest("tr").addClass("odd");                        
+                    },
+                    error: function () {
+
+                    }
+                });
+            }
+        });
+
+        $(".remove").click(function () {
+            var element = $(this);
+            var val = $(this).next().next().val();
+            if (val != "") {
+                $.ajax({
+                    type: 'POST',
+                    url: '/Teklif/RemoveFromList',
+                    data: '{id:"' + val + '"}',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'json',
+                    success: function (result) {
+                        element.next().css("display", "block");
+                        element.css("display", "none");
+                        element.closest("tr").removeClass("odd");
+
+                        //if (result == "0") {
+                        //    $("#offer-content").empty();
+                        //    $("#offer-content").load("/offer/empty");
+
+                        //} else {
+                        //    $("#item-" + id).fadeOut(500).remove();
+                        //}
+
+                        //$("#teklifAdedi").text(result);
+                    },
+                    error: function () {
+
+                    }
+                });
+            }
+        });
+
+        $("#LanguageList").change(function () {
+            var lang = $("#LanguageList option:selected").val();
+            window.location.href = "/yonetim/teklifler/yeniteklif/" + lang;
+        });
+
+        $("table").tablesorter({
+            widthFixed: true
+        });
+    });
+    
+</script>
+
+@*<link href="~/Areas/Admin/Content/styles/pluginstyles/jquery.msgbox.css" rel="stylesheet" />
+<script src="~/Areas/Admin/Content/scripts/plugins/jquery.msgbox.min.js"></script>
+<script src="~/Areas/Admin/Content/scripts/myscripts/MessageBox.js"></script>*@
+
+
+
+
