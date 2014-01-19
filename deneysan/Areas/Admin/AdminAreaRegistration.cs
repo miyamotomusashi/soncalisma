@@ -42,6 +42,8 @@ namespace deneysan.Areas.Admin
 
             //TEKLİFLER
          //   context.MapRoute("teklif_default", "yonetim/tumteklifler", new { action = "Index", Controller = "Teklif" });
+            context.MapRoute("teklif_yeni", "yonetim/teklifler/yeniteklif", new { action = "Add", Controller = "Teklif" });
+            context.MapRoute("teklif_yeni2", "yonetim/teklifler/yeniteklif/{lang}", new { action = "Add", Controller = "Teklif" });
             context.MapRoute("teklif", "yonetim/teklifler/{type}", new { action = "Index", Controller = "Teklif" });
             context.MapRoute("teklif_detail", "yonetim/teklifler/detay/{id}", new { action = "Details", Controller = "Teklif" });
             context.MapRoute("teklif_sil", "yonetim/teklifler/sil/{id}/{type}", new { action = "Delete", Controller = "Teklif" });

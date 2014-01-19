@@ -1471,6 +1471,8 @@
     <Content Include="Areas\Admin\Content\CKEditor\userfiles\images\Jellyfish.jpg" />
     <Content Include="Areas\Admin\Content\CKEditor\userfiles\_thumbs\Images\Desert.jpg" />
     <Content Include="Areas\Admin\Content\CKEditor\userfiles\_thumbs\Images\Jellyfish.jpg" />
+    <Content Include="Areas\Admin\Content\images\icons\add.png" />
+    <Content Include="Areas\Admin\Content\images\icons\delete.png" />
     <Content Include="Areas\Admin\Content\images\icons\experimental.png" />
     <Content Include="Areas\Admin\Content\images\icons\lookup.png" />
     <Content Include="Areas\Admin\Content\images\icons\photo.png" />
@@ -1783,6 +1785,7 @@
     <Content Include="Content\Images\Front\paylas.png" />
     <Content Include="Content\Images\Front\pdf.png" />
     <Content Include="Content\Images\Front\phone-ico.png" />
+    <Content Include="Content\Images\Front\rar.png" />
     <Content Include="Content\Images\Front\search-ico.png" />
     <Content Include="Content\Images\Front\shareface.png" />
     <Content Include="Content\Images\Front\slider.png" />
@@ -1942,8 +1945,9 @@
     <Content Include="Areas\Admin\Content\scripts\plugins\uploadify\check-exists.php" />
     <Content Include="Areas\Admin\Content\scripts\plugins\uploadify\index.php" />
     <Content Include="Areas\Admin\Content\scripts\plugins\uploadify\uploadify.php" />
+    <Content Include="Areas\Admin\Views\Teklif\Add.cshtml" />
     <None Include="Properties\PublishProfiles\deneme.pubxml" />
-    <None Include="Properties\PublishProfiles\deneysan.pubxml" />
+    <None Include="Properties\PublishProfiles\dnysn.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="HTMLTemplate\imza.png" />
     <Content Include="HTMLTemplate\Receipt.htm" />

@@ -61,8 +61,45 @@
                 </p>
                 <p>
                     @Html.LabelFor(d => d.teklif.Not)
-                    @Html.TextAreaFor(d => d.teklif.Not, new { @class = "textwidth50", @rows = "6" })
+                    @Html.TextAreaFor(d => d.teklif.Not, new { @class = "textwidth50", @rows = "4", @id="txtnot" })
                     @Html.ValidationMessageFor(d => d.teklif.Not)
+                </p>
+                <script>
+                    $(document).ready(function () {
+
+                        $("#chkKdvNotu").click(function () {
+                            if (this.checked) {
+                                $("#txtnot").val("Fiyatlarımıza kdv dahil değildir.");
+                            } else {
+                                $("#txtnot").val("");
+                            }
+                        });
+
+                        $("#chkOdemeNotu").click(function () {
+                            if (this.checked) {
+                                $("#txtodemenot").val("Siparişe müteakip %60 ön ödeme, %40 ürün teslimatında yapılması talep edilmektedir.");
+                            } else {
+                                $("#txtodemenot").val("");
+                            }
+                        });
+                    });
+                </script>
+                <p>
+                    <label>
+                        KDV Bilgi Notu
+                    </label>
+                    <span><input type="checkbox" id="chkKdvNotu" /> Fiyatlarımıza kdv dahil değildir.</span>
+                </p>
+                <p>
+                    @Html.LabelFor(d => d.teklif.OdemeNotu)
+                    @Html.TextAreaFor(d => d.teklif.OdemeNotu, new { @class = "textwidth50", @rows = "2", @id="txtodemenot" })
+                    @Html.ValidationMessageFor(d => d.teklif.OdemeNotu)
+                </p>
+                <p>
+                    <label>
+                        Ödeme Notu
+                    </label>
+                    <span><input type="checkbox" id="chkOdemeNotu" />  Siparişe müteakip %60 ön ödeme, %40 ürün teslimatında yapılması talep edilmektedir.</span>
                 </p>
                 <p>
                     @Html.LabelFor(d => d.teklif.TeklifTarihi)

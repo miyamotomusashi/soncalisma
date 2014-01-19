@@ -296,6 +296,15 @@ namespace deneysan_BLL.ProductBL
             }
         }
 
+        public static List<Product> GetProductListAllForTeklif(string lang)
+        {
+            using (DeneysanContext db = new DeneysanContext())
+            {
+                var list = db.Product.Include("ProductGroup").Where(d => d.Deleted == false && d.Online == true && d.Language == lang).OrderBy(d => d.Name).ToList();
+                return list;
+            }
+        }
+
         public static bool AddProduct(Product record)
         {
             using (DeneysanContext db = new DeneysanContext())

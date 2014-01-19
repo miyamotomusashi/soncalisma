@@ -39,6 +39,7 @@ namespace deneysan_DAL.Entities
         public decimal FaturaTutar { get; set; }
         [DisplayName("Para Birimi")]
         public string ParaBirimi { get; set; }
+        public string OdemeNotu { get; set; }
     
     }
 

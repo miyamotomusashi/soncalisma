@@ -17,6 +17,7 @@ using iTextSharp.text.pdf;
 using System.Web.Hosting;
 using iTextSharp.text.html.simpleparser;
 using iTextSharp.text.html;
+
 namespace deneysan_BLL.TeklifBL
 {
     public class TeklifManager
@@ -117,6 +118,7 @@ namespace deneysan_BLL.TeklifBL
                         tek.Gsm = teklif.Gsm;
                         tek.Durum = teklif.Durum;
                         tek.Eposta = teklif.Eposta;
+                        tek.OdemeNotu = teklif.OdemeNotu;
                         tek.Not = teklif.Not;
                         tek.CevapTarihi = teklif.CevapTarihi;
                         tek.Tel = teklif.Tel;
@@ -136,6 +138,20 @@ namespace deneysan_BLL.TeklifBL
             }
         }
 
+        private static Random random = new Random((int)DateTime.Now.Ticks);//thanks to McAden
+        private static string RandomString(int size)
+        {
+            StringBuilder builder = new StringBuilder();
+            char ch;
+            for (int i = 0; i < size; i++)
+            {
+                ch = Convert.ToChar(Convert.ToInt32(Math.Floor(26 * random.NextDouble() + 65)));
+                builder.Append(ch);
+            }
+
+            return builder.ToString();
+        }
+
         public static bool AddTeklif(Teklif teklif, TeklifUrun[] teklifurun, Dictionary<string, string>[] products)
         {
             using (DeneysanContext db = new DeneysanContext())
@@ -147,30 +163,49 @@ namespace deneysan_BLL.TeklifBL
                     teklif.ParaBirimi = "TL";
                     teklif.GecerlilikSuresi = 90;
                     teklif.TeslimatSuresi = "90";
+
+                    int number = db.OfferNumber.First().LastNumber;
+                    //string strnumber = db.OfferNumber.First().LastNumber.ToString();
+
+                    teklif.TeklifNo = "ST-" + number.ToString().PadLeft(5 - number.ToString().Length, '0');
+                    db.OfferNumber.First().LastNumber = ++number;
+                    db.SaveChanges();
+                    //teklif.Tel = teklif.Fax.Replace("(", "").Replace(")", "");
+                    //teklif.Fax = teklif.Fax.Replace("(", "").Replace(")", "");
+                    //teklif.Gsm = teklif.Fax.Replace("(", "").Replace(")", "");
                     db.Teklif.Add(teklif);
                     db.SaveChanges();
 
                     int[] plist = new int[50];
 
                     int k = 0;
-
-                    foreach (var element in products)
-                    {
-                        foreach (var entry in element)
+                    if (products != null)
+                        foreach (var element in products)
                         {
-                            plist[k] = Convert.ToInt32(entry.Value);
+                            foreach (var entry in element)
+                            {
+                                plist[k] = Convert.ToInt32(entry.Value);
+                            }
+                            k++;
                         }
-                        k++;
-                    }
 
                     decimal toplamTutar = 0;
                     for (int i = 0; i < teklifurun.Count(); i++)
                     {
-                        int pid = Convert.ToInt32(plist[i]);
+                        int pid;
+                        if (products != null)
+                        {
+                            pid = Convert.ToInt32(plist[i]);
+                        }
+                        else
+                        {
+                            pid = teklifurun[i].UrunId;
+                        }
+
                         var prod = db.Product.Where(a => a.ProductId == pid).SingleOrDefault();
 
                         teklifurun[i].TeklifId = teklif.TeklifId;
-                        teklifurun[i].UrunId = plist[i];
+                        teklifurun[i].UrunId = pid;
                         teklifurun[i].Fiyat = prod.Price;
                         if (teklifurun[i].Donanim && prod.Hardware)
                         {
@@ -192,6 +227,12 @@ namespace deneysan_BLL.TeklifBL
                     var mset = MailManager.GetMailSettings();
                     var msend = MailManager.GetMailUsersList(1);
 
+                    
+
+                    #if DEBUG
+                        return true;
+                    #endif
+
                     using (var client = new SmtpClient(mset.ServerHost, mset.Port))
                     {
                         client.EnableSsl = false;
@@ -207,7 +248,6 @@ namespace deneysan_BLL.TeklifBL
 
                         if (mail.To.Count > 0) client.Send(mail);
                     }
-
                     return true;
                 }
                 catch (Exception ex)
@@ -228,9 +268,9 @@ namespace deneysan_BLL.TeklifBL
                 if (!string.IsNullOrEmpty(donanim))
                 {
                     urun.DonanimFiyat = Convert.ToDecimal(donanim);
-                    urun.Toplam = (Convert.ToDecimal(fiyat) * adet + Convert.ToDecimal(donanim)*adet).ToString();
+                    urun.Toplam = (Convert.ToDecimal(fiyat) * adet + Convert.ToDecimal(donanim) * adet).ToString();
                 }
-                 
+
                 else urun.Toplam = (Convert.ToDecimal(fiyat) * adet).ToString();
 
                 db.SaveChanges();
@@ -270,7 +310,7 @@ namespace deneysan_BLL.TeklifBL
                     Font font = new Font(arial, 8, Font.NORMAL, Color.DARK_GRAY);
                     Font boldfont = new Font(arial, 8, Font.BOLD, Color.DARK_GRAY);
                     Font ortafont = new Font(arial, 10, Font.NORMAL, Color.DARK_GRAY);
-                    Font header = new Font(arial, 12, Font.BOLD); 
+                    Font header = new Font(arial, 12, Font.BOLD);
                     var document = new iTextSharp.text.Document(PageSize.A4, 37, 30, 25, 25);
                     var output = new MemoryStream();
                     var writer = PdfWriter.GetInstance(document, output);
@@ -283,7 +323,7 @@ namespace deneysan_BLL.TeklifBL
                     float[] widths = new float[] { 7.2f, 1.8f };
                     table.SetWidths(widths);
                     table.HorizontalAlignment = 1;
-                    
+
                     table.SpacingBefore = 0f;
                     table.SpacingAfter = 0f;
                     table.DefaultCell.Border = 0;
@@ -297,7 +337,7 @@ namespace deneysan_BLL.TeklifBL
                     table.AddCell(cell);
                     table.AddCell(cell);
 
-                    cell = new PdfPCell(new Paragraph(teklif.Kurum,font));
+                    cell = new PdfPCell(new Paragraph(teklif.Kurum.ToUpper(), font));
                     cell.Padding = 0;
                     cell.PaddingLeft = 2f;
                     cell.FixedHeight = 9f;
@@ -309,22 +349,22 @@ namespace deneysan_BLL.TeklifBL
                     cell.FixedHeight = 9f;
                     cell.BorderWidth = 0;
                     table.AddCell(cell);
-                    
+
                     string unvanadsoyad = string.Empty;
 
                     if (string.IsNullOrEmpty(teklif.Unvan))
-                        unvanadsoyad = teklif.Adsoyad;
+                        unvanadsoyad = teklif.Adsoyad.ToUpper();
                     else
-                        unvanadsoyad = teklif.Unvan + " " + teklif.Adsoyad;
+                        unvanadsoyad = teklif.Unvan.ToUpper() + " " + teklif.Adsoyad.ToUpper();
 
-                    cell = new PdfPCell(new Paragraph(unvanadsoyad, font));
+                    cell = new PdfPCell(new Paragraph(unvanadsoyad.ToUpper(), font));
                     cell.Padding = 0;
                     cell.PaddingLeft = 2f;
                     cell.FixedHeight = 9f;
                     cell.BorderWidth = 0;
                     table.AddCell(cell);
 
-                    cell = new PdfPCell(new Paragraph(teklif.TeklifNo, font));
+                    cell = new PdfPCell(new Paragraph(teklif.TeklifNo.ToUpper(), font));
                     cell.Padding = 0;
                     cell.FixedHeight = 9f;
                     cell.BorderWidth = 0;
@@ -397,7 +437,7 @@ namespace deneysan_BLL.TeklifBL
                     cell.FixedHeight = 9f;
                     cell.BorderWidth = 0;
                     table.AddCell(cell);
-                    
+
                     document.Add(table);
                     ////////////////////////////////////////////////////////////////////////////
 
@@ -584,8 +624,14 @@ namespace deneysan_BLL.TeklifBL
                     table.AddCell(cell);
                     table.AddCell(cell);
                     table.AddCell(cell);
-
-                    cell = new PdfPCell(new Paragraph(teklif.Not, ortafont));
+                    if (string.IsNullOrEmpty(teklif.Not))
+                    {
+                        cell = new PdfPCell(new Paragraph(""));
+                    }
+                    else
+                    {
+                        cell = new PdfPCell(new Paragraph(teklif.Not.ToUpper(), ortafont));
+                    }
                     cell.HorizontalAlignment = Element.ALIGN_LEFT;
                     cell.FixedHeight = 12f;
                     cell.BorderWidth = 0;
@@ -648,6 +694,39 @@ namespace deneysan_BLL.TeklifBL
                     document.Add(table);
 
 
+                    table = new PdfPTable(2);
+                    table.TotalWidth = 520f;
+                    table.LockedWidth = true;
+                    widths = new float[] { 3.7f, 2.2f};
+                    table.SetWidths(widths);
+                    table.HorizontalAlignment = Element.ALIGN_LEFT;
+
+                    cell = new PdfPCell(new Paragraph(""));
+                    cell.Padding = 0;
+                    cell.FixedHeight = 21f;
+                    cell.BorderWidth = 0;
+                    table.AddCell(cell);
+                    table.AddCell(cell);
+
+                    cell = new PdfPCell(new Paragraph(""));
+                    cell.Padding = 0;
+                    cell.FixedHeight = 30f;
+                    cell.BorderWidth = 0;
+                    table.AddCell(cell);
+                    if (string.IsNullOrEmpty(teklif.OdemeNotu))
+                    {
+                        cell = new PdfPCell(new Paragraph(""));
+                    }
+                    else
+                    {
+                        cell = new PdfPCell(new Paragraph(teklif.OdemeNotu.ToUpper(), ortafont));
+                    }
+                    cell.Padding = 0;
+                    cell.FixedHeight = 30f;
+                    cell.BorderWidth = 0;
+                    table.AddCell(cell);
+
+                    document.Add(table);
 
 
 
@@ -665,25 +744,25 @@ namespace deneysan_BLL.TeklifBL
                     writer.CloseStream = false;
                     document.Close();
 
-                    var mset = MailManager.GetMailSettings();
+                    //var mset = MailManager.GetMailSettings();
 
-                    using (var client = new SmtpClient(mset.ServerHost, mset.Port))
-                    {
-                        client.EnableSsl = false;
-                        client.Credentials = new NetworkCredential(mset.ServerMail, mset.Password);
-                        var mail = new MailMessage();
-                        mail.From = new MailAddress(mset.ServerMail);
-                        mail.To.Add(teklif.Eposta);
-                        mail.Subject = "Deneysan - Proforma Faturası";
-                        mail.Body = "Proforma faturanız ekte bulunmaktadır.";
-                        if (document != null)
-                        {
-                            output.Position = 0;
-                            var attachment = new Attachment(output, "proforma-fatura.pdf");
-                            mail.Attachments.Add(attachment);
-                        }
-                        // client.Send(mail);
-                    }
+                    //using (var client = new SmtpClient(mset.ServerHost, mset.Port))
+                    //{
+                    //    client.EnableSsl = false;
+                    //    client.Credentials = new NetworkCredential(mset.ServerMail, mset.Password);
+                    //    var mail = new MailMessage();
+                    //    mail.From = new MailAddress(mset.ServerMail);
+                    //    mail.To.Add(teklif.Eposta);
+                    //    mail.Subject = "Deneysan - Proforma Faturası";
+                    //    mail.Body = "Proforma faturanız ekte bulunmaktadır.";
+                    //    if (document != null)
+                    //    {
+                    //        output.Position = 0;
+                    //        var attachment = new Attachment(output, "proforma-fatura.pdf");
+                    //        mail.Attachments.Add(attachment);
+                    //    }
+                    //    // client.Send(mail);
+                    //}
 
                     return output;
 
@@ -736,7 +815,7 @@ namespace deneysan_BLL.TeklifBL
                     table.AddCell(cell);
                     table.AddCell(cell);
 
-                    cell = new PdfPCell(new Paragraph(teklif.Kurum, font));
+                    cell = new PdfPCell(new Paragraph(teklif.Kurum.ToUpper(), font));
                     cell.Padding = 0;
                     cell.PaddingLeft = 2f;
                     cell.FixedHeight = 9f;
@@ -752,18 +831,18 @@ namespace deneysan_BLL.TeklifBL
                     string unvanadsoyad = string.Empty;
 
                     if (string.IsNullOrEmpty(teklif.Unvan))
-                        unvanadsoyad = teklif.Adsoyad;
+                        unvanadsoyad = teklif.Adsoyad.ToUpper();
                     else
-                        unvanadsoyad = teklif.Unvan + " " + teklif.Adsoyad;
+                        unvanadsoyad = teklif.Unvan.ToUpper() + " " + teklif.Adsoyad.ToUpper();
 
-                    cell = new PdfPCell(new Paragraph(unvanadsoyad, font));
+                    cell = new PdfPCell(new Paragraph(unvanadsoyad.ToUpper(), font));
                     cell.Padding = 0;
                     cell.PaddingLeft = 2f;
                     cell.FixedHeight = 9f;
                     cell.BorderWidth = 0;
                     table.AddCell(cell);
 
-                    cell = new PdfPCell(new Paragraph(teklif.TeklifNo, font));
+                    cell = new PdfPCell(new Paragraph(teklif.TeklifNo.ToUpper(), font));
                     cell.Padding = 0;
                     cell.FixedHeight = 9f;
                     cell.BorderWidth = 0;
@@ -1024,7 +1103,7 @@ namespace deneysan_BLL.TeklifBL
                     table.AddCell(cell);
                     table.AddCell(cell);
 
-                    cell = new PdfPCell(new Paragraph(teklif.Not, ortafont));
+                    cell = new PdfPCell(new Paragraph(teklif.Not.ToUpper(), ortafont));
                     cell.HorizontalAlignment = Element.ALIGN_LEFT;
                     cell.FixedHeight = 12f;
                     cell.BorderWidth = 0;
@@ -1086,6 +1165,33 @@ namespace deneysan_BLL.TeklifBL
 
                     document.Add(table);
 
+                    table = new PdfPTable(2);
+                    table.TotalWidth = 520f;
+                    table.LockedWidth = true;
+                    widths = new float[] { 3.7f, 2.2f };
+                    table.SetWidths(widths);
+                    table.HorizontalAlignment = Element.ALIGN_LEFT;
+
+                    cell = new PdfPCell(new Paragraph(""));
+                    cell.Padding = 0;
+                    cell.FixedHeight = 21f;
+                    cell.BorderWidth = 0;
+                    table.AddCell(cell);
+                    table.AddCell(cell);
+
+                    cell = new PdfPCell(new Paragraph(""));
+                    cell.Padding = 0;
+                    cell.FixedHeight = 30f;
+                    cell.BorderWidth = 0;
+                    table.AddCell(cell);
+
+                    cell = new PdfPCell(new Paragraph(teklif.OdemeNotu.ToUpper(), ortafont));
+                    cell.Padding = 0;
+                    cell.FixedHeight = 30f;
+                    cell.BorderWidth = 0;
+                    table.AddCell(cell);
+
+                    document.Add(table);
 
 
 
