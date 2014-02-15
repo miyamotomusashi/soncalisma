@@ -1662,6 +1662,7 @@
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery.validate.unobtrusive.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery.validate.unobtrusive.min.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery.wysiwyg.js" />
+    <Content Include="Areas\Admin\Content\scripts\plugins\jquery.zweatherfeed.tr.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\main.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\modernizr-2.5.3.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\moneyconverter.js" />
@@ -1715,6 +1716,7 @@
     <Content Include="Areas\Admin\Content\styles\pluginstyles\jquery.ui.slider.css" />
     <Content Include="Areas\Admin\Content\styles\pluginstyles\jquery.ui.tabs.css" />
     <Content Include="Areas\Admin\Content\styles\pluginstyles\jquery.ui.theme.css" />
+    <Content Include="Areas\Admin\Content\styles\pluginstyles\jquery.zweatherfeed.css" />
     <Content Include="Areas\Admin\Content\styles\pluginstyles\prettify.css" />
     <Content Include="Areas\Admin\Content\styles\pluginstyles\style.css" />
     <Content Include="Areas\Admin\Content\styles\reset.css" />
@@ -1727,6 +1729,7 @@
     <Content Include="Content\Images\Front\alert.png" />
     <Content Include="Content\Images\Front\all-bg.png" />
     <Content Include="Content\Images\Front\balkes.png" />
+    <Content Include="Content\Images\Front\Bank.png" />
     <Content Include="Content\Images\Front\bayburt.png" />
     <Content Include="Content\Images\Front\bg-header.png" />
     <Content Include="Content\Images\Front\bg-hrline-wide.png" />

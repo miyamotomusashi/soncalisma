@@ -4,7 +4,7 @@
 }
 
 <style type="text/css">
-.product-feature {position: relative;padding-left: 60px;margin-top: 30px;}
+.product-feature {position: relative;padding-left: 60px;margin-top: 10px;}
 .product-feature:first-child { margin-top: 0; }
 .product-feature h3 {font-size: 16px;line-height: 22px;color: #333;padding-bottom: 7px; margin-left:10px;}
 .product-feature p { margin: 0 0 0 10px; }
@@ -14,6 +14,7 @@
 .icon-phone { background-image:url('/Content/Images/Front/icon-phone.png'); background-repeat:no-repeat; }
 .icon-envelope-alt { background-image:url('/Content/Images/Front/icon-envelope-alt.png'); background-repeat:no-repeat; }
 .icon-web { background-image:url('/Content/Images/Front/icon-web.png'); background-repeat:no-repeat; }
+.icon-tax { background-image:url('/Content/Images/Front/bank.png'); background-repeat:no-repeat; }
 </style>
 <div class="main_content mainpage pageheight" style="">
     <div class="wrapper mainpage grid_12">
@@ -24,8 +25,9 @@
                 <div class="iletisim_left">
                     <div class="product-feature"><span class="icon-map-marker"></span><h3>@SharedRess.SharedStrings.address</h3><p>@Model.Address</p></div>
                     <div class="product-feature"><span class="icon-phone"></span><h3>@SharedRess.SharedStrings.phone / Fax</h3><p>@Model.Phone<br>@Model.Fax</p></div>
-                    <div class="product-feature"><span class="icon-envelope-alt"></span><h3>@SharedRess.SharedStrings.email</h3><p>@Model.Email<br>&nbsp;</p></div>
-                    <div class="product-feature"><span class="icon-web"></span><h3>Web</h3><p><a href="http://www.deneysan.com">www.deneysan.com</a> <br><a href="#">blog.deneysan.com</a></p></div>
+                    <div class="product-feature"><span class="icon-envelope-alt"></span><h3>@SharedRess.SharedStrings.email</h3><p>@Model.Email</p></div>
+                    <div class="product-feature"><span class="icon-web"></span><h3>Web</h3><p><a href="http://www.deneysan.com">http://www.deneysan.com</a> <br>&nbsp;</p></div>
+                    <div class="product-feature"><span class="icon-tax"></span><h3>@SharedRess.SharedStrings.taxoffice</h3><p>@Model.Taxoffice <br> No: @Model.Taxnumber</p></div>
                         
                    @* <p>
                         <strong>
