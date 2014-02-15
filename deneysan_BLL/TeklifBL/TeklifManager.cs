@@ -731,10 +731,11 @@ namespace deneysan_BLL.TeklifBL
 
 
                     var logo = iTextSharp.text.Image.GetInstance(HostingEnvironment.MapPath("~/Content/images/proforma/top.tif"));
-                    logo.ScalePercent(70f);
+                    logo.ScalePercent(48f);
 
-                    logo.SetAbsolutePosition(20, 35);
-
+                    logo.SetAbsolutePosition(25, 32);
+                    //logo.SetDpi(300,300);
+                    //logo.ScaleToFit(175f, 108f);
                     document.Add(logo);
 
                     teklif.Durum = (int)EnumTeklifTip.Onaylandi;
