@@ -730,8 +730,8 @@ namespace deneysan_BLL.TeklifBL
 
 
 
-                    var logo = iTextSharp.text.Image.GetInstance(HostingEnvironment.MapPath("~/Content/images/proforma/top.tif"));
-                    logo.ScalePercent(48f);
+                    var logo = iTextSharp.text.Image.GetInstance(HostingEnvironment.MapPath("~/Content/images/proforma/top.png"));
+                    logo.ScalePercent(22.4f);
 
                     logo.SetAbsolutePosition(25, 32);
                     //logo.SetDpi(300,300);
@@ -1194,13 +1194,10 @@ namespace deneysan_BLL.TeklifBL
 
                     document.Add(table);
 
-
-
-
-                    var logo = iTextSharp.text.Image.GetInstance(HostingEnvironment.MapPath("~/Content/images/proforma/top.tif"));
-                    logo.ScalePercent(70f);
-
-                    logo.SetAbsolutePosition(20, 35);
+                    var logo = iTextSharp.text.Image.GetInstance(HostingEnvironment.MapPath("~/Content/images/proforma/top.png"));
+                    logo.ScalePercent(22.4f);
+                    logo.SetAbsolutePosition(25, 32);
+                    document.Add(logo);
 
                     document.Add(logo);
 

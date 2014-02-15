@@ -1847,6 +1847,7 @@
     <Content Include="Content\Images\prettyPhoto\light_square\loader.gif" />
     <Content Include="Content\Images\prettyPhoto\light_square\sprite.png" />
     <Content Include="Content\Images\proforma\top.png" />
+    <Content Include="Content\Images\proforma\top.tif" />
     <Content Include="Content\Scripts\jquery-ui.js" />
     <Content Include="Content\Scripts\jquery.gritter.min.js" />
     <Content Include="Content\Scripts\jquery.maskedinput-1.3.min.js" />
