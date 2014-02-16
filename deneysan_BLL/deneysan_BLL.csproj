@@ -34,13 +34,11 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="itextsharp, Version=5.4.1.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="itextsharp">
       <HintPath>..\..\..\..\Desktop\itextsharp.dll</HintPath>
     </Reference>
-    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Release\log4net.dll</HintPath>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -77,9 +75,11 @@
     <Compile Include="ReferenceBL\ReferenceManager.cs" />
     <Compile Include="SearchBL\SearchManager.cs" />
     <Compile Include="SecurityBL\SecurityManager.cs" />
+    <Compile Include="TeklifBL\TeklifManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="TeklifBL\TeklifUrun_Urun.cs" />
     <Compile Include="TeklifBL\EnumTeklifTip.cs" />
-    <Compile Include="TeklifBL\TeklifManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\deneysan_Data\deneysan_DAL.csproj">

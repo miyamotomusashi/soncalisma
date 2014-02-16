@@ -6,6 +6,25 @@
     else if (status == "False" || status == "false")
         MessageBox("İşlem Sırasında Bir Hata Oluştu.", "alert");
 
+    //var $dlg = $('#productlist').dialog({
+    //    autoOpen: false,
+    //    width: 500,
+    //    resizable: true,
+    //    modal: true,
+    //    title:'Teklife Yeni Ürün Ekle'
+    //});
+
+    
+
+    //var tekid = $("#tekid").val();
+    //$('#btnaddProduct').click(function () { // button click
+      
+    //    $dlg.load("_productchoise.cshtml", function () {
+    //        $dlg.dialog('open');
+    //    });
+    //}); 
+
+
 });
 
 function EditRecord(id) {
@@ -24,8 +43,11 @@ function EditRecord(id) {
     $("#textadet_" + id).css("display", "block");
     $("#textadet_" + id).val($("#spantextadet_" + id).text());
 
+    
+
    
     $("#btn_update_" + id).css("display", "none");
+    $("#DeleteImage_" + id).css("display", "none");
     $("#btn_save_" + id).attr("src", "/Areas/Admin/Content/images/icons/16/save.png");
     $("#btn_save_" + id).css("display", "inline-block");
     $("#btn_cancel_" + id).css("display", "inline-block");
@@ -40,10 +62,15 @@ function CancelRecord(id) {
     $("#spantextdonanim_" + id).css("display", "inline-block");
     $("#textdonanim_" + id).css("display", "none");
  
-    $("#spantextadet_" + id).css("display", "block");
-    $("#textadet_" + id).css("display", "none");
+    
   
+    $("#spantextadi_" + id).css("display", "block");
+    $("#textadi_" + id).css("display", "none");
+   
+
+
     $("#btn_update_" + id).css("display", "inline-block");
+    $("#DeleteImage_" + id).css("display", "inline-block");
     $("#btn_save_" + id).css("display", "none");
     $("#btn_cancel_" + id).css("display", "none");
     $("#DeleteImage_" + id).css("display", "inline-block");
@@ -114,6 +141,7 @@ function UpdateRecord(id) {
 
 
             $("#btn_update_" + id).css("display", "inline-block");
+            $("#DeleteImage_" + id).css("display", "inline-block")
             $("#btn_save_" + id).css("display", "none");
             $("#btn_cancel_" + id).css("display", "none");
             $("#DeleteImage_" + id).css("display", "inline-block");

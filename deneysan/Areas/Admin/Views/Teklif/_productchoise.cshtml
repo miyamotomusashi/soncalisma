@@ -1,0 +1,118 @@
+﻿@model IEnumerable<deneysan_DAL.Entities.Product>
+  @using (Html.BeginForm("AddNewProduct", "Teklif", FormMethod.Post, new { }))
+  {
+      @Html.Hidden("hdnteklifid", (object)@ViewBag.TeklifId) 
+         <input type="submit" value="Kaydet" id="btnsave" />
+  }
+
+ 
+ <table id="tblcategory" class="table no-border tablesorter">
+            <thead>
+                <tr>
+                    <th class="center width5">Seçim</th>
+                    <th class="center width5">Adet</th>
+                    <th class="center width10">Ürün Kodu</th>
+                    <th class="width75">Ürün Adı</th>
+                </tr>
+            </thead>
+            <tbody id="item-list">
+                @foreach (var item in Model)
+                {
+                    <tr class="handle">
+                        <td class="center" style="text-align:center">
+                            <a class="remove" style="display:none" href="javascript:void(0)">
+                                <img src="~/Areas/Admin/Content/images/icons/delete.png" />
+                            </a>
+                            <a class="add" href="javascript:void(0)">
+                                <img src="~/Areas/Admin/Content/images/icons/add.png" />
+                            </a>
+                            <input type="hidden" value="@item.ProductId" />
+                        </td>
+                         <td class="center">
+                            <select class="urunadet@(item.ProductId)" name="urunadet">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </td>
+                        <td class="center">
+                            @item.Code
+                        </td>
+                        <td>
+                            @item.Name
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+<style>
+    .selected { background-color: #eee; }
+</style>
+<script>
+    $(document).ready(function () {
+        alert($("#hdnteklifid").val());
+
+        $(".add").click(function () {
+            var element = $(this);
+            var val = $(this).next().val();
+
+            var count = $(".urunadet" + val + " option:selected").val();
+
+            if (val != "") {
+                $.ajax({
+                    type: 'POST',
+                    url: '/Teklif/AddToList',
+                    data: '{id:"' + val + '",count:"' + count + '"}',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'json',
+                    success: function (result) {
+                        element.prev().css("display", "block");
+                        element.css("display", "none");
+                        element.closest("tr").addClass("odd");                        
+                    },
+                    error: function () {
+
+                    }
+                });
+            }
+        });
+
+        $(".remove").click(function () {
+            var element = $(this);
+            var val = $(this).next().next().val();
+            if (val != "") {
+                $.ajax({
+                    type: 'POST',
+                    url: '/Teklif/RemoveFromList',
+                    data: '{id:"' + val + '"}',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'json',
+                    success: function (result) {
+                        element.next().css("display", "block");
+                        element.css("display", "none");
+                        element.closest("tr").removeClass("odd");
+
+                        //if (result == "0") {
+                        //    $("#offer-content").empty();
+                        //    $("#offer-content").load("/offer/empty");
+
+                        //} else {
+                        //    $("#item-" + id).fadeOut(500).remove();
+                        //}
+
+                        //$("#teklifAdedi").text(result);
+                    },
+                    error: function () {
+
+                    }
+                });
+            }
+        });
+
+     
+    });
+    
+</script>

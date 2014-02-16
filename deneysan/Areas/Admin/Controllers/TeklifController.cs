@@ -170,10 +170,10 @@ namespace deneysan.Areas.Admin.Controllers
             return RedirectToAction("Index", new { @type = type });
         }
 
-        public bool DeleteTeklifUrun(int id)
+        public JsonResult DeleteTeklifUrun(int id)
         {
             bool retval = TeklifManager.DeleteTeklifUrun(id);
-            return retval;
+            return Json(retval);
         }
 
         public ActionResult Index()
@@ -303,6 +303,69 @@ namespace deneysan.Areas.Admin.Controllers
             return Json(vals);
 
         }
+
+
+        public PartialViewResult PartialResult(int teklifid)
+        {
+            ViewBag.TeklifId = teklifid;
+           
+            string lang = FillLangList();
+            List<Product> list = ProductManager.GetProductListAllForTeklif(lang);
+         
+
+            return PartialView(VirtualPathUtility.ToAbsolute("~/Areas/Admin/Views/Teklif/_productchoise.cshtml"),list);
+        }
+
+
+
+        [HttpPost]
+        public void AddNewProduct(string hdnteklifid)
+        {
+            int teklifId = Convert.ToInt32(hdnteklifid);
+            HttpCookie cookie;
+            List<TeklifUrun> teklifurun = new List<TeklifUrun>();
+
+            if (this.ControllerContext.HttpContext.Request.Cookies.AllKeys.Contains("AdminOfferList"))
+            {
+                cookie = this.ControllerContext.HttpContext.Request.Cookies["AdminOfferList"];
+                var values = JsonConvert.DeserializeObject<Dictionary<string, string>[]>(cookie.Value);
+               
+
+                int i = 0;
+
+                foreach (var item in values)
+                {
+                    TeklifUrun turun  = new TeklifUrun();
+                    turun.UrunId = Convert.ToInt32(item["id"]);
+                    turun.Adet = Convert.ToInt32(item["count"]);
+                    teklifurun.Add(turun);
+                }
+                values = null;
+            }
+            //else
+            //{
+            //    teklifurun = new TeklifUrun[0];
+            //}
+
+            bool result = TeklifManager.DuzenleTeklifUrun(teklifId, teklifurun);
+
+            if (this.ControllerContext.HttpContext.Request.Cookies.AllKeys.Contains("AdminOfferList"))
+            {
+                cookie = this.ControllerContext.HttpContext.Request.Cookies["AdminOfferList"];
+                cookie.Expires = DateTime.Now.AddDays(-1);
+                this.ControllerContext.HttpContext.Response.Cookies.Add(cookie);
+            }
+
+
+            //return RedirectToAction("Details", "Teklif", new { id = teklifId });
+            Response.Redirect("/yonetim/teklifler/detay/"+teklifId);
+            //}
+            //return RedirectToAction("Add");
+        }
+
+
+
+      
 
     }
 }

@@ -7,7 +7,7 @@
 <link href="~/Areas/Admin/Content/styles/pluginstyles/jquery.msgbox.css" rel="stylesheet" />
 <link href="~/Areas/Admin/Content/styles/forms.css" rel="stylesheet" />
 <link href="~/Areas/Admin/Content/styles/table.css" rel="stylesheet" />
-
+<link href="~/Areas/Admin/Content/styles/pluginstyles/jquery-ui.css" rel="stylesheet" />
 @Html.Partial("home_leftbar")
 <div id="page-content" class="container_12">
     <div id="page-header">
@@ -66,20 +66,34 @@
                 </p>
                 <script>
                     $(document).ready(function () {
-
                         $("#chkKdvNotu").click(function () {
+                            var addedtext = "Fiyatlarımıza kdv dahil değildir";
+                            var textval = $("#txtnot").val();
                             if (this.checked) {
-                                $("#txtnot").val("Fiyatlarımıza kdv dahil değildir.");
+                                textval += "\r\n"+addedtext;
+                                $("#txtnot").val(textval);
                             } else {
+                                var newvalue = textval.replace(addedtext, "");
+                                newvalue = newvalue.replace("\n", "");
                                 $("#txtnot").val("");
+                                $("#txtnot").val(newvalue);
+                        
                             }
                         });
 
                         $("#chkOdemeNotu").click(function () {
+                            var addedtext = "Siparişe müteakip %60 ön ödeme, %40 ürün teslimatında yapılması talep edilmektedir.";
+                            var textval = $("#txtodemenot").val();
+
                             if (this.checked) {
-                                $("#txtodemenot").val("Siparişe müteakip %60 ön ödeme, %40 ürün teslimatında yapılması talep edilmektedir.");
+                                textval += "\r\n" + addedtext;
+                                $("#txtodemenot").val(textval);
+                                
                             } else {
+                                var newvalue = textval.replace(addedtext, "");
+                                newvalue = newvalue.replace("\n", "");
                                 $("#txtodemenot").val("");
+                                $("#txtodemenot").val(newvalue);
                             }
                         });
                     });
@@ -88,7 +102,7 @@
                     <label>
                         KDV Bilgi Notu
                     </label>
-                    <span><input type="checkbox" id="chkKdvNotu" /> Fiyatlarımıza kdv dahil değildir.</span>
+                    <span><input type="checkbox" id="chkKdvNotu" /> Fiyatlarımıza kdv dahil değildir.(KDV Oranı : %18)</span>
                 </p>
                 <p>
                     @Html.LabelFor(d => d.teklif.OdemeNotu)
@@ -165,14 +179,15 @@
                     @foreach (var item in Model.teklifurun)
                     {
                
-                        <tr id="listItem_@item.UrunId"  class="handle">
+                        <tr id="listItem_@item.TeklifUrunId"  class="handle">
                             <td>
                                 <center>
                             <a href="@item.UrunResim" onclick="return false;"
                                 class="preview">
                                 <img src="@item.UrunResim" alt="image" width="48" height="48" /></a></center>
                             </td>
-                            <td>@item.UrunAdi</td>
+                            <td>@item.UrunAdi
+                            </td>
                             <td class="center">
                                 <span id="spantextfiyat_@item.UrunId">@item.Fiyat</span><span id="moneytype_@item.UrunId"> TL</span> 
                                 <input type="text" id="textfiyat_@item.UrunId" value="" class="displaynone textwidth90"/>
@@ -204,6 +219,7 @@
                                 <img id="btn_update_@item.UrunId"  src="/Areas/Admin/Content/images/icons/16/edit.png"  title="Güncelle" class="cursorpointer" onclick="EditRecord(@item.UrunId)">
                                 <img id="btn_save_@item.UrunId"  src="/Areas/Admin/Content/images/icons/16/save.png"  title="Kaydet" class="displaynone cursorpointer" onclick="UpdateRecord(@item.UrunId)">
                                 <img id="btn_cancel_@item.UrunId"  src="/Areas/Admin/Content/images/icons/16/error.png"  title="İptal" class="displaynone cursorpointer" onclick="CancelRecord(@item.UrunId)">
+                                <img id="DeleteImage_@item.UrunId"  src="/Areas/Admin/Content/images/icons/16/delete.png"  title="Sil" class="cursorpointer" onclick="DeleteRecord('/Teklif/DeleteTeklifUrun',@item.TeklifUrunId)">
                                 
                             </td>
                         </tr>
@@ -219,6 +235,11 @@
                 <span id="kdvtutar" style="color: green; font-weight: bold;">@Model.teklif.KDV @Model.teklif.ParaBirimi</span>
             </p>
             <div>
+              
+                 @Html.Hidden("tekid", (object)@Model.teklif.TeklifId) 
+                        
+                 <input type="submit" style="float: right" value="Teklife ürün Ekle" id="btnaddProduct" />
+
                 @using (Html.BeginForm("Proforma", "Teklif", FormMethod.Post))
                 {
                     @Html.Hidden("tekid", (object)@Model.teklif.TeklifId) 
@@ -233,9 +254,16 @@
                 }
             </div>
         </fieldset>
-
+        
+        <div id="productlist" >
+       
+        </div>
     </section>
 </div>
+
+
+
+
 @section Scripts {
     <link href="~/Areas/Admin/Content/styles/pluginstyles/jquery.msgbox.css" rel="stylesheet" />
     <script src="~/Areas/Admin/Content/scripts/plugins/jquery.msgbox.min.js"></script>
@@ -250,3 +278,53 @@
     <script src="~/Areas/Admin/Content/scripts/pagescripts/teklif/teklif.js"></script>
 }
 
+<script type="text/javascript">
+    $(function () {
+
+        var $dlg = $('#productlist').dialog({
+            autoOpen: false,
+            width: 700,
+            resizable: true,
+            modal: true,
+            title: 'Teklife Yeni Ürün Ekle',
+            height:500
+            
+        });
+
+
+
+        var tekid = $("#tekid").val();
+        $('#btnaddProduct').click(function () { // button click
+            //alert("123");
+            $dlg.load("/Teklif/PartialResult", function () {
+                $dlg.dialog('open');
+             });
+            LoadPartialProduct(tekid);
+        });
+
+
+        
+        var textval = $("#txtnot").val();
+        if(textval.indexOf("Fiyatlarımıza kdv dahil değildir")!=-1)
+        {
+            $("#chkKdvNotu").attr("checked","true");
+        }
+        
+
+        var textval2 = $("#txtodemenot").val();
+        if(textval2.indexOf("Siparişe müteakip %60 ön ödeme, %40 ürün teslimatında yapılması talep edilmektedir.")!=-1)
+        {
+            $("#chkOdemeNotu").attr("checked","true");
+        }
+
+
+
+    });
+
+    function LoadPartialProduct(tekid) {
+        $('#productlist').load('/Teklif/PartialResult?teklifid='+tekid);
+        //// pass the bookid, param2 into the Books Controller's GetBookPartialView Method
+        $('#productlist').show();
+    }
+
+</script>

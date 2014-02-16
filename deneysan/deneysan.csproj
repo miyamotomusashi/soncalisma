@@ -39,21 +39,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CKEditor.NET, Version=3.6.2.0, Culture=neutral, PublicKeyToken=e379cdf2f8354999, processorArchitecture=MSIL">
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\PROJELER\MVC-PROJELERİ\myBLOG\myBLOG\bin\CKEditor.NET.dll</HintPath>
-    </Reference>
-    <Reference Include="CKFinder, Version=2.1.0.1326, Culture=neutral, PublicKeyToken=579e7adc719a1423, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\PROJELER\MVC-PROJELERİ\myBLOG\myBLOG\bin\CKFinder.dll</HintPath>
-    </Reference>
-    <Reference Include="itextsharp, Version=4.1.6.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Desktop\itextsharp.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="NotFoundMvc">
@@ -198,7 +186,9 @@
     <Compile Include="Areas\Admin\Controllers\ProductGroupController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProjectController.cs" />
     <Compile Include="Areas\Admin\Controllers\ReferenceController.cs" />
-    <Compile Include="Areas\Admin\Controllers\TeklifController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TeklifController.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Areas\Admin\Filters\AuthenticateUser.cs" />
     <Compile Include="Areas\Admin\Helpers\ImageHelper.cs" />
     <Compile Include="Areas\Admin\Helpers\ImageResizer.cs" />
@@ -212,7 +202,6 @@
     <Compile Include="Controllers\FCareerController.cs" />
     <Compile Include="Controllers\FInstitutionalController.cs" />
     <Compile Include="Controllers\FLinksController.cs" />
-    <Compile Include="Controllers\FOffersController.cs" />
     <Compile Include="Controllers\FProductsController.cs" />
     <Compile Include="Controllers\FNewsController.cs" />
     <Compile Include="Controllers\FProjectsController.cs" />
@@ -1946,6 +1935,7 @@
     <Content Include="Areas\Admin\Content\scripts\plugins\uploadify\index.php" />
     <Content Include="Areas\Admin\Content\scripts\plugins\uploadify\uploadify.php" />
     <Content Include="Areas\Admin\Views\Teklif\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Teklif\_productchoise.cshtml" />
     <None Include="Properties\PublishProfiles\deneme.pubxml" />
     <None Include="Properties\PublishProfiles\dnysn.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
